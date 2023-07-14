@@ -1,0 +1,9 @@
+Random City
+First Street:
+19|noname
+Вторая Улица
+Третья Улица
+Final Street:
+1|a;
+0|9-th Ok-l;
+1|norm

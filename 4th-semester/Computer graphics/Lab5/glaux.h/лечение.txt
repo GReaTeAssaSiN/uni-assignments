@@ -1,0 +1,6 @@
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\lib\x64
+Сюда вставлена lib
+C:\Windows\System32
+Сюда вставлен dll
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\GL
+Сюда вставлен glaux.h
