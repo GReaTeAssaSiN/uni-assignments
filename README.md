@@ -8,4 +8,4 @@ Directories:
 
 +3rd-semester - OOP - Object-Oriented Programming (C++)
 
-+4th-semester - Computer Graphics (C++), Data Structures and Algorithms (C++)
++4th-semester - Computer Graphics (C++), Special sections of mathematical logic (SWI Prolog/C++), Data Structures and Algorithms (C++)
