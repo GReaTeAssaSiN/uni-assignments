@@ -1,0 +1,8 @@
+|firstscript.js
+|fourthscript.js
+|Lab_6_7_Task_1.js
+|Lab_6_7_Task_2.js
+|secondscript.js
+|sourceFile.txt
+|thirdscript.js
+|tree.txt
