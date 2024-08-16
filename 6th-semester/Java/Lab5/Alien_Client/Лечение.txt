@@ -1,0 +1,1 @@
+java -cp D:\КАИ\Java\ЛР5\Alien_Client\client\src\main\java;\\Desktop-lifjdvl\папкадляобмена\client -Djava.rmi.server.codebase=file://Desktop-lifjdvl/папкадляобмена/ -Djava.security.policy=D:/КАИ/Java/ЛР5/Alien_Client/client/src/main/java/client.policy client.ComputeSubsequence 192.168.0.116 "-5 -5 61 33 -6 -4"

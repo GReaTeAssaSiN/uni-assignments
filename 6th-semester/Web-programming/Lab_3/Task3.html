@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <!--Мета-данные сайта-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="author" content="Горшков Алексей Олегович" />
+        <meta name="description" content="Веб-программирование, Лабораторная работа №3, Задание 3, Задача 1" />
+        <title>Задание 3, Задача 1</title>
+        <!--Раскрашивание с помощью CSS-стилей. Подключение файла стилей-->
+        <link rel="stylesheet" type="text/css" href="CSS/task3StyleSheet.css" />
+    </head>
+    <!--Видимая часть сайта-->
+    <body>
+        <div id="container">
+            <header>
+                <h2>Задание 3-е, Задача 1-я, Вариант 2-ой</h2>
+            </header>
+            <div id="main_content">
+                <div class="special_block">
+                    <label class="m" for="numberM">Введите натуральное число m < 9999:</label>
+                    <input type="text" id="numberM" placeholder="Пример: 1000" />
+                    <br />
+                    <label class="n" for="numberN">Введите натуральное число n < 9999:</label>
+                    <input type="text" id="numberN" placeholder="Пример: 2093" />
+                    <br />
+                    <input type="button" value="Проверить, есть ли в записи числа m цифры, совпадающие с цифрами записи числа n" onclick="checkDigits();" />
+                </div>
+            </div>
+            <footer>
+                <a href="index.html">Вернуться на главную страницу</a>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            function checkDigits() {
+                // Получение введенных пользователем чисел m и n.
+                var numberM = document.getElementById('numberM').value;
+                var numberN = document.getElementById('numberN').value;
+
+                // Проверка на натуральное число, меньшее 9999.
+                if (validateNumberFormat(numberM) && validateNumberFormat(numberN))
+                {
+                    // Преобразование строки, представляющей число, в массив символов, представляющих цифра.
+                    var digitsM = Array.from(numberM.toString()).map(Number);
+                    var digitsN = Array.from(numberN.toString()).map(Number);
+
+                    // Проверка совпадения цифр.
+                    var commonDigits = digitsM.filter(digit => digitsN.includes(digit));
+
+                    // Вывод результата в диалоговом окне.
+                    var resultMessage = 'Были введены числа:\nm = ' + numberM + '\nn = ' + numberN + '\n\n';
+
+                    if (commonDigits.length > 0) {
+                        resultMessage += 'В записи числа m есть следующие цифры, совпадающие с цифрами в записи числа n: ' + commonDigits.join(', ') +
+                        '\nИскомые цифры без повторения: ' + Array.from(new Set(commonDigits)).join(', ');
+                    } else {
+                        resultMessage += 'Цифры в данных числах не совпадают.';
+                    }
+
+                    alert(resultMessage);
+                }
+                else
+                {
+                    alert("Ошибка ввода! Проверьте, что оба числа m и n введены корректно и являются натуральными числами, меньшими 9999.")
+                }
+            }
+            function validateNumberFormat(number) {
+                var regex = /^[1-9]\d{0,3}$/;
+                return regex.test(number);
+            }
+        </script>
+    </body>
+</html>

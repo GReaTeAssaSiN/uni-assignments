@@ -1,0 +1,185 @@
+﻿/*Блок тела*/
+body {
+    background-color: #F8F1E5;
+    margin: 0px;
+}
+
+/*Блок заголовка*/
+.headbar {
+    width: 100%;
+    background-color: #45503B;
+    color: #F8F1E5;
+    padding: 20px;
+    display: flex;
+}
+    /*Таблица*/
+    .headbar table {
+        width: 20%;
+        background-color: #67735F;
+        text-align: center;
+        margin: 10px;
+        border-collapse: collapse;
+        border-radius: 20px;
+        box-shadow: 10px 10px 20px 5px rgba(0, 0, 0, 0.5);
+    }
+        /*Столбцы*/
+        .headbar td {
+            font-family: 'Arial', sans-serif;
+            font-style: normal;
+            font-size: 24px;
+            color: #F8F1E5;
+        }
+    
+    /*Стиль заголовка в блоке заголовка*/
+    .headbar h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        margin-left: 200px;
+        margin-right: auto;
+        margin-top: 35px;
+        margin-bottom: 10px;
+    }
+
+/*Блок-основа*/
+.back {
+    display: flex;
+    padding-bottom: 0px;
+}
+    
+    /*Красивая панелька слева от основного содержимого*/
+    .back .sidebar {
+        background-color: #47350a;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px 10px rgba(100, 100, 100, 0.7);
+        margin: 20px 20px 0 20px;
+    }
+
+    /*Блок с основным содержимым*/
+    .back .content {
+        width: 100%;
+        background-color: #88881c;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        margin: 20px 20px 0 10px;
+        font-family: Arial;
+    }
+        /*Основная текст задачи*/
+        .back .content .main_text {
+            padding-left: 20px;
+            font-weight: bold;
+            color: #45503B;
+        }
+        /*Текст задачи*/
+        .back .content .task_text {
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            font-style: italic;
+            text-align: justify;
+            color: #364b23;
+        }
+        /*Блок с процессорными элементами*/
+        .back .content .processor {
+            width: 20%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px 20px 0 20px;
+            font-family: Arial;
+            background-color: #f5f5dc;
+        }
+            .back .content .processor input {
+                width: calc(100% - 20px);
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                padding: 10px;
+                color: #2F3E46;
+                font-size: 18px;
+                text-align: right;
+                margin-bottom: 20px;
+            }
+                .back .content .processor input[type="button"], .back .content .processor button {
+                    width: 100%;
+                    border-radius: 10px;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                    padding: 10px;
+                    margin-top: 0;
+                    margin-bottom: 10px;
+                    font-size: 12px;
+                    font-style: italic;
+                    text-align: justify;
+                    background-color: #afd350;
+                    border: 4px groove #81ff00;
+                    cursor: pointer;
+                }
+                    .back .content .processor input[type="button"]:hover, .back .content .processor button:hover {
+                        background-color: #c0fd92;
+                        color: #45503B;
+                    }
+
+            .back .content .processor p{
+                width: calc(100% - 20px);
+                border-radius:10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                padding: 10px;
+                margin-top: 0;
+                font-size: 13px;
+                font-style: italic;
+                text-align: justify;
+                background-color: #afd350;
+                border: 4px groove #81ff00;
+                cursor: pointer;
+            }
+            .back .content .processor .info {
+                font-size: 13px;
+                font-style: italic;
+                text-align: justify;
+                padding-bottom: 5px;
+            }
+
+        /*Блок с результатми процесса*/
+        .back .content .result {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px 20px 0 20px;
+            font-family: Arial;
+            background-color: #f5f5dc;
+        }
+            .back .content .result button {
+                width: 40%;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                padding: 10px;
+                margin-top: 0;
+                font-size: 12px;
+                font-style: italic;
+                text-align: justify;
+                background-color: #4cc8dc;
+                border: 4px groove #444cda;
+                cursor: pointer;
+            }
+                .back .content .result button:hover {
+                    background-color: #69daec;
+                    color: #45503B;
+                }
+
+        .back .content #required_days {
+            width: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            padding: 10px;
+            color: #2F3E46;
+            font-size: 18px;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+/*Блок с информацией об авторе*/
+footer {
+    text-align: center;
+    padding: 2px;
+    background-color: #f2f2f2;
+}

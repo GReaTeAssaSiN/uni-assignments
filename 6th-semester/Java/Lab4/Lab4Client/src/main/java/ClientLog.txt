@@ -1,0 +1,94 @@
+The Client was started succesfully. Date and Time: 2024-03-27 02:15:40
+Received expression from server:
+Result: 0.0
+
+The Client was started succesfully. Date and Time: 2024-03-27 02:16:35
+Received expression from server:
+Result: 30.0
+
+The Client was started succesfully. Date and Time: 2024-03-27 02:16:55
+Received expression from server:
+Result: 30.0
+
+The Client was started succesfully. Date and Time: 2024-03-27 02:18:31
+Received expression from server:
+
+The Client was started succesfully. Date and Time: 2024-03-27 02:19:31
+Received expression from server:
+Result: 0.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 09:54:27
+Received expression from server:
+
+The Client was started succesfully. Date and Time: 2024-03-28 09:55:46
+Received expression from server:
+
+The Client was started succesfully. Date and Time: 2024-03-28 09:56:37
+Received expression from server:
+
+The Client was started succesfully. Date and Time: 2024-03-28 09:59:05
+Received expression from server:
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:07:23
+Received expression from server:
+Result: 11.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:08:43
+Received expression from server:
+Result: 29.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:12:21
+Received expression from server:
+Result: 33.6
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:14:38
+Received expression from server:
+Result: 4.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:20:55
+Received expression from server:
+Result: 0.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:21:54
+Received expression from server:
+Result: 3.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:25:05
+Received expression from server:
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:25:36
+Received expression from server:
+Result: 29.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:29:24
+Received expression from server:
+Result: -9.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:30:52
+The Client was started succesfully. Date and Time: 2024-03-28 10:30:55
+Received expression from server:
+Result: 0.0
+
+Received expression from server:
+Result: 1.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:31:05
+The Client was started succesfully. Date and Time: 2024-03-28 10:31:07
+Received expression from server:
+Result: 1.0
+
+Received expression from server:
+Result: 1.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:31:15
+Received expression from server:
+Result: 3.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:33:45
+Received expression from server:
+Result: 2.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:38:46
+Received expression from server:
+Result: 3.0
+

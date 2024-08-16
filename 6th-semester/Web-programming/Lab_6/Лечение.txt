@@ -1,0 +1,6 @@
+Открываем в Mozilla Firefox
+После в строке поиска пишем about:config
+Находим параметр security.fileuri.strict_origin_policy
+Ставим в false
+
+После включаем обратно

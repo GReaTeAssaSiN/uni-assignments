@@ -1,0 +1,29 @@
+The server was started succesfully. Date and Time: 2024-03-27 01:56:05
+Client Client 1 is conneceted.
+Received expression from client:
+10+20-39=
+Client Client1 is disconnected.
+
+The server was started succesfully. Date and Time: 2024-03-27 01:59:58
+Client Client 1 is conneceted.
+Received expression from client:
+10+20-30=
+Client Client1 is disconnected.
+
+The server was started succesfully. Date and Time: 2024-03-27 02:02:52
+Client Client 1 is conneceted.
+Client Client 1 is conneceted.
+Received expression from client:
+10+39=
+Client Client1 is disconnected.
+
+Received expression from client:
+20-39=
+Client Client1 is disconnected.
+
+The server was started succesfully. Date and Time: 2024-03-28 10:26:56
+Client Client 1 is conneceted.
+Received expression from client:
+10+20-1=
+Client Client1 is disconnected.
+

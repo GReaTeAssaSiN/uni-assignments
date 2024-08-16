@@ -1,0 +1,12 @@
+СЕРВЕР:
+D:
+cd D:\КАИ\Java\ЛР4\Lab4Server\src\main\java
+"D:\Programms\Java\bin\javac" D:\КАИ\Java\ЛР4\Lab4Server\src\main\java\com\mycompany\lab4server\Lab4Server.java
+"D:\Programms\Java\bin\java" com.mycompany.lab4server.Lab4Server ServerLog.txt
+
+
+КЛИЕНТ:
+D:
+cd D:\КАИ\Java\ЛР4\Lab4Client\src\main\java
+"D:\Programms\Java\bin\javac" D:\КАИ\Java\ЛР4\Lab4Client\src\main\java\com\mycompany\lab4client\Lab4Client.java
+"D:\Programms\Java\bin\java" com.mycompany.lab4client.Lab4Client 192.168.0.116 2500 ClientLog.txt

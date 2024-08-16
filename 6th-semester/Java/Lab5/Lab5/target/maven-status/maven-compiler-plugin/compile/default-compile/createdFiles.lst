@@ -1,0 +1,5 @@
+client\NumberSequenceSum.class
+compute\Compute.class
+client\ComputeSum.class
+engine\ComputeEngine.class
+compute\Task.class

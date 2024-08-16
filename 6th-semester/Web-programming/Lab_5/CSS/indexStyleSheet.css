@@ -1,0 +1,123 @@
+﻿/*Блок тела*/
+body {
+    background: #a99b33;
+    margin: 0;
+}
+
+/*Блок заголовка*/
+.headbar {
+    width: 100%;
+    background-color: #45503B;
+    color: #F8F1E5;
+    padding: 20px;
+    text-align: center;
+}
+    /*Стиль заголовка в блоке заголовка*/
+    .headbar h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+    }
+
+/*Блок для расположения элементов (задний фон)*/
+.back {
+    justify-content: center;
+    display: flex;
+}
+
+/*Блок для расположения содержимого для каждой задачи*/
+.content {
+    position: center;
+    width: 700px;
+    background-color: #bfc388;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+    /*Настройка отображения кнопок*/
+    .content button {
+        width: 50%;
+        background-color: #6a4f3d;
+        color: aliceblue;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+        font-family: Arial;
+    }
+        .content button:active {
+            background-color: #54392e;
+        }
+
+/*Блок для отрисовки осей и графика*/
+.graphBG {
+    width: 500px;
+    height: 700px;
+    background-color: #abcbdb;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/*Класс для настройки изображения точки*/
+.dot {
+    background-color: black;
+    width: 2px;
+    height: 2px;
+    display: inline-block;
+    padding: 0;
+    transform: translate(-50%, -50%);
+}
+
+/*Класс для заголовка для Покера*/
+.poker_headbar {
+    background-color: #4f0707;
+    color: #F8F1E5;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+    .poker_headbar h2 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+    }
+
+/*Класс для отображения руки с картами*/
+.hand-container {
+    display: flex;
+    flex-wrap: nowrap;
+    text-align: center;
+}
+    .hand-container img {
+        margin-right: 10px;
+    }
+    .hand-container .hand_title {
+        background-color: #660e0e;
+        color: #F8F1E5;
+        padding: 5px;
+        margin-right: 10px;
+        text-align: center;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+        .hand-container .hand_title h3 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+        }
+
+/*Класс для отображения сообщений в покере*/
+.result-container {
+    display: flex;
+    align-items: center;
+}
+    .result-container button {
+        margin-right: 10px;
+    }
+
+/*Блок с информацией об авторе*/
+footer {
+    text-align: center;
+    padding: 2px;
+    color: #ffffff;
+    background-color: #453e68;
+}

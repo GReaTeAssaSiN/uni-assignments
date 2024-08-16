@@ -1,0 +1,20 @@
+Запуск rmiregistry
+------------------------------------------------------
+D:
+cd D:\КАИ\Java\ЛР5\Lab5\src\main\java
+D:\Programms\Java\bin\rmiregistry
+
+------------------------------------------------------
+Открываем новое окно cmd:
+------------------------------------------------------
+Запуск сервера:
+D:
+cd D:\КАИ\Java\ЛР5\Lab5\src\main\java
+java -Djava.security.policy=server.policy engine.ComputeEngine
+------------------------------------------------------
+Открываем новое окно cmd:
+------------------------------------------------------
+Запуск клиента:
+D:
+cd D:\КАИ\Java\ЛР5\Lab5\src\main\java
+java -Djava.security.policy=client.policy client.ComputeSum localhost "-1 -2"

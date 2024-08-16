@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <!--Мета-данные сайта-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="author" content="Горшков Алексей Олегович" />
+        <meta name="description" content="Веб-программирование, Лабораторная работа №4, Главная страница" />
+        <meta name="keywords" content="События JavaScript. Встроенные объекты" />
+        <title>Главная страница</title>
+        <!--Раскрашивание с помощью CSS-стилей. Подключение файла стилей-->
+        <link rel="stylesheet" type="text/css" href="CSS/indexStyleSheet.css" />
+        <script src="JavaScript/myfuncs.js"></script>
+    </head>
+    <body onload="dateCalculator()">
+        <!--Задание П.7-->
+        <div class="headbar">
+            <table>
+                <tr>
+                    <td id="current_date"></td>
+                </tr>
+                <tr>
+                    <td id="week_day"></td>
+                </tr>
+            </table>
+            <div><h1>Лабораторная работа №4</h1></div>
+        </div>
+        <!--Задание П.1-->
+        <div class="back">
+            <div class="sidebar"></div>
+            <div class="content">
+                <span class="main_text">Выполнить задание:</span><br />
+                <span class="task_text">
+                    Даны два натуральных числа m и n (m < 9999, n < 9999). Проверить, есть ли в записи числа m цифры,
+                    совпадающие с цифрами в записи числа n.
+                </span>
+                <div class="back">
+                    <div class="processor">
+                        <input type="number" id="m" placeholder="m" min="1" max="9998" />
+                        <input type="number" id="n" placeholder="n" min="1" max="9998" />
+                        <p onclick="executeDigits()">Проверить введенные числа по заданию</p>
+                    </div>
+                    <div class="result">
+                        <h2 id="result_text"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Задание П.8-->
+        <div class="back">
+            <div class="sidebar"></div>
+            <div class="content">
+                <span class="main_text">Выполнить задание:</span><br />
+                <span class="task_text">
+                    Вывести количество дней, оставшихся до сессии (до 10 июня 2024 года).
+                </span> <br /> <br />
+                <input type="text" id="required_days" placeholder="Required days" />
+            </div>
+        </div>
+        <!--Задание П.9-->
+        <div class="back">
+            <div class="sidebar"></div>
+            <div class="content">
+                <span class="main_text">Выполнить задание:</span><br />
+                <span class="task_text">
+                    Нужно разместить кнопку, при щелчке на которую следует запрашивать памятную для вас дату и ниже
+                    (или сбоку) выводить в кнопке количество дней, которые минуло после неё (дата должна быть такой, что
+                    количество дней превосходит 365).
+                </span>
+                <div class="back">
+                    <div class="processor">
+                        <input type="button" value="Введите памятную для Вас дату" onclick="getMemorableDate()" />
+                    </div>
+                    <div class="result">
+                        <button id="memorable_button">Памятная дата</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Задание П.10-->
+        <div class="back">
+            <div class="sidebar"></div>
+            <div class="content">
+                <span class="main_text">Выполнить задание:</span><br />
+                <span class="task_text">
+                    Найти и вывести сумму заданного количества членов числовой последовательности: 1 + (-2)<sup>n</sup>.
+                    Задание номера первого ее члена и количества слагаемых последующих членов осуществлять в одном текстовом поле.
+                    В код кнопки для вычисления суммы определённого числа членов последовательности ввести проверку на корректность введённых данных. При этом
+                    для проверки корректности ввода данных запрещено использовать функцию: parseFloat().
+                </span>
+                <div class="back">
+                    <div class="processor">
+                        <div class="info">Введите номер первого члена и количество слагаемых последующих членов через пробел:</div>
+                        <input type="text" id="sequence" placeholder="10 4" /><br /><br />
+                        <button type="button" onclick="calculateSum()">Вычислить сумму</button>
+                    </div>
+                    <div class="result">
+                        <h2 id="calculated_sum"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p>&copy; Горшков Алексей Олегович, группа 4312<br />Казань, 2024</p>
+        </footer>
+    </body>
+</html>

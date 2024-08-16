@@ -1,0 +1,5 @@
+compute\Compute.class
+client\ComputePi.class
+engine\ComputeEngine.class
+client\Pi.class
+compute\Task.class

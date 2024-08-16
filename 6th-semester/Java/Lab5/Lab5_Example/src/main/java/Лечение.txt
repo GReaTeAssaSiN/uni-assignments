@@ -1,0 +1,22 @@
+Сборка JAR-файла интерфейсных классов
+-------------------------------------|
+Сompute (в cmd):
+----------------
+D:
+cd D:\КАИ\Java\ЛР5\Lab5_Example\src\main\java
+javac compute\*.java
+D:\Programms\Java\bin\jar cvf compute.jar compute\*.class
+
+----------------
+Client (в cmd)
+----------------
+D:
+cd D:\КАИ\Java\ЛР5\Lab5_Example\src\main\java
+javac client\*.java
+
+----------------
+Engine (в cmd)
+----------------
+D:
+cd D:\КАИ\Java\ЛР5\Lab5_Example\src\main\java
+javac engine\*.java

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <!--Мета-данные сайта-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="author" content="Горшков Алексей Олегович" />
+        <meta name="description" content="Веб-программирование, Лабораторная работа №3, Задание 3, Задача 2" />
+        <title>Задание 3, Задача 2</title>
+        <!--Раскрашивание с помощью CSS-стилей. Подключение файла стилей-->
+        <link rel="stylesheet" type="text/css" href="CSS/task4StyleSheet.css" />
+    </head>
+    <!--Видимая часть сайта-->
+    <body>
+        <div id="container">
+            <header>
+                <h2>Задание 3-е, Задача 2-я, Вариант 5-ый</h2>
+            </header>
+            <div id="main_content">
+                <div class="special_block">
+                    <label class="n" for="numberN">Введите натуральное число n:</label>
+                    <input type="text" id="numberN" placeholder="Пример: 5" />
+                    <br />
+                    <label class="k" for="numberK">Введите натуральное число k:</label>
+                    <input type="text" id="numberK" placeholder="Пример: 3" />
+                    <br />
+                    <label class="m" for="numberM">Введите цифру m:</label>
+                    <input type="text" id="numberM" placeholder="Пример: 7" />
+                    <br />
+                    <input type="button" value="Проверить, есть ли в записи числа n в степени k цифра m" onclick="checkDigits();" />
+                </div>
+            </div>
+            <footer>
+                <a href="index.html">Вернуться на главную страницу</a>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            function checkDigits() {
+                //Получение значений введеных пользователем: n, k и m.
+                var numberN = document.getElementById("numberN").value;
+                var numberK = document.getElementById("numberK").value;
+                var numberM = document.getElementById("numberM").value;
+
+                //Проверка введенных данных.
+                if (!isNaturalNumber(numberN) || !isNaturalNumber(numberK) || !isSingleDigit(numberM)) {
+                    alert("Ошибка ввода! Проверьте корректность введенных данных (натуральные числа n и k, цифра m).");
+                } else { //Решение задания.
+                    //Вычисление n^k.
+                    var result = Math.pow(parseInt(numberN), parseInt(numberK));
+                    //Преобразование числа n^k в строку для проверки.
+                    var resultString = result.toString();
+                    //Проверка вхождения цифры m в число n^k и вывод результатов.
+                    if (resultString.indexOf(numberM) != -1) {
+                        alert("Цифра " + numberM + " найдена в записи числа " + numberN + " в степени " + numberK + ", т.е. числа " + result);
+                    } else {
+                        alert("Цифра " + numberM + " не найдена в записи числа " + numberN + " в степени " + numberK + ", т.е. числа " + result);
+                    }
+                }
+            }
+            function isNaturalNumber(number) {
+                return /^\d+$/.test(number) && parseInt(number) > 0;
+            }
+            function isSingleDigit(digit) {
+                return /^\d$/.test(digit);
+            }
+        </script>
+    </body>
+</html>

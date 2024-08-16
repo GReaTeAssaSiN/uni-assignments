@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <!--Мета-данные сайта-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="author" content="Горшков Алексей Олегович" />
+        <meta name="description" content="Веб-программирование, Лабораторная работа №3, Задание 2" />
+        <title>Задание 2</title>
+        <!--Раскрашивание с помощью CSS-стилей. Подключение файла стилей-->
+        <link rel="stylesheet" type="text/css" href="CSS/task2StyleSheet.css" />
+    </head>
+    <!--Видимая часть сайта-->
+    <body>
+        <div id="container">
+            <header>
+                <h2>Задание 2-ое, Вариант 8-ой</h2>
+            </header>
+            <div id="main_content">
+                <script type="text/javascript">
+                    var str, sel, n = 8, i, j;
+                    document.write("<table>");
+                    for (i = 0; i < n; i++) {
+                        document.write("<tr>");
+                        for (j = 0; j < n; j++) {
+                            sel = (i + j)%2;
+                            if (sel == 0) {
+                                str = "class='r1'";
+                            } else {
+                                str = "class='r2'";
+                            }
+                            if (j >= 5 && ((i % 2 == 0 && j % 2 == 0) || (i % 2 == 1 && j % 2 == 1))) {
+                                document.write("<td " + str + "><div class='circle_black'></div></td>");
+                            }else if (j <= 2 && ((i % 2 == 0 && j % 2 == 0) || (i % 2 == 1 && j % 2 == 1))){
+                                document.write("<td " + str + "><div class='circle_white'></div></td>");
+                            }else{
+                            document.write("<td " + str + "></td>");
+                        }
+                    }
+                    document.write("</tr>");
+                    }
+                    document.write("</table>");
+                </script>
+            </div>
+            <footer>
+                <a href="index.html">Вернуться на главную страницу</a>
+            </footer>
+        </div>
+    </body>
+</html>

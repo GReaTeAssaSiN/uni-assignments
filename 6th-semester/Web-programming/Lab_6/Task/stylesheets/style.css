@@ -1,0 +1,135 @@
+﻿/*Блок тела*/
+body {
+    background: #a99b33;
+    margin: 0;
+}
+
+/*Блок заголовка*/
+.headbar {
+    width: 100%;
+    background-color: #45503B;
+    color: #F8F1E5;
+    padding: 20px;
+    text-align: center;
+}
+
+    .headbar h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+    }
+
+/* Стили для вкладок */
+.tabs a span {
+    display: inline-block;
+    border-radius: 50px 50px 0 0;
+    min-width: 100px;
+    margin: 10px 10px 5px 0;
+    text-align: center;
+    background: #F8F1E5;
+    transition: background-color 0.3s ease;
+    padding: 5px 10px 5px 10px;
+}
+
+    .tabs a span.active {
+        background-color: #333;
+        color: #fff;
+    }
+
+
+.content{
+    margin: 5px;
+}
+/*Стили для добавление новой записи учета инструментов*/
+.addNewData {
+    padding: 5px;
+}
+    .addNewData p {
+        display: inline-block;
+        padding: 15px;
+        margin-bottom: 0px;
+        border-radius: 20px 20px 0px 0px;
+        background: #6D98AB;
+        color: #fff;
+    }
+
+    .addNewData input {
+        display: block;
+        margin-bottom: 10px;
+        padding: 10px;
+        border: 2px solid #6D98AB;
+        background: #f2f2f2;
+        font-size: 14px;
+    }
+
+    .addNewData button {
+        border: 2px solid #6D98AB;
+        background: #6D98AB;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 8px;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+        .addNewData button:hover {
+            background-color: #8AB4D9;
+        }
+        .addNewData button:active {
+            background-color: #2F4F63;
+        }
+
+/* Стили для блока с информацией */
+.infoClass {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    margin-bottom: 20px;
+}
+
+    .infoClass h4 {
+        padding: 10px;
+        background-color: #36bd80;
+        color: #333;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .infoClass p {
+        background: #4e7f3f;
+        padding: 10px;
+        color: #b1e9d0;
+        margin-bottom: 5px;
+    }
+
+    .infoClass ul {
+        padding: 0 0 0 20px;
+    }
+
+        .infoClass ul li {
+            list-style-type: square;
+            margin-bottom: 5px;
+            color: #007bff;
+        }
+
+/*Стили для блока с группировкой по производителю и по ФИО ответственного, название инструмента*/
+.manufacturerClass,.responsibleToolClass {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+    .manufacturerClass p, .responsibleToolClass p {
+        font-size: 18px;
+        color: #007bff;
+        margin-bottom: 10px;
+    }
+
+
+/*Блок с информацией об авторе*/
+footer {
+    text-align: center;
+    padding: 2px;
+    color: #ffffff;
+    background-color: #453e68;
+}

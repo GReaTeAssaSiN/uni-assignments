@@ -1,0 +1,4 @@
+com\mycompany\testevent\Receiver.class
+com\mycompany\testevent\IEv.class
+com\mycompany\testevent\TestEvent.class
+com\mycompany\testevent\Source.class

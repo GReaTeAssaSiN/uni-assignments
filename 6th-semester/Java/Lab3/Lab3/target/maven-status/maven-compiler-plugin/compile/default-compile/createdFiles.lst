@@ -1,0 +1,11 @@
+com\mycompany\lab3\IEventAccessArray.class
+com\mycompany\lab3\IEventInput.class
+com\mycompany\lab3\ReceiverInput.class
+com\mycompany\lab3\ReceiverAccessArray.class
+com\mycompany\lab3\ReceiverOutput.class
+com\mycompany\lab3\Lab3.class
+com\mycompany\lab3\SourceInput.class
+com\mycompany\lab3\SourceOutput.class
+com\mycompany\lab3\SourceAccessArray.class
+com\mycompany\lab3\IEventOutput.class
+com\mycompany\lab3\NumberProcessor.class

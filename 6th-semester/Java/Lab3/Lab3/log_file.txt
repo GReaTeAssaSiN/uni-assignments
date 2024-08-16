@@ -1,0 +1,111 @@
+Event O: Log file created successfully: D:\КАИ\Java\ЛР3\Lab3\log_file.txt
+Event O: The log file can be succesfully opened for logging.
+
+/*New log to the same file:*/
+Event O: Error: Input data file does not have numeric data.
+Event O: File D:\КАИ\Java\ЛР3\Lab3\src\main\java\com\mycompany\lab3\input_data_file.txt was deleted.
+Event O: Please enter the source data:
+Event O: Enter numbers. Type 'end' to finish:
+Event I: 10
+Event I: -20
+Event I: -30
+Event I: -40
+Event I: -45
+Event I: -55
+Event I: -65
+Event I: -90
+Event O: Entered numbers: 10 -20 -30 -40 -45 -55 -65 -90 
+Event O: Accessing an array from a sequence of numbers. Element in question: 10
+Event O: Accessing an array from a sequence of numbers. Element in question: -20
+Event O: Accessing an array from a sequence of numbers. Element in question: -30
+Event O: Accessing an array from a sequence of numbers. Element in question: -40
+Event O: Accessing an array from a sequence of numbers. Element in question: -45
+Event O: Accessing an array from a sequence of numbers. Element in question: -55
+Event O: Accessing an array from a sequence of numbers. Element in question: -65
+Event O: Accessing an array from a sequence of numbers. Element in question: -90
+Event O: Sum of even and negative numbers: -180
+Event O: Sum of odd and negative numbers: -165
+
+/*New log to the same file:*/
+Event O: Accessing an array from a sequence of numbers. Element in question: -10
+Event O: Accessing an array from a sequence of numbers. Element in question: -20
+Event O: Accessing an array from a sequence of numbers. Element in question: -30
+Event O: Accessing an array from a sequence of numbers. Element in question: -41
+Event O: Accessing an array from a sequence of numbers. Element in question: -51
+Event O: Accessing an array from a sequence of numbers. Element in question: -61
+Event O: Sum of even and negative numbers: -60
+Event O: Sum of odd and negative numbers: -153
+
+/*New log to the same file:*/
+Event O: Accessing an array from a sequence of numbers. Element in question: -10
+Event O: Accessing an array from a sequence of numbers. Element in question: -20
+Event O: Accessing an array from a sequence of numbers. Element in question: -30
+Event O: Accessing an array from a sequence of numbers. Element in question: -41
+Event O: Accessing an array from a sequence of numbers. Element in question: -51
+Event O: Accessing an array from a sequence of numbers. Element in question: -61
+Event O: Sum of even and negative numbers: -60
+Event O: Sum of odd and negative numbers: -153
+
+/*New log to the same file:*/
+Event O: Accessing an array from a sequence of numbers. Element in question: -10
+Event O: Accessing an array from a sequence of numbers. Element in question: -20
+Event O: Accessing an array from a sequence of numbers. Element in question: -30
+Event O: Accessing an array from a sequence of numbers. Element in question: -41
+Event O: Accessing an array from a sequence of numbers. Element in question: -51
+Event O: Accessing an array from a sequence of numbers. Element in question: -61
+Event O: Sum of even and negative numbers: -60
+Event O: Sum of odd and negative numbers: -153
+
+/*New log to the same file:*/
+Event O: Accessing an array from a sequence of numbers. Element in question: -10
+Event O: Accessing an array from a sequence of numbers. Element in question: -20
+Event O: Accessing an array from a sequence of numbers. Element in question: -30
+Event O: Accessing an array from a sequence of numbers. Element in question: -41
+Event O: Accessing an array from a sequence of numbers. Element in question: -51
+Event O: Accessing an array from a sequence of numbers. Element in question: -61
+Event O: Sum of even and negative numbers: -60
+Event O: Sum of odd and negative numbers: -153
+
+/*New log to the same file:*/
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -10
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -20
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -30
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -41
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -51
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -61
+Event O: Sum of even and negative numbers: -60
+Event O: Sum of odd and negative numbers: -153
+
+/*New log to the same file:*/
+Event O: Error: Input data file does not have numeric data.
+Event O: File D:\КАИ\Java\ЛР3\Lab3\src\main\java\com\mycompany\lab3\input_data_file.txt was deleted.
+Event O: Please enter the source data:
+Event O: Enter numbers. Type 'end' to finish:
+Event I: 1
+Event I: 2
+Event I: 3
+Event I: -3
+Event I: -4
+Event I: -5
+Event I: -9
+Event O: Entered numbers: 1 2 3 -3 -4 -5 -9 
+Event A/O: Accessing an array from a sequence of numbers. Element in question: 1
+Event A/O: Accessing an array from a sequence of numbers. Element in question: 2
+Event A/O: Accessing an array from a sequence of numbers. Element in question: 3
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -3
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -4
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -5
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -9
+Event O: Sum of even and negative numbers: -4
+Event O: Sum of odd and negative numbers: -17
+
+/*New log to the same file:*/
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -10
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -21
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -34
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -45
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -56
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -57
+Event A/O: Accessing an array from a sequence of numbers. Element in question: -98
+Event O: Sum of even and negative numbers: -198
+Event O: Sum of odd and negative numbers: -123

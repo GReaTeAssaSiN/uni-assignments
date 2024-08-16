@@ -1,0 +1,20 @@
+The Client was started succesfully. Date and Time: 2024-03-28 10:14:34
+Received expression from server:
+Result: 6.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:21:50
+Received expression from server:
+Result: 6.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:31:19
+Received expression from server:
+Result: 6.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:33:54
+Received expression from server:
+Result: -2.0
+
+The Client was started succesfully. Date and Time: 2024-03-28 10:38:53
+Received expression from server:
+Result: 6.0
+

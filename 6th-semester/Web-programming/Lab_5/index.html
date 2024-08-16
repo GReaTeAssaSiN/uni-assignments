@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <!--Мета-данные сайта-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="author" content="Горшков Алексей Олегович" />
+        <meta name="description" content="Веб-программирование, Лабораторная работа №5, Главная страница" />
+        <meta name="keywords" content="URI. Позиционирование" />
+        <title>Главная страница</title>
+        <!--Раскрашивание с помощью CSS-стилей. Подключение файла стилей-->
+        <link rel="stylesheet" type="text/css" href="CSS/indexStyleSheet.css" />
+        <!--Подключение файла с функциями на JavaScript-->
+        <script src="JavaScript/myfuncs.js"></script>
+    </head>
+    <body onload="firstTask(0)">
+        <!--Заголовок-->
+        <div class="headbar"><h1>Лабораторная работа №5</h1></div>
+        <!--Задачи-->
+        <div class="back">
+            <!--График-->
+            <div class="content" id="graphArea">
+                <div class="back">
+                    <div class="graphBG" id="graph"></div>
+                </div>
+                <div class="back">
+                    <button id="buttonLEFT" onclick="left()">LEFT</button>
+                    <button id="buttonRIGHT" onclick="right()">RIGHT</button>
+                </div>
+                <div id="message"></div>
+            </div>
+            <!--Покер-->
+            <div class="content">
+                <div class="poker_headbar"><h2>ПОКЕР</h2></div>
+                <div class="back">
+                    <button onclick="displayHand()">Сгенерировать руку</button>
+                    <button onclick="clearHand()">Очистить руку</button>
+                </div>
+                <div class="hand-container">
+                    <div class="hand_title"><h3>Ваша рука:</h3></div>
+                    <div id="currentHand"></div>
+                </div>
+                <div class="result-container">
+                    <button onclick="hasFullHouse()">Есть ли фулл-хаус?</button>
+                    <div id="playerMessage"></div>
+                </div>
+            </div>
+        </div>
+        <!--Футер-->
+        <footer>
+            <p>&copy; Горшков Алексей Олегович, группа 4312<br />Казань, 2024</p>
+        </footer>
+    </body>
+</html>

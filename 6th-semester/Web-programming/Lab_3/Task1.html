@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <!--Мета-данные сайта-->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="author" content="Горшков Алексей Олегович" />
+        <meta name="description" content="Веб-программирование, Лабораторная работа №3, Задание 1" />
+        <title>Задание 1</title>
+        <!--Раскрашивание с помощью CSS-стилей. Подключение файла стилей-->
+        <link rel="stylesheet" type="text/css" href="CSS/task1StyleSheet.css" />
+    </head>
+    <!--Видимая часть сайта-->
+    <body>
+        <div id="container">
+            <header>
+                <h2>Задание 1-ое, Вариант 3-ий</h2>
+            </header>
+            <div id="main_content">
+                <div class="special_block">
+                    <label for="timeInput">Введите время в формате HH:MM:</label>
+                    <input type="text" id="timeInput" placeholder="Пример: 18:34" />
+                    <input type="button" value="Рассчитать время через минуту" onclick="calculateTime();" />
+                </div>
+            </div>
+            <footer>
+                <a href="index.html">Вернуться на главную страницу</a>
+            </footer>
+        </div>
+        <script type="text/javascript">
+            function calculateTime() {
+                // Получение введеного времени пользователем.
+                var userInput = document.getElementById("timeInput").value;
+
+                //Проверка верного ввода времени.
+                if(validateTimeFormat(userInput)) {
+                    // Разбитие введеного времени на часы и минуты.
+                    var inputTimeArray = userInput.split(":");
+                    var inputHours = parseInt(inputTimeArray[0]);
+                    var inputMinutes = parseInt(inputTimeArray[1]);
+
+                    // Переменные для расчета нового времени.
+                    var newMinutes = inputMinutes + 1; //Увеличение числа минут на 1.
+                    var newHours = inputHours;
+
+                    //Проверка 3-х условий.
+                    if (newMinutes % 60 == 0)
+                    {
+                        newMinutes = 0;
+                        newHours++;
+                        if (newHours >= 24) {
+                            newHours = 0;
+                        }
+                    }
+
+                    //Форматирование времени:
+                    var newTime = formatTime(newHours) + ":" + formatTime(newMinutes);
+
+                    // Вывод результата в диалоговом окне
+                    alert("Введенное время: " + userInput + "\nВремя через минуту: " + newTime);
+                }
+                else {
+                    // Вывод сообщения об ошибке в формате времени
+                    alert("Ошибка ввода времени. Пожалуйста, введите время в формате HH:MM.");
+                }
+            }
+            function validateTimeFormat(time) {
+                var regex = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/;
+                return regex.test(time);
+            }
+            function formatTime(time) {
+                return (time < 10 ? "0" : "") + time;
+            }
+        </script>
+    </body>
+</html>
