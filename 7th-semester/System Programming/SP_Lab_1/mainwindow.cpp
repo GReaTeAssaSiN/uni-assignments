@@ -34,6 +34,19 @@ void MainWindow::on_tableWidget_ToOC_cellChanged(int row, int column)
 {
     manager->UpdateRowInSpecifiedTable(ui->tableWidget_ToOC, row, column);
     manager->TableCodeOperationFormatBinaryOpcode(ui->tableWidget_ToOC);
+    //Очистка вспомогательной таблицы и ТСИ.
+    ui->tableWidget_auxTable->clear();
+    ui->tableWidget_auxTable->setColumnCount(0);
+    ui->tableWidget_auxTable->setRowCount(0);
+
+    ui->tableWidget_ToSN->clear();
+    ui->tableWidget_ToSN->setColumnCount(0);
+    ui->tableWidget_ToSN->setRowCount(0);
+    //Включение кнопок.
+    if (!ui->pushButton_first->isEnabled()){
+        ui->pushButton_first->setEnabled(true);
+        ui->pushButton_second->setEnabled(false);
+    }
 }
 
 void MainWindow::on_tableWidget_auxTable_cellChanged(int row, int column)
@@ -46,26 +59,41 @@ void MainWindow::on_tableWidget_ToSN_cellChanged(int row, int column)
     manager->UpdateRowInSpecifiedTable(ui->tableWidget_ToSN, row, column);
 }
 
+//Изменение исходного кода ассемблирующей программы.
+void MainWindow::on_textEdit_source_textChanged()
+{
+    //Очистка вспомогательной таблицы и ТСИ.
+    ui->tableWidget_auxTable->clear();
+    ui->tableWidget_auxTable->setColumnCount(0);
+    ui->tableWidget_auxTable->setRowCount(0);
+
+    ui->tableWidget_ToSN->clear();
+    ui->tableWidget_ToSN->setColumnCount(0);
+    ui->tableWidget_ToSN->setRowCount(0);
+    //Включение кнопок.
+    if (!ui->pushButton_first->isEnabled()){
+        ui->pushButton_first->setEnabled(true);
+        ui->pushButton_second->setEnabled(false);
+    }
+}
+
+
 //Если изменяется выбор в ComboBox - загружаются исходный текст ассемблирующей программы и ТКО по умолчанию (пример).
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
     //Очистка заполняемых элементов интерфейса..
     ui->tableWidget_auxTable->clear();
     ui->tableWidget_auxTable->setRowCount(0);
+    ui->tableWidget_auxTable->setColumnCount(0);
     ui->tableWidget_ToSN->clear();
     ui->tableWidget_ToSN->setRowCount(0);
+    ui->tableWidget_ToSN->setColumnCount(0);
     ui->textEdit_FPE->clear();
     //Если переключились со второго прохода.
     if (!ui->pushButton_first->isEnabled()){
         //Возвращаемся к первому.
         ui->pushButton_first->setEnabled(true);
         ui->pushButton_second->setEnabled(false);
-        //Возврат на редактирование исходных данных.
-        ui->textEdit_source->setReadOnly(false);
-        ui->tableWidget_ToOC->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed |
-                                              QAbstractItemView::AnyKeyPressed);
-        ui->tableWidget_ToOC->setTabKeyNavigation(true);
-        ui->tableWidget_ToOC->setDragDropOverwriteMode(true);
     }
     switch(index){
     case 0:
@@ -92,9 +120,6 @@ void MainWindow::on_pushButton_first_clicked()
     //Заполнение исходных структур данными.
     this->source_code = manager->ImportSourceAssemblerCodeFromField(ui->textEdit_source);
     this->opcode_table = manager->ImportTCOFromTableCodeOperation(ui->tableWidget_ToOC);
-    //Запрет на редактирование исходных данных после запуска первого прохода.
-    ui->textEdit_source->setReadOnly(true);
-    ui->tableWidget_ToOC->setEditTriggers(QAbstractItemView::NoEditTriggers);
     if(!this->FPP.LoadTableSymbolicNames(source_code, opcode_table, ui->tableWidget_auxTable, sup_table, ui->tableWidget_ToSN,
                                          symbolic_table, ui->textEdit_FPE)){
         //Очищаем элементы интерфейса.
@@ -105,12 +130,6 @@ void MainWindow::on_pushButton_first_clicked()
         ui->tableWidget_ToSN->clear();
         ui->tableWidget_ToSN->setColumnCount(0);
         ui->tableWidget_ToSN->setRowCount(0);
-        //Разрешение на редактирование исходных данных в случае ошибки.
-        ui->textEdit_source->setReadOnly(false);
-        ui->tableWidget_ToOC->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed |
-                                              QAbstractItemView::AnyKeyPressed);
-        ui->tableWidget_ToOC->setTabKeyNavigation(true);
-        ui->tableWidget_ToOC->setDragDropOverwriteMode(true);
     }
     else{
         ui->tableWidget_auxTable->resizeColumnsToContents();
@@ -127,11 +146,4 @@ void MainWindow::on_pushButton_second_clicked()
     ui->pushButton_first->setEnabled(true);
     ui->pushButton_second->setEnabled(false);
     //Вызов второго прохода, отключение кнопки 2, включение кнопки 1 и тд. Из первого прохода забрать длину и имя программы.
-    //Разрешение на редактирование исходных данных.
-    ui->textEdit_source->setReadOnly(false);
-    ui->tableWidget_ToOC->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed |
-                                          QAbstractItemView::AnyKeyPressed);
-    ui->tableWidget_ToOC->setTabKeyNavigation(true);
-    ui->tableWidget_ToOC->setDragDropOverwriteMode(true);
 }
-

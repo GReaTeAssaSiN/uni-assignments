@@ -35,6 +35,7 @@ private slots:
     void on_tableWidget_ToOC_cellChanged(int row, int column);\
     void on_tableWidget_auxTable_cellChanged(int row, int column);
     void on_tableWidget_ToSN_cellChanged(int row, int column);
+    void on_textEdit_source_textChanged();
     void on_comboBox_currentIndexChanged(int index);
 
     /*Основные кнопки*/
