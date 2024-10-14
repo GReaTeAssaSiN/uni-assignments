@@ -85,7 +85,6 @@ void Manager::ExportCustomDataToTextEditSource(QTextEdit *textEdit_source)
         return;
     }
     textEdit_source->clear();
-    this->LoadDefaultSourceAssemblerCodeLine(textEdit_source, {"", "", "", ""});
 }
 //Пустая ТКО -> интерфейс.
 void Manager::ExportCustomDataToTableWidgetToOC(QTableWidget *tableWidget_ToOC)
@@ -157,7 +156,7 @@ void Manager::TableCodeOperationFormatBinaryOpcode(QTableWidget *tableWidget_ToO
 //Добавление строки в вспомогательную таблицу (СА/Название программы + реальный двочиный КОП + операндная часть).
 void Manager::AddStringToAuxTable(QTableWidget* tableWidget_auxTable, const SupportTable& sup_table_elem)
 {
-    if (tableWidget_auxTable == nullptr){
+    if (!tableWidget_auxTable){
         qDebug() << "tableWidget_auxTable has returned a nullptr in a method Manager::AddStringToAuxTable";
     }
     int last_row = tableWidget_auxTable->rowCount() - 1;
@@ -168,7 +167,7 @@ void Manager::AddStringToAuxTable(QTableWidget* tableWidget_auxTable, const Supp
 }
 //Добавление строки в ТСИ (СИ + текущий СА).
 void Manager::AddStringToToSN(QTableWidget* tableWidget_ToSN, const SymbolicNameTable& symbolic_table, const QString& symbolic_name){
-    if (tableWidget_ToSN == nullptr){
+    if (!tableWidget_ToSN){
         qDebug() << "tableWidget_ToSN has returned a nullptr in a method Manager::AddStringToToSN.";
     }
     QString address{};

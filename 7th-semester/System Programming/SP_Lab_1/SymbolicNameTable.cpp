@@ -1,5 +1,4 @@
 #include "symbolicnametable.h"
-#include "convert.h"
 
 //Конструктор.
 SymbolicNameTable::SymbolicNameTable(): root(nullptr){}
@@ -221,5 +220,3 @@ TreeNode* SymbolicNameTable::BigRightRotate(TreeNode* a)
 
     return c;
 }
-
-

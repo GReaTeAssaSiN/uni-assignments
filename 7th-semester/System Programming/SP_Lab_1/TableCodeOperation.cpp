@@ -40,7 +40,7 @@ bool TableCodeOperation::Find(const QString mnemonic_code, TCOElem &TCO_elem) co
 //Удаление элемента ТКО в хэш-таблице.
 void TableCodeOperation::Remove(const QString &mnemonic_code)
 {
-    size_t index = Hash(mnemonic_code);
+    size_t index = Hash(mnemonic_code) % this->opcode_table.size();
     while (!this->opcode_table[index].mnemonic_code.isEmpty()){
         if (this->opcode_table[index].mnemonic_code == mnemonic_code){
             this->opcode_table[index] = TCOElem();
@@ -61,7 +61,7 @@ const std::vector<TCOElem>& TableCodeOperation::GetOpcodeTable() const
 }
 
 /*ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ*/
-//Хэш-функция (простой алгоритм).
+//Хэш-функция (простой алгоритм) - без % длина, т.к. иначе в результате ресайза нарушается основное правило хэш-функции.
 size_t TableCodeOperation::Hash(const QString &key) const{
     size_t hash_value{};
     for (QChar ch : key){

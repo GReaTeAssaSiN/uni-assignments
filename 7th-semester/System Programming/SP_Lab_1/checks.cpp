@@ -1,5 +1,6 @@
 #include "Checks.h"
 #include "Convert.h"
+#include <regex>
 
 //ВНУТРЕННИЕ ПРОВЕРКИ//
 //Проверка на регистр (поле Операндная часть).
@@ -80,10 +81,10 @@ bool Checks::CheckTableCodeOperation(const TableCodeOperation& TCO, QTextEdit *t
         if (!opcode_table[row].mnemonic_code.isEmpty())
         {
             //Проверка ячеек на длину.
-            if (opcode_table[row].mnemonic_code.length() > 6 || opcode_table[row].binary_code.length() > 2
+            if (opcode_table[row].mnemonic_code.length() > 7 || opcode_table[row].binary_code.length() > 2
                 || opcode_table[row].code_size.length() > 1)
             {
-                textEdit_FPE->append("МКОП в ТКО должен быть от 1 до 6 символов, двоичный код МКОП - от 1 до 2 символов, длина МКОП в байтах - не более одного символа.\n");
+                textEdit_FPE->append("МКОП в ТКО должен быть от 1 до 7 символов, двоичный код МКОП - от 1 до 2 символов, длина МКОП в байтах - не более одного символа.\n");
                 return false;
             }
             //Проверка посимвольно МКОП.
@@ -95,6 +96,14 @@ bool Checks::CheckTableCodeOperation(const TableCodeOperation& TCO, QTextEdit *t
             if (!CheckIncorrectSymbolicName(opcode_table[row].mnemonic_code)){
                 textEdit_FPE->append("МКОП в ТКО не может совпадать с директивой или регистром.\n");
                 return false;
+            }
+            if (opcode_table[row].mnemonic_code.startsWith("LOAD") || opcode_table[row].mnemonic_code.startsWith("SAVE")){
+                //Проверка комманд LOAD и SAVE на указание регистра в своем названии.
+                static const QRegularExpression load_save_check{R"(^(LOAD|SAVE)(R([0-9]|1[0-5]))$)"};
+                if (!load_save_check.match(opcode_table[row].mnemonic_code).hasMatch()){
+                    textEdit_FPE->append("МКОП LOAD или SAVE в ТКО должен содержать в названии регистр R0, R1, R2,... или R15. ");
+                    return false;
+                }
             }
             //Проверка двоичного кода МКОП.
             if (CheckAmountMemoryForAddress(opcode_table[row].binary_code)){

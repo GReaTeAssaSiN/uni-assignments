@@ -9,9 +9,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->setGeometry(250, 40, 1000, 1000);
+    this->setGeometry(100, 40, 1176, 751);
     //Настройка ComboBox.
     ui->comboBox->addItem("Пример. По умолчанию (без ошибок)");
+    ui->comboBox->addItem("Пользовательский ввод (чисто)");
     ui->comboBox->setCurrentIndex(0);
     //Вторая кнопка неактивна.
     ui->pushButton_second->setEnabled(false);
@@ -48,10 +49,32 @@ void MainWindow::on_tableWidget_ToSN_cellChanged(int row, int column)
 //Если изменяется выбор в ComboBox - загружаются исходный текст ассемблирующей программы и ТКО по умолчанию (пример).
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
+    //Очистка заполняемых элементов интерфейса..
+    ui->tableWidget_auxTable->clear();
+    ui->tableWidget_auxTable->setRowCount(0);
+    ui->tableWidget_ToSN->clear();
+    ui->tableWidget_ToSN->setRowCount(0);
+    ui->textEdit_FPE->clear();
+    //Если переключились со второго прохода.
+    if (!ui->pushButton_first->isEnabled()){
+        //Возвращаемся к первому.
+        ui->pushButton_first->setEnabled(true);
+        ui->pushButton_second->setEnabled(false);
+        //Возврат на редактирование исходных данных.
+        ui->textEdit_source->setReadOnly(false);
+        ui->tableWidget_ToOC->setEditTriggers(QAbstractItemView::DoubleClicked | QAbstractItemView::EditKeyPressed |
+                                              QAbstractItemView::AnyKeyPressed);
+        ui->tableWidget_ToOC->setTabKeyNavigation(true);
+        ui->tableWidget_ToOC->setDragDropOverwriteMode(true);
+    }
     switch(index){
     case 0:
         manager->ExportDataToTextEditSource(ui->textEdit_source);
         manager->ExportDataToTableWidgetToOC(ui->tableWidget_ToOC);
+        break;
+    case 1:
+        manager->ExportCustomDataToTextEditSource(ui->textEdit_source);
+        manager->ExportCustomDataToTableWidgetToOC(ui->tableWidget_ToOC);
         break;
     default:
         break;

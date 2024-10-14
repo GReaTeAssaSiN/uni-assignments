@@ -48,7 +48,7 @@ bool FirstPassProcessor::LoadTableSymbolicNames(const std::vector<AssemblerInstr
         //Извлекаем текущую инструкцию.
         const AssemblerInstruction& instruction = source_code[i];
         /*-------------------------------------------------------------------------------------------------------------
-         * 1. Разбиваем строку на составляющие: Метка | МКОП | Операндная часть (операнд 1 | операнд 2 (опционально)).|
+         * 2.1. Разбиваем строку на составляющие: Метка | МКОП | Операндная часть (операнд 1 | операнд 2 (опционально)).|
          -------------------------------------------------------------------------------------------------------------*/
         QString label{instruction.label.value_or("")};
         QString mnemonic_code{instruction.mnemonic_code};
@@ -73,7 +73,7 @@ bool FirstPassProcessor::LoadTableSymbolicNames(const std::vector<AssemblerInstr
         }
 
         /*------------------------
-         * 2. Поиск метки в ТСИ. |
+         * 2.2. Поиск метки в ТСИ. |
          ------------------------*/
         //Сначала проверяем метку в ТСИ. Название программы опускается за счет флага start_flag далее.
         QString address{};
@@ -89,7 +89,7 @@ bool FirstPassProcessor::LoadTableSymbolicNames(const std::vector<AssemblerInstr
                 label_flag = true;
             }
             /*---------------------------
-             * 3. Анализируем поле МКОП |
+             * 2.3. Анализируем поле МКОП |
              ---------------------------*/
             //Если поле МКОП не пустое, иначе ошибка.
             if (!mnemonic_code.isEmpty()){//МКОП символьно корректные.
