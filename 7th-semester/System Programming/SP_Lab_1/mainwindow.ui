@@ -42,7 +42,7 @@
    <string notr="true">background-color: #d8d4cc;</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_4">
+   <layout class="QGridLayout" name="gridLayout_5">
     <item row="0" column="0">
      <widget class="QFrame" name="frame_first">
       <property name="minimumSize">
@@ -1168,57 +1168,8 @@ QTextEdit QScrollBar::sub-line:vertical {
     <item row="1" column="0" colspan="3">
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
-       <layout class="QGridLayout" name="gridLayout_5">
-        <item row="0" column="0">
-         <widget class="QPushButton" name="pushButton_first">
-          <property name="font">
-           <font>
-            <family>System</family>
-            <pointsize>10</pointsize>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="cursor">
-           <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-    background-color: #e0ddd4;
-    border-top: 2px solid #f5f5f5;
-    border-left: 2px solid #f5f5f5; 
-    border-right: 2px solid #9b9b9b;
-    border-bottom: 2px solid #9b9b9b;
-    border-radius: 4px;
-    padding: 5px;
-    color: black;
-}
-
-QPushButton:pressed {
-    background-color: #c9c7be;
-    border-top: 2px solid #9b9b9b;
-    border-left: 2px solid #9b9b9b;
-    border-right: 2px solid #f5f5f5;
-    border-bottom: 2px solid #f5f5f5;
-    padding-top: 2px;
-}
-
-QPushButton:hover {
-    background-color: #dad7cf;
-}
-
-QPushButton:disabled {
-    background-color: #d3d3d3; /* Цвет фона неактивной кнопки */
-    border: 2px solid #a9a9a9; /* Цвет границы неактивной кнопки */
-    color: #808080; /* Цвет текста неактивной кнопки */
-}
-</string>
-          </property>
-          <property name="text">
-           <string>Первый проход</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="3">
          <widget class="QPushButton" name="pushButton_second">
           <property name="font">
            <font>
@@ -1267,7 +1218,7 @@ QPushButton:disabled {
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
+        <item row="0" column="2">
          <spacer name="horizontalSpacer_5">
           <property name="font">
            <font>
@@ -1287,8 +1238,8 @@ QPushButton:disabled {
           </property>
          </spacer>
         </item>
-        <item row="0" column="3">
-         <spacer name="horizontalSpacer_6">
+        <item row="0" column="1">
+         <widget class="QPushButton" name="pushButton_first">
           <property name="font">
            <font>
             <family>System</family>
@@ -1296,6 +1247,61 @@ QPushButton:disabled {
             <bold>true</bold>
            </font>
           </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    background-color: #e0ddd4;
+    border-top: 2px solid #f5f5f5;
+    border-left: 2px solid #f5f5f5; 
+    border-right: 2px solid #9b9b9b;
+    border-bottom: 2px solid #9b9b9b;
+    border-radius: 4px;
+    padding: 5px;
+    color: black;
+}
+
+QPushButton:pressed {
+    background-color: #c9c7be;
+    border-top: 2px solid #9b9b9b;
+    border-left: 2px solid #9b9b9b;
+    border-right: 2px solid #f5f5f5;
+    border-bottom: 2px solid #f5f5f5;
+    padding-top: 2px;
+}
+
+QPushButton:hover {
+    background-color: #dad7cf;
+}
+
+QPushButton:disabled {
+    background-color: #d3d3d3; /* Цвет фона неактивной кнопки */
+    border: 2px solid #a9a9a9; /* Цвет границы неактивной кнопки */
+    color: #808080; /* Цвет текста неактивной кнопки */
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Первый проход</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <spacer name="horizontalSpacer_10">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="4">
+         <spacer name="horizontalSpacer_6">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -1406,13 +1412,13 @@ QPushButton:disabled {
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>26</height>
+              <height>35</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>391</width>
-              <height>26</height>
+              <height>35</height>
              </size>
             </property>
             <property name="font">
@@ -1443,15 +1449,15 @@ QComboBox::drop-down {
     border-left: 2px solid #f5f5f5;
     border-bottom: 2px solid #8a8a8a;
     border-right: 2px solid #8a8a8a;
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     border-radius: 3px;
 }
 
 QComboBox::down-arrow {
     image: url(:/resources/images/Arrow.png);
-    width: 12px;
-    height: 12px;
+    width: 15px;
+    height: 15px;
 }
 
 QComboBox::drop-down:hover {

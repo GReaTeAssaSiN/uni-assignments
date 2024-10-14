@@ -1,6 +1,5 @@
-#include "checks.h"
-#include "array"
-#include "convert.h"
+#include "Checks.h"
+#include "Convert.h"
 
 //ВНУТРЕННИЕ ПРОВЕРКИ//
 //Проверка на регистр (поле Операндная часть).
@@ -12,7 +11,6 @@ QString Checks::CheckRegister(const QString& reg){
     }
     return "";
 }
-
 //Проверка длины символического имени (СИ).
 bool Checks::CheckLengthSymbolicName(const QString &symbolic_name)
 {
@@ -20,7 +18,6 @@ bool Checks::CheckLengthSymbolicName(const QString &symbolic_name)
         return false;
     return true;
 }
-
 //Посимвольная проверка корректности СИ.
 bool Checks::CheckCharsSymbolicName(const QString &symbolic_name)
 {
@@ -37,7 +34,6 @@ bool Checks::CheckCharsSymbolicName(const QString &symbolic_name)
     }
     return true;
 }
-
 //Проверка совпадения метки с названием директивы или регистром (аналогично для МКОП в ТКО).
 bool Checks::CheckIncorrectSymbolicName(const QString &symbolic_name)
 {
@@ -45,7 +41,6 @@ bool Checks::CheckIncorrectSymbolicName(const QString &symbolic_name)
         return false;
     return true;
 }
-
 //Посимвольная проверка корректности МКОП.
 bool Checks::CheckCharsMCOP(const QString &mnemonic_code)
 {
@@ -64,79 +59,94 @@ bool Checks::CheckCharsMCOP(const QString &mnemonic_code)
 
 //ПРОВЕРКИ//
 //Проверка ТКО.
-bool Checks::CheckOpcodeTable(std::vector<OpcodeTable> opcode_table, QTextEdit *textEdit_FPE)
+bool Checks::CheckTableCodeOperation(const TableCodeOperation& TCO, QTextEdit *textEdit_FPE)
 {
-    for (int row{}; row < opcode_table.size() - 1; ++row){
+    const std::vector<TCOElem> opcode_table = TCO.GetOpcodeTable();
+    for (int row{}; row < opcode_table.size(); ++row){
         //Проверка ячеек на пустоту.
-        if (opcode_table[row].code.value_or("").isEmpty() || opcode_table[row].binary_opcode.value_or("").isEmpty() || opcode_table[row].size.value_or("").isEmpty())
+        if (!opcode_table[row].mnemonic_code.isEmpty() && (opcode_table[row].binary_code.isEmpty()
+                                                           || opcode_table[row].code_size.isEmpty()))
         {
             textEdit_FPE->append("Пустая ячейка в ТКО не допустима.\n");
             return false;
         }
-        //Проверка ячеек на длину.
-        if (opcode_table[row].code.value_or("").length() > 6 || opcode_table[row].binary_opcode.value_or("").length() > 2 || opcode_table[row].size.value_or("").length() > 1)
+        if (opcode_table[row].mnemonic_code.isEmpty() && (!opcode_table[row].binary_code.isEmpty()
+                                                           || !opcode_table[row].code_size.isEmpty()))
         {
-            textEdit_FPE->append("МКОП в ТКО должен быть от 1 до 6 символов, двоичный код МКОП - от 1 до 2 символов, длина МКОП в байтах - не более одного символа.\n");
+            textEdit_FPE->append("Пустая ячейка в ТКО не допустима.\n");
             return false;
         }
-        //Проверка посимвольно МКОП.
-        if (!CheckCharsMCOP(opcode_table[row].code.value_or(""))){
-            textEdit_FPE->append("МКОП в ТКО должен начинаться с буквы и не содержать некорректных символов, отличных от цифр и заглвных букв.\n");
-            return false;
-        }
-        //Проверка МКОП на зарезервированное слово.
-        if (!CheckIncorrectSymbolicName(opcode_table[row].code.value_or(""))){
-            textEdit_FPE->append("МКОП в ТКО не может совпадать с директивой или регистром.\n");
-            return false;
-        }
-        //Проверка двоичного кода МКОП.
-        if (CheckAmountMemoryForAddress(opcode_table[row].binary_opcode.value_or(""))){
-            int bin_code_dec = Convert::ConvertHexToDec(opcode_table[row].binary_opcode.value_or(""));
-            const int MAX_BINARY_CODE{63};//Т.к. 63*4=252, а двоичный код МКОП максимум может принимать значение 255. Поэтому на адресацию в запасе остается от 0 до 3 бит.
-            if (bin_code_dec > MAX_BINARY_CODE){
-                textEdit_FPE->append("Двоичный код МКОП в 16-ричной СИ не должен превышать " + Convert::ConvertDecToHex(MAX_BINARY_CODE) + ".\n");
+        //По заполненным строкам.
+        if (!opcode_table[row].mnemonic_code.isEmpty())
+        {
+            //Проверка ячеек на длину.
+            if (opcode_table[row].mnemonic_code.length() > 6 || opcode_table[row].binary_code.length() > 2
+                || opcode_table[row].code_size.length() > 1)
+            {
+                textEdit_FPE->append("МКОП в ТКО должен быть от 1 до 6 символов, двоичный код МКОП - от 1 до 2 символов, длина МКОП в байтах - не более одного символа.\n");
                 return false;
             }
-        }
-        else{
-            textEdit_FPE->append("Двоичный код МКОП должен быть представлен из символов 16-ричной СИ.\n");
-            return false;
-        }
-        //Проверка длины команды.
-        if (CheckCorrectAmountMemoryForDecNumber(opcode_table[row].size.value_or(""))){
-            QString size_mcop = opcode_table[row].size.value_or("");//Получение длины МКОП в байтах.
-            bool ok{false};//Учет успешной конвертации из QString -> int.
-            int size_mcop_int = size_mcop.toInt(&ok);
-            if (ok){
-                if (size_mcop_int <= 0 || size_mcop_int > 4){
-                    textEdit_FPE->append("Длина МКОП в байтах может принимать значения 1, 2, 3 или 4 байт без учета специфики МКОП.\n");
+            //Проверка посимвольно МКОП.
+            if (!CheckCharsMCOP(opcode_table[row].mnemonic_code)){
+                textEdit_FPE->append("МКОП в ТКО должен начинаться с буквы и не содержать некорректных символов, отличных от цифр и заглавных букв.\n");
+                return false;
+            }
+            //Проверка МКОП на зарезервированное слово.
+            if (!CheckIncorrectSymbolicName(opcode_table[row].mnemonic_code)){
+                textEdit_FPE->append("МКОП в ТКО не может совпадать с директивой или регистром.\n");
+                return false;
+            }
+            //Проверка двоичного кода МКОП.
+            if (CheckAmountMemoryForAddress(opcode_table[row].binary_code)){
+                int bin_code_dec = Convert::ConvertHexToDec(opcode_table[row].binary_code);
+                const int MAX_BINARY_CODE{63};//Т.к. 63*4=252, а двоичный код МКОП максимум может принимать значение 255. Поэтому на адресацию в запасе остается от 0 до 3 бит.
+                if (bin_code_dec > MAX_BINARY_CODE){
+                    textEdit_FPE->append("Двоичный код МКОП в 16-ричной СИ не должен превышать " + Convert::ConvertDecToHex(MAX_BINARY_CODE) + ".\n");
                     return false;
                 }
-            }else{
-                textEdit_FPE->append("Длина МКОП в байтах превышает логически допустимый объем байт при ограничениях.\n");
+            }
+            else{
+                textEdit_FPE->append("Двоичный код МКОП должен быть представлен из символов 16-ричной СИ.\n");
                 return false;
             }
-        }
-        else{
-            textEdit_FPE->append("Длина команды должна состоять из цифр десятичной СИ.");
-            return false;
-        }
-        //Проверка уникальности МКОП в ТКО.
-        for (int k = row+1; k < opcode_table.size()-1; ++k){
-            QString mcop_first = opcode_table[row].code.value_or("");
-            QString mcop_second = opcode_table[k].code.value_or("");
-            if (mcop_first == mcop_second){
-                textEdit_FPE->append("Найдены совпадения в названиях МКОП!\nСовпадающий МКОП: " + mcop_first + ".\n");
+            //Проверка длины команды.
+            if (CheckCorrectAmountMemoryForDecNumber(opcode_table[row].code_size)){
+                QString size_mcop = opcode_table[row].code_size;//Получение длины МКОП в байтах.
+                bool ok{false};//Учет успешной конвертации из QString -> int.
+                int size_mcop_int = size_mcop.toInt(&ok);
+                if (ok){
+                    if (size_mcop_int <= 0 || size_mcop_int > 4){
+                        textEdit_FPE->append("Длина МКОП в байтах может принимать значения 1, 2, 3 или 4 байт без учета специфики МКОП.\n");
+                        return false;
+                    }
+                }else{
+                    textEdit_FPE->append("Длина МКОП в байтах превышает логически допустимый объем байт при учете ограничений.\n");
+                    return false;
+                }
+            }
+            else{
+                textEdit_FPE->append("Длина команды должна состоять из цифр десятичной СИ.");
                 return false;
             }
-        }
-        //Проверка уникальности двоичного кода МКОП в ТКО.
-        for (int k = row+1; k < opcode_table.size()-1; ++k){
-            QString bin_code_first = Convert::ConvertToTwoNumber(opcode_table[row].binary_opcode.value_or(""));
-            QString bin_code_second = Convert::ConvertToTwoNumber(opcode_table[k].binary_opcode.value_or(""));
-            if (bin_code_first == bin_code_second){
-                textEdit_FPE->append("Найдены совпадения в двоичных кодах МКОП!\nСовпадающий двоичный код МКОП: " + bin_code_first + ".\n");
-                return false;
+            //Проверка уникальности МКОП в ТКО.
+            for (int k = row+1; k < opcode_table.size(); ++k){
+                QString mcop_first = opcode_table[row].mnemonic_code;
+                QString mcop_second = opcode_table[k].mnemonic_code;
+                if (mcop_first == mcop_second){
+                    textEdit_FPE->append("Найдены совпадения в названиях МКОП!\nСовпадающий МКОП: " + mcop_first + ".\n");
+                    return false;
+                }
+            }
+            //Проверка уникальности двоичного кода МКОП в ТКО.
+            for (int k = row+1; k < opcode_table.size(); ++k){
+                if (!opcode_table[k].mnemonic_code.isEmpty()){
+                    QString bin_code_first = opcode_table[row].binary_code.rightJustified(2,'0');
+                    QString bin_code_second = opcode_table[k].binary_code.rightJustified(2,'0');
+                    if (bin_code_first == bin_code_second){
+                        textEdit_FPE->append("Найдены совпадения в двоичных кодах МКОП!\nСовпадающий двоичный код МКОП: " + bin_code_first + ".\n");
+                        return false;
+                    }
+                }
             }
         }
     }
@@ -156,18 +166,18 @@ bool Checks::CheckAmountMemoryForAddress(const QString &amountMemory)
 }
 
 //Проверка, что СА <= допустимого объема памяти.
-bool Checks::CheckAddressCounterAvailable(QTextEdit* textEdit_FPE, const int& row, const QString &address_counter){
+bool Checks::CheckAddressCounterAvailable(QTextEdit* textEdit_FPE, const int& row, const int &address_counter){
     const int MAX_AMOUNT_ALLOC_MEMORY{16777215};
-    if (Convert::ConvertHexToDec(address_counter) > MAX_AMOUNT_ALLOC_MEMORY){
+    if (address_counter > MAX_AMOUNT_ALLOC_MEMORY){
         //Если переполнение зафиксировано на текущей строке, то возникло оно на предыдущей.
-        textEdit_FPE->append("Строка " + QString::number(row) + ": Произошло переполнение СА! СА = " + Convert::ConvertToSixNumber(address_counter) + "\n");
+        textEdit_FPE->append("Строка " + QString::number(row) + ": Произошло переполнение СА! СА = " + Convert::ConvertDecToHex(address_counter).rightJustified(6,'0') + "\n");
         return false;
     }
     return true;
 }
 
 //Проверка каждой строки исходного кода ассмеблирующей программы.
-bool Checks::CheckRowSourceCode(QTextEdit *textEdit_FPE, const int &row, QString& prog_name, const QString &label, const QString &mnemonic_code)
+bool Checks::CheckRowSourceCode(QTextEdit *textEdit_FPE, const int &row, const QString& prog_name, const QString &label, const QString &mnemonic_code)
 {
     QString error{};//Для записи ошибок.
     //Проверка метки.
@@ -199,7 +209,7 @@ bool Checks::CheckRowSourceCode(QTextEdit *textEdit_FPE, const int &row, QString
         textEdit_FPE->append(error);
         return false;
     }
-    //Иначе все корректно.
+    //Иначе все корректно на данном этапе.
     return true;
 }
 
@@ -233,7 +243,7 @@ QString Checks::CheckProgrammDownloadAddress(const QString& download_address) {
         return "Адрес загрузки программы содержит недопустимые символы! Текущий адрес загрузки: " + download_address + ".";
     }
     const int MAX_LENGTH_HEX_LOAD_ADDRESS{6};
-    QString load_address = Convert::ConvertToSixNumber(download_address);
+    QString load_address = download_address.rightJustified(6,'0');
     if (load_address.length() > MAX_LENGTH_HEX_LOAD_ADDRESS) {
         return "Строка 1: Переполнение счетчика адреса! СА = " + load_address + ".\n";
     }
@@ -244,7 +254,7 @@ QString Checks::CheckProgrammDownloadAddress(const QString& download_address) {
     return "";
 }
 
-//Проверка наличия операндной части после директивы..
+//Проверка наличия операндной части после директивы.
 QString Checks::CheckOtherOperandPart(const QString &second_operand, const QString& mnemonic_code, const int& row)
 {
     if (!second_operand.isEmpty()){
@@ -252,19 +262,6 @@ QString Checks::CheckOtherOperandPart(const QString &second_operand, const QStri
                                                                                                                             "Операнд: " + second_operand + ".\n";
     }
     return "";
-}
-
-//Поиск СИ в ТСИ с соответствующей проверкой.
-int Checks::SearchSymbolicNameInToSN(const QString &symbolic_name, QTableWidget* tableWidget_ToSN, QTextEdit* textEdit_FPE){
-    QString error{};
-    for (int i{};i < tableWidget_ToSN->rowCount(); i++){
-        if (!tableWidget_ToSN->item(i, 0)->text().isEmpty() && symbolic_name == tableWidget_ToSN->item(i, 0)->text()){
-            error = "Строка ТСИ " + QString::number(i+1) + ": Метка " + symbolic_name + " дважды определена в ТСИ.\n";
-            textEdit_FPE->append(error);
-            return i+1;
-        }
-    }
-    return -1;
 }
 
 //Проверка на директиву (поле МКОП).
@@ -345,24 +342,13 @@ bool Checks::CheckAllocAmountMemoryForRES(const QString &alloc_memory){
     return ok;
 }
 
-//Проверка на команду (поле МКОП).
-int Checks::SearchCommandInToOC(const QString &command, std::vector<OpcodeTable> opcode_table)
-{
-    for (int i{}; i < opcode_table.size(); ++i){
-        if (command == opcode_table[i].code){
-            return i;
-        }
-    }
-    return -1;
-}
-
 //Получение реального двоичного кода адресации со всеми проверками.
-int Checks::GetDecOpcode(const QString &command_binary_code, const int &type_addressing)
+const int Checks::GetDecOpcode(const QString &command_binary_code, const int &type_addressing)
 {
     int opcode{};
     const int SHIFT{4};
     const int MAX_BYTE_MEMORY{255};
-    if (command_binary_code.isEmpty()){//Если КОП пустой - это ошибка.
+    if (command_binary_code.isEmpty()){//Если двоичный КОП пустой - это ошибка.
         return -1;
     }
 
