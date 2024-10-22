@@ -33,15 +33,14 @@ int main() {
     // Âûçîâû ñ ğàçëè÷íûìè ïàğàìåòğàìè.
     perform_search_first(results_file_first, 1e-1, 1.0);
     perform_search_first(results_file_first, 1e-2, 1.0);
-    perform_search_first(results_file_first, 1e-6, 1.0);
-    perform_search_first(results_file_first, 1e-3, 0.5);
     perform_search_first(results_file_first, 1e-3, 1.0);
+    perform_search_first(results_file_first, 1e-3, 0.5);
     perform_search_first(results_file_first, 1e-3, 2.0);
 
     // ÏÎÈÑÊ ÏÎ ÄÅÔÎĞÌÈĞÓÅÌÎÌÓ ÌÍÎÃÎÃĞÀÍÍÈÊÓ.
     results_file_second << "ÏÎÈÑÊ ÏÎ ÄÅÔÎĞÌÈĞÓÅÌÎÌÓ ÌÍÎÃÎÃĞÀÍÍÈÊÓ." << std::endl;
     // Âûçîâû ñ ğàçëè÷íûìè ïàğàìåòğàìè.
-    perform_search_second(results_file_second, 0.1, 1, 0.4, 2);
+    perform_search_second(results_file_second, 1e-1, 1, 0.4, 2);
     perform_search_second(results_file_second, 1e-2, 1, 0.4, 2);
     perform_search_second(results_file_second, 1e-3, 1, 0.4, 2);
 

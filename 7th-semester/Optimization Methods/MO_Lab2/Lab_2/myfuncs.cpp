@@ -334,9 +334,6 @@ void search_by_deformable_polyhedron(std::ofstream& file, const double& epsilon,
         //Проверка критерия окончания поиска.
         if (check_finished(points, fValues, f_n_plus_2, epsilon))
             break;
-        if (step == 13) {
-            std::cout << "check" << std::endl;
-        }
 
         printTableAdditionalRow(file, step + 1); // Вывод строки с номером итерации.
         
@@ -361,7 +358,7 @@ void search_by_deformable_polyhedron(std::ofstream& file, const double& epsilon,
             //Растяжение.
             n_plus_4 = stretching(n_plus_3, n_plus_2, gamma);// Растянутая отраженная вершина лучше лучшей?
             double f_n_plus_4 = F(n_plus_4);
-            if (f_n_plus_4 < fValues[L]) { //Если да, то худшая вершина = растянутой отраженной вершине.
+            if (f_n_plus_4 < fValues[L] && f_n_plus_4 < f_n_plus_3) { //Если да, то худшая вершина = растянутой отраженной вершине, если растянутая лучше отраженной.
                 file << "После шага " << step << " выполнено отражение->растяжение." << std::endl;
                 points[h] = n_plus_4; // Xh = X(n+4).
                 fValues[h] = f_n_plus_4;
