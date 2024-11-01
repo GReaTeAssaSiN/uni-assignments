@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "FirstPassProcessor.h"
+#include "PassProcessor.h"
 
 //Конструктор.
 MainWindow::MainWindow(QWidget *parent)
@@ -29,12 +29,13 @@ MainWindow::~MainWindow()
     sup_table.clear();
 }
 
-//Обработка при изменении значений ячеек ТКО, вспомогательной таблицы или ТСИ.
+//Обработка при изменении значений ячеек ТКО.
 void MainWindow::on_tableWidget_ToOC_cellChanged(int row, int column)
 {
     manager->UpdateRowInSpecifiedTable(ui->tableWidget_ToOC, row, column);
     manager->TableCodeOperationFormatBinaryOpcode(ui->tableWidget_ToOC);
-    //Очистка вспомогательной таблицы и ТСИ.
+
+    //Очистка вспомогательной таблицы, ТСИ, заголовка объектного модуля и двоичного кода.
     ui->tableWidget_auxTable->clear();
     ui->tableWidget_auxTable->setColumnCount(0);
     ui->tableWidget_auxTable->setRowCount(0);
@@ -42,6 +43,17 @@ void MainWindow::on_tableWidget_ToOC_cellChanged(int row, int column)
     ui->tableWidget_ToSN->clear();
     ui->tableWidget_ToSN->setColumnCount(0);
     ui->tableWidget_ToSN->setRowCount(0);
+
+    ui->tableWidget_OMH->clear();
+    ui->tableWidget_OMH->setColumnCount(0);
+    ui->tableWidget_OMH->setRowCount(0);
+
+    ui->textEdit_binary_code->clear();
+
+    //Очистка ошибок.
+    ui->textEdit_FPE->clear();
+    ui->textEdit_SPE->clear();
+
     //Включение кнопок.
     if (!ui->pushButton_first->isEnabled()){
         ui->pushButton_first->setEnabled(true);
@@ -49,11 +61,13 @@ void MainWindow::on_tableWidget_ToOC_cellChanged(int row, int column)
     }
 }
 
+//Обработка при изменении ячеек вспомогательной таблицы (программно).
 void MainWindow::on_tableWidget_auxTable_cellChanged(int row, int column)
 {
     manager->UpdateRowInSpecifiedTable(ui->tableWidget_auxTable, row, column);
 }
 
+//Обработка при изменении ячеек ТСИ (программно).
 void MainWindow::on_tableWidget_ToSN_cellChanged(int row, int column)
 {
     manager->UpdateRowInSpecifiedTable(ui->tableWidget_ToSN, row, column);
@@ -62,7 +76,7 @@ void MainWindow::on_tableWidget_ToSN_cellChanged(int row, int column)
 //Изменение исходного кода ассемблирующей программы.
 void MainWindow::on_textEdit_source_textChanged()
 {
-    //Очистка вспомогательной таблицы и ТСИ.
+    //Очистка вспомогательной таблицы, ТСИ, заголовка объектного модуля и двоичного кода.
     ui->tableWidget_auxTable->clear();
     ui->tableWidget_auxTable->setColumnCount(0);
     ui->tableWidget_auxTable->setRowCount(0);
@@ -70,6 +84,17 @@ void MainWindow::on_textEdit_source_textChanged()
     ui->tableWidget_ToSN->clear();
     ui->tableWidget_ToSN->setColumnCount(0);
     ui->tableWidget_ToSN->setRowCount(0);
+
+    ui->tableWidget_OMH->clear();
+    ui->tableWidget_OMH->setColumnCount(0);
+    ui->tableWidget_OMH->setRowCount(0);
+
+    ui->textEdit_binary_code->clear();
+
+    //Очистка ошибок.
+    ui->textEdit_FPE->clear();
+    ui->textEdit_SPE->clear();
+
     //Включение кнопок.
     if (!ui->pushButton_first->isEnabled()){
         ui->pushButton_first->setEnabled(true);
@@ -81,20 +106,31 @@ void MainWindow::on_textEdit_source_textChanged()
 //Если изменяется выбор в ComboBox - загружаются исходный текст ассемблирующей программы и ТКО по умолчанию (пример).
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
-    //Очистка заполняемых элементов интерфейса..
+    //Очистка вспомогательной таблицы, ТСИ, заголовка объектного модуля и двоичного кода.
     ui->tableWidget_auxTable->clear();
-    ui->tableWidget_auxTable->setRowCount(0);
     ui->tableWidget_auxTable->setColumnCount(0);
+    ui->tableWidget_auxTable->setRowCount(0);
+
     ui->tableWidget_ToSN->clear();
-    ui->tableWidget_ToSN->setRowCount(0);
     ui->tableWidget_ToSN->setColumnCount(0);
+    ui->tableWidget_ToSN->setRowCount(0);
+
+    ui->tableWidget_OMH->clear();
+    ui->tableWidget_OMH->setColumnCount(0);
+    ui->tableWidget_OMH->setRowCount(0);
+
+    ui->textEdit_binary_code->clear();
+
+    //Очистка ошибок.
     ui->textEdit_FPE->clear();
-    //Если переключились со второго прохода.
+    ui->textEdit_SPE->clear();
+
+    //Включение кнопок.
     if (!ui->pushButton_first->isEnabled()){
-        //Возвращаемся к первому.
         ui->pushButton_first->setEnabled(true);
         ui->pushButton_second->setEnabled(false);
     }
+
     switch(index){
     case 0:
         manager->ExportDataToTextEditSource(ui->textEdit_source);
@@ -120,7 +156,14 @@ void MainWindow::on_pushButton_first_clicked()
     //Заполнение исходных структур данными.
     this->source_code = manager->ImportSourceAssemblerCodeFromField(ui->textEdit_source);
     this->opcode_table = manager->ImportTCOFromTableCodeOperation(ui->tableWidget_ToOC);
-    if(!this->FPP.LoadTableSymbolicNames(source_code, opcode_table, ui->tableWidget_auxTable, sup_table, ui->tableWidget_ToSN,
+    //Очистка элементво интерфейса второго прохода.
+    ui->tableWidget_OMH->clear();
+    ui->tableWidget_OMH->setColumnCount(0);
+    ui->tableWidget_OMH->setRowCount(0);
+    ui->textEdit_binary_code->clear();
+    ui->textEdit_SPE->clear();
+
+    if(!this->PP.FirstPass(source_code, opcode_table, ui->tableWidget_auxTable, sup_table, ui->tableWidget_ToSN,
                                          symbolic_table, ui->textEdit_FPE)){
         //Очищаем элементы интерфейса.
         ui->tableWidget_auxTable->clear();
@@ -130,6 +173,14 @@ void MainWindow::on_pushButton_first_clicked()
         ui->tableWidget_ToSN->clear();
         ui->tableWidget_ToSN->setColumnCount(0);
         ui->tableWidget_ToSN->setRowCount(0);
+
+        ui->tableWidget_OMH->clear();
+        ui->tableWidget_OMH->setColumnCount(0);
+        ui->tableWidget_OMH->setRowCount(0);
+
+        ui->textEdit_binary_code->clear();
+
+        //Ошибки должно быть видно.
     }
     else{
         ui->tableWidget_auxTable->resizeColumnsToContents();
@@ -142,8 +193,20 @@ void MainWindow::on_pushButton_first_clicked()
 //Обработка нажатия на кнопку "Второй проход".
 void MainWindow::on_pushButton_second_clicked()
 {
-    //Временно.
+    if(!this->PP.SecondPass(ui->tableWidget_OMH, ui->textEdit_SPE, ui->textEdit_binary_code, sup_table, symbolic_table)){
+        //Очищаем элементы интерфейса.
+        ui->tableWidget_OMH->clear();
+        ui->tableWidget_OMH->setColumnCount(0);
+        ui->tableWidget_OMH->setRowCount(0);
+
+        ui->textEdit_binary_code->clear();
+
+        //Ошибки должно быть видно.
+    }
+    else{
+        ui->tableWidget_OMH->resizeColumnsToContents();
+    }
+    //Визуализация кнопок.
     ui->pushButton_first->setEnabled(true);
     ui->pushButton_second->setEnabled(false);
-    //Вызов второго прохода, отключение кнопки 2, включение кнопки 1 и тд. Из первого прохода забрать длину и имя программы.
 }

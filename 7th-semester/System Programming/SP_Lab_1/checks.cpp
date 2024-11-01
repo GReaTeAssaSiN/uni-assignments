@@ -1,6 +1,5 @@
 #include "Checks.h"
 #include "Convert.h"
-#include <regex>
 
 //ВНУТРЕННИЕ ПРОВЕРКИ//
 //Проверка на регистр (поле Операндная часть).
@@ -179,7 +178,7 @@ bool Checks::CheckAddressCounterAvailable(QTextEdit* textEdit_FPE, const int& ro
     const int MAX_AMOUNT_ALLOC_MEMORY{16777215};
     if (address_counter > MAX_AMOUNT_ALLOC_MEMORY){
         //Если переполнение зафиксировано на текущей строке, то возникло оно на предыдущей.
-        textEdit_FPE->append("Строка " + QString::number(row) + ": Произошло переполнение СА! СА = " + Convert::ConvertDecToHex(address_counter).rightJustified(6,'0') + "\n");
+        textEdit_FPE->append("Строка " + QString::number(row) + ": Произошло переполнение СА! СА = " + Convert::ConvertDecToHex(address_counter).rightJustified(6,'0') + ".\n");
         return false;
     }
     return true;
@@ -197,16 +196,16 @@ bool Checks::CheckRowSourceCode(QTextEdit *textEdit_FPE, const int &row, const Q
     }
     if (!label.isEmpty()){//Если метка не пустая.
         if (row != 0 && !CheckCharsSymbolicName(label)){//Символы метки.
-            error = "Строка " + QString::number(row+1) + ": Символическое имя содержит недопустимые символы или начинается не с буквы!\n";
+            error = "Строка " + QString::number(row+1) + ": Символическое имя содержит недопустимые символы, отличные от цифр и заглавных букв, или начинается не с буквы!\n";
             textEdit_FPE->append(error);
             return false;
         }
-        if (!CheckIncorrectSymbolicName(label)){//Совпадение метки по названию.
+        if (!CheckIncorrectSymbolicName(label)){//Совпадение метки по названию (зарезервированное слово).
             error = "Строка " + QString::number(row+1) + (row == 0 ? (": Символическое имя") : (": Название программы")) + " совпадает с директивой или регистром.\n";
             textEdit_FPE->append(error);
             return false;
         }
-        if (row != 0 && label == prog_name){
+        if (row != 0 && label == prog_name.toUpper()){
             error = "Строка " + QString::number(row+1) + ": Символическое имя совпадает с названием программы. Измените название программы или символическое имя!\n";
             textEdit_FPE->append(error);
             return false;
@@ -214,7 +213,7 @@ bool Checks::CheckRowSourceCode(QTextEdit *textEdit_FPE, const int &row, const Q
     }
     //Проверка МКОП.
     if (!CheckCharsMCOP(mnemonic_code)){//Символы МКОП.
-        error = "Строка " + QString::number(row+1) + ": МКОП содержит недопустимые символы!\n";
+        error = "Строка " + QString::number(row+1) + ": МКОП содержит недопустимые символы, отличные от цифр и заглавных букв, или начинается не с буквы!\n";
         textEdit_FPE->append(error);
         return false;
     }
@@ -300,9 +299,9 @@ bool Checks::CheckCorrectAmountMemoryForDecNumber(const QString &amount_memory)
 //Проверка корректно указанного объема выделения памяти на доступность для BYTE (или в целом под байт).
 bool Checks::CheckAllocAmountMemoryForByte(const QString &alloc_memory_byte){
     bool ok{};
-    const int max_byte_memory{255};
+    const int MAX_BYTE_MEMORY{255};
     int alloc_memory_byte_int = alloc_memory_byte.toInt(&ok);
-    if (!ok || alloc_memory_byte_int > max_byte_memory){
+    if (!ok || alloc_memory_byte_int > MAX_BYTE_MEMORY){
         return false;
     }
     return true;

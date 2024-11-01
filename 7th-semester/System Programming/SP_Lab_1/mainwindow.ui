@@ -873,21 +873,6 @@ QTableWidget QScrollBar::sub-line:vertical {
              <string>Новая строка</string>
             </property>
            </row>
-           <column>
-            <property name="text">
-             <string>Новый столбец</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Новый столбец</string>
-            </property>
-           </column>
-           <column>
-            <property name="text">
-             <string>Новый столбец</string>
-            </property>
-           </column>
           </widget>
          </item>
         </layout>
@@ -1094,7 +1079,6 @@ QTextEdit QScrollBar::sub-line:vertical {
             <font>
              <family>Times New Roman</family>
              <pointsize>14</pointsize>
-             <bold>true</bold>
             </font>
            </property>
            <property name="cursor" stdset="0">

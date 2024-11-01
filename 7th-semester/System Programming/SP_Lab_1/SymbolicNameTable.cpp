@@ -38,7 +38,6 @@ void SymbolicNameTable::Clear()
     root = nullptr;
 }
 
-
 /*МЕТОДЫ ДЛЯ ОБРАБОТКИ СБАЛАНСИРОВАННОГО АВЛ-ДЕРЕВА*/
 //Вставка нового узла в дерево с балансировкой.
 TreeNode *SymbolicNameTable::Insert(TreeNode *node, const QString &name, const QString &address){

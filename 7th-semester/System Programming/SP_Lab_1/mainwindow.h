@@ -6,7 +6,7 @@
 #include "TableCodeOperation.h"
 #include "StructSupportTable.h"
 #include "SymbolicNameTable.h"
-#include "FirstPassProcessor.h"
+#include "PassProcessor.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,7 +24,7 @@ private:
     TableCodeOperation opcode_table{};
     std::vector<SupportTable> sup_table{};;
     SymbolicNameTable symbolic_table{};
-    FirstPassProcessor FPP{};
+    PassProcessor PP{};
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -32,7 +32,7 @@ public:
 
 private slots:
     /*Методы для реагирования на взаимодействие пользователя с интерфейсом*/
-    void on_tableWidget_ToOC_cellChanged(int row, int column);\
+    void on_tableWidget_ToOC_cellChanged(int row, int column);
     void on_tableWidget_auxTable_cellChanged(int row, int column);
     void on_tableWidget_ToSN_cellChanged(int row, int column);
     void on_textEdit_source_textChanged();

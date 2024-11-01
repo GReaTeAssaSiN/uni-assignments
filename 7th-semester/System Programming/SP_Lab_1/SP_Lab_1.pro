@@ -9,20 +9,20 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    FirstPassProcessor.cpp \
     Manager.cpp \
     Checks.cpp \
     Convert.cpp \
+    PassProcessor.cpp \
     TableCodeOperation.cpp \
     main.cpp \
     mainwindow.cpp \
     SymbolicNameTable.cpp \
 
 HEADERS += \
-    FirstPassProcessor.h \
     Manager.h \
     Checks.h \
     Convert.h \
+    PassProcessor.h \
     SourceAssemblerCodeLine.h \
     StructSupportTable.h \
     TableCodeOperation.h \

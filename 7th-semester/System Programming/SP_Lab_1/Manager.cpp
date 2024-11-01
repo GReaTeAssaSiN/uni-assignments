@@ -158,6 +158,7 @@ void Manager::AddStringToAuxTable(QTableWidget* tableWidget_auxTable, const Supp
 {
     if (!tableWidget_auxTable){
         qDebug() << "tableWidget_auxTable has returned a nullptr in a method Manager::AddStringToAuxTable";
+        return;
     }
     int last_row = tableWidget_auxTable->rowCount() - 1;
     tableWidget_auxTable->setItem(last_row, 0, new QTableWidgetItem(sup_table_elem.address_counter));
@@ -169,6 +170,7 @@ void Manager::AddStringToAuxTable(QTableWidget* tableWidget_auxTable, const Supp
 void Manager::AddStringToToSN(QTableWidget* tableWidget_ToSN, const SymbolicNameTable& symbolic_table, const QString& symbolic_name){
     if (!tableWidget_ToSN){
         qDebug() << "tableWidget_ToSN has returned a nullptr in a method Manager::AddStringToToSN.";
+        return;
     }
     QString address{};
     symbolic_table.Find(symbolic_name, address);
