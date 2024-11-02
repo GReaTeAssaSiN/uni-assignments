@@ -161,7 +161,7 @@ bool Checks::CheckTableCodeOperation(const TableCodeOperation& TCO, QTextEdit *t
     return true;
 }
 
-//Проверка корректности указания объема памяти посимвольно.
+//Проверка корректности указания объема памяти посимвольно (вообще, для 16-ричных чисел).
 bool Checks::CheckAmountMemoryForAddress(const QString &amountMemory)
 {
     std::array<char,16> hexMass = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
@@ -321,12 +321,11 @@ bool Checks::CheckCorrectAmountMemoryForHexNumber(const QString &amount_memory) 
 
 //Проверка на то, что операнд после директивы BYTE начинается на 'C' и корректно задан.
 bool Checks::CheckCorrectAmountMemoryForUnicodeString(const QString &amount_memory) {
-    if (amount_memory.startsWith('C')) {
-        QStringList parts = amount_memory.split('\'');
-        if (parts.size() == 3 && parts[2].isEmpty() &&
-            parts[0].length() == 1 && !parts[1].isEmpty()) {
-            return true;
-        }
+    if (amount_memory.startsWith('C') &&
+        amount_memory.endsWith("'") &&
+        amount_memory.indexOf("'") == 1 &&
+        amount_memory.lastIndexOf("'") == amount_memory.length() - 1) {
+        return true;
     }
     return false;
 }

@@ -1,27 +1,32 @@
 #include "Manager.h"
 
 //Загрузка исходного кода ассемблирующей программы в структуру.
-std::vector<AssemblerInstruction> Manager::ImportSourceAssemblerCodeFromField(QTextEdit *textEdit_source)
-{
-    std::vector<AssemblerInstruction> source_code{};
-    //Обработка исходного текста построчно и заполнение структуры.
+std::vector<AssemblerInstruction> Manager::ImportSourceAssemblerCodeFromField(QTextEdit *textEdit_source) {
+    std::vector<AssemblerInstruction> source_code;
     QString text = textEdit_source->toPlainText();
-    QStringList lines = text.split("\n");
-    for (const QString &line : lines){
-        static const QRegularExpression for_split_on_parts{"\\s+"};
-        QStringList parts = line.split(for_split_on_parts, Qt::SkipEmptyParts);
+    QStringList lines = text.split("\n", Qt::SkipEmptyParts); // Разделяем строки, пропуская пустые.
+
+    for (const QString &line : lines) {
         AssemblerInstruction temp_code_line{};
-        bool startsWithSpace = line.startsWith(" ") || line.startsWith("\t");
-        if (startsWithSpace){
-            parts.prepend("");
+        QStringList parts{GetLineItems(line)}; // Разделяем строку на элементы.
+        // Проверяем, начинается ли строка с пробела или табуляции.
+        if (line.startsWith(" ") || line.startsWith('\t')) {
+            // Если да, то присваиваем элементы с учетом смешения.
+            temp_code_line.label = "";
+            temp_code_line.mnemonic_code = parts.size() > 0 ? parts[0] : "";
+            temp_code_line.operand1 = parts.size() > 1 ? parts[1] : "";
+            temp_code_line.operand2 = parts.size() > 2 ? parts.mid(2).join(" ") : ""; // Операнд 2 - все, что осталось после operand1.
+        } else {
+            // Иначе заполняем так же, как в parts.
+            temp_code_line.label = parts.size() > 0 ? parts[0] : "";
+            temp_code_line.mnemonic_code = parts.size() > 1 ? parts[1] : "";
+            temp_code_line.operand1 = parts.size() > 2 ? parts[2] : "";
+            temp_code_line.operand2 = parts.size() > 3 ? parts.mid(3).join(" ") : ""; // Операнд 2 - все, что осталось после operand1.
         }
-        if (parts.size() > 0){ temp_code_line.label = parts[0];};
-        if (parts.size() > 1){ temp_code_line.mnemonic_code = parts[1];};
-        if (parts.size() > 2){ temp_code_line.operand1 = parts[2];};
-        if (parts.size() > 3){ temp_code_line.operand2 = parts.mid(3).join(" ");};
+
         source_code.push_back(temp_code_line);
     }
-
+    qDebug() << 123;
     return source_code;
 }
 //Загрузка ТКО в структуру.
@@ -178,13 +183,29 @@ void Manager::AddStringToToSN(QTableWidget* tableWidget_ToSN, const SymbolicName
     tableWidget_ToSN->setItem(last_row, 0, new QTableWidgetItem(symbolic_name));
     tableWidget_ToSN->setItem(last_row, 1, new QTableWidgetItem(address));
 }
+
+//Поиск элементов в строке исходного кода ассемблирующей программы через регулярное выражение.
+QStringList Manager::GetLineItems(const QString &line) {
+    QStringList lineItems;
+
+    //Регулярное выражение для поиска возможных последовательностей символов.
+    static const QRegularExpression regex(R"((\w*'.+')|(\w+\s*)|([^\s]+\s*))");
+    //Извлечение готовых последовательностей символов из строки.
+    QRegularExpressionMatchIterator it = regex.globalMatch(line);
+    while (it.hasNext()) {
+        QRegularExpressionMatch match = it.next();
+        lineItems.append(match.captured().trimmed()); // Убираем пробелы и табы по краям.
+    }
+
+    return lineItems;
+}
 //Добавление строки исходного кода ассемблирующей программы в интерфейс.
 void Manager::LoadDefaultSourceAssemblerCodeLine(QTextEdit* textEdit_source, const AssemblerInstruction& asmbr_instr)
 {
     QString formatted_line{};
     formatted_line += asmbr_instr.label.value_or("") + "\t";
-    formatted_line += asmbr_instr.mnemonic_code + "\t";
-    formatted_line += asmbr_instr.operand1 + "\t";
+    formatted_line += asmbr_instr.mnemonic_code.value_or("") + "\t";
+    formatted_line += asmbr_instr.operand1.value_or("") + "\t";
     formatted_line += asmbr_instr.operand2.value_or("");
     textEdit_source->append(formatted_line);
 }

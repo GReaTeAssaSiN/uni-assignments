@@ -6,8 +6,8 @@
 struct AssemblerInstruction
 {
     std::optional<QString> label{};
-    QString mnemonic_code{};
-    QString operand1{};
+    std::optional<QString> mnemonic_code{};
+    std::optional<QString> operand1{};
     std::optional<QString> operand2{};
     //Базовый конструктор.
     AssemblerInstruction() = default;

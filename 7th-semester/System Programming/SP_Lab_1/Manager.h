@@ -29,6 +29,7 @@ public:
     ~Manager()=default;
 
 private:
+    QStringList GetLineItems(const QString &line);
     void LoadDefaultSourceAssemblerCodeLine(QTextEdit* textEdit_source, const AssemblerInstruction& asmbr_instr);
     void LoadDataRowToToOC(QTableWidget* tableWidget_ToOC, const TCOElem& opcode_table_elem);
 };

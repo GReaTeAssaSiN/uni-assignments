@@ -49,10 +49,10 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
         const AssemblerInstruction& instruction = source_code[i];
         /*-------------------------------------------------------------------------------------------------------------
          * 2.1. Разбиваем строку на составляющие: Метка | МКОП | Операндная часть (операнд 1 | операнд 2 (опционально)).|
-         -------------------------------------------------------------------------------------------------------------*/
+         -------------------------------------------------------------------------------------------------------------*/ 
         QString label{instruction.label.value_or("")};
-        QString mnemonic_code{instruction.mnemonic_code};
-        QString operand1{instruction.operand1};
+        QString mnemonic_code{instruction.mnemonic_code.value_or("")};
+        QString operand1{instruction.operand1.value_or("")};
         QString operand2{instruction.operand2.value_or("")};
         bool label_flag{false};
 
@@ -64,8 +64,15 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
             }
         }
         //Если найдена директива END - выход.
-        if (end_flag)
+        if (end_flag){
+            if (this->address_entry_point >= this->address_counter || this->address_entry_point < load_address){//Если точка входа за пределами адресного пространства.
+                textEdit_FPE->append("Строка " + QString::number(i+1) + ": Адрес точки входа в программу находится за пределами адресного пространства (директива END)!\n"
+                                                                          "Адресное пространство: от " + Convert::ConvertDecToHex(load_address).rightJustified(6,'0') + " до " +
+                                                                          Convert::ConvertDecToHex(this->address_counter - 1).rightJustified(6, '0') + ".\n");
+                return false;
+            }
             break;
+        }
 
         //Проверка строки исходного текста программы на корректность.
         if (!checks.CheckRowSourceCode(textEdit_FPE, i, prog_name, label, mnemonic_code)){
@@ -142,11 +149,14 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                 end_flag = true;
                                 if (operand1.isEmpty()){
                                     this->address_entry_point = load_address;
-                                    textEdit_FPE->append("ПРЕДУПРЕЖДЕНИЕ. Строка " + QString::number(i+1) + ": Адрес точки входа в программу установлен таким же, как адрес загрузки программы.\n");
+                                    operand1 = Convert::ConvertDecToHex(this->address_entry_point);
+                                    textEdit_FPE->append("ПРЕДУПРЕЖДЕНИЕ. Строка " + QString::number(i+1) + ": Адрес точки входа в программу установлен таким же, как адрес загрузки программы.\n"
+                                                                                                              "Адрес точки входа: " + Convert::ConvertDecToHex(load_address).rightJustified(6, '0') + ".\n");
                                 }
                                 else{
                                     if (!checks.CheckAmountMemoryForAddress(operand1)){
-                                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": Адрес точки входа программы содержит недопустимые символы!\n");
+                                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": Адрес точки входа программы содержит недопустимые символы!\n"
+                                                                                                  "Адрес точки входа: " + operand1 + ".\n");
                                         return false;
                                     }else{
                                         this->address_entry_point = Convert::ConvertHexToDec(operand1);//Устанавливаем адрес точки входа.
@@ -154,10 +164,6 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                 }
                                 if (i != source_code.size() - 1){//Директива END встречена не в конце программы.
                                     textEdit_FPE->append("ПРЕДУПРЕЖДЕНИЕ. Строка " + QString::number(i+1) + ": Весь следующий текст программы после строки с директивой END учитываться не будет.\n");
-                                }
-                                if (load_address != this->address_entry_point){//Если АЗ и точка входа не совпадают.
-                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Адрес загрузки программы не совпадает с точкой входа (Директивы START и END)!");
-                                    return false;
                                 }
                                 //Второй операнд не учитывается.
                                 QString error = checks.CheckOtherOperandPart(operand2, mnemonic_code, i);
@@ -192,12 +198,13 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                         this->address_counter += 1;//СА = СА + 1.
                                     }
                                     else{
-                                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": Переполнение допустимого выделения памяти для BYTE.\n");
+                                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": Переполнение допустимого выделения памяти для BYTE.\n"
+                                                                                                  "Операнд: " + operand1 + ".\n");
                                         return false;
                                     }
                                 }
                                 else{//16ричное число или юникодная строка - неважно, сколько выделили памяти, главное, чтобы СА не переполнился.
-                                    if (checks.CheckCorrectAmountMemoryForHexNumber(operand1)){//Выделение под 16ричное число.
+                                    if (checks.CheckCorrectAmountMemoryForHexNumber(operand1) && checks.CheckAmountMemoryForAddress(operand1.split('\'')[1])){//Выделение под 16ричное число.
                                         //Выводим в вспомогательную таблицу строчку.
                                         QString str_AC = Convert::ConvertDecToHex(this->address_counter).rightJustified(6,'0');
                                         sup_table.push_back({str_AC, mnemonic_code, operand1,""});
@@ -213,11 +220,12 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                             sup_table.push_back({str_AC, mnemonic_code, operand1,""});
                                             this->manager.AddStringToAuxTable(tableWidget_auxTable, sup_table[i]);
                                             //Увеливаем СА = СА + кол-во рез. памяти (длина юникодной строки, каждый символ = 1 байт).
-                                            int operand_length = operand1.split('\'')[1].length();
+                                            int operand_length = operand1.mid(2, operand1.length() - 3).trimmed().length();
                                             this->address_counter += operand_length;
                                         }
                                         else{//Иначе неизвестно, что задано.
-                                            textEdit_FPE->append("Строка " + QString::number(i+1) + ": Неверно задан операнд для BYTE!\n");
+                                            textEdit_FPE->append("Строка " + QString::number(i+1) + ": Неверно задан операнд для BYTE!\n"
+                                                                                                      "Операнд: " + operand1 + ".\n");
                                             return false;
                                         }
                                     }
@@ -251,12 +259,14 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                         this->address_counter += 3;//Выделение 3 байт памяти.
                                     }
                                     else{
-                                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": Переполнение допустимого выделения памяти для WORD.\n");
+                                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": Переполнение допустимого выделения памяти для WORD.\n"
+                                                                                                  "Операнд: " + operand1 + ".\n");
                                         return false;
                                     }
                                 }//Иначе ошибка.
                                 else{
-                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Неверно задан операнд для WORD!\n");
+                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Неверно задан операнд для WORD!\n"
+                                                                                              "Операнд: " + operand1 + ".\n");
                                     return false;
                                 }
                                 //Второй операнд игнорируется.
@@ -289,12 +299,14 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                         this->address_counter += reserve_byte_memory;
                                     }
                                     else{
-                                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": Переполнение допустимого выделения памяти для RESB!\n");
+                                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": Переполнение допустимого выделения памяти для RESB!\n"
+                                                                                                  "Операнд: " + operand1 + ".\n");
                                         return false;
                                     }
                                 }
                                 else{
-                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Неверно задан операнд для RESB!\n");
+                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Неверно задан операнд для RESB!\n"
+                                                                                              "Операнд: " + operand1 + ".\n");
                                     return false;
                                 }
                                 //Второй операнд игнорируется.
@@ -327,12 +339,14 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                         this->address_counter += reserve_word_memory;
                                     }
                                     else{
-                                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": Переполнение допустимого выделения памяти для RESW!\n");
+                                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": Переполнение допустимого выделения памяти для RESW!\n"
+                                                                                                  "Операнд: " + operand1 + ".\n");
                                         return false;
                                     }
                                 }
                                 else{
-                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Неверно задан операнд для RESW!\n");
+                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Неверно задан операнд для RESW!\n"
+                                                                                              "Операнд: " + operand1 + ".\n");
                                     return false;
                                 }
                                 //Второй операнд игнорируется.
@@ -342,7 +356,8 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                 }
                             }//Операнд не может быть пустым.
                             else{
-                                textEdit_FPE->append("Строка " + QString::number(i+1) + ": Значение операнда не может быть пустым (RESW)!\n");
+                                textEdit_FPE->append("Строка " + QString::number(i+1) + ": Значение операнда не может быть пустым (RESW)!\n"
+                                                                                          "Операнд: " + operand1 + ".\n");
                                 return false;
                             }
                         }
@@ -372,7 +387,8 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                 //Операнды не учитываются.
                                 if (!operand1.isEmpty() || !operand2.isEmpty()){
                                     textEdit_FPE->append("ПРЕДУПРЕЖДЕНИЕ! Строка " + QString::number(i+1) + ": Операнды учитываться не будут в команде " +
-                                                         TCO_elem.mnemonic_code + "!\n");
+                                                         TCO_elem.mnemonic_code + "!\n"
+                                                         "Операнды: " + operand1 + " " + operand2 + ".\n");
                                 }
                             }
                         }
@@ -397,7 +413,7 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                     }
                                 }
                                 else{
-                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Операнд пуст или переполнение допустимого выделения памяти для операнда.\n");
+                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Команда " + mnemonic_code + ". Операнд пуст или переполнение допустимого выделения памяти для целочисленного операнда.\n");
                                     return false;
                                 }
                             }
@@ -414,8 +430,8 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                     }
                                 }
                                 else{
-                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Операнды должны представлять собой регистры в команде " +
-                                                         TCO_elem.mnemonic_code + "!\n");
+                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Команда " + mnemonic_code + ". Операнды (оба) должны представлять собой регистры или целое число (первый) в команде " +
+                                                         TCO_elem.mnemonic_code + "! \n");
                                     return false;
                                 }
                             }
@@ -470,6 +486,14 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
     if (!end_flag){
         textEdit_FPE->append("Не найдена точка входа в программу (END)!");
         return false;
+    }
+    else{
+        if (this->address_entry_point >= this->address_counter || this->address_entry_point < load_address){
+            textEdit_FPE->append("Адрес точки входа в программу находится за пределами адресного пространства (директива END)!\n"
+                                 "Адресное пространство: от " + Convert::ConvertDecToHex(load_address).rightJustified(6, '0') + " до " +
+                                 Convert::ConvertDecToHex(this->address_counter - 1).rightJustified(6, '0') + ".\n");
+            return false;
+        }
     }
     return true;
 }
@@ -535,7 +559,7 @@ bool PassProcessor::SecondPass(QTableWidget *tableWidget_OMH, QTextEdit *textEdi
                 }
                 else{//Это unicode строка.
                     binary_view="";
-                    QString unicode_string{sup_table[i].operand1.split('\'')[1]};
+                    QString unicode_string{sup_table[i].operand1.mid(2, sup_table[i].operand1.length() - 3).trimmed()};
                     for (QChar chr : unicode_string){
                         int ASCII_code = chr.unicode();
                         data.append(Convert::ConvertDecToHex(ASCII_code));

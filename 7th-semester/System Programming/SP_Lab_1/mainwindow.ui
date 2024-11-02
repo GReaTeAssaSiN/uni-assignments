@@ -655,7 +655,7 @@ QTableWidget QTableWidgetItem:hover {
            <property name="font">
             <font>
              <family>Times New Roman</family>
-             <pointsize>14</pointsize>
+             <pointsize>12</pointsize>
              <bold>false</bold>
             </font>
            </property>
@@ -1078,7 +1078,7 @@ QTextEdit QScrollBar::sub-line:vertical {
            <property name="font">
             <font>
              <family>Times New Roman</family>
-             <pointsize>14</pointsize>
+             <pointsize>12</pointsize>
             </font>
            </property>
            <property name="cursor" stdset="0">
