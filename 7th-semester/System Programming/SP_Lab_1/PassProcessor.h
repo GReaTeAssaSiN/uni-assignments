@@ -15,6 +15,8 @@ class PassProcessor{
     Checks checks{};
     //Счетчик адреса.
     int address_counter{};
+    //Адрес загрузки программы.
+    int load_address{};
     //Адрес точки входа в программу.
     int address_entry_point{};
 

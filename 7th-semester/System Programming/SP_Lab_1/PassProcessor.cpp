@@ -30,7 +30,7 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
     textEdit_FPE->clear();
 
     //УЧЕТ АДРЕСОВ ЗАГРУЗКИ, ТОЧКИ ВХОДА, НАЗВАНИЯ ПРОГРАММЫ И СА//
-    int load_address{}; //Адрес загрузки программы.
+    this->load_address = 0; //Адрес загрузки программы.
     this->address_entry_point = 0; //Адрес точки входа в программу.
     QString prog_name{}; //Название программы.
     this->address_counter = 0; //СА.
@@ -65,9 +65,9 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
         }
         //Если найдена директива END - выход.
         if (end_flag){
-            if (this->address_entry_point >= this->address_counter || this->address_entry_point < load_address){//Если точка входа за пределами адресного пространства.
+            if (this->address_entry_point >= this->address_counter || this->address_entry_point < this->load_address){//Если точка входа за пределами адресного пространства.
                 textEdit_FPE->append("Строка " + QString::number(i+1) + ": Адрес точки входа в программу находится за пределами адресного пространства (директива END)!\n"
-                                                                          "Адресное пространство: от " + Convert::ConvertDecToHex(load_address).rightJustified(6,'0') + " до " +
+                                                                          "Адресное пространство: от " + Convert::ConvertDecToHex(this->load_address).rightJustified(6,'0') + " до " +
                                                                           Convert::ConvertDecToHex(this->address_counter - 1).rightJustified(6, '0') + ".\n");
                 return false;
             }
@@ -132,7 +132,7 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                             }
 
                             //Устанавливаем Адрес загрузки программы и увеличиваем СА = СА + Адрес загрузки программы (СА = Адрес загрузки программы).
-                            load_address = Convert::ConvertHexToDec(operand1);
+                            this->load_address = Convert::ConvertHexToDec(operand1);
                             this->address_counter = Convert::ConvertHexToDec(operand1);
                             //Выводим в вспомогательную таблицу строчку.
                             sup_table.push_back({label, mnemonic_code, operand1, ""});
@@ -148,10 +148,10 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                             if (!label_flag){
                                 end_flag = true;
                                 if (operand1.isEmpty()){
-                                    this->address_entry_point = load_address;
+                                    this->address_entry_point = this->load_address;
                                     operand1 = Convert::ConvertDecToHex(this->address_entry_point);
                                     textEdit_FPE->append("ПРЕДУПРЕЖДЕНИЕ. Строка " + QString::number(i+1) + ": Адрес точки входа в программу установлен таким же, как адрес загрузки программы.\n"
-                                                                                                              "Адрес точки входа: " + Convert::ConvertDecToHex(load_address).rightJustified(6, '0') + ".\n");
+                                                                                                              "Адрес точки входа: " + Convert::ConvertDecToHex(this->load_address).rightJustified(6, '0') + ".\n");
                                 }
                                 else{
                                     if (!checks.CheckAmountMemoryForAddress(operand1)){
@@ -488,9 +488,9 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
         return false;
     }
     else{
-        if (this->address_entry_point >= this->address_counter || this->address_entry_point < load_address){
+        if (this->address_entry_point >= this->address_counter || this->address_entry_point < this->load_address){
             textEdit_FPE->append("Адрес точки входа в программу находится за пределами адресного пространства (директива END)!\n"
-                                 "Адресное пространство: от " + Convert::ConvertDecToHex(load_address).rightJustified(6, '0') + " до " +
+                                 "Адресное пространство: от " + Convert::ConvertDecToHex(this->load_address).rightJustified(6, '0') + " до " +
                                  Convert::ConvertDecToHex(this->address_counter - 1).rightJustified(6, '0') + ".\n");
             return false;
         }
@@ -511,17 +511,17 @@ bool PassProcessor::SecondPass(QTableWidget *tableWidget_OMH, QTextEdit *textEdi
     textEdit_SPE->clear();
 
     //Вычисляем длину программы: СА = СА - АЗ.
-    int length_programm{this->address_counter - this->address_entry_point};
+    int length_programm{this->address_counter - this->load_address};
     /*-------------------------------------------------------------------------------------------------------------
      * 1. Считываем первую строку вспомогательной таблицы и формируем запись-заголовок.
      -------------------------------------------------------------------------------------------------------------*/
     //Для заголовка объектного модуля.
     tableWidget_OMH->setItem(0, 0, new QTableWidgetItem(sup_table[0].address_counter));
     tableWidget_OMH->setItem(0, 1, new QTableWidgetItem(Convert::ConvertDecToHex(length_programm).rightJustified(6, '0')));
-    tableWidget_OMH->setItem(0, 2, new QTableWidgetItem(Convert::ConvertDecToHex(this->address_entry_point).rightJustified(6, '0')));
+    tableWidget_OMH->setItem(0, 2, new QTableWidgetItem(Convert::ConvertDecToHex(this->load_address).rightJustified(6, '0')));
     //Для двоичного кода.
     textEdit_binary_code->append("H_" + sup_table[0].address_counter + "_" +
-                                 Convert::ConvertDecToHex(this->address_entry_point).rightJustified(6, '0') + "_" +
+                                 Convert::ConvertDecToHex(this->load_address).rightJustified(6, '0') + "_" +
                                  Convert::ConvertDecToHex(this->address_counter).rightJustified(6, '0'));
 
     /*-----------------------------------------------------------------
