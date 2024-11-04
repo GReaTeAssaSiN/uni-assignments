@@ -156,7 +156,7 @@ void MainWindow::on_pushButton_first_clicked()
     //Заполнение исходных структур данными.
     this->source_code = manager->ImportSourceAssemblerCodeFromField(ui->textEdit_source);
     this->opcode_table = manager->ImportTCOFromTableCodeOperation(ui->tableWidget_ToOC);
-    //Очистка элементво интерфейса второго прохода.
+    //Очистка элементов интерфейса второго прохода.
     ui->tableWidget_OMH->clear();
     ui->tableWidget_OMH->setColumnCount(0);
     ui->tableWidget_OMH->setRowCount(0);

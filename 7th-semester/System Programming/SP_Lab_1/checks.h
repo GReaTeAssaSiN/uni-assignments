@@ -16,6 +16,7 @@ private:
     bool CheckCharsSymbolicName(const QString& symbolic_name);
     bool CheckIncorrectSymbolicName(const QString& symbolic_name);
     bool CheckCharsMCOP(const QString& mnemonic_code);
+    bool CheckSymbolicNameIsCommand(const TableCodeOperation& opcode_table, const QString& label);
 
 public:
     //Базовый конструктор.
@@ -27,7 +28,7 @@ public:
     QString CheckRegister(const QString& reg);
     bool CheckAmountMemoryForAddress(const QString &amountMemory);
     bool CheckAddressCounterAvailable(QTextEdit* textEdit_FPE, const int& row, const int& address_counter);
-    bool CheckRowSourceCode(QTextEdit* textEdit_FPE, const int& row, const QString& prog_name, const QString& label, const QString& mnemonic_code);
+    bool CheckRowSourceCode(QTextEdit* textEdit_FPE, const int& row, const QString& prog_name, const TableCodeOperation& TCO, const QString& label, const QString& mnemonic_code);
     QString CheckProgrammName(const QString& prog_name);
     QString CheckProgrammDownloadAddress(const QString& download_address);
     QString CheckOtherOperandPart(const QString &second_operand, const QString& mnemonic_code, const int& row);

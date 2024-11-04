@@ -75,7 +75,7 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
         }
 
         //Проверка строки исходного текста программы на корректность.
-        if (!checks.CheckRowSourceCode(textEdit_FPE, i, prog_name, label, mnemonic_code)){
+        if (!checks.CheckRowSourceCode(textEdit_FPE, i, prog_name, TCO, label, mnemonic_code)){
             return false;
         }
 
@@ -186,6 +186,10 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                         }
                     }
                     if (current_mnemonic_code == "BYTE"){
+                        if (!start_flag){
+                            textEdit_FPE->append("Строка " + QString::number(i+1) + ": Отсутствует директива START!\n");
+                            return false;
+                        }
                         if (label_flag){
                             if (!operand1.isEmpty()){//Если операндн не пуст.
                                 if (checks.CheckCorrectAmountMemoryForDecNumber(operand1)){//Значит под выделенный байт записывается десятичное число.
@@ -247,6 +251,10 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                         }
                     }
                     if (current_mnemonic_code == "WORD"){
+                        if (!start_flag){
+                            textEdit_FPE->append("Строка " + QString::number(i+1) + ": Отсутствует директива START!\n");
+                            return false;
+                        }
                         if (label_flag){
                             if (!operand1.isEmpty()){//Если операнд не пуст.
                                 if (checks.CheckCorrectAmountMemoryForDecNumber(operand1)){//Проверка операнда на десятичное число.
@@ -286,6 +294,10 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                         }
                     }
                     if (current_mnemonic_code == "RESB"){
+                        if (!start_flag){
+                            textEdit_FPE->append("Строка " + QString::number(i+1) + ": Отсутствует директива START!\n");
+                            return false;
+                        }
                         if (label_flag){
                             if (!operand1.isEmpty()){
                                 if (checks.CheckCorrectAmountMemoryForDecNumber(operand1)){//Можно преобразовать в число.
@@ -326,6 +338,10 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                         }
                     }
                     if (current_mnemonic_code == "RESW"){
+                        if (!start_flag){
+                            textEdit_FPE->append("Строка " + QString::number(i+1) + ": Отсутствует директива START!\n");
+                            return false;
+                        }
                         if (label_flag){
                             if (!operand1.isEmpty()){
                                 if (checks.CheckCorrectAmountMemoryForDecNumber(operand1)){//Можно преобразовать в число.
@@ -372,6 +388,10 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                     TCOElem TCO_elem;//Для получения элемента ТКО.
                     if (TCO.Find(mnemonic_code, TCO_elem))
                     {
+                        if (!start_flag){
+                            textEdit_FPE->append("Строка " + QString::number(i+1) + ": Отсутствует директива START!\n");
+                            return false;
+                        }
                         //Различная обработка в зависимости от байт команды - обработка общая, не специализрованная на определенные команды.
                         if (TCO_elem.code_size == "1"){//Однобайтная команда.
                             //Один байт выделяется под МКОП, на операнды памяти не выделяется - они не рассматриваются. Например, NOP.
@@ -473,7 +493,7 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                     }
                     //Значит - что-то непонятное.
                     else{
-                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": МКОП не найден в ТКО.");
+                        textEdit_FPE->append("Строка " + QString::number(i+1) + ": МКОП " + mnemonic_code + " не найден в ТКО.");
                         return false;
                     }
                 }

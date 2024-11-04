@@ -23,7 +23,7 @@ bool Checks::CheckCharsSymbolicName(const QString &symbolic_name)
 {
     if (symbolic_name.isEmpty())//Если пустая, то хорошо.
         return true;
-    if (!((symbolic_name[0] >= 'A' && symbolic_name[0] <= 'Z') && symbolic_name[0] != 'R')){//Должна начинаться с буквы != R.
+    if (!(symbolic_name[0] >= 'A' && symbolic_name[0] <= 'Z')){//Должна начинаться с буквы.
         return false;
     }
     for (int i{1}; i < symbolic_name.length(); ++ i){//Остальные символы могут быть цифрами/буквами.
@@ -55,6 +55,14 @@ bool Checks::CheckCharsMCOP(const QString &mnemonic_code)
     if (!(mnemonic_code[0] >= 'A' && mnemonic_code[0] <= 'Z'))
         return false;
     return true;
+}
+//Проверка совпадения СИ с коммандой в ТКО.
+bool Checks::CheckSymbolicNameIsCommand(const TableCodeOperation &opcode_table, const QString& label)
+{
+    TCOElem TCO_elem;//Для получения элемента ТКО.
+    if (opcode_table.Find(label, TCO_elem))
+        return true;
+    return false;
 }
 
 //ПРОВЕРКИ//
@@ -107,7 +115,7 @@ bool Checks::CheckTableCodeOperation(const TableCodeOperation& TCO, QTextEdit *t
             //Проверка двоичного кода МКОП.
             if (CheckAmountMemoryForAddress(opcode_table[row].binary_code)){
                 int bin_code_dec = Convert::ConvertHexToDec(opcode_table[row].binary_code);
-                const int MAX_BINARY_CODE{63};//Т.к. 63*4=252, а двоичный код МКОП максимум может принимать значение 255. Поэтому на адресацию в запасе остается от 0 до 3 бит.
+                const int MAX_BINARY_CODE{63};//(р.дв.КОП)Т.к. 63*4=252, а двоичный код МКОП максимум может принимать значение 255. Поэтому на адресацию в запасе остается от 0 до 3 бит.
                 if (bin_code_dec > MAX_BINARY_CODE){
                     textEdit_FPE->append("Двоичный код МКОП в 16-ричной СИ не должен превышать " + Convert::ConvertDecToHex(MAX_BINARY_CODE) + ".\n");
                     return false;
@@ -185,7 +193,7 @@ bool Checks::CheckAddressCounterAvailable(QTextEdit* textEdit_FPE, const int& ro
 }
 
 //Проверка каждой строки исходного кода ассмеблирующей программы.
-bool Checks::CheckRowSourceCode(QTextEdit *textEdit_FPE, const int &row, const QString& prog_name, const QString &label, const QString &mnemonic_code)
+bool Checks::CheckRowSourceCode(QTextEdit *textEdit_FPE, const int &row, const QString& prog_name, const TableCodeOperation& TCO, const QString &label, const QString &mnemonic_code)
 {
     QString error{};//Для записи ошибок.
     //Проверка метки.
@@ -200,8 +208,8 @@ bool Checks::CheckRowSourceCode(QTextEdit *textEdit_FPE, const int &row, const Q
             textEdit_FPE->append(error);
             return false;
         }
-        if (!CheckIncorrectSymbolicName(label)){//Совпадение метки по названию (зарезервированное слово).
-            error = "Строка " + QString::number(row+1) + (row == 0 ? (": Символическое имя") : (": Название программы")) + " совпадает с директивой или регистром.\n";
+        if (!CheckIncorrectSymbolicName(label) || CheckSymbolicNameIsCommand(TCO, label)){//Совпадение метки по названию (зарезервированное слово).
+            error = "Строка " + QString::number(row+1) + (row != 0 ? (": Символическое имя") : (": Название программы")) + " совпадает с директивой, регистром или МКОП в ТКО.\n";
             textEdit_FPE->append(error);
             return false;
         }

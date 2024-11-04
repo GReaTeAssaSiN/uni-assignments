@@ -7,26 +7,27 @@ std::vector<AssemblerInstruction> Manager::ImportSourceAssemblerCodeFromField(QT
     QStringList lines = text.split("\n", Qt::SkipEmptyParts); // Разделяем строки, пропуская пустые.
 
     for (const QString &line : lines) {
-        AssemblerInstruction temp_code_line{};
-        QStringList parts{GetLineItems(line)}; // Разделяем строку на элементы.
-        // Проверяем, начинается ли строка с пробела или табуляции.
-        if (line.startsWith(" ") || line.startsWith('\t')) {
-            // Если да, то присваиваем элементы с учетом смешения.
-            temp_code_line.label = "";
-            temp_code_line.mnemonic_code = parts.size() > 0 ? parts[0] : "";
-            temp_code_line.operand1 = parts.size() > 1 ? parts[1] : "";
-            temp_code_line.operand2 = parts.size() > 2 ? parts.mid(2).join(" ") : ""; // Операнд 2 - все, что осталось после operand1.
-        } else {
-            // Иначе заполняем так же, как в parts.
-            temp_code_line.label = parts.size() > 0 ? parts[0] : "";
-            temp_code_line.mnemonic_code = parts.size() > 1 ? parts[1] : "";
-            temp_code_line.operand1 = parts.size() > 2 ? parts[2] : "";
-            temp_code_line.operand2 = parts.size() > 3 ? parts.mid(3).join(" ") : ""; // Операнд 2 - все, что осталось после operand1.
-        }
+        if (!line.trimmed().isEmpty()){
+            AssemblerInstruction temp_code_line{};
+            QStringList parts{GetLineItems(line)}; // Разделяем строку на элементы.
+            // Проверяем, начинается ли строка с пробела или табуляции.
+            if (line.startsWith(" ") || line.startsWith('\t')) {
+                // Если да, то присваиваем элементы с учетом смешения.
+                temp_code_line.label = "";
+                temp_code_line.mnemonic_code = parts.size() > 0 ? parts[0] : "";
+                temp_code_line.operand1 = parts.size() > 1 ? parts[1] : "";
+                temp_code_line.operand2 = parts.size() > 2 ? parts.mid(2).join(" ") : ""; // Операнд 2 - все, что осталось после operand1.
+            } else {
+                // Иначе заполняем так же, как в parts.
+                temp_code_line.label = parts.size() > 0 ? parts[0] : "";
+                temp_code_line.mnemonic_code = parts.size() > 1 ? parts[1] : "";
+                temp_code_line.operand1 = parts.size() > 2 ? parts[2] : "";
+                temp_code_line.operand2 = parts.size() > 3 ? parts.mid(3).join(" ") : ""; // Операнд 2 - все, что осталось после operand1.
+            }
 
-        source_code.push_back(temp_code_line);
+            source_code.push_back(temp_code_line);
+        }
     }
-    qDebug() << 123;
     return source_code;
 }
 //Загрузка ТКО в структуру.
@@ -189,7 +190,8 @@ QStringList Manager::GetLineItems(const QString &line) {
     QStringList lineItems;
 
     //Регулярное выражение для поиска возможных последовательностей символов.
-    static const QRegularExpression regex(R"((\w*'.+'\w*)|(\w+\s*)|([^\s]+\s*))");
+    static QRegularExpression regex(R"((\w*'.+'\w*)|(\w+\s*)|([^\s]+\s*))");
+    regex.setPatternOptions(QRegularExpression::UseUnicodePropertiesOption);
     //Извлечение готовых последовательностей символов из строки.
     QRegularExpressionMatchIterator it = regex.globalMatch(line);
     while (it.hasNext()) {
