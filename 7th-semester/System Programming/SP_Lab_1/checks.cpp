@@ -104,6 +104,7 @@ bool Checks::CheckTableCodeOperation(const TableCodeOperation& TCO, QTextEdit *t
                 textEdit_FPE->append("МКОП в ТКО не может совпадать с директивой или регистром.\n");
                 return false;
             }
+            //Проверка команд LOAD и SAVE.
             if (opcode_table[row].mnemonic_code.startsWith("LOAD") || opcode_table[row].mnemonic_code.startsWith("SAVE")){
                 //Проверка комманд LOAD и SAVE на указание регистра в своем названии.
                 static const QRegularExpression load_save_check{R"(^(LOAD|SAVE)(R([0-9]|1[0-5]))$)"};

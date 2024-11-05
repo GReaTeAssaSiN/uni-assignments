@@ -65,10 +65,10 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
         }
         //Если найдена директива END - выход.
         if (end_flag){
-            if (this->address_entry_point >= this->address_counter || this->address_entry_point < this->load_address){//Если точка входа за пределами адресного пространства.
+            if (this->address_entry_point > this->address_counter || this->address_entry_point < this->load_address){//Если точка входа за пределами адресного пространства.
                 textEdit_FPE->append("Строка " + QString::number(i+1) + ": Адрес точки входа в программу находится за пределами адресного пространства (директива END)!\n"
                                                                           "Адресное пространство: от " + Convert::ConvertDecToHex(this->load_address).rightJustified(6,'0') + " до " +
-                                                                          Convert::ConvertDecToHex(this->address_counter - 1).rightJustified(6, '0') + ".\n");
+                                                                          Convert::ConvertDecToHex(this->address_counter).rightJustified(6, '0') + ".\n");
                 return false;
             }
             break;
@@ -224,7 +224,7 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                             sup_table.push_back({str_AC, mnemonic_code, operand1,""});
                                             this->manager.AddStringToAuxTable(tableWidget_auxTable, sup_table[i]);
                                             //Увеливаем СА = СА + кол-во рез. памяти (длина юникодной строки, каждый символ = 1 байт).
-                                            int operand_length = operand1.mid(2, operand1.length() - 3).trimmed().length();
+                                            int operand_length = operand1.mid(2, operand1.length() - 3).length();
                                             this->address_counter += operand_length;
                                         }
                                         else{//Иначе неизвестно, что задано.
@@ -508,10 +508,10 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
         return false;
     }
     else{
-        if (this->address_entry_point >= this->address_counter || this->address_entry_point < this->load_address){
+        if (this->address_entry_point > this->address_counter || this->address_entry_point < this->load_address){
             textEdit_FPE->append("Адрес точки входа в программу находится за пределами адресного пространства (директива END)!\n"
                                  "Адресное пространство: от " + Convert::ConvertDecToHex(this->load_address).rightJustified(6, '0') + " до " +
-                                 Convert::ConvertDecToHex(this->address_counter - 1).rightJustified(6, '0') + ".\n");
+                                 Convert::ConvertDecToHex(this->address_counter).rightJustified(6, '0') + ".\n");
             return false;
         }
     }
@@ -537,12 +537,12 @@ bool PassProcessor::SecondPass(QTableWidget *tableWidget_OMH, QTextEdit *textEdi
      -------------------------------------------------------------------------------------------------------------*/
     //Для заголовка объектного модуля.
     tableWidget_OMH->setItem(0, 0, new QTableWidgetItem(sup_table[0].address_counter));
-    tableWidget_OMH->setItem(0, 1, new QTableWidgetItem(Convert::ConvertDecToHex(length_programm).rightJustified(6, '0')));
-    tableWidget_OMH->setItem(0, 2, new QTableWidgetItem(Convert::ConvertDecToHex(this->load_address).rightJustified(6, '0')));
+    tableWidget_OMH->setItem(0, 1, new QTableWidgetItem(Convert::ConvertDecToHex(this->load_address).rightJustified(6, '0')));
+    tableWidget_OMH->setItem(0, 2, new QTableWidgetItem(Convert::ConvertDecToHex(length_programm).rightJustified(6, '0')));
     //Для двоичного кода.
     textEdit_binary_code->append("H_" + sup_table[0].address_counter + "_" +
                                  Convert::ConvertDecToHex(this->load_address).rightJustified(6, '0') + "_" +
-                                 Convert::ConvertDecToHex(this->address_counter).rightJustified(6, '0'));
+                                 Convert::ConvertDecToHex(length_programm).rightJustified(6, '0'));
 
     /*-----------------------------------------------------------------
      * 2. Цикл строки исходного текста (через вспомогательную таблицу).
@@ -579,7 +579,7 @@ bool PassProcessor::SecondPass(QTableWidget *tableWidget_OMH, QTextEdit *textEdi
                 }
                 else{//Это unicode строка.
                     binary_view="";
-                    QString unicode_string{sup_table[i].operand1.mid(2, sup_table[i].operand1.length() - 3).trimmed()};
+                    QString unicode_string{sup_table[i].operand1.mid(2, sup_table[i].operand1.length() - 3)};
                     for (QChar chr : unicode_string){
                         int ASCII_code = chr.unicode();
                         data.append(Convert::ConvertDecToHex(ASCII_code));
