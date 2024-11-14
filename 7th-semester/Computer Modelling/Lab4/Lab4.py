@@ -3,15 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 ############################################################
-#                ДОПОЛНИТЕЛЬНЫЕ ФУНКЦИИ                    #
+#                Р”РћРџРћР›РќРРўР•Р›Р¬РќР«Р• Р¤РЈРќРљР¦РР                    #
 ############################################################
-# ЭТАП I. Функция для вычисления необходимых сумм по исходным данным, включая квадраты
+# Р­РўРђРџ I. Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РЅРµРѕР±С…РѕРґРёРјС‹С… СЃСѓРјРј РїРѕ РёСЃС…РѕРґРЅС‹Рј РґР°РЅРЅС‹Рј, РІРєР»СЋС‡Р°СЏ РєРІР°РґСЂР°С‚С‹
 def calculate_sums(xi, yi):
     xi_squared = xi ** 2
     yi_squared = yi ** 2
     xi_yi_product = xi * yi
 
-    # Вычисление сумм
+    # Р’С‹С‡РёСЃР»РµРЅРёРµ СЃСѓРјРј
     sum_xi = np.sum(xi)
     sum_yi = np.sum(yi)
     sum_xi_squared = np.sum(xi_squared)
@@ -19,16 +19,16 @@ def calculate_sums(xi, yi):
     sum_xi_yi = np.sum(xi_yi_product)
 
     return sum_xi, sum_yi, sum_xi_squared, sum_yi_squared, sum_xi_yi, xi_squared, yi_squared, xi_yi_product
-# ЭТАП I. Функция для вычисления вспомогательных величин и коэффициентов регрессии
+# Р­РўРђРџ I. Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹С… РІРµР»РёС‡РёРЅ Рё РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ СЂРµРіСЂРµСЃСЃРёРё
 def calculate_coefficients(sum_xi, sum_yi, sum_xi_squared, sum_yi_squared, sum_xi_yi, n):
-    # Вычисление вспомогательных величин
+    # Р’С‹С‡РёСЃР»РµРЅРёРµ РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹С… РІРµР»РёС‡РёРЅ
     A = n * sum_xi_squared - sum_xi ** 2
     A0 = sum_yi * sum_xi_squared - sum_xi * sum_xi_yi
     A1 = n * sum_xi_yi - sum_xi * sum_yi
     B = n * sum_yi_squared - sum_yi ** 2
     B0 = sum_xi * sum_yi_squared - sum_yi * sum_xi_yi
     B1 = A1
-    # Вычисление коэффициентов
+    # Р’С‹С‡РёСЃР»РµРЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ
     a0 = A0/A
     a1 = A1/A
     b0 = B0/B
@@ -37,64 +37,64 @@ def calculate_coefficients(sum_xi, sum_yi, sum_xi_squared, sum_yi_squared, sum_x
     r2 = B1 / ((A * B) ** 0.5)
     r = 0
     if r1!=r2:
-        print("Ошибка! Линейные коэффициенты корреляции r1 = A1 / sqrt(A * B) и r2 = A2 / sqrt(A * B) должны быть равны.")
+        print("РћС€РёР±РєР°! Р›РёРЅРµР№РЅС‹Рµ РєРѕСЌС„С„РёС†РёРµРЅС‚С‹ РєРѕСЂСЂРµР»СЏС†РёРё r1 = A1 / sqrt(A * B) Рё r2 = A2 / sqrt(A * B) РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЂР°РІРЅС‹.")
         return None
     else:
         r = r1
-    # Вовзрат вычисленных величин и коэффициентов
+    # Р’РѕРІР·СЂР°С‚ РІС‹С‡РёСЃР»РµРЅРЅС‹С… РІРµР»РёС‡РёРЅ Рё РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ
     return A, A0, A1, B, B0, B1, a0, a1, b0, b1, r
-# ЭТАП I. Интерпретация коэффициента корреляции
+# Р­РўРђРџ I. РРЅС‚РµСЂРїСЂРµС‚Р°С†РёСЏ РєРѕСЌС„С„РёС†РёРµРЅС‚Р° РєРѕСЂСЂРµР»СЏС†РёРё
 def interpret_correlation(r):
     if r == 0:
-        return "Отсутствует.", "Нет линейной зависимости между переменными."
+        return "РћС‚СЃСѓС‚СЃС‚РІСѓРµС‚.", "РќРµС‚ Р»РёРЅРµР№РЅРѕР№ Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РјРµР¶РґСѓ РїРµСЂРµРјРµРЅРЅС‹РјРё."
     elif 0 < r < 1:
-        return "Вероятностная, прямая.", "С увеличением X увеличивается Y."
+        return "Р’РµСЂРѕСЏС‚РЅРѕСЃС‚РЅР°СЏ, РїСЂСЏРјР°СЏ.", "РЎ СѓРІРµР»РёС‡РµРЅРёРµРј X СѓРІРµР»РёС‡РёРІР°РµС‚СЃСЏ Y."
     elif -1 < r < 0:
-        return "Вероятностная, обратная.", "С увеличением X уменьшается Y, и наоборот."
+        return "Р’РµСЂРѕСЏС‚РЅРѕСЃС‚РЅР°СЏ, РѕР±СЂР°С‚РЅР°СЏ.", "РЎ СѓРІРµР»РёС‡РµРЅРёРµРј X СѓРјРµРЅСЊС€Р°РµС‚СЃСЏ Y, Рё РЅР°РѕР±РѕСЂРѕС‚."
     elif r == 1:
-        return "Функциональная, прямая.", "Каждому значению X строго соответствует одно значение Y, с увеличением X увеличивается Y."
+        return "Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅР°СЏ, РїСЂСЏРјР°СЏ.", "РљР°Р¶РґРѕРјСѓ Р·РЅР°С‡РµРЅРёСЋ X СЃС‚СЂРѕРіРѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РѕРґРЅРѕ Р·РЅР°С‡РµРЅРёРµ Y, СЃ СѓРІРµР»РёС‡РµРЅРёРµРј X СѓРІРµР»РёС‡РёРІР°РµС‚СЃСЏ Y."
     elif r == -1:
-        return "Функциональная, обратная.", "Каждому значению X строго соответствует одно значение Y, с увеличением X уменьшается Y, и наоборот."
-# ЭТАП I. Вычисление несмещенной дисперсии
+        return "Р¤СѓРЅРєС†РёРѕРЅР°Р»СЊРЅР°СЏ, РѕР±СЂР°С‚РЅР°СЏ.", "РљР°Р¶РґРѕРјСѓ Р·РЅР°С‡РµРЅРёСЋ X СЃС‚СЂРѕРіРѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РѕРґРЅРѕ Р·РЅР°С‡РµРЅРёРµ Y, СЃ СѓРІРµР»РёС‡РµРЅРёРµРј X СѓРјРµРЅСЊС€Р°РµС‚СЃСЏ Y, Рё РЅР°РѕР±РѕСЂРѕС‚."
+# Р­РўРђРџ I. Р’С‹С‡РёСЃР»РµРЅРёРµ РЅРµСЃРјРµС‰РµРЅРЅРѕР№ РґРёСЃРїРµСЂСЃРёРё
 def calculate_unbiased_variance(sum_xi, sum_yi, sum_xi_squared, sum_yi_squared, n):
     Sy_squared = 1/(n-1)*(sum_yi_squared-1/n * (sum_yi ** 2))
     Sx_squared = 1/(n-1)*(sum_xi_squared-1/n * (sum_xi ** 2))
     return Sx_squared, Sy_squared
-# ЭТАП I. Расчет среднего квадратического отклонения выборочного среднего
+# Р­РўРђРџ I. Р Р°СЃС‡РµС‚ СЃСЂРµРґРЅРµРіРѕ РєРІР°РґСЂР°С‚РёС‡РµСЃРєРѕРіРѕ РѕС‚РєР»РѕРЅРµРЅРёСЏ РІС‹Р±РѕСЂРѕС‡РЅРѕРіРѕ СЃСЂРµРґРЅРµРіРѕ
 def calculate_standart_error(Sx_squared, Sy_squared, n):
     Sy_error = (Sy_squared ** 0.5) / (n ** 0.5)
     Sx_error = (Sx_squared ** 0.5) / (n ** 0.5)
     return Sx_error, Sy_error
-# ЭТАП I. Оценка силы связи
+# Р­РўРђРџ I. РћС†РµРЅРєР° СЃРёР»С‹ СЃРІСЏР·Рё
 def evaluate_correlation_strength(r):
     if abs(r) <= 0.3:
-        return "Практически отсутствует"
+        return "РџСЂР°РєС‚РёС‡РµСЃРєРё РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚"
     elif 0.3 < abs(r) <= 0.5:
-        return "Слабая"
+        return "РЎР»Р°Р±Р°СЏ"
     elif 0.5 < abs(r) <= 0.7:
-        return "Умеренная"
+        return "РЈРјРµСЂРµРЅРЅР°СЏ"
     elif 0.7 < abs(r) <= 1.0:
-        return "Сильная"
+        return "РЎРёР»СЊРЅР°СЏ"
 
-# ЭТАП II. Решение системы уравнений методом Гаусса
+# Р­РўРђРџ II. Р РµС€РµРЅРёРµ СЃРёСЃС‚РµРјС‹ СѓСЂР°РІРЅРµРЅРёР№ РјРµС‚РѕРґРѕРј Р“Р°СѓСЃСЃР°
 def gauss(A, B):
     n = len(A)
     
-    # Прямой ход (приводим к верхней треугольной матрице)
+    # РџСЂСЏРјРѕР№ С…РѕРґ (РїСЂРёРІРѕРґРёРј Рє РІРµСЂС…РЅРµР№ С‚СЂРµСѓРіРѕР»СЊРЅРѕР№ РјР°С‚СЂРёС†Рµ)
     for i in range(n):
-        # Находим строку с максимальным элементом для стабильности
+        # РќР°С…РѕРґРёРј СЃС‚СЂРѕРєСѓ СЃ РјР°РєСЃРёРјР°Р»СЊРЅС‹Рј СЌР»РµРјРµРЅС‚РѕРј РґР»СЏ СЃС‚Р°Р±РёР»СЊРЅРѕСЃС‚Рё
         max_row = max(range(i, n), key=lambda r: abs(A[r][i]))
         A[i], A[max_row] = A[max_row], A[i]
         B[i], B[max_row] = B[max_row], B[i]
         
-        # Приводим элементы ниже главной диагонали к нулю
+        # РџСЂРёРІРѕРґРёРј СЌР»РµРјРµРЅС‚С‹ РЅРёР¶Рµ РіР»Р°РІРЅРѕР№ РґРёР°РіРѕРЅР°Р»Рё Рє РЅСѓР»СЋ
         for j in range(i + 1, n):
             ratio = A[j][i] / A[i][i]
             for k in range(i, n):
                 A[j][k] -= ratio * A[i][k]
             B[j] -= ratio * B[i]
     
-    # Обратный ход (вычисляем переменные)
+    # РћР±СЂР°С‚РЅС‹Р№ С…РѕРґ (РІС‹С‡РёСЃР»СЏРµРј РїРµСЂРµРјРµРЅРЅС‹Рµ)
     X = [0] * n
     for i in range(n - 1, -1, -1):
         X[i] = B[i] / A[i][i]
@@ -102,23 +102,23 @@ def gauss(A, B):
             B[j] -= A[j][i] * X[i]
 
     return X    
-# ЭТАП II. Составление матрицы системы нормальных уравнений
+# Р­РўРђРџ II. РЎРѕСЃС‚Р°РІР»РµРЅРёРµ РјР°С‚СЂРёС†С‹ СЃРёСЃС‚РµРјС‹ РЅРѕСЂРјР°Р»СЊРЅС‹С… СѓСЂР°РІРЅРµРЅРёР№
 def create_normal_equations(x, y, degree=6):    
-    # Составление матрицы A и вектора B
+    # РЎРѕСЃС‚Р°РІР»РµРЅРёРµ РјР°С‚СЂРёС†С‹ A Рё РІРµРєС‚РѕСЂР° B
     A = np.zeros((degree + 1, degree + 1))
     B = np.zeros(degree + 1)
     
     for i in range(degree + 1):
         for j in range(degree + 1):
-            A[i][j] = np.sum(x**(i + j))  # Сумма x^(i+j)
-        B[i] = np.sum(y * (x**i))  # Сумма y * x^i
+            A[i][j] = np.sum(x**(i + j))  # РЎСѓРјРјР° x^(i+j)
+        B[i] = np.sum(y * (x**i))  # РЎСѓРјРјР° y * x^i
 
     return A, B
 
 ############################################################
-#                ФУНКЦИИ ПО РЕГРЕССИЯМ                     #
+#                Р¤РЈРќРљР¦РР РџРћ Р Р•Р“Р Р•РЎРЎРРЇРњ                     #
 ############################################################
-# ЭТАП II. Прямая линейная регрессия    
+# Р­РўРђРџ II. РџСЂСЏРјР°СЏ Р»РёРЅРµР№РЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ    
 def direct_linear_regression(xi, yi, sum_yi, n, a0, a1):
     y_mean = sum_yi / n
     y_pred = a0 + a1 * xi
@@ -126,7 +126,7 @@ def direct_linear_regression(xi, yi, sum_yi, n, a0, a1):
     denominator = (yi - y_mean) ** 2
     R_squared = np.sum(numenator)/np.sum(denominator)
     return y_mean, y_pred, numenator, denominator, R_squared
-# ЭТАП II. Обратная линейная регрессия
+# Р­РўРђРџ II. РћР±СЂР°С‚РЅР°СЏ Р»РёРЅРµР№РЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
 def reverse_linear_regression(xi, yi, sum_xi, n, b0, b1):
     x_mean = sum_xi / n
     x_pred = b0 + b1 * yi
@@ -134,7 +134,7 @@ def reverse_linear_regression(xi, yi, sum_xi, n, b0, b1):
     denominator = (xi - x_mean) ** 2
     R_squared = np.sum(numenator)/np.sum(denominator)
     return x_mean, x_pred, numenator, denominator, R_squared
-# ЭТАП II. Экспоненциальная регрессия
+# Р­РўРђРџ II. Р­РєСЃРїРѕРЅРµРЅС†РёР°Р»СЊРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
 def exponential_regression(xi, yi, n):
     ln_yi = np.log(yi)
     ln_yi_xi = np.log(yi) * xi
@@ -150,7 +150,7 @@ def exponential_regression(xi, yi, n):
     R_squared = np.sum(numenator) / np.sum(denominator)
 
     return ln_yi, ln_yi_xi, y_mean, ln_y_pred, numenator, denominator, R_squared, a0, a1, b0, b1
-# ЭТАП II. Гиперболическая регрессия
+# Р­РўРђРџ II. Р“РёРїРµСЂР±РѕР»РёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
 def hyperbolic_regression(xi, yi, n):
     zi = 1 / xi
     zi_squared = zi ** 2
@@ -165,7 +165,7 @@ def hyperbolic_regression(xi, yi, n):
     R_squared_hyperbolic = np.sum(numenator) / np.sum(denominator)
 
     return zi, zi_squared, yi_zi, a1, a0, y_mean, y_pred, numenator, denominator, R_squared_hyperbolic
-# ЭТАП II. Параболическая регрессия
+# Р­РўРђРџ II. РџР°СЂР°Р±РѕР»РёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
 def parabolic_regression(xi, yi, n):
     xi_squared = xi ** 2
     xi_cubed = xi ** 3
@@ -186,7 +186,7 @@ def parabolic_regression(xi, yi, n):
     R_squared = np.sum(numenator) / np.sum(denominator)
     
     return xi_squared, xi_cubed, xi_quarter, yi_xi_squared, a0, a1, a2, y_mean, y_pred, numenator, denominator, R_squared
-# ЭТАП II. Полиномиальная регрессия 6-й степени
+# Р­РўРђРџ II. РџРѕР»РёРЅРѕРјРёР°Р»СЊРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ 6-Р№ СЃС‚РµРїРµРЅРё
 def polynom_regression(xi, yi, n):
     A, B = create_normal_equations(xi, yi, 6)
     a0, a1, a2, a3, a4, a5, a6 = gauss(A, B)
@@ -200,7 +200,7 @@ def polynom_regression(xi, yi, n):
     R_squared = np.sum(numenator) / np.sum(denominator)
     
     return xi_fifth, xi_sixth, a0, a1, a2, a3, a4, a5, a6, y_mean, y_pred, numenator, denominator, R_squared
-# ЭТАП II. Степенная регрессия
+# Р­РўРђРџ II. РЎС‚РµРїРµРЅРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
 def power_regression(xi, yi, n):
     ln_xi = np.log(xi)
     ln_yi = np.log(yi)
@@ -219,7 +219,7 @@ def power_regression(xi, yi, n):
     R_squared = np.sum(numenator) / np.sum(denominator)
 
     return ln_xi, ln_yi, ln_xi_squared, ln_yi_ln_xi, a0, a1, b0, b1, y_mean, ln_y_pred, numenator, denominator, R_squared
-# ЭТАП II. Логарифмическая регрессия
+# Р­РўРђРџ II. Р›РѕРіР°СЂРёС„РјРёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
 def logarithmic_regression(xi, yi, n):
     ln_xi = np.log(xi)
     ln_xi_yi = ln_xi * yi
@@ -236,298 +236,298 @@ def logarithmic_regression(xi, yi, n):
     return a0, a1, ln_xi, ln_xi_yi, y_pred, numenator, denominator, R_squared
 
 ############################################################
-#                  ОСНОВНЫЕ ФУНКЦИИ                        #
+#                  РћРЎРќРћР’РќР«Р• Р¤РЈРќРљР¦РР                        #
 ############################################################
-# Необходимые рассчеты на основе начальных данных, вывод результатов в файл и графическое отображение
+# РќРµРѕР±С…РѕРґРёРјС‹Рµ СЂР°СЃСЃС‡РµС‚С‹ РЅР° РѕСЃРЅРѕРІРµ РЅР°С‡Р°Р»СЊРЅС‹С… РґР°РЅРЅС‹С…, РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р» Рё РіСЂР°С„РёС‡РµСЃРєРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
 def initial_process(xi, yi, output_file):
     try:
-        # Расчет необходимых данных на основе начальных
+        # Р Р°СЃС‡РµС‚ РЅРµРѕР±С…РѕРґРёРјС‹С… РґР°РЅРЅС‹С… РЅР° РѕСЃРЅРѕРІРµ РЅР°С‡Р°Р»СЊРЅС‹С…
         n = len(xi)
         sum_xi, sum_yi, sum_xi_squared, sum_yi_squared, sum_xi_yi, xi_squared, yi_squared, xi_yi_product = calculate_sums(xi, yi)
-        # Расчет коэффициентов с проверкой на совпадение коэффициента корреляции при расчете по двум формулам
+        # Р Р°СЃС‡РµС‚ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ СЃ РїСЂРѕРІРµСЂРєРѕР№ РЅР° СЃРѕРІРїР°РґРµРЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚Р° РєРѕСЂСЂРµР»СЏС†РёРё РїСЂРё СЂР°СЃС‡РµС‚Рµ РїРѕ РґРІСѓРј С„РѕСЂРјСѓР»Р°Рј
         result = calculate_coefficients(sum_xi, sum_yi, sum_xi_squared, sum_yi_squared, sum_xi_yi, n)
         if result is None:
-            print("Вычисления не завершены из-за ошибки. Завершение программы...")
+            print("Р’С‹С‡РёСЃР»РµРЅРёСЏ РЅРµ Р·Р°РІРµСЂС€РµРЅС‹ РёР·-Р·Р° РѕС€РёР±РєРё. Р—Р°РІРµСЂС€РµРЅРёРµ РїСЂРѕРіСЂР°РјРјС‹...")
             return None
-        # Получение коэффициентов
+        # РџРѕР»СѓС‡РµРЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ
         A, A0, A1, B, B0, B1, a0, a1, b0, b1, r = result
-        # Интерпретация коэффициента корреляции
-        correlation_type, description = interpret_correlation(r) # Тип и описание
-        correlation_strength = evaluate_correlation_strength(r) # Сила связи
-        # Расчет несмещенной дисперсии
+        # РРЅС‚РµСЂРїСЂРµС‚Р°С†РёСЏ РєРѕСЌС„С„РёС†РёРµРЅС‚Р° РєРѕСЂСЂРµР»СЏС†РёРё
+        correlation_type, description = interpret_correlation(r) # РўРёРї Рё РѕРїРёСЃР°РЅРёРµ
+        correlation_strength = evaluate_correlation_strength(r) # РЎРёР»Р° СЃРІСЏР·Рё
+        # Р Р°СЃС‡РµС‚ РЅРµСЃРјРµС‰РµРЅРЅРѕР№ РґРёСЃРїРµСЂСЃРёРё
         Sx_squared, Sy_squared = calculate_unbiased_variance(sum_xi, sum_yi, sum_xi_squared, sum_yi_squared, n)
-        # Расчет средненого квадратического отклонения выборочного среднего
+        # Р Р°СЃС‡РµС‚ СЃСЂРµРґРЅРµРЅРѕРіРѕ РєРІР°РґСЂР°С‚РёС‡РµСЃРєРѕРіРѕ РѕС‚РєР»РѕРЅРµРЅРёСЏ РІС‹Р±РѕСЂРѕС‡РЅРѕРіРѕ СЃСЂРµРґРЅРµРіРѕ
         Sx_error, Sy_error = calculate_standart_error(Sx_squared, Sy_squared, n)
-        # Сохранение данных в файл   
+        # РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»   
         with open(output_file, 'a') as f:
-            # Исходная таблица
+            # РСЃС…РѕРґРЅР°СЏ С‚Р°Р±Р»РёС†Р°
             output_data = np.column_stack((yi, xi, yi_squared, xi_squared, xi_yi_product))
             header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'yi^2'.ljust(12) + 'xi^2'.ljust(14) + 'xi*yi'.ljust(14)
-            f.write("Таблица расчетов:\n")
+            f.write("РўР°Р±Р»РёС†Р° СЂР°СЃС‡РµС‚РѕРІ:\n")
             f.write(header + '\n')
             for row in output_data:
                 f.write(f"{row[0]:<12.2f}{row[1]:<12.4f}{row[2]:<12.4f}{row[3]:<14.8f}{row[4]:<14.8f}\n")
-            # Вспомогательные величины
-            f.write("\nВычисление вспомогательных величин для расчета коэффициентов регрессии:\n")
+            # Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РІРµР»РёС‡РёРЅС‹
+            f.write("\nР’С‹С‡РёСЃР»РµРЅРёРµ РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹С… РІРµР»РёС‡РёРЅ РґР»СЏ СЂР°СЃС‡РµС‚Р° РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ СЂРµРіСЂРµСЃСЃРёРё:\n")
             f.write(f"A = {A:.10f}\n")
             f.write(f"A0 = {A0:.10f}\n")
             f.write(f"A1 = {A1:.10f}\n")
             f.write(f"B = {B:.10f}\n")
             f.write(f"B0 = {B0:.10f}\n")
             f.write(f"B1 = {B1:.10f}\n")
-            # Коэффициенты корреляции
-            f.write("\nВычисление коэффициентов регрессии:\n")
+            # РљРѕСЌС„С„РёС†РёРµРЅС‚С‹ РєРѕСЂСЂРµР»СЏС†РёРё
+            f.write("\nР’С‹С‡РёСЃР»РµРЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ СЂРµРіСЂРµСЃСЃРёРё:\n")
             f.write(f"a0 = {a0:.10f}\n")
             f.write(f"a1 = {a1:.10f}\n")
             f.write(f"b0 = {b0:.10f}\n")
             f.write(f"b1 = {b1:.10f}\n")
             f.write(f"r = {r:.10f}\n")
-            # Интерпретация корреляции
-            f.write("\nПолученный коэффициент коррелляции r позволяет сделать следующие выводы:\n")
-            f.write(f"Тип связи: {correlation_type}\n")
-            f.write(f"Описание связи: {description}\n")
-            f.write(f"Сила связи: {correlation_strength}\n")
-            # Несмещенная дисперсия
-            f.write("\nВычисленная несмещенная дисперсия:\n")
+            # РРЅС‚РµСЂРїСЂРµС‚Р°С†РёСЏ РєРѕСЂСЂРµР»СЏС†РёРё
+            f.write("\nРџРѕР»СѓС‡РµРЅРЅС‹Р№ РєРѕСЌС„С„РёС†РёРµРЅС‚ РєРѕСЂСЂРµР»Р»СЏС†РёРё r РїРѕР·РІРѕР»СЏРµС‚ СЃРґРµР»Р°С‚СЊ СЃР»РµРґСѓСЋС‰РёРµ РІС‹РІРѕРґС‹:\n")
+            f.write(f"РўРёРї СЃРІСЏР·Рё: {correlation_type}\n")
+            f.write(f"РћРїРёСЃР°РЅРёРµ СЃРІСЏР·Рё: {description}\n")
+            f.write(f"РЎРёР»Р° СЃРІСЏР·Рё: {correlation_strength}\n")
+            # РќРµСЃРјРµС‰РµРЅРЅР°СЏ РґРёСЃРїРµСЂСЃРёСЏ
+            f.write("\nР’С‹С‡РёСЃР»РµРЅРЅР°СЏ РЅРµСЃРјРµС‰РµРЅРЅР°СЏ РґРёСЃРїРµСЂСЃРёСЏ:\n")
             f.write(f"Sx^2 = {Sx_squared}\n")
             f.write(f"Sy^2 = {Sy_squared}\n")
-            # Среднее квадратическое отклонение выборочного среднего
-            f.write("\nВычисленное среднее квадратическое отклонения выборочного среднего:\n")
-            f.write(f"Sx^2_cр = {Sx_error}\n")
-            f.write(f"Sy^2_ср = {Sy_error}\n")
+            # РЎСЂРµРґРЅРµРµ РєРІР°РґСЂР°С‚РёС‡РµСЃРєРѕРµ РѕС‚РєР»РѕРЅРµРЅРёРµ РІС‹Р±РѕСЂРѕС‡РЅРѕРіРѕ СЃСЂРµРґРЅРµРіРѕ
+            f.write("\nР’С‹С‡РёСЃР»РµРЅРЅРѕРµ СЃСЂРµРґРЅРµРµ РєРІР°РґСЂР°С‚РёС‡РµСЃРєРѕРµ РѕС‚РєР»РѕРЅРµРЅРёСЏ РІС‹Р±РѕСЂРѕС‡РЅРѕРіРѕ СЃСЂРµРґРЅРµРіРѕ:\n")
+            f.write(f"Sx^2_cСЂ = {Sx_error}\n")
+            f.write(f"Sy^2_СЃСЂ = {Sy_error}\n")
             f.write("===================================================================================================\n")
-        print(f"Результаты, полученные на основе начальных данных, сохранены в файл '{output_file}'.")
-        # Построение графика
-        plt.scatter(xi, yi, color='green', label='Экспериментальные данные')
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚С‹, РїРѕР»СѓС‡РµРЅРЅС‹Рµ РЅР° РѕСЃРЅРѕРІРµ РЅР°С‡Р°Р»СЊРЅС‹С… РґР°РЅРЅС‹С…, СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р» '{output_file}'.")
+        # РџРѕСЃС‚СЂРѕРµРЅРёРµ РіСЂР°С„РёРєР°
+        plt.scatter(xi, yi, color='green', label='Р­РєСЃРїРµСЂРёРјРµРЅС‚Р°Р»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ')
         plt.xlabel(f'$x_{{i}}$', fontsize=12)
         plt.ylabel(f'$y_{{i}}$', fontsize=12)
-        plt.title("Построение аналитической модели по результатам эксперимента", fontsize=14)
+        plt.title("РџРѕСЃС‚СЂРѕРµРЅРёРµ Р°РЅР°Р»РёС‚РёС‡РµСЃРєРѕР№ РјРѕРґРµР»Рё РїРѕ СЂРµР·СѓР»СЊС‚Р°С‚Р°Рј СЌРєСЃРїРµСЂРёРјРµРЅС‚Р°", fontsize=14)
         plt.axhline(0, color='black', linewidth=0.5)
         plt.axvline(0, color='black', linewidth=0.5)
         plt.grid(True, which='both', linestyle='--', linewidth=0.5)
         
         return sum_xi, sum_yi, n, a0, a1, b0, b1
     except Exception as e:
-        print(f"Ошибка при вычислениях по исходным данным: {e}")
+        print(f"РћС€РёР±РєР° РїСЂРё РІС‹С‡РёСЃР»РµРЅРёСЏС… РїРѕ РёСЃС…РѕРґРЅС‹Рј РґР°РЅРЅС‹Рј: {e}")
         return None
-# Необходимые рассчеты для прямой линейной регрессии, вывод результатов в файл и графическое отображение
+# РќРµРѕР±С…РѕРґРёРјС‹Рµ СЂР°СЃСЃС‡РµС‚С‹ РґР»СЏ РїСЂСЏРјРѕР№ Р»РёРЅРµР№РЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё, РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р» Рё РіСЂР°С„РёС‡РµСЃРєРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
 def direct_linear_regression_process(xi, yi, sum_yi, n, a0, a1, output_file):
     try:
         y_mean, y_pred, numenator, denominator, R_squared_direct_linear = direct_linear_regression(xi, yi, sum_yi, n, a0, a1)
-        # Сохранение данных в файл   
+        # РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»   
         with open(output_file, 'a') as f:
-            # Уравнение прямой линейной регрессии
+            # РЈСЂР°РІРЅРµРЅРёРµ РїСЂСЏРјРѕР№ Р»РёРЅРµР№РЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё
             f.write("---------------------------------------------------------------------------------------------------\n")
-            f.write("Прямая линейная регрессия: y = {:.10f} + {:.10f} * x\n".format(a0, a1))
-            f.write("Коэффициенты:\na0 = {:.10f},\na1 = {:.10f}\n".format(a0, a1))
+            f.write("РџСЂСЏРјР°СЏ Р»РёРЅРµР№РЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ: y = {:.10f} + {:.10f} * x\n".format(a0, a1))
+            f.write("РљРѕСЌС„С„РёС†РёРµРЅС‚С‹:\na0 = {:.10f},\na1 = {:.10f}\n".format(a0, a1))
             output_data = np.column_stack((yi, xi, y_pred, numenator, denominator))
-            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'yi^p'.ljust(12) + '(yi^p - yср)^2'.ljust(16) + '(yi - yср)^2'.ljust(16)
-            f.write("Таблица расчетов:\n")
+            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'yi^p'.ljust(12) + '(yi^p - yСЃСЂ)^2'.ljust(16) + '(yi - yСЃСЂ)^2'.ljust(16)
+            f.write("РўР°Р±Р»РёС†Р° СЂР°СЃС‡РµС‚РѕРІ:\n")
             f.write(header + '\n')
             for row in output_data:
                 f.write(f"{row[0]:<12.2f}{row[1]:<12.4f}{row[2]:<12.4f}{row[3]:<16.10f}{row[4]:<16.10f}\n")
-            f.write(f"\ny_ср = {y_mean:.4f}\n")
+            f.write(f"\ny_СЃСЂ = {y_mean:.4f}\n")
             f.write(f"R^2 = {R_squared_direct_linear:.4f}\n")
-        print(f"Результаты, полученные при вычислении для прямой линейной регрессии, сохранены в файл '{output_file}'.")
-        # Построение графика
-        plt.plot(xi, y_pred, color='red', label='Прямая линейная регрессия')
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚С‹, РїРѕР»СѓС‡РµРЅРЅС‹Рµ РїСЂРё РІС‹С‡РёСЃР»РµРЅРёРё РґР»СЏ РїСЂСЏРјРѕР№ Р»РёРЅРµР№РЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё, СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р» '{output_file}'.")
+        # РџРѕСЃС‚СЂРѕРµРЅРёРµ РіСЂР°С„РёРєР°
+        plt.plot(xi, y_pred, color='red', label='РџСЂСЏРјР°СЏ Р»РёРЅРµР№РЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ')
         return R_squared_direct_linear
     except Exception as e:
-        print(f"Ошибка при вычислениях для прямой линейной регрессии: {e}")
+        print(f"РћС€РёР±РєР° РїСЂРё РІС‹С‡РёСЃР»РµРЅРёСЏС… РґР»СЏ РїСЂСЏРјРѕР№ Р»РёРЅРµР№РЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё: {e}")
         return None
-# Необходиые рассчеты для обратной линейной регрессии, вывод результатов в файл и графическое отображение
+# РќРµРѕР±С…РѕРґРёС‹Рµ СЂР°СЃСЃС‡РµС‚С‹ РґР»СЏ РѕР±СЂР°С‚РЅРѕР№ Р»РёРЅРµР№РЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё, РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р» Рё РіСЂР°С„РёС‡РµСЃРєРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
 def reverse_linear_regression_process(xi, yi, sum_xi, n, b0, b1, output_file):
     try:
         x_mean, x_pred, numenator, denominator, R_squared_reverse_linear = reverse_linear_regression(xi, yi, sum_xi, n, b0, b1)
-        # Сохранение данных в файл
+        # РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»
         with open(output_file, 'a') as f:
-            # Уравнение обратной линейной регрессии
+            # РЈСЂР°РІРЅРµРЅРёРµ РѕР±СЂР°С‚РЅРѕР№ Р»РёРЅРµР№РЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё
             f.write("---------------------------------------------------------------------------------------------------\n")
-            f.write("Обратная линейная регрессия: x = {:.10f} + {:.10f} * y\n".format(b0, b1))
-            f.write("Коэффициенты:\nb0 = {:.10f},\nb1 = {:.10f}\n".format(b0, b1))
+            f.write("РћР±СЂР°С‚РЅР°СЏ Р»РёРЅРµР№РЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ: x = {:.10f} + {:.10f} * y\n".format(b0, b1))
+            f.write("РљРѕСЌС„С„РёС†РёРµРЅС‚С‹:\nb0 = {:.10f},\nb1 = {:.10f}\n".format(b0, b1))
             output_data = np.column_stack((xi, yi, x_pred, numenator, denominator))
-            header = 'xi'.ljust(12) + 'yi'.ljust(12) + 'xi^p'.ljust(12) + '(xi^p - xср)^2'.ljust(16) + '(xi - xср)^2'.ljust(16)
-            f.write("Таблица расчетов:\n")
+            header = 'xi'.ljust(12) + 'yi'.ljust(12) + 'xi^p'.ljust(12) + '(xi^p - xСЃСЂ)^2'.ljust(16) + '(xi - xСЃСЂ)^2'.ljust(16)
+            f.write("РўР°Р±Р»РёС†Р° СЂР°СЃС‡РµС‚РѕРІ:\n")
             f.write(header + '\n')
             for row in output_data:
                 f.write(f"{row[0]:<12.4f}{row[1]:<12.2f}{row[2]:<12.4f}{row[3]:<16.10f}{row[4]:<16.10f}\n")
-            f.write(f"\nx_ср = {x_mean:.4f}\n")
+            f.write(f"\nx_СЃСЂ = {x_mean:.4f}\n")
             f.write(f"R^2 = {R_squared_reverse_linear:.4f}\n")
-        print(f"Результаты, полученные при вычислении для обратной линейной регрессии, сохранены в файл '{output_file}'.")
-        # Построение графика обратной регрессии
-        plt.plot(x_pred, yi, color='blue', label='Обратная линейная регрессия')
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚С‹, РїРѕР»СѓС‡РµРЅРЅС‹Рµ РїСЂРё РІС‹С‡РёСЃР»РµРЅРёРё РґР»СЏ РѕР±СЂР°С‚РЅРѕР№ Р»РёРЅРµР№РЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё, СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р» '{output_file}'.")
+        # РџРѕСЃС‚СЂРѕРµРЅРёРµ РіСЂР°С„РёРєР° РѕР±СЂР°С‚РЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё
+        plt.plot(x_pred, yi, color='blue', label='РћР±СЂР°С‚РЅР°СЏ Р»РёРЅРµР№РЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ')
         return R_squared_reverse_linear
     except Exception as e:
-        print(f"Ошибка при вычислениях для обратной линейной регрессии: {e}")
+        print(f"РћС€РёР±РєР° РїСЂРё РІС‹С‡РёСЃР»РµРЅРёСЏС… РґР»СЏ РѕР±СЂР°С‚РЅРѕР№ Р»РёРЅРµР№РЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё: {e}")
         return None
-# Необходимые рассчеты для экспоненциальной регрессии, вывод результатов в файл и графическое отображение
+# РќРµРѕР±С…РѕРґРёРјС‹Рµ СЂР°СЃСЃС‡РµС‚С‹ РґР»СЏ СЌРєСЃРїРѕРЅРµРЅС†РёР°Р»СЊРЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё, РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р» Рё РіСЂР°С„РёС‡РµСЃРєРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
 def exponential_regression_process(xi, yi, n, output_file):
     try:
         ln_yi, ln_yi_xi, y_mean, ln_y_pred, numenator, denominator, R_squared_exponential, a0, a1, b0, b1 = exponential_regression(xi, yi, n)
-        # Сохранение данных в файл   
+        # РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»   
         with open(output_file, 'a') as f:
-            # Уравнение экспоненциальной регрессии
+            # РЈСЂР°РІРЅРµРЅРёРµ СЌРєСЃРїРѕРЅРµРЅС†РёР°Р»СЊРЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё
             f.write("---------------------------------------------------------------------------------------------------\n")
-            f.write("Экспоненциальная регрессия: y = {:.10f} + {:.10f} * x или y = ln({:.10f} * exp^({:.10f} * x))\n".format(b0, b1, a0, a1))
-            f.write("Коэффициенты:\nb0 = {:.10f},\nb1 = {:.10f},\na0 = {:.10f},\na1 = {:.10f}\n".format(b0, b1, a0, a1))
+            f.write("Р­РєСЃРїРѕРЅРµРЅС†РёР°Р»СЊРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ: y = {:.10f} + {:.10f} * x РёР»Рё y = ln({:.10f} * exp^({:.10f} * x))\n".format(b0, b1, a0, a1))
+            f.write("РљРѕСЌС„С„РёС†РёРµРЅС‚С‹:\nb0 = {:.10f},\nb1 = {:.10f},\na0 = {:.10f},\na1 = {:.10f}\n".format(b0, b1, a0, a1))
             output_data = np.column_stack((yi, xi, ln_yi, ln_yi_xi, ln_y_pred, numenator, denominator))
-            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'ln_yi'.ljust(12) + 'ln_yi_xi'.ljust(12) + 'ln_yi^p'.ljust(12) + '(ln_yi^p - ln_y_ср)^2'.ljust(23) + '(ln_yi - ln_y_ср)^2'.ljust(23)
-            f.write("Таблица расчетов:\n")
+            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'ln_yi'.ljust(12) + 'ln_yi_xi'.ljust(12) + 'ln_yi^p'.ljust(12) + '(ln_yi^p - ln_y_СЃСЂ)^2'.ljust(23) + '(ln_yi - ln_y_СЃСЂ)^2'.ljust(23)
+            f.write("РўР°Р±Р»РёС†Р° СЂР°СЃС‡РµС‚РѕРІ:\n")
             f.write(header + '\n')
             for row in output_data:
                 f.write(f"{row[0]:<12.2f}{row[1]:<12.4f}{row[2]:<12.6f}{row[3]:<12.8f}{row[4]:<12.6f}{row[5]:<23.10f}{row[6]:<23.10f}\n")
-            f.write(f"\nln_y_ср = {y_mean:.4f}\n")
+            f.write(f"\nln_y_СЃСЂ = {y_mean:.4f}\n")
             f.write(f"R^2 = {R_squared_exponential:.4f}\n")
-        print(f"Результаты, полученные при вычислении для эксконенциальной регрессии, сохранены в файл '{output_file}'.")
-        # Построение графика
-        plt.plot(xi, np.exp(ln_y_pred), color='orange', label='Экспоненциальная регрессия')
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚С‹, РїРѕР»СѓС‡РµРЅРЅС‹Рµ РїСЂРё РІС‹С‡РёСЃР»РµРЅРёРё РґР»СЏ СЌРєСЃРєРѕРЅРµРЅС†РёР°Р»СЊРЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё, СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р» '{output_file}'.")
+        # РџРѕСЃС‚СЂРѕРµРЅРёРµ РіСЂР°С„РёРєР°
+        plt.plot(xi, np.exp(ln_y_pred), color='orange', label='Р­РєСЃРїРѕРЅРµРЅС†РёР°Р»СЊРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ')
         return R_squared_exponential
     except Exception as e:
-        print(f"Ошибка при вычислениях для экспоненциальной регрессии: {e}")
+        print(f"РћС€РёР±РєР° РїСЂРё РІС‹С‡РёСЃР»РµРЅРёСЏС… РґР»СЏ СЌРєСЃРїРѕРЅРµРЅС†РёР°Р»СЊРЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё: {e}")
         return None 
-# Необходимые рассчеты для гиперболической регрессии, вывод результатов в файл и графическое отображение
+# РќРµРѕР±С…РѕРґРёРјС‹Рµ СЂР°СЃСЃС‡РµС‚С‹ РґР»СЏ РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё, РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р» Рё РіСЂР°С„РёС‡РµСЃРєРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
 def hyperbolic_regression_process(xi, yi, n, output_file):
     try:
         zi, zi_squared, yi_zi, a1, a0, y_mean, y_pred, numenator, denominator, R_squared_hyperbolic = hyperbolic_regression(xi, yi, n)
-        # Сохранение данных в файл   
+        # РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»   
         with open(output_file, 'a') as f:
-            # Уравнение гиперболической регрессии
+            # РЈСЂР°РІРЅРµРЅРёРµ РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё
             f.write("---------------------------------------------------------------------------------------------------\n")
-            f.write("Гиперболическая регрессия: y = {:.10f} + {:.10f} / x или y = {:.10f} + {:.10f} * z\n".format(a0, a1, a0, a1))
-            f.write("Коэффициенты:\na0 = {:.10f},\na1 = {:.10f}\n".format(a0, a1))
+            f.write("Р“РёРїРµСЂР±РѕР»РёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ: y = {:.10f} + {:.10f} / x РёР»Рё y = {:.10f} + {:.10f} * z\n".format(a0, a1, a0, a1))
+            f.write("РљРѕСЌС„С„РёС†РёРµРЅС‚С‹:\na0 = {:.10f},\na1 = {:.10f}\n".format(a0, a1))
             output_data = np.column_stack((yi, xi, zi, zi_squared, yi_zi, y_pred, numenator, denominator))
-            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'zi'.ljust(12) + 'zi^2'.ljust(14) + 'yi*zi'.ljust(14) + 'yi^p'.ljust(10) + '(yi^p - y_ср)^2'.ljust(18) + '(yi - y_ср)^2'.ljust(18)
-            f.write("Таблица расчетов:\n")
+            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'zi'.ljust(12) + 'zi^2'.ljust(14) + 'yi*zi'.ljust(14) + 'yi^p'.ljust(10) + '(yi^p - y_СЃСЂ)^2'.ljust(18) + '(yi - y_СЃСЂ)^2'.ljust(18)
+            f.write("РўР°Р±Р»РёС†Р° СЂР°СЃС‡РµС‚РѕРІ:\n")
             f.write(header + '\n')
             for row in output_data:
                 f.write(f"{row[0]:<12.2f}{row[1]:<12.4f}{row[2]:<12.4f}{row[3]:<14.4f}{row[4]:<14.6f}{row[5]:<10.2f}{row[6]:<18.8f}{row[7]:<18.8f}\n")
-            f.write(f"\ny_ср = {y_mean:.4f}\n")
+            f.write(f"\ny_СЃСЂ = {y_mean:.4f}\n")
             f.write(f"R^2 = {R_squared_hyperbolic:.4f}\n")
-        print(f"Результаты, полученные при вычислении для гиперболической регрессии, сохранены в файл '{output_file}'.")
-        # Построение графика
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚С‹, РїРѕР»СѓС‡РµРЅРЅС‹Рµ РїСЂРё РІС‹С‡РёСЃР»РµРЅРёРё РґР»СЏ РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё, СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р» '{output_file}'.")
+        # РџРѕСЃС‚СЂРѕРµРЅРёРµ РіСЂР°С„РёРєР°
         sorted_indices = np.argsort(xi)
         xi_sorted = xi[sorted_indices]
         y_pred_sorted = y_pred[sorted_indices]
-        plt.plot(xi_sorted, y_pred_sorted, color='purple', label='Гиперболическая регрессия')
+        plt.plot(xi_sorted, y_pred_sorted, color='purple', label='Р“РёРїРµСЂР±РѕР»РёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ')
         return R_squared_hyperbolic
     except Exception as e:
-        print(f"Ошибка при вычислениях для гиперболической регрессии: {e}")
+        print(f"РћС€РёР±РєР° РїСЂРё РІС‹С‡РёСЃР»РµРЅРёСЏС… РґР»СЏ РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё: {e}")
         return None 
-# Необходимые рассчеты для параболической регрессии, вывод результатов в файл и графическое отображение
+# РќРµРѕР±С…РѕРґРёРјС‹Рµ СЂР°СЃСЃС‡РµС‚С‹ РґР»СЏ РїР°СЂР°Р±РѕР»РёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё, РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р» Рё РіСЂР°С„РёС‡РµСЃРєРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
 def parabolic_regression_process(xi, yi, n, output_file):
     try:
         xi_squared, xi_cubed, xi_quarter, yi_xi_squared, a0, a1, a2, y_mean, y_pred, numenator, denominator, R_squared_parabolic = parabolic_regression(xi, yi, n)
-        # Сохранение данных в файл   
+        # РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»   
         with open(output_file, 'a') as f:
-            # Уравнение параболической регрессии
+            # РЈСЂР°РІРЅРµРЅРёРµ РїР°СЂР°Р±РѕР»РёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё
             f.write("---------------------------------------------------------------------------------------------------\n")
-            f.write("Параболическая регрессия: y = {:.10f} + {:.10f} * x + {:.10f} * x^2\n".format(a0, a1, a2))
-            f.write("Коэффициенты:\na0 = {:.10f},\na1 = {:.10f},\na2 = {:.10f}\n".format(a0, a1, a2))
+            f.write("РџР°СЂР°Р±РѕР»РёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ: y = {:.10f} + {:.10f} * x + {:.10f} * x^2\n".format(a0, a1, a2))
+            f.write("РљРѕСЌС„С„РёС†РёРµРЅС‚С‹:\na0 = {:.10f},\na1 = {:.10f},\na2 = {:.10f}\n".format(a0, a1, a2))
             output_data = np.column_stack((yi, xi, xi_squared, xi_cubed, xi_quarter, yi_xi_squared, y_pred, numenator, denominator))
-            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'xi^2'.ljust(16) + 'xi^3'.ljust(16) + 'xi^4'.ljust(16) + 'yi*xi^2'.ljust(16) + 'yi^p'.ljust(16) + '(yi^p - y_ср)^2'.ljust(18) + '(yi - y_ср)^2'.ljust(18)
-            f.write("Таблица расчетов:\n")
+            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'xi^2'.ljust(16) + 'xi^3'.ljust(16) + 'xi^4'.ljust(16) + 'yi*xi^2'.ljust(16) + 'yi^p'.ljust(16) + '(yi^p - y_СЃСЂ)^2'.ljust(18) + '(yi - y_СЃСЂ)^2'.ljust(18)
+            f.write("РўР°Р±Р»РёС†Р° СЂР°СЃС‡РµС‚РѕРІ:\n")
             f.write(header + '\n')
             for row in output_data:
                 f.write(f"{row[0]:<12.2f}{row[1]:<12.4f}{row[2]:<16.8f}{row[3]:<16.8E}{row[4]:<16.8E}{row[5]:<16.8E}{row[6]:<16.6E}{row[7]:<18.8E}{row[8]:<18.8E}\n")
-            f.write(f"\ny_ср = {y_mean:.4f}\n")
+            f.write(f"\ny_СЃСЂ = {y_mean:.4f}\n")
             f.write(f"R^2 = {R_squared_parabolic:.4f}\n")
-        print(f"Результаты, полученные при вычислении для параболической регрессии, сохранены в файл '{output_file}'.")
-        # Построение графика
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚С‹, РїРѕР»СѓС‡РµРЅРЅС‹Рµ РїСЂРё РІС‹С‡РёСЃР»РµРЅРёРё РґР»СЏ РїР°СЂР°Р±РѕР»РёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё, СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р» '{output_file}'.")
+        # РџРѕСЃС‚СЂРѕРµРЅРёРµ РіСЂР°С„РёРєР°
         sorted_indices = np.argsort(xi)
         xi_sorted = xi[sorted_indices]
         y_pred_sorted = y_pred[sorted_indices]
-        plt.plot(xi_sorted, y_pred_sorted, color='black', label='Параболическая регрессия')
+        plt.plot(xi_sorted, y_pred_sorted, color='black', label='РџР°СЂР°Р±РѕР»РёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ')
         return R_squared_parabolic
     except Exception as e:
-        print(f"Ошибка при вычислениях для параболической регрессии: {e}")
+        print(f"РћС€РёР±РєР° РїСЂРё РІС‹С‡РёСЃР»РµРЅРёСЏС… РґР»СЏ РїР°СЂР°Р±РѕР»РёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё: {e}")
         return None 
-# Необходимые рассчеты для полиномиальной регрессии, вывод результатов в файл и графическое отображение
+# РќРµРѕР±С…РѕРґРёРјС‹Рµ СЂР°СЃСЃС‡РµС‚С‹ РґР»СЏ РїРѕР»РёРЅРѕРјРёР°Р»СЊРЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё, РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р» Рё РіСЂР°С„РёС‡РµСЃРєРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
 def polynom_regression_process(xi, yi, n, output_file):
     try:
         xi_fifth, xi_sixth, a0, a1, a2, a3, a4, a5, a6, y_mean, y_pred, numenator, denominator, R_squared_polynom = polynom_regression(xi, yi, n)
-        # Сохранение данных в файл   
+        # РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»   
         with open(output_file, 'a') as f:
-            # Уравнение полиномиальной регрессии
+            # РЈСЂР°РІРЅРµРЅРёРµ РїРѕР»РёРЅРѕРјРёР°Р»СЊРЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё
             f.write("---------------------------------------------------------------------------------------------------\n")
-            f.write("Полиномиальная регрессия: y = {:.10f} + {:.10f} * x + {:.10f} * x^2 + {:.10f} * x^3 + {:.10f} * x^4 + {:.10f} * x^5 + {:.10f} * x^6\n".format(a0, a1, a2, a3, a4, a5, a6))
-            f.write("Коэффициенты:\na0 = {:.10f},\na1 = {:.10f},\na2 = {:.10f},\na3 = {:.10f},\na4 = {:.10f},\na5 = {:.10f},\na6 = {:.10f}\n".format(a0, a1, a2, a3, a4, a5, a6))
+            f.write("РџРѕР»РёРЅРѕРјРёР°Р»СЊРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ: y = {:.10f} + {:.10f} * x + {:.10f} * x^2 + {:.10f} * x^3 + {:.10f} * x^4 + {:.10f} * x^5 + {:.10f} * x^6\n".format(a0, a1, a2, a3, a4, a5, a6))
+            f.write("РљРѕСЌС„С„РёС†РёРµРЅС‚С‹:\na0 = {:.10f},\na1 = {:.10f},\na2 = {:.10f},\na3 = {:.10f},\na4 = {:.10f},\na5 = {:.10f},\na6 = {:.10f}\n".format(a0, a1, a2, a3, a4, a5, a6))
             output_data = np.column_stack((yi, xi, xi_fifth, xi_sixth, y_pred, numenator, denominator))
-            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'xi^5'.ljust(16) + 'xi^6'.ljust(16) + 'yi^p'.ljust(16) + '(yi^p - y_ср)^2'.ljust(18) + '(yi - y_ср)^2'.ljust(18)
-            f.write("Таблица расчетов:\n")
+            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'xi^5'.ljust(16) + 'xi^6'.ljust(16) + 'yi^p'.ljust(16) + '(yi^p - y_СЃСЂ)^2'.ljust(18) + '(yi - y_СЃСЂ)^2'.ljust(18)
+            f.write("РўР°Р±Р»РёС†Р° СЂР°СЃС‡РµС‚РѕРІ:\n")
             f.write(header + '\n')
             for row in output_data:
                 f.write(f"{row[0]:<12.2f}{row[1]:<12.4f}{row[2]:<16.8E}{row[3]:<16.8E}{row[4]:<16.8E}{row[5]:<18.8E}{row[6]:<18.8E}\n")
-            f.write(f"\ny_ср = {y_mean:.4f}\n")
+            f.write(f"\ny_СЃСЂ = {y_mean:.4f}\n")
             f.write(f"R^2 = {R_squared_polynom:.4f}\n")
-        print(f"Результаты, полученные при вычислении для параболической регрессии, сохранены в файл '{output_file}'.")
-        # Построение графика
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚С‹, РїРѕР»СѓС‡РµРЅРЅС‹Рµ РїСЂРё РІС‹С‡РёСЃР»РµРЅРёРё РґР»СЏ РїР°СЂР°Р±РѕР»РёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё, СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р» '{output_file}'.")
+        # РџРѕСЃС‚СЂРѕРµРЅРёРµ РіСЂР°С„РёРєР°
         sorted_indices = np.argsort(xi)
         xi_sorted = xi[sorted_indices]
         y_pred_sorted = y_pred[sorted_indices]
-        plt.plot(xi_sorted, y_pred_sorted, color='gray', label='Полиномиальная регрессия 6-й степени')
+        plt.plot(xi_sorted, y_pred_sorted, color='gray', label='РџРѕР»РёРЅРѕРјРёР°Р»СЊРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ 6-Р№ СЃС‚РµРїРµРЅРё')
         return R_squared_polynom
     except Exception as e:
-        print(f"Ошибка при вычислениях для полиномиальной регрессии: {e}")
+        print(f"РћС€РёР±РєР° РїСЂРё РІС‹С‡РёСЃР»РµРЅРёСЏС… РґР»СЏ РїРѕР»РёРЅРѕРјРёР°Р»СЊРЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё: {e}")
         return None   
-# Необходимые рассчеты для степенной регрессии, вывод результатов в файл и графическое отображение
+# РќРµРѕР±С…РѕРґРёРјС‹Рµ СЂР°СЃСЃС‡РµС‚С‹ РґР»СЏ СЃС‚РµРїРµРЅРЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё, РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р» Рё РіСЂР°С„РёС‡РµСЃРєРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
 def power_regression_process(xi, yi, n, output_file):
     try:
         ln_xi, ln_yi, ln_xi_squared, ln_yi_ln_xi, a0, a1, b0, b1, y_mean, ln_y_pred, numenator, denominator, R_squared_power = power_regression(xi, yi, n)
-        # Сохранение данных в файл   
+        # РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»   
         with open(output_file, 'a') as f:
-            # Уравнение степенной регрессии
+            # РЈСЂР°РІРЅРµРЅРёРµ СЃС‚РµРїРµРЅРЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё
             f.write("---------------------------------------------------------------------------------------------------\n")
-            f.write("Степенная регрессия: y = {:.10f} * x^{:.10f}\n".format(a0, a1))
-            f.write("Коэффициенты:\nb0 = {:.10f},\nb1 = {:.10f}\n\na0 = {:.10f},\na1 = {:.10f}\n".format(b0, b1, a0, a1))
+            f.write("РЎС‚РµРїРµРЅРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ: y = {:.10f} * x^{:.10f}\n".format(a0, a1))
+            f.write("РљРѕСЌС„С„РёС†РёРµРЅС‚С‹:\nb0 = {:.10f},\nb1 = {:.10f}\n\na0 = {:.10f},\na1 = {:.10f}\n".format(b0, b1, a0, a1))
             output_data = np.column_stack((yi, xi, ln_xi, ln_yi, ln_xi_squared, ln_yi_ln_xi, ln_y_pred, numenator, denominator))
-            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'ln_xi'.ljust(16) + 'ln_yi'.ljust(16) + 'ln_xi_squared'.ljust(16) + 'ln_yi_ln_xi'.ljust(16) +'ln_yi^p'.ljust(16) + '(ln_yi^p - ln_y_ср)^2'.ljust(22) + '(ln_yi - ln_y_ср)^2'.ljust(22)
-            f.write("Таблица расчетов:\n")
+            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'ln_xi'.ljust(16) + 'ln_yi'.ljust(16) + 'ln_xi_squared'.ljust(16) + 'ln_yi_ln_xi'.ljust(16) +'ln_yi^p'.ljust(16) + '(ln_yi^p - ln_y_СЃСЂ)^2'.ljust(22) + '(ln_yi - ln_y_СЃСЂ)^2'.ljust(22)
+            f.write("РўР°Р±Р»РёС†Р° СЂР°СЃС‡РµС‚РѕРІ:\n")
             f.write(header + '\n')
             for row in output_data:
                 f.write(f"{row[0]:<12.2f}{row[1]:<12.4f}{row[2]:<16.8f}{row[3]:<16.8f}{row[4]:<16.8f}{row[5]:<16.8f}{row[6]:<16.8f}{row[7]:<22.8f}{row[8]:<22.8f}\n")
-            f.write(f"\ny_ср = {y_mean:.4f}\n")
+            f.write(f"\ny_СЃСЂ = {y_mean:.4f}\n")
             f.write(f"R^2 = {R_squared_power:.4f}\n")
-        print(f"Результаты, полученные при вычислении для степенной регрессии, сохранены в файл '{output_file}'.")
-        # Построение графика
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚С‹, РїРѕР»СѓС‡РµРЅРЅС‹Рµ РїСЂРё РІС‹С‡РёСЃР»РµРЅРёРё РґР»СЏ СЃС‚РµРїРµРЅРЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё, СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р» '{output_file}'.")
+        # РџРѕСЃС‚СЂРѕРµРЅРёРµ РіСЂР°С„РёРєР°
         sorted_indices = np.argsort(xi)
         xi_sorted = xi[sorted_indices]
         y_pred_sorted = ln_y_pred[sorted_indices]
-        plt.plot(xi_sorted, np.exp(y_pred_sorted), color='yellow', label='Степенная регрессия')
+        plt.plot(xi_sorted, np.exp(y_pred_sorted), color='yellow', label='РЎС‚РµРїРµРЅРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ')
         return R_squared_power
     except Exception as e:
-        print(f"Ошибка при вычислениях для степенной регрессии: {e}")
+        print(f"РћС€РёР±РєР° РїСЂРё РІС‹С‡РёСЃР»РµРЅРёСЏС… РґР»СЏ СЃС‚РµРїРµРЅРЅРѕР№ СЂРµРіСЂРµСЃСЃРёРё: {e}")
         return None
-# Необходимые рассчеты для логарифмической регрессии, вывод результатов в файл и графическое отображение
+# РќРµРѕР±С…РѕРґРёРјС‹Рµ СЂР°СЃСЃС‡РµС‚С‹ РґР»СЏ Р»РѕРіР°СЂРёС„РјРёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё, РІС‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р» Рё РіСЂР°С„РёС‡РµСЃРєРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ
 def logarithmic_regression_process(xi, yi, n, output_file):
     try:
         a0, a1, ln_xi, ln_xi_yi, y_pred, numenator, denominator, R_squared_logarithmic = logarithmic_regression(xi, yi, n)
-        # Сохранение данных в файл   
+        # РЎРѕС…СЂР°РЅРµРЅРёРµ РґР°РЅРЅС‹С… РІ С„Р°Р№Р»   
         with open(output_file, 'a') as f:
-            # Уравнение логарифмической регрессии
+            # РЈСЂР°РІРЅРµРЅРёРµ Р»РѕРіР°СЂРёС„РјРёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё
             f.write("---------------------------------------------------------------------------------------------------\n")
-            f.write("Логарифмическая регрессия: y = {:.10f} + {:.10f} * ln(x)\n".format(a0, a1))
-            f.write("Коэффициенты:\na0 = {:.10f},\na1 = {:.10f}\n".format(a0, a1))
-            # Формирование таблицы расчетов
+            f.write("Р›РѕРіР°СЂРёС„РјРёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ: y = {:.10f} + {:.10f} * ln(x)\n".format(a0, a1))
+            f.write("РљРѕСЌС„С„РёС†РёРµРЅС‚С‹:\na0 = {:.10f},\na1 = {:.10f}\n".format(a0, a1))
+            # Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ С‚Р°Р±Р»РёС†С‹ СЂР°СЃС‡РµС‚РѕРІ
             output_data = np.column_stack((yi, xi, ln_xi, ln_xi_yi, y_pred, numenator, denominator))
-            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'ln(xi)'.ljust(16) + 'ln(xi)*yi'.ljust(16) + 'yi^p'.ljust(16) + '(yi^p - y_ср)^2'.ljust(18) + '(yi - y_ср)^2'.ljust(18)
-            f.write("Таблица расчетов:\n")
+            header = 'yi'.ljust(12) + 'xi'.ljust(12) + 'ln(xi)'.ljust(16) + 'ln(xi)*yi'.ljust(16) + 'yi^p'.ljust(16) + '(yi^p - y_СЃСЂ)^2'.ljust(18) + '(yi - y_СЃСЂ)^2'.ljust(18)
+            f.write("РўР°Р±Р»РёС†Р° СЂР°СЃС‡РµС‚РѕРІ:\n")
             f.write(header + '\n')
             for row in output_data:
                 f.write(f"{row[0]:<12.2f}{row[1]:<12.4f}{row[2]:<16.8f}{row[3]:<16.8f}{row[4]:<16.8f}{row[5]:<18.8f}{row[6]:<18.8f}\n")
-            f.write(f"\ny_ср = {np.mean(yi):.4f}\n")
+            f.write(f"\ny_СЃСЂ = {np.mean(yi):.4f}\n")
             f.write(f"R^2 = {R_squared_logarithmic:.4f}\n")
-        print(f"Результаты, полученные при вычислении для логарифмической регрессии, сохранены в файл '{output_file}'.")
-        # Построение графика
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚С‹, РїРѕР»СѓС‡РµРЅРЅС‹Рµ РїСЂРё РІС‹С‡РёСЃР»РµРЅРёРё РґР»СЏ Р»РѕРіР°СЂРёС„РјРёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё, СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р» '{output_file}'.")
+        # РџРѕСЃС‚СЂРѕРµРЅРёРµ РіСЂР°С„РёРєР°
         sorted_indices = np.argsort(xi)
         xi_sorted = xi[sorted_indices]
         y_pred_sorted = y_pred[sorted_indices]
-        plt.plot(xi_sorted, y_pred_sorted, color='brown', label='логарифмическая регрессия')
+        plt.plot(xi_sorted, y_pred_sorted, color='brown', label='Р»РѕРіР°СЂРёС„РјРёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ')
         return R_squared_logarithmic
     except Exception as e:
-        print(f"Ошибка при вычислениях для логарифмической регрессии: {e}")
+        print(f"РћС€РёР±РєР° РїСЂРё РІС‹С‡РёСЃР»РµРЅРёСЏС… РґР»СЏ Р»РѕРіР°СЂРёС„РјРёС‡РµСЃРєРѕР№ СЂРµРіСЂРµСЃСЃРёРё: {e}")
         return None   
     
-# Функция для проверки и загрузки данных из файла
+# Р¤СѓРЅРєС†РёСЏ РґР»СЏ РїСЂРѕРІРµСЂРєРё Рё Р·Р°РіСЂСѓР·РєРё РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°
 def load_and_validate_data(input_file):
     try:
         with open(input_file, 'r') as file:
@@ -545,23 +545,23 @@ def load_and_validate_data(input_file):
         xi = data[:, 1]
 
         if yi.shape[0] != xi.shape[0]:
-            raise ValueError("Размерности массивов yi и xi должны быть равными.")
+            raise ValueError("Р Р°Р·РјРµСЂРЅРѕСЃС‚Рё РјР°СЃСЃРёРІРѕРІ yi Рё xi РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СЂР°РІРЅС‹РјРё.")
 
         return xi, yi
     except Exception as e:
-        print(f"Ошибка при чтении или проверке данных: {e}")
+        print(f"РћС€РёР±РєР° РїСЂРё С‡С‚РµРЅРёРё РёР»Рё РїСЂРѕРІРµСЂРєРµ РґР°РЅРЅС‹С…: {e}")
         return None, None
-# Основная функция для обработки данных и построения графика
+# РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РґР°РЅРЅС‹С… Рё РїРѕСЃС‚СЂРѕРµРЅРёСЏ РіСЂР°С„РёРєР°
 def main():
-    # Организация работы с файлами и проверка полученных данных из файла
-    input_file = input("Введите путь к входному файлу (по умолчанию 'input_data.txt'): ") or "input_data.txt"
-    output_file = input("Введите путь к выходному файлу для сохранения результата (по умолчанию 'output_data.txt'): ") or "output_data.txt"
+    # РћСЂРіР°РЅРёР·Р°С†РёСЏ СЂР°Р±РѕС‚С‹ СЃ С„Р°Р№Р»Р°РјРё Рё РїСЂРѕРІРµСЂРєР° РїРѕР»СѓС‡РµРЅРЅС‹С… РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°
+    input_file = input("Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ Рє РІС…РѕРґРЅРѕРјСѓ С„Р°Р№Р»Сѓ (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 'input_data.txt'): ") or "input_data.txt"
+    output_file = input("Р’РІРµРґРёС‚Рµ РїСѓС‚СЊ Рє РІС‹С…РѕРґРЅРѕРјСѓ С„Р°Р№Р»Сѓ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ СЂРµР·СѓР»СЊС‚Р°С‚Р° (РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 'output_data.txt'): ") or "output_data.txt"
     xi, yi = load_and_validate_data(input_file)
     if xi is None or yi is None:
-        print("Загрузка данных не удалась.")
+        print("Р—Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С… РЅРµ СѓРґР°Р»Р°СЃСЊ.")
         return
     
-    # Словарь для хранения коэффициентов детерминации (R^2) для разных типов регрессий
+    # РЎР»РѕРІР°СЂСЊ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ РґРµС‚РµСЂРјРёРЅР°С†РёРё (R^2) РґР»СЏ СЂР°Р·РЅС‹С… С‚РёРїРѕРІ СЂРµРіСЂРµСЃСЃРёР№
     regression_r_squared = {
         "linear_direct": None,   
         "linear_reverse": None,
@@ -574,63 +574,63 @@ def main():
         "power": None
     }
 
-    # Построение графика
+    # РџРѕСЃС‚СЂРѕРµРЅРёРµ РіСЂР°С„РёРєР°
     plt.figure(figsize=(10, 6))
     
-    ### ЭТАП I ###
+    ### Р­РўРђРџ I ###
     with open(output_file, 'w') as f:
-        f.write("ЭТАП I.Вычисление общих данных для поставленной задачи.\n\n")
+        f.write("Р­РўРђРџ I.Р’С‹С‡РёСЃР»РµРЅРёРµ РѕР±С‰РёС… РґР°РЅРЅС‹С… РґР»СЏ РїРѕСЃС‚Р°РІР»РµРЅРЅРѕР№ Р·Р°РґР°С‡Рё.\n\n")
     result = initial_process(xi, yi, output_file)
     if result is None:
         return
-    ### ЭТАП II ###
+    ### Р­РўРђРџ II ###
     with open(output_file, 'a') as f:
-        f.write("ЭТАП II. Вычисление на основе полученных данных уравнений прямой и обратной линейной, гиперболической, экспоненциальной, параболической, полиномиальной регрессий\n")
+        f.write("Р­РўРђРџ II. Р’С‹С‡РёСЃР»РµРЅРёРµ РЅР° РѕСЃРЅРѕРІРµ РїРѕР»СѓС‡РµРЅРЅС‹С… РґР°РЅРЅС‹С… СѓСЂР°РІРЅРµРЅРёР№ РїСЂСЏРјРѕР№ Рё РѕР±СЂР°С‚РЅРѕР№ Р»РёРЅРµР№РЅРѕР№, РіРёРїРµСЂР±РѕР»РёС‡РµСЃРєРѕР№, СЌРєСЃРїРѕРЅРµРЅС†РёР°Р»СЊРЅРѕР№, РїР°СЂР°Р±РѕР»РёС‡РµСЃРєРѕР№, РїРѕР»РёРЅРѕРјРёР°Р»СЊРЅРѕР№ СЂРµРіСЂРµСЃСЃРёР№\n")
     sum_xi, sum_yi, n, a0, a1, b0, b1 = result
     
-    # Прямая линейная регрессия
+    # РџСЂСЏРјР°СЏ Р»РёРЅРµР№РЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
     result = direct_linear_regression_process(xi, yi, sum_yi, n, a0, a1, output_file)
     if result is None:
         return
     regression_r_squared['linear_direct'] = result
     
-    # Обратная линейная регрессия
+    # РћР±СЂР°С‚РЅР°СЏ Р»РёРЅРµР№РЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
     result = reverse_linear_regression_process(xi, yi, sum_xi, n, b0, b1, output_file)
     if result is None:
         return
     regression_r_squared['linear_reverse'] = result
     
-    # Экспоненциальная регрессия
+    # Р­РєСЃРїРѕРЅРµРЅС†РёР°Р»СЊРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
     result = exponential_regression_process(xi, yi, n, output_file)
     if result is None:
         return
     regression_r_squared['exponential'] = result
     
-    # Гиперболическая регрессия
+    # Р“РёРїРµСЂР±РѕР»РёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
     result = hyperbolic_regression_process(xi, yi, n, output_file)
     if result is None:
         return
     regression_r_squared['hyperbolic'] = result
     
-    # Параболическая регрессия
+    # РџР°СЂР°Р±РѕР»РёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
     result = parabolic_regression_process(xi, yi, n, output_file)
     if result is None:
         return
     regression_r_squared['parabolic'] = result
     
-    # Полиномиальная регрессия
+    # РџРѕР»РёРЅРѕРјРёР°Р»СЊРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
     result = polynom_regression_process(xi, yi, n, output_file)
     if result is None:
         return
     regression_r_squared['polynomial'] = result
     
-    # Степенная регрессия
+    # РЎС‚РµРїРµРЅРЅР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
     result = power_regression_process(xi, yi, n, output_file)
     if result is None:
         return
     regression_r_squared['power'] = result
     
-    # Логарифмическая регрессия
+    # Р›РѕРіР°СЂРёС„РјРёС‡РµСЃРєР°СЏ СЂРµРіСЂРµСЃСЃРёСЏ
     result = logarithmic_regression_process(xi, yi, n, output_file)
     if result is None:
         return
@@ -639,17 +639,17 @@ def main():
     plt.legend()
     plt.show()
     
-    # Отфильтровываем только те модели, у которых есть значение R^2 (не None)
+    # РћС‚С„РёР»СЊС‚СЂРѕРІС‹РІР°РµРј С‚РѕР»СЊРєРѕ С‚Рµ РјРѕРґРµР»Рё, Сѓ РєРѕС‚РѕСЂС‹С… РµСЃС‚СЊ Р·РЅР°С‡РµРЅРёРµ R^2 (РЅРµ None)
     filtered_regression_r_squared = {key: value for key, value in regression_r_squared.items() if value is not None}
-    # Находим модель с максимальным значением R^2 среди отфильтрованных
+    # РќР°С…РѕРґРёРј РјРѕРґРµР»СЊ СЃ РјР°РєСЃРёРјР°Р»СЊРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј R^2 СЃСЂРµРґРё РѕС‚С„РёР»СЊС‚СЂРѕРІР°РЅРЅС‹С…
     best_model = max(filtered_regression_r_squared, key=filtered_regression_r_squared.get)
-    # Записываем результат в файл
+    # Р—Р°РїРёСЃС‹РІР°РµРј СЂРµР·СѓР»СЊС‚Р°С‚ РІ С„Р°Р№Р»
     with open(output_file, 'a') as f:
         f.write("=====================================================================================================\n")
-        f.write("Лучшая модель по величине значения коэффициента детерминации R^2 = {:.10f}: {}\n".format(filtered_regression_r_squared[best_model], best_model))
+        f.write("Р›СѓС‡С€Р°СЏ РјРѕРґРµР»СЊ РїРѕ РІРµР»РёС‡РёРЅРµ Р·РЅР°С‡РµРЅРёСЏ РєРѕСЌС„С„РёС†РёРµРЅС‚Р° РґРµС‚РµСЂРјРёРЅР°С†РёРё R^2 = {:.10f}: {}\n".format(filtered_regression_r_squared[best_model], best_model))
 
 
 
-# Старт программы
+# РЎС‚Р°СЂС‚ РїСЂРѕРіСЂР°РјРјС‹
 if __name__ == "__main__":
     main()
