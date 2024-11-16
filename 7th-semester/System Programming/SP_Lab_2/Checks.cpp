@@ -259,10 +259,10 @@ QString Checks::CheckProgrammDownloadAddress(const QString& download_address) {
         if (!CheckAmountMemoryForAddress(download_address)) {
             return "Строка 1: Адрес загрузки программы содержит недопустимые символы! Текущий адрес загрузки: " + download_address + ".";
         }
-        const int MAX_LOAD_ADDRESS_VALUE{16777215}; // FFFFFF в 16 СИ.
+        const int MAX_LOAD_ADDRESS_VALUE{0}; //ПвПФ.
         int load_address = Convert::ConvertHexToDec(download_address);
         if (load_address > MAX_LOAD_ADDRESS_VALUE) {
-            return "Строка 1: Переполнение счетчика адреса! СА = " + QString::number(load_address) + ".\n";
+            return "Строка 1: АЗ программы должен быть равен 0!\n";
         }
     }
 

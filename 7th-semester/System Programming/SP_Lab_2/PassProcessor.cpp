@@ -472,7 +472,7 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                 return false;
                             }
                             int opcode = 0;
-                            if ((operand1[0] == '[') && (operand1[operand1.length() - 1] == ']') && (this->load_address == 0)){//Относительная адресация = 2б.
+                            if ((operand1[0] == '[') && (operand1[operand1.length() - 1] == ']')){//Относительная адресация = 2б.
                                 opcode = checks.GetDecOpcode(TCO_elem.binary_code, 2);
                             }else{//Прямая адресация = 1б.
                                 opcode = checks.GetDecOpcode(TCO_elem.binary_code, 1);
@@ -500,7 +500,7 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                                 return false;
                             }
                             int opcode = 0;
-                            if ((operand1[0] == '[') && (operand1[operand1.length() - 1] == ']') && (this->load_address == 0)){//Относительная адресация = 2б.
+                            if ((operand1[0] == '[') && (operand1[operand1.length() - 1] == ']')){//Относительная адресация = 2б.
                                 opcode = checks.GetDecOpcode(TCO_elem.binary_code, 2);
                             }else{//Прямая адресация = 1б.
                                 opcode = checks.GetDecOpcode(TCO_elem.binary_code, 1);
@@ -586,14 +586,12 @@ bool PassProcessor::SecondPass(QTableWidget *tableWidget_OMH,  QTableWidget* tab
         -----------------------------*/
         //Если найдена директива END, то сгружается ТМ, формируется запись-конец и запись двоичного кода завершается.
         if (!sup_table[i].operation_code.isEmpty() && sup_table[i].operation_code == "END"){
-            if (this->load_address == 0){
-                //Сгружаем ТМ в двоичный код.
-                for (int row = 0; row < tableWidget_modTable->rowCount() - 1; ++row){
-                    QTableWidgetItem* item = tableWidget_modTable->item(row, 0);
-                    if (item){
-                        QString OAMK = item->text();
-                        textEdit_binary_code->append("M_" + OAMK.rightJustified(6, '0'));
-                    }
+            //Сгружаем ТМ в двоичный код.
+            for (int row = 0; row < tableWidget_modTable->rowCount() - 1; ++row){
+                QTableWidgetItem* item = tableWidget_modTable->item(row, 0);
+                if (item){
+                    QString OAMK = item->text();
+                    textEdit_binary_code->append("M_" + OAMK.rightJustified(6, '0'));
                 }
             }
             //Формируем запись-конец.
@@ -651,13 +649,11 @@ bool PassProcessor::SecondPass(QTableWidget *tableWidget_OMH,  QTableWidget* tab
             }
             else if (type_addr == 1){//Операндная часть обязана быть - прямая адресация (обработано на первом проходе).
                 QString address{};
-                //Поиск СИ в ТСИ (операнд точно должен быть СИ).
+                //Поиск СИ в ТСИ (операнд точно СИ).
                 if (symbolic_table.Find(sup_table[i].operand1, address)){
                     binary_view = sup_table[i].operation_code;
-                    if (this->load_address == 0){
-                        //Необходимо занести в ТМ ОАМК.
-                        this->manager.AddStringToTM(tableWidget_modTable, sup_table[i].address_counter);
-                    }
+                    //Необходимо занести в ТМ ОАМК.
+                    this->manager.AddStringToTM(tableWidget_modTable, sup_table[i].address_counter);
                     data = address;
                 }
                 else{
@@ -668,10 +664,7 @@ bool PassProcessor::SecondPass(QTableWidget *tableWidget_OMH,  QTableWidget* tab
             }
             else{//Операндная часть обязана быть - относительная адресация (обработано на первом проходе).
                 QString address{};
-                QString operand = sup_table[i].operand1;
-                if (this->load_address == 0){ //Относительная адресация в случае ПвПФ.
-                    operand = sup_table[i].operand1.mid(1, sup_table[i].operand1.length() - 2);
-                }
+                QString operand = sup_table[i].operand1.mid(1, sup_table[i].operand1.length() - 2);
                 //Поиск СИ в ТСИ (операнд точно должен быть СИ).
                 if (symbolic_table.Find(operand, address)){
                     binary_view = sup_table[i].operation_code;
