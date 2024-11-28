@@ -118,6 +118,8 @@ void MainWindow::on_textEdit_source_textChanged()
 //Если изменяется выбор в ComboBox - загружаются исходный текст ассемблирующей программы и ТКО в соответствии с выбранным пунктом.
 void MainWindow::on_comboBox_currentIndexChanged(int index)
 {
+    //Запоминание выбранного типа адресации.
+    this->type_addr = index;
     //Очистка вспомогательной таблицы, ТСИ, заголовка объектного модуля, ТМ и двоичного кода.
     ui->tableWidget_auxTable->clear();
     ui->tableWidget_auxTable->setColumnCount(0);
@@ -192,7 +194,7 @@ void MainWindow::on_pushButton_first_clicked()
     ui->tableWidget_modTable->setRowCount(0);
     ui->textEdit_SPE->clear();
 
-    if(!this->PP.FirstPass(source_code, opcode_table, ui->tableWidget_auxTable, sup_table, ui->tableWidget_ToSN,
+    if(!this->PP.FirstPass(this->type_addr, source_code, opcode_table, ui->tableWidget_auxTable, sup_table, ui->tableWidget_ToSN,
                             symbolic_table, ui->textEdit_FPE)){
         //Очищаем элементы интерфейса.
         ui->tableWidget_auxTable->clear();

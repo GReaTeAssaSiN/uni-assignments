@@ -10,7 +10,7 @@
 #include "QTextEdit"
 
 //Первый проход двухпросмотровой схемы простого ассемблера.
-bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_code,
+bool PassProcessor::FirstPass(const int& type_addr, const std::vector<AssemblerInstruction> &source_code,
                               const TableCodeOperation &TCO,
                               QTableWidget *tableWidget_auxTable,
                               std::vector<SupportTable>& sup_table,
@@ -473,9 +473,20 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                             }
                             int opcode = 0;
                             if ((operand1[0] == '[') && (operand1[operand1.length() - 1] == ']')){//Относительная адресация = 2б.
-                                opcode = checks.GetDecOpcode(TCO_elem.binary_code, 2);
+                                if (type_addr == 0){
+                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Обнаружена попытка относительной адресации. Выбранная адресация - прямая!");
+                                    return false;
+                                }
+                                else{
+                                    opcode = checks.GetDecOpcode(TCO_elem.binary_code, 2);
+                                }
                             }else{//Прямая адресация = 1б.
-                                opcode = checks.GetDecOpcode(TCO_elem.binary_code, 1);
+                                if (type_addr != 1)
+                                    opcode = checks.GetDecOpcode(TCO_elem.binary_code, 1);
+                                else{
+                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Обнаружена попытка прямой адресации. Выбранная адресация - смешанная!");
+                                    return false;
+                                }
                             }
                             if (opcode != -1){
                                 //Выводим в вспомогательную таблицу строчку.
@@ -501,9 +512,20 @@ bool PassProcessor::FirstPass(const std::vector<AssemblerInstruction> &source_co
                             }
                             int opcode = 0;
                             if ((operand1[0] == '[') && (operand1[operand1.length() - 1] == ']')){//Относительная адресация = 2б.
-                                opcode = checks.GetDecOpcode(TCO_elem.binary_code, 2);
+                                if (type_addr == 0){
+                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Обнаружена попытка относительной адресации. Выбранная адресация - прямая!");
+                                    return false;
+                                }
+                                else{
+                                    opcode = checks.GetDecOpcode(TCO_elem.binary_code, 2);
+                                }
                             }else{//Прямая адресация = 1б.
-                                opcode = checks.GetDecOpcode(TCO_elem.binary_code, 1);
+                                if (type_addr != 1)
+                                    opcode = checks.GetDecOpcode(TCO_elem.binary_code, 1);
+                                else{
+                                    textEdit_FPE->append("Строка " + QString::number(i+1) + ": Обнаружена попытка прямой адресации. Выбранная адресация - смешанная!");
+                                    return false;
+                                }
                             }
                             if (opcode != -1){
                                 //Выводим в вспомогательную таблицу строчку.

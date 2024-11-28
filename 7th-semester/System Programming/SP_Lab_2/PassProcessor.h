@@ -22,7 +22,7 @@ class PassProcessor{
 
 
 public:
-    bool FirstPass(const std::vector<AssemblerInstruction>& source_code, const TableCodeOperation& TCO,
+    bool FirstPass(const int& type_addr, const std::vector<AssemblerInstruction>& source_code, const TableCodeOperation& TCO,
                    QTableWidget* tableWidget_auxTable, std::vector<SupportTable>& sup_table,
                    QTableWidget* tableWidget_ToSN, SymbolicNameTable& symbolic_table, QTextEdit* textEdit_FPE);
     bool SecondPass(QTableWidget* tableWidget_OMH, QTableWidget* tableWidget_modTable, QTextEdit* textEdit_SPE, QTextEdit* textEdit_binary_code,

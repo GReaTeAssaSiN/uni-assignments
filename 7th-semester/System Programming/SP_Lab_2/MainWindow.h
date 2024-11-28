@@ -25,6 +25,7 @@ private:
     std::vector<SupportTable> sup_table{};;
     SymbolicNameTable symbolic_table{};
     PassProcessor PP{};
+    int type_addr{};
 
 public:
     MainWindow(QWidget *parent = nullptr);
