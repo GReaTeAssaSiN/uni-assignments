@@ -953,22 +953,19 @@ bool PassProcessor::SecondPass(QTableWidget *tableWidget_OMH,  QTableWidget* tab
                 }
                 else{//Операндная часть обязана быть - относительная адресация (обработано на первом проходе).
                     QString address{}, name_type{};
-                    QString operand = sup_table[i].operand1.mid(1, sup_table[i].operand1.length() - 2);
+                    QString operand = operand1.mid(1, operand1.length() - 2);
                     //Поиск СИ в ТСИ (операнд точно должен быть СИ).
                     if (symbolic_table.Find(operand, address, current_CSEC, name_type)){
                         binary_view = sup_table[i].operation_code;
 
                         //Необходимо занести в ТМ ОАМК + ВС, в двоичный код - адрес СИ = 000000.
                         if (name_type == "ВС"){
-                            // this->manager.AddStringToTM(tableWidget_modTable, label + " " + operand, current_CSEC);
-                            // data = address.rightJustified(6, '0');
                             textEdit_SPE->append("Строка " + QString::number(i+1) + ": Неверно задан операнд, т.к. тип адресации (относительная) не может быть "
                                                                                       "использован со внешними ссылками!\n");
                             return false;
                         }
                         //Иначе в двоичный код - смещение = ОАСИ из ТСИ - СА.
                         else{
-                            this->manager.AddStringToTM(tableWidget_modTable, label, current_CSEC);
                             data = Convert::SubTwoHexNumbers(address, sup_table[i + 1].address_counter);;
                         }
                     }
