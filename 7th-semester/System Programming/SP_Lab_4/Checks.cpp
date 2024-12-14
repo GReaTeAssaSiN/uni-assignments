@@ -179,7 +179,7 @@ bool Checks::CheckAddressCounterAvailable(QTextEdit* fpe_text, const int& row, c
     return true;
 }
 //Проверка каждой строки исходного кода ассмеблирующей программы.
-bool Checks::CheckRowSourceCode(QTextEdit *fpe_text, const int &row, QString& prog_name, const QString &label, const QString &mnemonic_code)
+bool Checks::CheckRowSourceCode(QTextEdit *fpe_text, const int &row, QString& prog_name, const QString &label, const QString &mnemonic_code, const CodeOperationTable &opCode_table)
 {
     /*ПРОВЕРКА МЕТКИ*/
     //Длина метки.
@@ -198,9 +198,8 @@ bool Checks::CheckRowSourceCode(QTextEdit *fpe_text, const int &row, QString& pr
             return false;
         }
         //Совпадение метки по названию.
-        if (!CheckIncorrectName(label))
-        {
-            fpe_text->append("Строка " + QString::number(row + 1) + (row == 0 ? (": Название программы") : (": Символическое имя")) + " совпадает с директивой или регистром.\n");
+        if (!CheckIncorrectName(label) || CheckSymbolicNameIsCommand(opCode_table, label)){//Совпадение метки по названию (зарезервированное слово).
+            fpe_text->append("Строка " + QString::number(row + 1) + (row == 0 ? (": Название программы") : (": Символическое имя")) + " совпадает с директивой, регистром или командой.\n");
             return false;
         }
         if (row != 0 && label == prog_name)
@@ -267,7 +266,7 @@ QString Checks::CheckProgramDownloadAddress(const QString& download_address)
 QString Checks::CheckOtherOperandPart(const QString &second_operand, const QString& mnemonic_code, const int& row)
 {
     if (!second_operand.isEmpty()){
-        return "Предупреждение: Строка " + QString::number(row + 1) + ": Второй операнд после директивы " + mnemonic_code + " рассматриваться не будет!\n"
+        return "Строка " + QString::number(row + 1) + ": Второй операнд после директивы " + mnemonic_code + " не должен быть!\n"
                                                                                                                             "Операнд: " + second_operand + ".\n";
     }
     return "";
@@ -323,7 +322,7 @@ bool Checks::CheckCorrectAmountMemoryForHexNumber(const QString &amount_memory)
     if (amount_memory.startsWith('X'))
     {
         QStringList parts = amount_memory.split('\'');
-        if (parts.size() == 3 && parts[2].isEmpty() && parts[0].length() == 1 && !parts[1].isEmpty() && parts[1].length() % 2 == 0)
+        if (parts.size() == 3 && parts[2].isEmpty() && parts[0].length() == 1 && !parts[1].isEmpty())
         {
             return true;
         }
@@ -399,8 +398,12 @@ bool Checks::CheckToSNForCorrectAddress(QTextEdit *textEdit_Errors, QTableWidget
     return true;
 }
 
-bool Checks::CheckSymbolicNameInOperandPart(QString operand, QTextEdit* textEdit_Errors, const int& row)
+//Проверка операндной части на корректную метку.
+bool Checks::CheckSymbolicNameInOperandPart(QString operand, QTextEdit* textEdit_Errors, const int& row, const CodeOperationTable& opCode_table)
 {
+    if (row == 1){
+        qDebug() << 123;
+    }
     //Длина метки.
     if (!CheckLengthSymbolicName(operand))
     {
@@ -413,6 +416,21 @@ bool Checks::CheckSymbolicNameInOperandPart(QString operand, QTextEdit* textEdit
         textEdit_Errors->append( "Строка " + QString::number(row + 1) + ": Символическое имя содержит недопустимые символы или начинается не с буквы!\n");
         return false;
     }
+    //Совпадение метки.
+    if (CheckSymbolicNameIsCommand(opCode_table, operand) || !CheckIncorrectName(operand)){
+        textEdit_Errors->append("Строка " + QString::number(row + 1) + (row == 0 ? (": Название программы") : (": Символическое имя")) + " совпадает с директивой, регистром или командой.\n");
+        return false;
+    }
+    return true;
+}
+
+//Проверка совпадения СИ с коммандой в ТКО.
+bool Checks::CheckSymbolicNameIsCommand(const CodeOperationTable &opcode_table, const QString& label)
+{
+    CodeOperation TCO_elem;//Для получения элемента ТКО.
+    if (opcode_table.find(label, TCO_elem))
+        return true;
+    return false;
 }
 
 

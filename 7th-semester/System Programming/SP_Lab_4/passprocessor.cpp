@@ -59,6 +59,10 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
         if (!check.CorrectTableCodeOperation(opCode_table, textEdit_Errors))
             return false;
     }
+    if (i > 0 && !start_dir_flag){
+        textEdit_Errors->append("Строка " + QString::number(i + 1) + ": Не обнаружена директива START!\n");
+        return false;
+    }
     //Извлекаем текущую инструкцию.
     const AssemblerInstruction instruction = textEdit_source[i];
     //Переменные для записи двоичного представления команд и данных (адрес метки, число, строка и тд.).
@@ -86,7 +90,7 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
         return true;
 
     //Проверка строки исходного текста программы на корректность.
-    if (!check.CheckRowSourceCode(textEdit_Errors, i, this->prog_name, label, mnemonic))
+    if (!check.CheckRowSourceCode(textEdit_Errors, i, this->prog_name, label, mnemonic, opCode_table))
     {
         return false;
     }
@@ -175,6 +179,7 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                         if (error != "")
                         {
                             textEdit_Errors->append(error);
+                            return false;
                         }
 
                         //Устанавливаем Адрес загрузки программы и увеличиваем СА = СА + Адрес загрузки программы (СА = Адрес загрузки программы).
@@ -230,6 +235,7 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                             QString error = check.CheckOtherOperandPart(operand2, mnemonic, i);
                             if (error != ""){
                                 textEdit_Errors->append(error);
+                                return false;
                             }
                             //Выводим в двоичный код строчку.
                             QString str_AC = Convert::DecToHex(addressCounter).rightJustified(6, '0');
@@ -303,9 +309,9 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                                                             Convert::DecToHex(binary_opCode.length() + data.length()).rightJustified(2, '0') +
                                                             (binary_opCode.isEmpty() ? "" : "\t") + binary_opCode +
                                                             (data.isEmpty() ? "" : "\t") + data);
-                                    //Увеличваем СА = СА + кол-во рез. памяти (длина числа / 2, 2 символа = 1 байт).
+                                    //Увеличваем СА = СА + кол-во рез. памяти (длина числа / 2 + остаток, 2 символа = 1 байт).
                                     int operand_length = operand1.split('\'')[1].length();
-                                    this->addressCounter += operand_length / 2;
+                                    this->addressCounter += operand_length / 2 + operand_length % 2;
                                 }
                                 //Иначе под юникодную строку или ошибка.
                                 else
@@ -343,6 +349,7 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                             if (error != "")
                             {
                                 textEdit_Errors->append(error);
+                                return false;
                             }
                         }
                         //Иначе ошибка в задании операнда - его нет.
@@ -399,6 +406,7 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                             QString error = check.CheckOtherOperandPart(operand2, mnemonic, i);
                             if (error != ""){
                                 textEdit_Errors->append(error);
+                                return false;
                             }
                         }
                         //Операнд не может быть пустым.
@@ -455,6 +463,7 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                             if (error != "")
                             {
                                 textEdit_Errors->append(error);
+                                return false;
                             }
                         }
                         //Операнд не может быть пустым.
@@ -511,6 +520,7 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                             if (error != "")
                             {
                                 textEdit_Errors->append(error);
+                                return false;
                             }
                         }
                         //Операнд не может быть пустым.
@@ -533,7 +543,7 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
             {
                 //Получение команды из ТКО.
                 CodeOperation opCode{};
-                //Если оманда найдена.
+                //Если команда найдена.
                 if (opCode_table.find(mnemonic.toUpper(), opCode))
                 {
                     //Различная обработка в зависимости от байт команды - обработка общая, не специализрованная на определенные команды.
@@ -548,11 +558,10 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                         {
                             //Выводим в вспомогательную таблицу строчку.
                             QString str_AC = Convert::DecToHex(addressCounter).rightJustified(6, '0');
-                            //Один операнд-число (проверка непосредственной адресации в первом проходе).
-                            if (!operand1.isEmpty() && operand2.isEmpty())
+                            if (!operand1.isEmpty() || !operand2.isEmpty())
                             {
-                                binary_opCode = Convert::DecToHex(opcode).rightJustified(2, '0');
-                                data = Convert::DecToHex(operand1.toInt()).rightJustified(2,'0');
+                                textEdit_Errors->append("Строка " + QString::number(i + 1) + ": Данная команда не может иметь операндов!");
+                                return false;
                             }
                             //Нет операндов.
                             else
@@ -569,8 +578,9 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                             //Операнды не учитываются.
                             if (!operand1.isEmpty() || !operand2.isEmpty())
                             {
-                                textEdit_Errors->append("Предупреждение: Строка " + QString::number(i + 1) + ": Операнды учитываться не будут в команде " +
+                                textEdit_Errors->append("Строка " + QString::number(i + 1) + ": Операнды не должны быть в команде " +
                                                  opCode.mnemonic_code + "!\n");
+                                return false;
                             }
                         }
                     }
@@ -612,8 +622,9 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                                     //Второй операнд не учитывается.
                                     if (!operand2.isEmpty())
                                     {
-                                        textEdit_Errors->append("Предупреждение: Строка " + QString::number(i + 1) + ": Второй операнд учитываться не будет в команде " +
+                                        textEdit_Errors->append("Строка " + QString::number(i + 1) + ": Второй операнл не должен быть в команде " +
                                                          opCode.mnemonic_code + "!\nОперанд: " + operand2 + ".\n");
+                                        return false;
                                     }
                                 }
                             }
@@ -682,7 +693,7 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                             }
                             else
                             {
-                                if (!check.CheckSymbolicNameInOperandPart(operand1, textEdit_Errors, i)){
+                                if (!check.CheckSymbolicNameInOperandPart(operand1, textEdit_Errors, i, opCode_table)){
                                     return false;
                                 }
                                 binary_opCode = Convert::DecToHex(opcode).rightJustified(2, '0');
@@ -700,8 +711,9 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                             //Второй операнд не учитывается.
                             if (!operand2.isEmpty())
                             {
-                                textEdit_Errors->append("Предупреждение: Строка " + QString::number(i + 1) + ": Второй операнд учитываться не будет в команде " +
+                                textEdit_Errors->append("Строка " + QString::number(i + 1) + ": Второй операнд не должен быть в команде " +
                                                  opCode.mnemonic_code + "!\nОперанд: " + operand2 + ".\n");
+                                return false;
                             }
                         }
                     }
@@ -733,7 +745,7 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                             }
                             else
                             {
-                                if (!check.CheckSymbolicNameInOperandPart(operand1, textEdit_Errors, i)){
+                                if (!check.CheckSymbolicNameInOperandPart(operand1, textEdit_Errors, i, opCode_table)){
                                     return false;
                                 }
                                 binary_opCode = Convert::DecToHex(opcode).rightJustified(2, '0');
@@ -751,8 +763,9 @@ bool PassProcessor::OneStep(QTextEdit *textEdit_Errors, const std::vector<Assemb
                             //Второй операнд не учитывается.
                             if (!operand2.isEmpty())
                             {
-                                textEdit_Errors->append("Предупреждение: Строка " + QString::number(i+1) + ": Второй операнд учитываться не будет в команде " +
+                                textEdit_Errors->append("Строка " + QString::number(i+1) + ": Второй операнд не должен быть в команде " +
                                                  opCode.mnemonic_code + "!\nОперанд: " + operand2 + ".\n");
+                                return false;
                             }
                         }
                     }

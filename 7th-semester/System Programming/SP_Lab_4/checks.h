@@ -14,6 +14,7 @@ private:
     bool CheckCharsSymbolicName(const QString& symbolic_name);
     bool CheckIncorrectName(const QString& name);
     bool CheckCharsMCOP(const QString& mnemonic_code);
+    bool CheckSymbolicNameIsCommand(const CodeOperationTable &opcode_table, const QString& label);
 
 public:
     Checks() = default;
@@ -21,7 +22,7 @@ public:
     QString CheckRegister(const QString& reg);
     bool CheckAmountMemoryForAddress(const QString &amountMemory);
     bool CheckAddressCounterAvailable(QTextEdit* fpe_text, const int& row, const int &address_counter);
-    bool CheckRowSourceCode(QTextEdit* textEdit_FPE, const int& row, QString& prog_name, const QString& label, const QString& mnemonic_code);
+    bool CheckRowSourceCode(QTextEdit* textEdit_FPE, const int& row, QString& prog_name, const QString& label, const QString& mnemonic_code, const CodeOperationTable &opCode_table);
     QString CheckProgramName(const QString& prog_name);
     QString CheckProgramDownloadAddress(const QString& download_address);
     QString CheckOtherOperandPart(const QString &second_operand, const QString& mnemonic_code, const int& row);
@@ -35,7 +36,7 @@ public:
     bool CheckAllocAmountMemoryForRES(const QString& amount_memory);
     int GetDecOpcode(QString const& command_binary_code, const int& type_addressing);
     bool CheckToSNForCorrectAddress(QTextEdit *textEdit_Errors, QTableWidget *tableWidget_ToSN);
-    bool CheckSymbolicNameInOperandPart(QString operand, QTextEdit* textEdit_Errors, const int& row);
+    bool CheckSymbolicNameInOperandPart(QString operand, QTextEdit* textEdit_Errors, const int& row, const CodeOperationTable& opCode_table);
 
 };
 
