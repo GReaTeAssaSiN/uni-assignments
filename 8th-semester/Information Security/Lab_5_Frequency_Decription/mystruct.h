@@ -1,7 +1,7 @@
 #ifndef MYSTRUCT_H_
 #define MYSTRUCT_H_
 
-//Структура для хранения информации о символе.
+//РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РёРЅС„РѕСЂРјР°С†РёРё Рѕ СЃРёРјРІРѕР»Рµ.
 struct CharInfo {
 	char character{};
 	int count{};

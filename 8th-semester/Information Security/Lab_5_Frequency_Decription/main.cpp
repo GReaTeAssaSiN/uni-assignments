@@ -8,17 +8,17 @@ int main() {
 	bool cycle{ true };
 	while (cycle) {
 		switch (GetCase()) {
-		case '1'://Частотный анализ символов.
+		case '1'://Р§Р°СЃС‚РѕС‚РЅС‹Р№ Р°РЅР°Р»РёР· СЃРёРјРІРѕР»РѕРІ.
 			DrawLine('=');
 			std::cout << std::endl;
 			AnalyzeFrequencyProcess();
 			break;
-		case '2'://Дешифровка файла.
+		case '2'://Р”РµС€РёС„СЂРѕРІРєР° С„Р°Р№Р»Р°.
 			DrawLine('=');
 			std::cout << std::endl;
 			DecryptFileProcess();
 			break;
-		case '0'://Выход.
+		case '0'://Р’С‹С…РѕРґ.
 			cycle = false;
 			break;
 		default:;

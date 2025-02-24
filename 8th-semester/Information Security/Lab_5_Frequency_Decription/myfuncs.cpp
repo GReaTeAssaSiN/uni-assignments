@@ -2,30 +2,30 @@
 #include "mystruct.h"
 #include "myfuncs.h"
 
-/*ПОЛЬЗОВАТЕЛЬСКИЕ ФУНКЦИИ*/
-//Вывод приветсвия.
+/*РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРР• Р¤РЈРќРљР¦РР*/
+//Р’С‹РІРѕРґ РїСЂРёРІРµС‚СЃРІРёСЏ.
 void WelcomeUser() {
 	std::cout << std::endl << "|" << std::string(200, '-') << "|" << std::endl;
 	std::cout << "|" << std::string(200, ' ') << "|" << std::endl;
-	std::cout << "|" << CenterText("УВАЖАЕМЫЙ ПОЛЬЗОВАТЕЛЬ, ДОБРО ПОЖАЛОВАТЬ В ПРОГРАММУ!", 200) << "|" << std::endl;
+	std::cout << "|" << CenterText("РЈР’РђР–РђР•РњР«Р™ РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬, Р”РћР‘Р Рћ РџРћР–РђР›РћР’РђРўР¬ Р’ РџР РћР“Р РђРњРњРЈ!", 200) << "|" << std::endl;
 	std::cout << "|" << std::string(200, ' ') << "|" << std::endl;
 	std::cout << "|" << std::string(200, '-') << "|" << std::endl << std::endl;
 }
-//Пользовательское меню.
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РјРµРЅСЋ.
 void MenuForChoices()
 {
-	std::cout << "Что Вы хотите сделать?" << std::endl <<
-		"1: >Сформировать частотный анализ символов" << std::endl <<
-		"2: >Дешифровать указанный файл" << std::endl <<
-		"0: >Выйти из программы" << std::endl;
+	std::cout << "Р§С‚Рѕ Р’С‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ?" << std::endl <<
+		"1: >РЎС„РѕСЂРјРёСЂРѕРІР°С‚СЊ С‡Р°СЃС‚РѕС‚РЅС‹Р№ Р°РЅР°Р»РёР· СЃРёРјРІРѕР»РѕРІ" << std::endl <<
+		"2: >Р”РµС€РёС„СЂРѕРІР°С‚СЊ СѓРєР°Р·Р°РЅРЅС‹Р№ С„Р°Р№Р»" << std::endl <<
+		"0: >Р’С‹Р№С‚Рё РёР· РїСЂРѕРіСЂР°РјРјС‹" << std::endl;
 }
-//Запрос дейтсвий у пользователя.
+//Р—Р°РїСЂРѕСЃ РґРµР№С‚СЃРІРёР№ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 char GetCase()
 {
 	while (true)
 	{
 		MenuForChoices();
-		std::cout << "Ваш выбор: ";
+		std::cout << "Р’Р°С€ РІС‹Р±РѕСЂ: ";
 		std::string choice{};
 		std::getline(std::cin, choice);
 		if (choice.size() == 1 && choice[0] >= '0' && choice[0] <= '3')
@@ -34,52 +34,52 @@ char GetCase()
 		}
 		else
 		{
-			std::cout << std::endl << "Ошибка ввода, Вам нужно ввести номер вашего выбора в соответствии с нижеперечисленными пунктами (от 0 до 2). " <<
-				"Повторите ввод." << std::endl;
+			std::cout << std::endl << "РћС€РёР±РєР° РІРІРѕРґР°, Р’Р°Рј РЅСѓР¶РЅРѕ РІРІРµСЃС‚Рё РЅРѕРјРµСЂ РІР°С€РµРіРѕ РІС‹Р±РѕСЂР° РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РЅРёР¶РµРїРµСЂРµС‡РёСЃР»РµРЅРЅС‹РјРё РїСѓРЅРєС‚Р°РјРё (РѕС‚ 0 РґРѕ 2). " <<
+				"РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ." << std::endl;
 		}
 	}
 }
 
-/*ДОПОЛНИТЕЛЬНЫЕ ФУНКЦИИ*/
-//Функция отрисовки разделительной черты.
+/*Р”РћРџРћР›РќРРўР•Р›Р¬РќР«Р• Р¤РЈРќРљР¦РР*/
+//Р¤СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё СЂР°Р·РґРµР»РёС‚РµР»СЊРЅРѕР№ С‡РµСЂС‚С‹.
 void DrawLine(const char& del) {
 	std::cout << std::endl << "|" << std::string(200, del) << "|" << std::endl;
 }
-//Функция для центрирования текста.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ С†РµРЅС‚СЂРёСЂРѕРІР°РЅРёСЏ С‚РµРєСЃС‚Р°.
 std::string CenterText(const std::string& text, const int& width) {
-	int padding = width - static_cast<int>(text.size()); // Свободное пространство.
-	int left_padding = padding / 2;  // Левая часть.
-	int right_padding = padding - left_padding; // Правая часть.
+	int padding = width - static_cast<int>(text.size()); // РЎРІРѕР±РѕРґРЅРѕРµ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ.
+	int left_padding = padding / 2;  // Р›РµРІР°СЏ С‡Р°СЃС‚СЊ.
+	int right_padding = padding - left_padding; // РџСЂР°РІР°СЏ С‡Р°СЃС‚СЊ.
 	return std::string(left_padding, ' ') + text + std::string(right_padding, ' ');
 }
 
-/*ОСНОВНЫЕ ФУНКЦИИ*/
-//Обработка взаимодействия пользователя при анализе частотности символов.
+/*РћРЎРќРћР’РќР«Р• Р¤РЈРќРљР¦РР*/
+//РћР±СЂР°Р±РѕС‚РєР° РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїСЂРё Р°РЅР°Р»РёР·Рµ С‡Р°СЃС‚РѕС‚РЅРѕСЃС‚Рё СЃРёРјРІРѕР»РѕРІ.
 void AnalyzeFrequencyProcess() 
 {
 	while (true) {
-		//Ввод файла для анализа.
+		//Р’РІРѕРґ С„Р°Р№Р»Р° РґР»СЏ Р°РЅР°Р»РёР·Р°.
 		std::string file_in{};
-		std::cout << "Вам необходимо указать файл, который надо проанализировать, в формате <file.txt>." << std::endl;
-		std::cout << "Файл для анализа [opentext.txt - по умолчанию, нажмите Enter] (quit - выход) : ";
+		std::cout << "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ С„Р°Р№Р», РєРѕС‚РѕСЂС‹Р№ РЅР°РґРѕ РїСЂРѕР°РЅР°Р»РёР·РёСЂРѕРІР°С‚СЊ, РІ С„РѕСЂРјР°С‚Рµ <file.txt>." << std::endl;
+		std::cout << "Р¤Р°Р№Р» РґР»СЏ Р°РЅР°Р»РёР·Р° [opentext.txt - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РЅР°Р¶РјРёС‚Рµ Enter] (quit - РІС‹С…РѕРґ) : ";
 		std::getline(std::cin, file_in);
 		if (file_in == "quit") break;
 		if (file_in.empty()) file_in = "opentext.txt";
 
-		//Структура для обработки и подсчет общего числа символов.
+		//РЎС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё Рё РїРѕРґСЃС‡РµС‚ РѕР±С‰РµРіРѕ С‡РёСЃР»Р° СЃРёРјРІРѕР»РѕРІ.
 		std::map<unsigned char, CharInfo> freq{};
 		int total_chars = 0;
 
-		//1. Анализ файла.
+		//1. РђРЅР°Р»РёР· С„Р°Р№Р»Р°.
 		if (!analyzeFile(file_in, freq, total_chars)) break;
 		DrawLine('-');
 		std::cout << std::endl;
-		//2. Вычисление процентного соотношения частотности символов.
+		//2. Р’С‹С‡РёСЃР»РµРЅРёРµ РїСЂРѕС†РµРЅС‚РЅРѕРіРѕ СЃРѕРѕС‚РЅРѕС€РµРЅРёСЏ С‡Р°СЃС‚РѕС‚РЅРѕСЃС‚Рё СЃРёРјРІРѕР»РѕРІ.
 		computePercentages(freq, total_chars);
-		//3. Вывод результатов.
+		//3. Р’С‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ.
 		std::string file_out{};
-		std::cout << "Вам необходимо указать файл, в который надо вывести результаты, в формате <file.txt>." << std::endl;
-		std::cout << "Файл для вывода результатов [ANALYZE_opentext.txt - по умолчанию, нажмите Enter] (quit - выход) : ";
+		std::cout << "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ С„Р°Р№Р», РІ РєРѕС‚РѕСЂС‹Р№ РЅР°РґРѕ РІС‹РІРµСЃС‚Рё СЂРµР·СѓР»СЊС‚Р°С‚С‹, РІ С„РѕСЂРјР°С‚Рµ <file.txt>." << std::endl;
+		std::cout << "Р¤Р°Р№Р» РґР»СЏ РІС‹РІРѕРґР° СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ [ANALYZE_opentext.txt - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РЅР°Р¶РјРёС‚Рµ Enter] (quit - РІС‹С…РѕРґ) : ";
 		std::getline(std::cin, file_out);
 		if (file_out == "quit") break;
 		if (file_out.empty()) file_out = "ANALYZE_opentext.txt";
@@ -88,22 +88,22 @@ void AnalyzeFrequencyProcess()
 		DrawLine('-');
 		std::cout << std::endl;
 		
-		//Конец.
-		std::cout << "ИТОГИ: Файл " << file_in << " был успешно проанализирован, частотный анализ символов выведен в файл " << file_out << "!" << std::endl;
+		//РљРѕРЅРµС†.
+		std::cout << "РРўРћР“Р: Р¤Р°Р№Р» " << file_in << " Р±С‹Р» СѓСЃРїРµС€РЅРѕ РїСЂРѕР°РЅР°Р»РёР·РёСЂРѕРІР°РЅ, С‡Р°СЃС‚РѕС‚РЅС‹Р№ Р°РЅР°Р»РёР· СЃРёРјРІРѕР»РѕРІ РІС‹РІРµРґРµРЅ РІ С„Р°Р№Р» " << file_out << "!" << std::endl;
 	
 		DrawLine('=');
 		std::cout << std::endl;
 	}
 	return;
 }
-//Обработка взаимодействия пользователя при расшифровки символов в указанном файле.
+//РћР±СЂР°Р±РѕС‚РєР° РІР·Р°РёРјРѕРґРµР№СЃС‚РІРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РїСЂРё СЂР°СЃС€РёС„СЂРѕРІРєРё СЃРёРјРІРѕР»РѕРІ РІ СѓРєР°Р·Р°РЅРЅРѕРј С„Р°Р№Р»Рµ.
 void DecryptFileProcess()
 {
 	while (true) {
-		//Ввод файла с открытым текстом для анализа.
+		//Р’РІРѕРґ С„Р°Р№Р»Р° СЃ РѕС‚РєСЂС‹С‚С‹Рј С‚РµРєСЃС‚РѕРј РґР»СЏ Р°РЅР°Р»РёР·Р°.
 		std::string file_freq1{};
-		std::cout << "Вам необходимо указать файл с открытым текстом, который надо проанализировать, в формате <file.txt>." << std::endl;
-		std::cout << "Файл для анализа [opentext.txt - по умолчанию, нажмите Enter] (quit - выход) : ";
+		std::cout << "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ С„Р°Р№Р» СЃ РѕС‚РєСЂС‹С‚С‹Рј С‚РµРєСЃС‚РѕРј, РєРѕС‚РѕСЂС‹Р№ РЅР°РґРѕ РїСЂРѕР°РЅР°Р»РёР·РёСЂРѕРІР°С‚СЊ, РІ С„РѕСЂРјР°С‚Рµ <file.txt>." << std::endl;
+		std::cout << "Р¤Р°Р№Р» РґР»СЏ Р°РЅР°Р»РёР·Р° [opentext.txt - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РЅР°Р¶РјРёС‚Рµ Enter] (quit - РІС‹С…РѕРґ) : ";
 		std::getline(std::cin, file_freq1);
 		if (file_freq1 == "quit") break;
 		if (file_freq1.empty()) file_freq1 = "opentext.txt";
@@ -111,10 +111,10 @@ void DecryptFileProcess()
 		DrawLine('-');
 		std::cout << std::endl;
 
-		//Ввод файла с зашифрованным текстом для анализа.
+		//Р’РІРѕРґ С„Р°Р№Р»Р° СЃ Р·Р°С€РёС„СЂРѕРІР°РЅРЅС‹Рј С‚РµРєСЃС‚РѕРј РґР»СЏ Р°РЅР°Р»РёР·Р°.
 		std::string file_freq2{};
-		std::cout << "Вам необходимо указать файл с зашифрованным текстом, который надо проанализировать, в формате <file.txt>." << std::endl;
-		std::cout << "Файл для анализа [open.txt - по умолчанию, нажмите Enter] (quit - выход) : ";
+		std::cout << "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ С„Р°Р№Р» СЃ Р·Р°С€РёС„СЂРѕРІР°РЅРЅС‹Рј С‚РµРєСЃС‚РѕРј, РєРѕС‚РѕСЂС‹Р№ РЅР°РґРѕ РїСЂРѕР°РЅР°Р»РёР·РёСЂРѕРІР°С‚СЊ, РІ С„РѕСЂРјР°С‚Рµ <file.txt>." << std::endl;
+		std::cout << "Р¤Р°Р№Р» РґР»СЏ Р°РЅР°Р»РёР·Р° [open.txt - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РЅР°Р¶РјРёС‚Рµ Enter] (quit - РІС‹С…РѕРґ) : ";
 		std::getline(std::cin, file_freq2);
 		if (file_freq2 == "quit") break;
 		if (file_freq2.empty()) file_freq2 = "open.txt";
@@ -122,10 +122,10 @@ void DecryptFileProcess()
 		DrawLine('-');
 		std::cout << std::endl;
 
-		//Ввод расшифруемого файла.
+		//Р’РІРѕРґ СЂР°СЃС€РёС„СЂСѓРµРјРѕРіРѕ С„Р°Р№Р»Р°.
 		std::string file_encrypt{};
-		std::cout << "Вам необходимо указать файл с текстом, который надо расшифровать, в формате <file.txt>." << std::endl;
-		std::cout << "Файл для анализа [" << file_freq2 << " - по умолчанию, нажмите Enter] (quit - выход) : ";
+		std::cout << "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ С„Р°Р№Р» СЃ С‚РµРєСЃС‚РѕРј, РєРѕС‚РѕСЂС‹Р№ РЅР°РґРѕ СЂР°СЃС€РёС„СЂРѕРІР°С‚СЊ, РІ С„РѕСЂРјР°С‚Рµ <file.txt>." << std::endl;
+		std::cout << "Р¤Р°Р№Р» РґР»СЏ Р°РЅР°Р»РёР·Р° [" << file_freq2 << " - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РЅР°Р¶РјРёС‚Рµ Enter] (quit - РІС‹С…РѕРґ) : ";
 		std::getline(std::cin, file_encrypt);
 		if (file_encrypt == "quit") break;
 		if (file_encrypt.empty()) file_encrypt = file_freq2;
@@ -133,10 +133,10 @@ void DecryptFileProcess()
 		DrawLine('-');
 		std::cout << std::endl;
 
-		//Вывод результатов (расшифровка).
+		//Р’С‹РІРѕРґ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ (СЂР°СЃС€РёС„СЂРѕРІРєР°).
 		std::string file_decrypt{};
-		std::cout << "Вам необходимо указать файл, в который надо вывести результаты расшифровки, в формате <file.txt>." << std::endl;
-		std::cout << "Файл для вывода результатов [DECRYPT_open.txt - по умолчанию, нажмите Enter] (quit - выход) : ";
+		std::cout << "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ С„Р°Р№Р», РІ РєРѕС‚РѕСЂС‹Р№ РЅР°РґРѕ РІС‹РІРµСЃС‚Рё СЂРµР·СѓР»СЊС‚Р°С‚С‹ СЂР°СЃС€РёС„СЂРѕРІРєРё, РІ С„РѕСЂРјР°С‚Рµ <file.txt>." << std::endl;
+		std::cout << "Р¤Р°Р№Р» РґР»СЏ РІС‹РІРѕРґР° СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ [DECRYPT_open.txt - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РЅР°Р¶РјРёС‚Рµ Enter] (quit - РІС‹С…РѕРґ) : ";
 		std::getline(std::cin, file_decrypt);
 		if (file_decrypt == "quit") break;
 		if (file_decrypt.empty()) file_decrypt = "DECRYPT_open.txt";
@@ -144,52 +144,52 @@ void DecryptFileProcess()
 		DrawLine('-');
 		std::cout << std::endl;
 
-		//Выводим таблицу подстановки в указанный файл.
+		//Р’С‹РІРѕРґРёРј С‚Р°Р±Р»РёС†Сѓ РїРѕРґСЃС‚Р°РЅРѕРІРєРё РІ СѓРєР°Р·Р°РЅРЅС‹Р№ С„Р°Р№Р».
 		std::string file_table{};
-		std::cout << "Вам необходимо указать файл, куда отобразить таблицу подстановок, в формате <file.txt>." << std::endl;
-		std::cout << "Файл для вывода таблицы [TABLE_ENCR_DECR_opentext_open.txt - по умолчанию, нажмите Enter] (quit - выход) : ";
+		std::cout << "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ СѓРєР°Р·Р°С‚СЊ С„Р°Р№Р», РєСѓРґР° РѕС‚РѕР±СЂР°Р·РёС‚СЊ С‚Р°Р±Р»РёС†Сѓ РїРѕРґСЃС‚Р°РЅРѕРІРѕРє, РІ С„РѕСЂРјР°С‚Рµ <file.txt>." << std::endl;
+		std::cout << "Р¤Р°Р№Р» РґР»СЏ РІС‹РІРѕРґР° С‚Р°Р±Р»РёС†С‹ [TABLE_ENCR_DECR_opentext_open.txt - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ, РЅР°Р¶РјРёС‚Рµ Enter] (quit - РІС‹С…РѕРґ) : ";
 		std::getline(std::cin, file_table);
 		if (file_table == "quit") break;
 		if (file_table.empty()) file_table = "TABLE_ENCR_DECR_opentext_open.txt";
 
 		DrawLine('-');
 
-		//Запуск.
+		//Р—Р°РїСѓСЃРє.
 		if (!decryptFile(file_freq1, file_freq2, file_encrypt, file_decrypt, file_table)) break;
 		else std::cout << std::endl;
 
-		//Конец.
-		std::cout << "ИТОГИ: Файл " << file_encrypt << " был успешно расшифрован, результаты записаны в файл " << file_decrypt << "!"
-			<< std::endl << "Расшифровка производилась на основе частотного анализа символов следующих файлов: " << file_freq1 << " -> " 
+		//РљРѕРЅРµС†.
+		std::cout << "РРўРћР“Р: Р¤Р°Р№Р» " << file_encrypt << " Р±С‹Р» СѓСЃРїРµС€РЅРѕ СЂР°СЃС€РёС„СЂРѕРІР°РЅ, СЂРµР·СѓР»СЊС‚Р°С‚С‹ Р·Р°РїРёСЃР°РЅС‹ РІ С„Р°Р№Р» " << file_decrypt << "!"
+			<< std::endl << "Р Р°СЃС€РёС„СЂРѕРІРєР° РїСЂРѕРёР·РІРѕРґРёР»Р°СЃСЊ РЅР° РѕСЃРЅРѕРІРµ С‡Р°СЃС‚РѕС‚РЅРѕРіРѕ Р°РЅР°Р»РёР·Р° СЃРёРјРІРѕР»РѕРІ СЃР»РµРґСѓСЋС‰РёС… С„Р°Р№Р»РѕРІ: " << file_freq1 << " -> " 
 			<< file_freq2 << "." << std::endl
-			<< "Таблица подстановок выведена в файл " << file_table << "." << std::endl
-			<< "Если Вы хотите посмотреть файлы с частотным анализом, запустите функцию 1 этой программы для необходимых файлов:)" << std::endl;
+			<< "РўР°Р±Р»РёС†Р° РїРѕРґСЃС‚Р°РЅРѕРІРѕРє РІС‹РІРµРґРµРЅР° РІ С„Р°Р№Р» " << file_table << "." << std::endl
+			<< "Р•СЃР»Рё Р’С‹ С…РѕС‚РёС‚Рµ РїРѕСЃРјРѕС‚СЂРµС‚СЊ С„Р°Р№Р»С‹ СЃ С‡Р°СЃС‚РѕС‚РЅС‹Рј Р°РЅР°Р»РёР·РѕРј, Р·Р°РїСѓСЃС‚РёС‚Рµ С„СѓРЅРєС†РёСЋ 1 СЌС‚РѕР№ РїСЂРѕРіСЂР°РјРјС‹ РґР»СЏ РЅРµРѕР±С…РѕРґРёРјС‹С… С„Р°Р№Р»РѕРІ:)" << std::endl;
 
 		DrawLine('=');
 		std::cout << std::endl;
 	}
 	return;
 }
-//Функция для сортировки по убыванию количества вхождений.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё РїРѕ СѓР±С‹РІР°РЅРёСЋ РєРѕР»РёС‡РµСЃС‚РІР° РІС…РѕР¶РґРµРЅРёР№.
 bool compare(const std::pair<unsigned char, CharInfo>& a, const std::pair<unsigned char, CharInfo>& b) {
 	if (a.second.count == b.second.count) {
 		return a.first < b.first;
 	}
 	return a.second.count > b.second.count;
 }
-//Функция для анализа частоты символов в файле.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р°РЅР°Р»РёР·Р° С‡Р°СЃС‚РѕС‚С‹ СЃРёРјРІРѕР»РѕРІ РІ С„Р°Р№Р»Рµ.
 bool analyzeFile(const std::string& inputFilename, std::map<unsigned char, CharInfo>& freq, int& total_chars) 
 {
-	std::ifstream file(inputFilename, std::ios::binary); //Открытие файла в бинарном режиме.
+	std::ifstream file(inputFilename, std::ios::binary); //РћС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»Р° РІ Р±РёРЅР°СЂРЅРѕРј СЂРµР¶РёРјРµ.
 
 	if (!file) {
-		std::cerr << std::endl << "Ошибка: не удалось открыть файл " << inputFilename << "!" << std::endl;
+		std::cerr << std::endl << "РћС€РёР±РєР°: РЅРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» " << inputFilename << "!" << std::endl;
 		return false;
 	}
 
-	std::cout << std::endl << "Файл " << inputFilename << " анализируется. Пожалуйста, подождите..." << std::endl;
+	std::cout << std::endl << "Р¤Р°Р№Р» " << inputFilename << " Р°РЅР°Р»РёР·РёСЂСѓРµС‚СЃСЏ. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРґРѕР¶РґРёС‚Рµ..." << std::endl;
 
-	//Подсчет частоты символов.
+	//РџРѕРґСЃС‡РµС‚ С‡Р°СЃС‚РѕС‚С‹ СЃРёРјРІРѕР»РѕРІ.
 	char ch{};
 	while (file.get(ch)) {
 		unsigned char uch = static_cast<unsigned char>(ch);
@@ -198,47 +198,47 @@ bool analyzeFile(const std::string& inputFilename, std::map<unsigned char, CharI
 		total_chars++;
 	}
 
-	file.close(); //Закрытие открытого файла.
-	std::cout << std::endl << "Файл " << inputFilename << " был успешно проанализирован!" << std::endl;
+	file.close(); //Р—Р°РєСЂС‹С‚РёРµ РѕС‚РєСЂС‹С‚РѕРіРѕ С„Р°Р№Р»Р°.
+	std::cout << std::endl << "Р¤Р°Р№Р» " << inputFilename << " Р±С‹Р» СѓСЃРїРµС€РЅРѕ РїСЂРѕР°РЅР°Р»РёР·РёСЂРѕРІР°РЅ!" << std::endl;
 
 	return true;
 }
-//Функция для вычисления процентного соотношения частотности символов.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РїСЂРѕС†РµРЅС‚РЅРѕРіРѕ СЃРѕРѕС‚РЅРѕС€РµРЅРёСЏ С‡Р°СЃС‚РѕС‚РЅРѕСЃС‚Рё СЃРёРјРІРѕР»РѕРІ.
 void computePercentages(std::map<unsigned char, CharInfo>& freq, int total_chars)
 {
 	for (auto& pair : freq) {
 		pair.second.percentage = (pair.second.count * 100.0) / total_chars;
 	}
 }
-//Функция для записи результатов в файл.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°РїРёСЃРё СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р».
 bool writeResults(const std::string& outputFilename, const std::map<unsigned char, CharInfo>& freq)
 {
-	//Открытие выходного файла с результатами.
+	//РћС‚РєСЂС‹С‚РёРµ РІС‹С…РѕРґРЅРѕРіРѕ С„Р°Р№Р»Р° СЃ СЂРµР·СѓР»СЊС‚Р°С‚Р°РјРё.
 	std::ofstream outFile(outputFilename);
 	if (!outFile) {
-		std::cerr << std::endl << "Ошибка: не удалось открыть файл " << outputFilename << "!" << std::endl;
+		std::cerr << std::endl << "РћС€РёР±РєР°: РЅРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» " << outputFilename << "!" << std::endl;
 		return false;
 	}
 
-	std::cout << std::endl << "В файл " << outputFilename << " выводятся результаты. Пожалуйста, подождите..." << std::endl;
+	std::cout << std::endl << "Р’ С„Р°Р№Р» " << outputFilename << " РІС‹РІРѕРґСЏС‚СЃСЏ СЂРµР·СѓР»СЊС‚Р°С‚С‹. РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕРґРѕР¶РґРёС‚Рµ..." << std::endl;
 
-	//Сортировка результатов.
+	//РЎРѕСЂС‚РёСЂРѕРІРєР° СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ.
 	std::vector<std::pair<unsigned char, CharInfo>> sorted_freq(freq.begin(), freq.end());
 	std::sort(sorted_freq.begin(), sorted_freq.end(), compare);
 
-	//Запись заголовков таблицы.
+	//Р—Р°РїРёСЃСЊ Р·Р°РіРѕР»РѕРІРєРѕРІ С‚Р°Р±Р»РёС†С‹.
 	outFile << "NN\tDEC\tHEX\tCHAR\tCOUNT\t%\n";
 
 	int index{ 1 };
 	for (const auto& pair : sorted_freq) {
 		unsigned char uch = pair.first;
-		//Если символ не печатный, то проверяется вывод на специальные символы.
+		//Р•СЃР»Рё СЃРёРјРІРѕР» РЅРµ РїРµС‡Р°С‚РЅС‹Р№, С‚Рѕ РїСЂРѕРІРµСЂСЏРµС‚СЃСЏ РІС‹РІРѕРґ РЅР° СЃРїРµС†РёР°Р»СЊРЅС‹Рµ СЃРёРјРІРѕР»С‹.
 		std::string charRep = std::isprint(uch) ? std::string(1, uch)
 			: (uch == 13 ? "\\r"                              
 				: (uch == 10 ? "\\n"                          
 					: std::string(1, uch)));
 
-		//Форматирование 16-ричного вывода (верхний регистр).
+		//Р¤РѕСЂРјР°С‚РёСЂРѕРІР°РЅРёРµ 16-СЂРёС‡РЅРѕРіРѕ РІС‹РІРѕРґР° (РІРµСЂС…РЅРёР№ СЂРµРіРёСЃС‚СЂ).
 		std::stringstream hexStream{};
 		hexStream << std::uppercase << std::setfill('0') << std::setw(2) << std::hex << static_cast<int>(uch);
 
@@ -250,86 +250,86 @@ bool writeResults(const std::string& outputFilename, const std::map<unsigned cha
 			<< std::fixed << std::setprecision(3) << pair.second.percentage << "%" << "\n";
 	}
 
-	outFile.close(); //Закрытие открытого файла.
-	std::cout << std::endl << "Результаты записаны в файл " << outputFilename << std::endl;
+	outFile.close(); //Р—Р°РєСЂС‹С‚РёРµ РѕС‚РєСЂС‹С‚РѕРіРѕ С„Р°Р№Р»Р°.
+	std::cout << std::endl << "Р РµР·СѓР»СЊС‚Р°С‚С‹ Р·Р°РїРёСЃР°РЅС‹ РІ С„Р°Р№Р» " << outputFilename << std::endl;
 	
 	return true;
 }
-//Функция для расшифровки указанного файла по соответствию частот.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЂР°СЃС€РёС„СЂРѕРІРєРё СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р° РїРѕ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёСЋ С‡Р°СЃС‚РѕС‚.
 bool decryptFile(const std::string& freqFile1, const std::string& freqFile2,
 	const std::string& inputFilename, const std::string& outputFilename, const std::string& file_table) {
-	//Карты для хранения частот.
+	//РљР°СЂС‚С‹ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ С‡Р°СЃС‚РѕС‚.
 	std::map<unsigned char, CharInfo> freq1{}, freq2{};
 	int total_chars1{}, total_chars2{};
 
-	//Анализируем оба файла с частотами.
-	//Файл с открытым текстом.
+	//РђРЅР°Р»РёР·РёСЂСѓРµРј РѕР±Р° С„Р°Р№Р»Р° СЃ С‡Р°СЃС‚РѕС‚Р°РјРё.
+	//Р¤Р°Р№Р» СЃ РѕС‚РєСЂС‹С‚С‹Рј С‚РµРєСЃС‚РѕРј.
 	if (!analyzeFile(freqFile1, freq1, total_chars1)) return false;
-	//Файл с зашифрованным текстом.
+	//Р¤Р°Р№Р» СЃ Р·Р°С€РёС„СЂРѕРІР°РЅРЅС‹Рј С‚РµРєСЃС‚РѕРј.
 	if (!analyzeFile(freqFile2, freq2, total_chars2)) return false;
 	computePercentages(freq1, total_chars1);
 	computePercentages(freq2, total_chars2);
 
-	//Сортируем частоты.
+	//РЎРѕСЂС‚РёСЂСѓРµРј С‡Р°СЃС‚РѕС‚С‹.
 	std::vector<std::pair<unsigned char, CharInfo>> sorted_freq1(freq1.begin(), freq1.end());
 	std::vector<std::pair<unsigned char, CharInfo>> sorted_freq2(freq2.begin(), freq2.end());
 	std::sort(sorted_freq1.begin(), sorted_freq1.end(), compare);
 	std::sort(sorted_freq2.begin(), sorted_freq2.end(), compare);
 
-	//Создаем таблицу подстановки.
-	std::vector<std::pair<unsigned char, unsigned char>> substitution{};// Ключ - зашифрованный символ, значение - расшифрованный символ.
+	//РЎРѕР·РґР°РµРј С‚Р°Р±Р»РёС†Сѓ РїРѕРґСЃС‚Р°РЅРѕРІРєРё.
+	std::vector<std::pair<unsigned char, unsigned char>> substitution{};// РљР»СЋС‡ - Р·Р°С€РёС„СЂРѕРІР°РЅРЅС‹Р№ СЃРёРјРІРѕР», Р·РЅР°С‡РµРЅРёРµ - СЂР°СЃС€РёС„СЂРѕРІР°РЅРЅС‹Р№ СЃРёРјРІРѕР».
 	for (size_t i = 0; i < std::min(sorted_freq1.size(), sorted_freq2.size()); ++i) {
-		substitution.emplace_back(sorted_freq2[i].first, sorted_freq1[i].first);//Зашифрованный символ -> символ открытого текста.
+		substitution.emplace_back(sorted_freq2[i].first, sorted_freq1[i].first);//Р—Р°С€РёС„СЂРѕРІР°РЅРЅС‹Р№ СЃРёРјРІРѕР» -> СЃРёРјРІРѕР» РѕС‚РєСЂС‹С‚РѕРіРѕ С‚РµРєСЃС‚Р°.
 	}
 
-	//Вывод таблицы в файл.
+	//Р’С‹РІРѕРґ С‚Р°Р±Р»РёС†С‹ РІ С„Р°Р№Р».
 	if (!saveSubstitutionTable(substitution, file_table)) return false;
 
-	//Открываем зашифрованный файл и файл для расшифрованного текста.
-	std::ifstream inputFile(inputFilename, std::ios::binary);//Зашифрованный файл.
-	std::ofstream outputFile(outputFilename, std::ios::binary);//Файл расшифровки.
+	//РћС‚РєСЂС‹РІР°РµРј Р·Р°С€РёС„СЂРѕРІР°РЅРЅС‹Р№ С„Р°Р№Р» Рё С„Р°Р№Р» РґР»СЏ СЂР°СЃС€РёС„СЂРѕРІР°РЅРЅРѕРіРѕ С‚РµРєСЃС‚Р°.
+	std::ifstream inputFile(inputFilename, std::ios::binary);//Р—Р°С€РёС„СЂРѕРІР°РЅРЅС‹Р№ С„Р°Р№Р».
+	std::ofstream outputFile(outputFilename, std::ios::binary);//Р¤Р°Р№Р» СЂР°СЃС€РёС„СЂРѕРІРєРё.
 	if (!inputFile || !outputFile) {
-		std::cerr << std::endl << "Ошибка: не удалось открыть входной или выходной файл!" << std::endl;
+		std::cerr << std::endl << "РћС€РёР±РєР°: РЅРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ РІС…РѕРґРЅРѕР№ РёР»Рё РІС‹С…РѕРґРЅРѕР№ С„Р°Р№Р»!" << std::endl;
 		return false;
 	}
 
-	//Заменяем символы по таблице подстановки.
+	//Р—Р°РјРµРЅСЏРµРј СЃРёРјРІРѕР»С‹ РїРѕ С‚Р°Р±Р»РёС†Рµ РїРѕРґСЃС‚Р°РЅРѕРІРєРё.
 	char ch{};
 	while (inputFile.get(ch)) {
 		unsigned char uch = static_cast<unsigned char>(ch);
 		bool replaced{};
-		//Ищем зашифрованный символ.
+		//РС‰РµРј Р·Р°С€РёС„СЂРѕРІР°РЅРЅС‹Р№ СЃРёРјРІРѕР».
 		for (const auto& pair : substitution) {
-			if (pair.first == uch) {  // Если символ найден в таблице,
-				outputFile.put(pair.second); //То заменяем.
+			if (pair.first == uch) {  // Р•СЃР»Рё СЃРёРјРІРѕР» РЅР°Р№РґРµРЅ РІ С‚Р°Р±Р»РёС†Рµ,
+				outputFile.put(pair.second); //РўРѕ Р·Р°РјРµРЅСЏРµРј.
 				replaced = true;
 				break;
 			}
 		}
 
-		if (!replaced) {  // Если символ не был заменен, оставляем его как есть.
+		if (!replaced) {  // Р•СЃР»Рё СЃРёРјРІРѕР» РЅРµ Р±С‹Р» Р·Р°РјРµРЅРµРЅ, РѕСЃС‚Р°РІР»СЏРµРј РµРіРѕ РєР°Рє РµСЃС‚СЊ.
 			outputFile.put(ch);
 		}
 	}
 
-	//Закрытие файлов.
+	//Р—Р°РєСЂС‹С‚РёРµ С„Р°Р№Р»РѕРІ.
 	inputFile.close();
 	outputFile.close();
-	std::cout << std::endl << "Расшифровка завершена! Результат записан в " << outputFilename << std::endl;
+	std::cout << std::endl << "Р Р°СЃС€РёС„СЂРѕРІРєР° Р·Р°РІРµСЂС€РµРЅР°! Р РµР·СѓР»СЊС‚Р°С‚ Р·Р°РїРёСЃР°РЅ РІ " << outputFilename << std::endl;
 
 	return true;
 }
-//Функция для сохранения таблицы подстановок в указанный файл.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ С‚Р°Р±Р»РёС†С‹ РїРѕРґСЃС‚Р°РЅРѕРІРѕРє РІ СѓРєР°Р·Р°РЅРЅС‹Р№ С„Р°Р№Р».
 bool saveSubstitutionTable(const std::vector<std::pair<unsigned char, unsigned char>>& substitution, const std::string& filename) 
 {
 	std::ofstream tableFile(filename);
 	if (!tableFile) {
-		std::cerr << std::endl << "Ошибка: не удалось открыть файл для таблицы замен!" << std::endl;
+		std::cerr << std::endl << "РћС€РёР±РєР°: РЅРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р» РґР»СЏ С‚Р°Р±Р»РёС†С‹ Р·Р°РјРµРЅ!" << std::endl;
 		return false;
 	}
 
-	tableFile << "ТАБЛИЦА ЗАМЕН АЛГОРИТМА ШИФРОВАНИЯ" << std::endl;
-	//Запись заголовков таблицы.
+	tableFile << "РўРђР‘Р›РР¦Рђ Р—РђРњР•Рќ РђР›Р“РћР РРўРњРђ РЁРР¤Р РћР’РђРќРРЇ" << std::endl;
+	//Р—Р°РїРёСЃСЊ Р·Р°РіРѕР»РѕРІРєРѕРІ С‚Р°Р±Р»РёС†С‹.
 	tableFile << "NN\tENCR_S\t\tDECR_S\n";
 
 	int index{ 1 };
@@ -354,7 +354,7 @@ bool saveSubstitutionTable(const std::vector<std::pair<unsigned char, unsigned c
 	}
 
 	tableFile.close();
-	std::cout << std::endl << "Таблица замен сохранена в " << filename << std::endl;
+	std::cout << std::endl << "РўР°Р±Р»РёС†Р° Р·Р°РјРµРЅ СЃРѕС…СЂР°РЅРµРЅР° РІ " << filename << std::endl;
 	
 	return true;
 }

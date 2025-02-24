@@ -10,16 +10,16 @@
 #include <algorithm> //std::sort();
 #include <cctype>	 //std::isprint();
 
-/*ÏÎËÜÇÎÂÀÒÅËÜÑÊÈÅ ÔÓÍÊÖÈÈ*/
+/*ĞŸĞĞ›Ğ¬Ğ—ĞĞ’ĞĞ¢Ğ•Ğ›Ğ¬Ğ¡ĞšĞ˜Ğ• Ğ¤Ğ£ĞĞšĞ¦Ğ˜Ğ˜*/
 void WelcomeUser();
 void MenuForChoices();
 char GetCase();
 
-/*ÄÎÏÎËÍÈÒÅËÜÍÛÅ ÔÓÍÊÖÈÈ*/
+/*Ğ”ĞĞŸĞĞ›ĞĞ˜Ğ¢Ğ•Ğ›Ğ¬ĞĞ«Ğ• Ğ¤Ğ£ĞĞšĞ¦Ğ˜Ğ˜*/
 void DrawLine(const char& del);
 std::string CenterText(const std::string& text, const int& width);
 
-/*ÎÑÍÎÂÍÛÅ ÔÓÍÊÖÈÈ*/
+/*ĞĞ¡ĞĞĞ’ĞĞ«Ğ• Ğ¤Ğ£ĞĞšĞ¦Ğ˜Ğ˜*/
 void AnalyzeFrequencyProcess();
 void DecryptFileProcess();
 bool compare(const std::pair<unsigned char, CharInfo>& a, const std::pair<unsigned char, CharInfo>& b);
