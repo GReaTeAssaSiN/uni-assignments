@@ -3,30 +3,30 @@
 #include <iomanip>
 #include "myfuncs.h"
 
-/*ПОЛЬЗОВАТЕЛЬСКИЕ ФУНКЦИИ*/
-//Вывод приветсвия.
+/*РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРР• Р¤РЈРќРљР¦РР*/
+//Р’С‹РІРѕРґ РїСЂРёРІРµС‚СЃРІРёСЏ.
 void WelcomeUser() {
 	std::cout << std::endl << "|" << std::string(200, '-') << "|" << std::endl;
 	std::cout << "|" << std::string(200, ' ') << "|" << std::endl;
-	std::cout << "|" << CenterText("УВАЖАЕМЫЙ ПОЛЬЗОВАТЕЛЬ, ДОБРО ПОЖАЛОВАТЬ В ПРОГРАММУ!", 200) << "|" << std::endl;
+	std::cout << "|" << CenterText("РЈР’РђР–РђР•РњР«Р™ РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬, Р”РћР‘Р Рћ РџРћР–РђР›РћР’РђРўР¬ Р’ РџР РћР“Р РђРњРњРЈ!", 200) << "|" << std::endl;
 	std::cout << "|" << std::string(200, ' ') << "|" << std::endl;
 	std::cout << "|" << std::string(200, '-') << "|" << std::endl << std::endl;
 }
-//Пользовательское меню.
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РјРµРЅСЋ.
 void MenuForChoices()
 {
-	std::cout << "Выберите метод шифрования из списка ниже:" << std::endl <<
-		"1 - Простая моноалфавитная замена (обобщенный метод Цезаря)" << std::endl <<
-		"2 - Система шифрования Вижинера" << std::endl <<
-		"0 - Выход из программы" << std::endl;
+	std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РјРµС‚РѕРґ С€РёС„СЂРѕРІР°РЅРёСЏ РёР· СЃРїРёСЃРєР° РЅРёР¶Рµ:" << std::endl <<
+		"1 - РџСЂРѕСЃС‚Р°СЏ РјРѕРЅРѕР°Р»С„Р°РІРёС‚РЅР°СЏ Р·Р°РјРµРЅР° (РѕР±РѕР±С‰РµРЅРЅС‹Р№ РјРµС‚РѕРґ Р¦РµР·Р°СЂСЏ)" << std::endl <<
+		"2 - РЎРёСЃС‚РµРјР° С€РёС„СЂРѕРІР°РЅРёСЏ Р’РёР¶РёРЅРµСЂР°" << std::endl <<
+		"0 - Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹" << std::endl;
 }
-//Запрос дейтсвий у пользователя.
+//Р—Р°РїСЂРѕСЃ РґРµР№С‚СЃРІРёР№ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 char GetCase()
 {
 	while (true)
 	{
 		MenuForChoices();
-		std::cout << "Ваш выбор: ";
+		std::cout << "Р’Р°С€ РІС‹Р±РѕСЂ: ";
 		std::string choice{};
 		std::getline(std::cin, choice);
 		if (choice.size() == 1 && choice[0] >= '0' && choice[0] <= '3')
@@ -35,35 +35,35 @@ char GetCase()
 		}
 		else
 		{
-			std::cout << std::endl << "Ошибка ввода, Вам нужно ввести номер вашего выбора в соответствии с нижеперечисленными пунктами (от 0 до 2). " <<
-				"Повторите ввод." << std::endl;
+			std::cout << std::endl << "РћС€РёР±РєР° РІРІРѕРґР°, Р’Р°Рј РЅСѓР¶РЅРѕ РІРІРµСЃС‚Рё РЅРѕРјРµСЂ РІР°С€РµРіРѕ РІС‹Р±РѕСЂР° РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РЅРёР¶РµРїРµСЂРµС‡РёСЃР»РµРЅРЅС‹РјРё РїСѓРЅРєС‚Р°РјРё (РѕС‚ 0 РґРѕ 2). " <<
+				"РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ." << std::endl;
 		}
 	}
 }
 
-/*ДОПОЛНИТЕЛЬНЫЕ ФУНКЦИИ*/
-//Функция отрисовки разделительной черты.
+/*Р”РћРџРћР›РќРРўР•Р›Р¬РќР«Р• Р¤РЈРќРљР¦РР*/
+//Р¤СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё СЂР°Р·РґРµР»РёС‚РµР»СЊРЅРѕР№ С‡РµСЂС‚С‹.
 void DrawLine() {
 	std::cout << std::endl << "|" << std::string(200, '=') << "|" << std::endl;
 }
-//Функция отрисовки горизонтальной черты таблицы.
+//Р¤СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕР№ С‡РµСЂС‚С‹ С‚Р°Р±Р»РёС†С‹.
 void HorizontalLineForTable(const int& col_width)
 {
 	std::cout << std::string(col_width + 2, '-') << std::endl;
 }
-//Функция отрисовки горизонтальной двойной черты таблицы.
+//Р¤СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅРѕР№ РґРІРѕР№РЅРѕР№ С‡РµСЂС‚С‹ С‚Р°Р±Р»РёС†С‹.
 void HorizontalDoubleLineForTable(const int& col_width)
 {
 	std::cout << std::string(col_width + 2, '=') << std::endl;
 }
-//Функция для центрирования текста.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ С†РµРЅС‚СЂРёСЂРѕРІР°РЅРёСЏ С‚РµРєСЃС‚Р°.
 std::string CenterText(const std::string& text, const int& width) {
-	int padding = width - static_cast<int>(text.size()); // Свободное пространство.
-	int left_padding = padding / 2;  // Левая часть.
-	int right_padding = padding - left_padding; // Правая часть.
+	int padding = width - static_cast<int>(text.size()); // РЎРІРѕР±РѕРґРЅРѕРµ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІРѕ.
+	int left_padding = padding / 2;  // Р›РµРІР°СЏ С‡Р°СЃС‚СЊ.
+	int right_padding = padding - left_padding; // РџСЂР°РІР°СЏ С‡Р°СЃС‚СЊ.
 	return std::string(left_padding, ' ') + text + std::string(right_padding, ' ');
 }
-//Проверка введённой пользователем строки на возможность преобразования в целое число.
+//РџСЂРѕРІРµСЂРєР° РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РЅР° РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РІ С†РµР»РѕРµ С‡РёСЃР»Рѕ.
 bool CheckStrIsNumeric(std::string const& tempStr)
 {
 	for (int i{}; i < tempStr.length(); i++)
@@ -75,7 +75,7 @@ bool CheckStrIsNumeric(std::string const& tempStr)
 	}
 	return !tempStr.empty();
 }
-//Преобразование введённой пользователем строки в число.
+//РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РІ С‡РёСЃР»Рѕ.
 int ConvertStrToInt(std::string convertStr)
 {
 	double number{};
@@ -91,7 +91,7 @@ int ConvertStrToInt(std::string convertStr)
 	}
 	return negative_number ? static_cast<int>(-number) : static_cast<int>(number);
 }
-//Проверка строки на русский ("RUS") или латинский ("LATIN") алфавит, смешанный = "MIXED", без букв = "NONE".
+//РџСЂРѕРІРµСЂРєР° СЃС‚СЂРѕРєРё РЅР° СЂСѓСЃСЃРєРёР№ ("RUS") РёР»Рё Р»Р°С‚РёРЅСЃРєРёР№ ("LATIN") Р°Р»С„Р°РІРёС‚, СЃРјРµС€Р°РЅРЅС‹Р№ = "MIXED", Р±РµР· Р±СѓРєРІ = "NONE".
 const std::string CheckMixedAlphabet(const std::string& text)
 {
 	bool hasLatin{};
@@ -101,7 +101,7 @@ const std::string CheckMixedAlphabet(const std::string& text)
 		if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
 			hasLatin = true;
 		}
-		else if ((c >= 'А' && c <= 'Я') || (c >= 'а' && c <= 'я') || c == 'Ё' || c == 'ё') {
+		else if ((c >= 'Рђ' && c <= 'РЇ') || (c >= 'Р°' && c <= 'СЏ') || c == 'РЃ' || c == 'С‘') {
 			hasRussian = true;
 		}
 		if (hasLatin && hasRussian) {
@@ -118,9 +118,9 @@ const std::string CheckMixedAlphabet(const std::string& text)
 
 	return "NONE";
 }
-//Функция для нахождения НОД (gcd) двух чисел.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РќРћР” (gcd) РґРІСѓС… С‡РёСЃРµР».
 int gcd(int a, int b) {
-	//Алгоритм Евклида.
+	//РђР»РіРѕСЂРёС‚Рј Р•РІРєР»РёРґР°.
 	while (b != 0) {
 		int temp = b;
 		b = a % b;
@@ -128,41 +128,41 @@ int gcd(int a, int b) {
 	}
 	return a;
 }
-//Функция для нахождения обратного числа к a по модулю M.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РЅР°С…РѕР¶РґРµРЅРёСЏ РѕР±СЂР°С‚РЅРѕРіРѕ С‡РёСЃР»Р° Рє a РїРѕ РјРѕРґСѓР»СЋ M.
 int modInverse(int a, int M) {
-	//Расширенный алгоритм Евклида.
+	//Р Р°СЃС€РёСЂРµРЅРЅС‹Р№ Р°Р»РіРѕСЂРёС‚Рј Р•РІРєР»РёРґР°.
 	int m0{ M }, t{}, q{};
-	int x0{ 0 }, x1{ 1 }; //Коэффициенты: a * x0 + M * x1 = gcd(a,M) - уравнение.
+	int x0{ 0 }, x1{ 1 }; //РљРѕСЌС„С„РёС†РёРµРЅС‚С‹: a * x0 + M * x1 = gcd(a,M) - СѓСЂР°РІРЅРµРЅРёРµ.
 
-	//Проверка, что a и M взаимно просты.
+	//РџСЂРѕРІРµСЂРєР°, С‡С‚Рѕ a Рё M РІР·Р°РёРјРЅРѕ РїСЂРѕСЃС‚С‹.
 	if (M == 1)
 		return 0;
 
 	while (a > 1) {
-		q = a / M;			// Шаг 1: Целочисленное деление (нахождение коэффициента q).
-		t = M;				// Шаг 2: Сохранение старого M перед обновлением.
-		M = a % M;			// Шаг 3: Остаток от деления (обновление M).
-		a = t;				// Шаг 4: Обновление a (a теперь предыдущее M).
-		// Шаги 1 - 4: Поиск НОД по алгоритму Евклида.
-		t = x0;				// Шаг 5: Сохранение предыдущего x0. 
-		x0 = x1 - q * x0;	// Шаг 6: Обновление x0 по формуле x0 = x1 - q * x0. 
-		x1 = t;				// Шаг 7: Обновление x1 (x1 теперь старый x0).
+		q = a / M;			// РЁР°Рі 1: Р¦РµР»РѕС‡РёСЃР»РµРЅРЅРѕРµ РґРµР»РµРЅРёРµ (РЅР°С…РѕР¶РґРµРЅРёРµ РєРѕСЌС„С„РёС†РёРµРЅС‚Р° q).
+		t = M;				// РЁР°Рі 2: РЎРѕС…СЂР°РЅРµРЅРёРµ СЃС‚Р°СЂРѕРіРѕ M РїРµСЂРµРґ РѕР±РЅРѕРІР»РµРЅРёРµРј.
+		M = a % M;			// РЁР°Рі 3: РћСЃС‚Р°С‚РѕРє РѕС‚ РґРµР»РµРЅРёСЏ (РѕР±РЅРѕРІР»РµРЅРёРµ M).
+		a = t;				// РЁР°Рі 4: РћР±РЅРѕРІР»РµРЅРёРµ a (a С‚РµРїРµСЂСЊ РїСЂРµРґС‹РґСѓС‰РµРµ M).
+		// РЁР°РіРё 1 - 4: РџРѕРёСЃРє РќРћР” РїРѕ Р°Р»РіРѕСЂРёС‚РјСѓ Р•РІРєР»РёРґР°.
+		t = x0;				// РЁР°Рі 5: РЎРѕС…СЂР°РЅРµРЅРёРµ РїСЂРµРґС‹РґСѓС‰РµРіРѕ x0. 
+		x0 = x1 - q * x0;	// РЁР°Рі 6: РћР±РЅРѕРІР»РµРЅРёРµ x0 РїРѕ С„РѕСЂРјСѓР»Рµ x0 = x1 - q * x0. 
+		x1 = t;				// РЁР°Рі 7: РћР±РЅРѕРІР»РµРЅРёРµ x1 (x1 С‚РµРїРµСЂСЊ СЃС‚Р°СЂС‹Р№ x0).
 	}
 
-	// Если x1 отрицательное, добавляем M, чтобы получить положительное число.
+	// Р•СЃР»Рё x1 РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ, РґРѕР±Р°РІР»СЏРµРј M, С‡С‚РѕР±С‹ РїРѕР»СѓС‡РёС‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРµ С‡РёСЃР»Рѕ.
 	if (x1 < 0)
 		x1 += m0;
 
 	return x1;
 }
-//Верхний -> нижний регистр русских и латинских символов.
+//Р’РµСЂС…РЅРёР№ -> РЅРёР¶РЅРёР№ СЂРµРіРёСЃС‚СЂ СЂСѓСЃСЃРєРёС… Рё Р»Р°С‚РёРЅСЃРєРёС… СЃРёРјРІРѕР»РѕРІ.
 char UpperToLower(const char& c, const std::string& type_alphabet)
 {
 	if (type_alphabet == "RUS") {
-		if (c >= 'А' && c <= 'Я')
-			return c + ('а' - 'А');
-		if (c == 'Ё')
-			return 'ё';
+		if (c >= 'Рђ' && c <= 'РЇ')
+			return c + ('Р°' - 'Рђ');
+		if (c == 'РЃ')
+			return 'С‘';
 	}
 	else if (type_alphabet == "LATIN") {
 		if (c >= 'A' && c <= 'Z') {
@@ -171,14 +171,14 @@ char UpperToLower(const char& c, const std::string& type_alphabet)
 	}
 	return c;
 }
-//Нижний -> верхний регистр русских и латинских символов.
+//РќРёР¶РЅРёР№ -> РІРµСЂС…РЅРёР№ СЂРµРіРёСЃС‚СЂ СЂСѓСЃСЃРєРёС… Рё Р»Р°С‚РёРЅСЃРєРёС… СЃРёРјРІРѕР»РѕРІ.
 char LowerToUpper(const char& c, const std::string& type_alphabet)
 {
 	if (type_alphabet == "RUS") {
-		if (c >= 'а' && c <= 'я')
-			return c - ('а' - 'А');
-		if (c == 'ё')
-			return 'Ё';
+		if (c >= 'Р°' && c <= 'СЏ')
+			return c - ('Р°' - 'Рђ');
+		if (c == 'С‘')
+			return 'РЃ';
 	}
 	else if (type_alphabet == "LATIN") {
 		if (c >= 'a' && c <= 'z') {
@@ -189,28 +189,28 @@ char LowerToUpper(const char& c, const std::string& type_alphabet)
 	return c;
 }
 
-/*ОСНОВНЫЕ ФУНКЦИИ*/
-//Шифрование методом простой моноалфавитной замены.
+/*РћРЎРќРћР’РќР«Р• Р¤РЈРќРљР¦РР*/
+//РЁРёС„СЂРѕРІР°РЅРёРµ РјРµС‚РѕРґРѕРј РїСЂРѕСЃС‚РѕР№ РјРѕРЅРѕР°Р»С„Р°РІРёС‚РЅРѕР№ Р·Р°РјРµРЅС‹.
 std::string SimpleSubstitutionEncryption(const std::string& text, const int& a, const int& shift, const std::string& type_alphabet)
 {
-	//Шифрование.
+	//РЁРёС„СЂРѕРІР°РЅРёРµ.
 	std::string result{};
 
-	//Обработка.
+	//РћР±СЂР°Р±РѕС‚РєР°.
 	if (type_alphabet == "RUS") {
-		const int RUSSIAN_M = 33; //Размерность русского алфавита.
-		//Строчные и прописные буквы русского алфавита.
-		const std::string russian_upper = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-		const std::string russian_lower = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+		const int RUSSIAN_M = 33; //Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ СЂСѓСЃСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
+		//РЎС‚СЂРѕС‡РЅС‹Рµ Рё РїСЂРѕРїРёСЃРЅС‹Рµ Р±СѓРєРІС‹ СЂСѓСЃСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
+		const std::string russian_upper = "РђР‘Р’Р“Р”Р•РЃР–Р—РР™РљР›РњРќРћРџР РЎРўРЈР¤РҐР¦Р§РЁР©РЄР«Р¬Р­Р®РЇ";
+		const std::string russian_lower = "Р°Р±РІРіРґРµС‘Р¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏ";
 
 		for (const char& c : text) {
 			if (russian_upper.find(c) != std::string::npos) {
-				int mod_shift = (shift % RUSSIAN_M + RUSSIAN_M) % RUSSIAN_M; //Нормализация.
+				int mod_shift = (shift % RUSSIAN_M + RUSSIAN_M) % RUSSIAN_M; //РќРѕСЂРјР°Р»РёР·Р°С†РёСЏ.
 				char encrypted = russian_upper[(a * russian_upper.find(c) + mod_shift) % RUSSIAN_M];
 				result += encrypted;
 			}
 			else if (russian_lower.find(c) != std::string::npos) {
-				int mod_shift = (shift % RUSSIAN_M + RUSSIAN_M) % RUSSIAN_M; //Нормализация.
+				int mod_shift = (shift % RUSSIAN_M + RUSSIAN_M) % RUSSIAN_M; //РќРѕСЂРјР°Р»РёР·Р°С†РёСЏ.
 				char encrypted = russian_lower[(a * russian_lower.find(c) + mod_shift) % RUSSIAN_M];
 				result += encrypted;
 			}
@@ -220,19 +220,19 @@ std::string SimpleSubstitutionEncryption(const std::string& text, const int& a, 
 		}
 	}
 	else if (type_alphabet == "LATIN") {
-		const int LATIN_M = 26; //Размерность латинского алфавита.
-		//Строчные и прописные буквы латинского алфавита.
+		const int LATIN_M = 26; //Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
+		//РЎС‚СЂРѕС‡РЅС‹Рµ Рё РїСЂРѕРїРёСЃРЅС‹Рµ Р±СѓРєРІС‹ Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
 		const std::string latin_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		const std::string latin_lower = "abcdefghijklmnopqrstuvwxyz";
 
 		for (const char& c : text) {
 			if (latin_upper.find(c) != std::string::npos) {
-				int mod_shift = (shift % LATIN_M + LATIN_M) % LATIN_M; //Нормализация.
+				int mod_shift = (shift % LATIN_M + LATIN_M) % LATIN_M; //РќРѕСЂРјР°Р»РёР·Р°С†РёСЏ.
 				char encrypted = latin_upper[(a * latin_upper.find(c) + mod_shift) % LATIN_M];
 				result += encrypted;
 			}
 			else if (latin_lower.find(c) != std::string::npos) {
-				int mod_shift = (shift % LATIN_M + LATIN_M) % LATIN_M; //Нормализация.
+				int mod_shift = (shift % LATIN_M + LATIN_M) % LATIN_M; //РќРѕСЂРјР°Р»РёР·Р°С†РёСЏ.
 				char encrypted = latin_lower[(a * latin_lower.find(c) + mod_shift) % LATIN_M];
 				result += encrypted;
 			}
@@ -247,17 +247,17 @@ std::string SimpleSubstitutionEncryption(const std::string& text, const int& a, 
 
 	return result;
 }
-//Дешифрование методом простой моноалфавитной замены.
+//Р”РµС€РёС„СЂРѕРІР°РЅРёРµ РјРµС‚РѕРґРѕРј РїСЂРѕСЃС‚РѕР№ РјРѕРЅРѕР°Р»С„Р°РІРёС‚РЅРѕР№ Р·Р°РјРµРЅС‹.
 std::string SimpleSubstitutionDecryption(const std::string& text, const int& a_inv, const int& shift, const std::string& type_alphabet) {
-	//Дешифрование.
+	//Р”РµС€РёС„СЂРѕРІР°РЅРёРµ.
 	std::string result{};
 
-	//Обработка.
+	//РћР±СЂР°Р±РѕС‚РєР°.
 	if (type_alphabet == "RUS") {
-		const int RUSSIAN_M = 33; //Размерность русского алфавита.
-		//Строчные и прописные буквы русского алфавита.
-		const std::string russian_upper = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-		const std::string russian_lower = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+		const int RUSSIAN_M = 33; //Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ СЂСѓСЃСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
+		//РЎС‚СЂРѕС‡РЅС‹Рµ Рё РїСЂРѕРїРёСЃРЅС‹Рµ Р±СѓРєРІС‹ СЂСѓСЃСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
+		const std::string russian_upper = "РђР‘Р’Р“Р”Р•РЃР–Р—РР™РљР›РњРќРћРџР РЎРўРЈР¤РҐР¦Р§РЁР©РЄР«Р¬Р­Р®РЇ";
+		const std::string russian_lower = "Р°Р±РІРіРґРµС‘Р¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏ";
 
 		for (const char& c : text) {
 			if (russian_upper.find(c) != std::string::npos) {
@@ -274,8 +274,8 @@ std::string SimpleSubstitutionDecryption(const std::string& text, const int& a_i
 		}
 	}
 	else if (type_alphabet == "LATIN") {
-		const int LATIN_M = 26; //Размерность латинского алфавита.
-		//Строчные и прописные буквы латинского алфавита.
+		const int LATIN_M = 26; //Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
+		//РЎС‚СЂРѕС‡РЅС‹Рµ Рё РїСЂРѕРїРёСЃРЅС‹Рµ Р±СѓРєРІС‹ Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
 		const std::string latin_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		const std::string latin_lower = "abcdefghijklmnopqrstuvwxyz";
 
@@ -299,108 +299,108 @@ std::string SimpleSubstitutionDecryption(const std::string& text, const int& a_i
 
 	return result;
 }
-//Шифрование методом простой моноалфавитной замены - обработка.
+//РЁРёС„СЂРѕРІР°РЅРёРµ РјРµС‚РѕРґРѕРј РїСЂРѕСЃС‚РѕР№ РјРѕРЅРѕР°Р»С„Р°РІРёС‚РЅРѕР№ Р·Р°РјРµРЅС‹ - РѕР±СЂР°Р±РѕС‚РєР°.
 void SimpleSubstitutionProcess()
 {
-	//Обработка.
-	std::cout << "Шифрование методом простой моноалфавитной замены. Осуществляется шифрование русских символов -> русские символы, "
-		"латинских символов -> латинские символы." << std::endl;
+	//РћР±СЂР°Р±РѕС‚РєР°.
+	std::cout << "РЁРёС„СЂРѕРІР°РЅРёРµ РјРµС‚РѕРґРѕРј РїСЂРѕСЃС‚РѕР№ РјРѕРЅРѕР°Р»С„Р°РІРёС‚РЅРѕР№ Р·Р°РјРµРЅС‹. РћСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ С€РёС„СЂРѕРІР°РЅРёРµ СЂСѓСЃСЃРєРёС… СЃРёРјРІРѕР»РѕРІ -> СЂСѓСЃСЃРєРёРµ СЃРёРјРІРѕР»С‹, "
+		"Р»Р°С‚РёРЅСЃРєРёС… СЃРёРјРІРѕР»РѕРІ -> Р»Р°С‚РёРЅСЃРєРёРµ СЃРёРјРІРѕР»С‹." << std::endl;
 	DrawLine();
 	std::cout << std::endl;
 	while (true) {
-		//СТРОКА.
-		std::cout << "Введите строку для шифрования (quit - выход): ";
+		//РЎРўР РћРљРђ.
+		std::cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ РґР»СЏ С€РёС„СЂРѕРІР°РЅРёСЏ (quit - РІС‹С…РѕРґ): ";
 		std::string open_text{};
 		std::getline(std::cin, open_text);
 		if (open_text == "quit") break;
-		//Проверка строки на моноалфавит.
+		//РџСЂРѕРІРµСЂРєР° СЃС‚СЂРѕРєРё РЅР° РјРѕРЅРѕР°Р»С„Р°РІРёС‚.
 		const std::string type_alphabet{ CheckMixedAlphabet(open_text) };
 		if (type_alphabet == "MIXED") {
-			std::cout << "Ошибка! Строка для шифрования должна содержать символы из одного алфавита. Попробуйте снова." << std::endl << std::endl;
+			std::cout << "РћС€РёР±РєР°! РЎС‚СЂРѕРєР° РґР»СЏ С€РёС„СЂРѕРІР°РЅРёСЏ РґРѕР»Р¶РЅР° СЃРѕРґРµСЂР¶Р°С‚СЊ СЃРёРјРІРѕР»С‹ РёР· РѕРґРЅРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°. РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°." << std::endl << std::endl;
 			continue;
 		}
 
-		//Проверка необходимости шифровать.
+		//РџСЂРѕРІРµСЂРєР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё С€РёС„СЂРѕРІР°С‚СЊ.
 		if (type_alphabet == "NONE") {
-			std::cout << "***Шифровать/Дешифровать нечего!***" << std::endl;
-			std::cout << "Зашифрованная строка: " << open_text << std::endl;
-			std::cout << "Дешифрованная строка: " << open_text << std::endl;
+			std::cout << "***РЁРёС„СЂРѕРІР°С‚СЊ/Р”РµС€РёС„СЂРѕРІР°С‚СЊ РЅРµС‡РµРіРѕ!***" << std::endl;
+			std::cout << "Р—Р°С€РёС„СЂРѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР°: " << open_text << std::endl;
+			std::cout << "Р”РµС€РёС„СЂРѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР°: " << open_text << std::endl;
 			DrawLine();
 			std::cout << std::endl;
 			continue;
 		}
 		else
-			std::cout << "Размерность алфавита M = " << ((type_alphabet == "RUS") ? 33 : 26) << ". Учтите при выборе 'a' (НОД(a,M) = 1)." << std::endl << std::endl;
+			std::cout << "Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ Р°Р»С„Р°РІРёС‚Р° M = " << ((type_alphabet == "RUS") ? 33 : 26) << ". РЈС‡С‚РёС‚Рµ РїСЂРё РІС‹Р±РѕСЂРµ 'a' (РќРћР”(a,M) = 1)." << std::endl << std::endl;
 
-		//ЗНАЧЕНИЕ a.
-		std::cout << "Введите значение a (quit - выход): ";
+		//Р—РќРђР§Р•РќРР• a.
+		std::cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ a (quit - РІС‹С…РѕРґ): ";
 		std::string a_value{};
 		std::getline(std::cin, a_value);
 		if (a_value == "quit") break;
-		//Проверка значения a.
+		//РџСЂРѕРІРµСЂРєР° Р·РЅР°С‡РµРЅРёСЏ a.
 		if (!(CheckStrIsNumeric(a_value) && ConvertStrToInt(a_value) >= 0)) {
-			std::cout << "Ошибка! Значение 'a' должно быть целым неотрицательным числом. Попробуйте снова." << std::endl << std::endl;
+			std::cout << "РћС€РёР±РєР°! Р—РЅР°С‡РµРЅРёРµ 'a' РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ С†РµР»С‹Рј РЅРµРѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рј С‡РёСЃР»РѕРј. РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°." << std::endl << std::endl;
 			continue;
 		}
-		//Проверка НОД(a,M)=1.
+		//РџСЂРѕРІРµСЂРєР° РќРћР”(a,M)=1.
 		const int a{ ConvertStrToInt(a_value) };
 		int M{};
 		if (type_alphabet == "RUS")
-			M = 33; //Размерность русского алфавита.
+			M = 33; //Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ СЂСѓСЃСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
 		else if (type_alphabet == "LATIN")
-			M = 26; //Размерность латинского алфавита.
+			M = 26; //Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
 		else
-			M = 1; //mod M ничего не делает.
-		const int gcd_value{ gcd(a,M) };//НОД(a,M).
+			M = 1; //mod M РЅРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµС‚.
+		const int gcd_value{ gcd(a,M) };//РќРћР”(a,M).
 		if (gcd_value != 1) {
-			std::cout << "Ошибка! НОД(a,M) = НОД(" << a << "," << M << ") = " << gcd_value << ", а должен быть равен 1! (иначе простая моноалфавитная замена " <<
-				"не имеет взаимно однозначное отображение в своей схеме). Попробуйте снова." << std::endl << std::endl;
+			std::cout << "РћС€РёР±РєР°! РќРћР”(a,M) = РќРћР”(" << a << "," << M << ") = " << gcd_value << ", Р° РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СЂР°РІРµРЅ 1! (РёРЅР°С‡Рµ РїСЂРѕСЃС‚Р°СЏ РјРѕРЅРѕР°Р»С„Р°РІРёС‚РЅР°СЏ Р·Р°РјРµРЅР° " <<
+				"РЅРµ РёРјРµРµС‚ РІР·Р°РёРјРЅРѕ РѕРґРЅРѕР·РЅР°С‡РЅРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РІ СЃРІРѕРµР№ СЃС…РµРјРµ). РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°." << std::endl << std::endl;
 			continue;
 		}
 
-		//КЛЮЧ.
-		std::cout << "Введите значение ключа K (quit - выход): ";
+		//РљР›Р®Р§.
+		std::cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РєР»СЋС‡Р° K (quit - РІС‹С…РѕРґ): ";
 		std::string key_crypt{};
 		std::getline(std::cin, key_crypt);
 		if (key_crypt == "quit") break;
-		//Проверка значения ключа K.
+		//РџСЂРѕРІРµСЂРєР° Р·РЅР°С‡РµРЅРёСЏ РєР»СЋС‡Р° K.
 		if (!(CheckStrIsNumeric(key_crypt) && ConvertStrToInt(key_crypt) >= 0 && ConvertStrToInt(key_crypt) < M)) {
-			std::cout << "Ошибка! Значение ключа K должно быть целым неотрицательным числом, 0 <= K < M = " << M << ". Попробуйте снова." << std::endl << std::endl;
+			std::cout << "РћС€РёР±РєР°! Р—РЅР°С‡РµРЅРёРµ РєР»СЋС‡Р° K РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ С†РµР»С‹Рј РЅРµРѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рј С‡РёСЃР»РѕРј, 0 <= K < M = " << M << ". РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°." << std::endl << std::endl;
 			continue;
 		}
 
-		//ОБРАБОТКА.
-		const int shift{ ConvertStrToInt(key_crypt) };//Ключ.
-		const int a_inv{ modInverse(a, M) };//Обратное значение к 'a' по модулю M.
+		//РћР‘Р РђР‘РћРўРљРђ.
+		const int shift{ ConvertStrToInt(key_crypt) };//РљР»СЋС‡.
+		const int a_inv{ modInverse(a, M) };//РћР±СЂР°С‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ Рє 'a' РїРѕ РјРѕРґСѓР»СЋ M.
 		std::string encrypt_str{ SimpleSubstitutionEncryption(open_text, a, shift, type_alphabet) };
 		std::string	decrypt_str{ SimpleSubstitutionDecryption(encrypt_str, a_inv, shift, type_alphabet) };
 
-		//ВЫВОД.
+		//Р’Р«Р’РћР”.
 		DisplaySimpleSubstitutionTable(type_alphabet, a, shift);
-		std::cout << "Зашифрованная строка: " << encrypt_str << std::endl;
-		std::cout << "Дешифрованная строка: " << decrypt_str << std::endl;
+		std::cout << "Р—Р°С€РёС„СЂРѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР°: " << encrypt_str << std::endl;
+		std::cout << "Р”РµС€РёС„СЂРѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР°: " << decrypt_str << std::endl;
 		DrawLine();
 		std::cout << std::endl;
 	}
 }
-//Вывод подстановок шифрования методом простой моноалфавитной замены.
+//Р’С‹РІРѕРґ РїРѕРґСЃС‚Р°РЅРѕРІРѕРє С€РёС„СЂРѕРІР°РЅРёСЏ РјРµС‚РѕРґРѕРј РїСЂРѕСЃС‚РѕР№ РјРѕРЅРѕР°Р»С„Р°РІРёС‚РЅРѕР№ Р·Р°РјРµРЅС‹.
 void DisplaySimpleSubstitutionTable(const std::string& type_alphabet, const int& a, const int& shift)
 {
-	//Определение алфавита.
+	//РћРїСЂРµРґРµР»РµРЅРёРµ Р°Р»С„Р°РІРёС‚Р°.
 	std::string alphabet{};
-	if (type_alphabet == "RUS") alphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+	if (type_alphabet == "RUS") alphabet = "РђР‘Р’Р“Р”Р•РЃР–Р—РР™РљР›РњРќРћРџР РЎРўРЈР¤РҐР¦Р§РЁР©РЄР«Р¬Р­Р®РЇ";
 	else if (type_alphabet == "LATIN") alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	else return;
 
-	const int col_width{ 3 }; //Ширина столбца.
+	const int col_width{ 3 }; //РЁРёСЂРёРЅР° СЃС‚РѕР»Р±С†Р°.
 
-	//Заголовок.
+	//Р—Р°РіРѕР»РѕРІРѕРє.
 	std::cout << std::endl;
 	HorizontalLineForTable(col_width * 15 + 14);
-	std::cout << "|" << CenterText("Таблица подстановок обобщенного метода Цезаря", col_width * 15 + 14) << "|" << std::endl;
+	std::cout << "|" << CenterText("РўР°Р±Р»РёС†Р° РїРѕРґСЃС‚Р°РЅРѕРІРѕРє РѕР±РѕР±С‰РµРЅРЅРѕРіРѕ РјРµС‚РѕРґР° Р¦РµР·Р°СЂСЏ", col_width * 15 + 14) << "|" << std::endl;
 	HorizontalLineForTable(col_width * 15 + 14);
 
-	//Вывод таблицы подстановок.
+	//Р’С‹РІРѕРґ С‚Р°Р±Р»РёС†С‹ РїРѕРґСЃС‚Р°РЅРѕРІРѕРє.
 	int columns{ 4 };
 	int rows{ static_cast<int>(alphabet.size() / columns + ((alphabet.size() % columns) == 0 ? 0 : 1)) };
 	for (size_t row = 0; row < rows; ++row)
@@ -429,14 +429,14 @@ void DisplaySimpleSubstitutionTable(const std::string& type_alphabet, const int&
 //
 // 
 // 
-//Проверка ключа Вижинера на корректность.
+//РџСЂРѕРІРµСЂРєР° РєР»СЋС‡Р° Р’РёР¶РёРЅРµСЂР° РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ.
 bool CheckKeyViginer(const std::string& key_word, const std::string& type_alphabet)
 {
-	//Алфавиты.
-	const std::string RUS_alphabet = "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя";
+	//РђР»С„Р°РІРёС‚С‹.
+	const std::string RUS_alphabet = "РђР°Р‘Р±Р’РІР“РіР”РґР•РµРЃС‘Р–Р¶Р—Р·РРёР™Р№РљРєР›Р»РњРјРќРЅРћРѕРџРїР СЂРЎСЃРўС‚РЈСѓР¤С„РҐС…Р¦С†Р§С‡РЁС€Р©С‰РЄСЉР«С‹Р¬СЊР­СЌР®СЋРЇСЏ";
 	const std::string LATIN_alphabet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
 	const std::string digits = "0123456789";
-	//Проверка.
+	//РџСЂРѕРІРµСЂРєР°.
 	for (const auto& ch : key_word) {
 		if (type_alphabet == "RUS") {
 			if (RUS_alphabet.find(ch) != std::string::npos || digits.find(ch) != std::string::npos)
@@ -453,18 +453,18 @@ bool CheckKeyViginer(const std::string& key_word, const std::string& type_alphab
 	}
 	return true;
 }
-//Шифрование методом Вижинера.
+//РЁРёС„СЂРѕРІР°РЅРёРµ РјРµС‚РѕРґРѕРј Р’РёР¶РёРЅРµСЂР°.
 std::string ViginerEncryption(const std::string& text, const std::string& key_word, const std::string& type_alphabet)
 {
 	std::string result{};
 
 	if (type_alphabet == "RUS") {
 		const int RUSSIAN_M = 33;
-		const std::string russian_upper = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-		const std::string russian_lower = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+		const std::string russian_upper = "РђР‘Р’Р“Р”Р•РЃР–Р—РР™РљР›РњРќРћРџР РЎРўРЈР¤РҐР¦Р§РЁР©РЄР«Р¬Р­Р®РЇ";
+		const std::string russian_lower = "Р°Р±РІРіРґРµС‘Р¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏ";
 		const std::string digits = "0123456789";
 
-		// Отдельный счётчик для символов, которые шифруются (в алфавите)
+		// РћС‚РґРµР»СЊРЅС‹Р№ СЃС‡С‘С‚С‡РёРє РґР»СЏ СЃРёРјРІРѕР»РѕРІ, РєРѕС‚РѕСЂС‹Рµ С€РёС„СЂСѓСЋС‚СЃСЏ (РІ Р°Р»С„Р°РІРёС‚Рµ)
 		size_t cipher_count{};
 
 		for (const char& c : text) {
@@ -484,7 +484,7 @@ std::string ViginerEncryption(const std::string& text, const std::string& key_wo
 					encrypted = russian_upper[(pos_open_symbol + digits.find(key_symbol)) % RUSSIAN_M];
 				}
 				result += encrypted;
-				++cipher_count; // увеличиваем счётчик только для шифруемых символов
+				++cipher_count; // СѓРІРµР»РёС‡РёРІР°РµРј СЃС‡С‘С‚С‡РёРє С‚РѕР»СЊРєРѕ РґР»СЏ С€РёС„СЂСѓРµРјС‹С… СЃРёРјРІРѕР»РѕРІ
 			}
 			else if (russian_lower.find(c) != std::string::npos) {
 				size_t pos_open_symbol = russian_lower.find(c);
@@ -505,7 +505,7 @@ std::string ViginerEncryption(const std::string& text, const std::string& key_wo
 				++cipher_count;
 			}
 			else {
-				result += c; // для нешифруемых символов ключ не используется
+				result += c; // РґР»СЏ РЅРµС€РёС„СЂСѓРµРјС‹С… СЃРёРјРІРѕР»РѕРІ РєР»СЋС‡ РЅРµ РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ
 			}
 		}
 	}
@@ -565,25 +565,25 @@ std::string ViginerEncryption(const std::string& text, const std::string& key_wo
 
 	return result;
 }
-//Дешифрование методом Вижинера.
+//Р”РµС€РёС„СЂРѕРІР°РЅРёРµ РјРµС‚РѕРґРѕРј Р’РёР¶РёРЅРµСЂР°.
 std::string ViginerDecryption(const std::string& text, const std::string& key_word, const std::string& type_alphabet)
 {
 	std::string result{};
 
 	if (type_alphabet == "RUS") {
-		const int RUSSIAN_M = 33; // Размерность русского алфавита.
-		const std::string russian_upper = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
-		const std::string russian_lower = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+		const int RUSSIAN_M = 33; // Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ СЂСѓСЃСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
+		const std::string russian_upper = "РђР‘Р’Р“Р”Р•РЃР–Р—РР™РљР›РњРќРћРџР РЎРўРЈР¤РҐР¦Р§РЁР©РЄР«Р¬Р­Р®РЇ";
+		const std::string russian_lower = "Р°Р±РІРіРґРµС‘Р¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏ";
 		const std::string digits = "0123456789";
 
-		size_t cipher_count{}; // Счётчик для дешифруемых символов.
+		size_t cipher_count{}; // РЎС‡С‘С‚С‡РёРє РґР»СЏ РґРµС€РёС„СЂСѓРµРјС‹С… СЃРёРјРІРѕР»РѕРІ.
 
 		for (const char& c : text) {
 			if (russian_upper.find(c) != std::string::npos) {
 				size_t pos_encr_symbol = russian_upper.find(c);
 				char key_symbol = key_word[cipher_count % key_word.size()];
 				char decrypted{};
-				if (!isdigit(key_symbol)) { // Не цифра.
+				if (!isdigit(key_symbol)) { // РќРµ С†РёС„СЂР°.
 					size_t pos_key_symbol{};
 					if (key_symbol == LowerToUpper(key_symbol, type_alphabet))
 						pos_key_symbol = russian_upper.find(key_symbol);
@@ -591,11 +591,11 @@ std::string ViginerDecryption(const std::string& text, const std::string& key_wo
 						pos_key_symbol = russian_lower.find(key_symbol);
 					decrypted = russian_upper[(pos_encr_symbol + RUSSIAN_M - pos_key_symbol) % RUSSIAN_M];
 				}
-				else { // Цифра.
+				else { // Р¦РёС„СЂР°.
 					decrypted = russian_upper[(pos_encr_symbol + RUSSIAN_M - digits.find(key_symbol)) % RUSSIAN_M];
 				}
 				result += decrypted;
-				++cipher_count; // увеличиваем только если символ шифруемый
+				++cipher_count; // СѓРІРµР»РёС‡РёРІР°РµРј С‚РѕР»СЊРєРѕ РµСЃР»Рё СЃРёРјРІРѕР» С€РёС„СЂСѓРµРјС‹Р№
 			}
 			else if (russian_lower.find(c) != std::string::npos) {
 				size_t pos_encr_symbol = russian_lower.find(c);
@@ -621,7 +621,7 @@ std::string ViginerDecryption(const std::string& text, const std::string& key_wo
 		}
 	}
 	else if (type_alphabet == "LATIN") {
-		const int LATIN_M = 26; // Размерность латинского алфавита.
+		const int LATIN_M = 26; // Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
 		const std::string latin_upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		const std::string latin_lower = "abcdefghijklmnopqrstuvwxyz";
 		const std::string digits = "0123456789";
@@ -677,88 +677,88 @@ std::string ViginerDecryption(const std::string& text, const std::string& key_wo
 	return result;
 }
 
-//Шифрование методом Вижинера - обработка.
+//РЁРёС„СЂРѕРІР°РЅРёРµ РјРµС‚РѕРґРѕРј Р’РёР¶РёРЅРµСЂР° - РѕР±СЂР°Р±РѕС‚РєР°.
 void ViginerProcess() {
-	//Обработка.
-	std::cout << "Шифрование методом Вижинера.  Осуществляется шифрование русских символов -> русские символы, "
-		"латинских символов -> латинские символы." << std::endl;
+	//РћР±СЂР°Р±РѕС‚РєР°.
+	std::cout << "РЁРёС„СЂРѕРІР°РЅРёРµ РјРµС‚РѕРґРѕРј Р’РёР¶РёРЅРµСЂР°.  РћСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ С€РёС„СЂРѕРІР°РЅРёРµ СЂСѓСЃСЃРєРёС… СЃРёРјРІРѕР»РѕРІ -> СЂСѓСЃСЃРєРёРµ СЃРёРјРІРѕР»С‹, "
+		"Р»Р°С‚РёРЅСЃРєРёС… СЃРёРјРІРѕР»РѕРІ -> Р»Р°С‚РёРЅСЃРєРёРµ СЃРёРјРІРѕР»С‹." << std::endl;
 	DrawLine();
 	std::cout << std::endl;
 	while (true) {
-		//СТРОКА.
-		std::cout << "Введите строку для шифрования (quit - выход): ";
+		//РЎРўР РћРљРђ.
+		std::cout << "Р’РІРµРґРёС‚Рµ СЃС‚СЂРѕРєСѓ РґР»СЏ С€РёС„СЂРѕРІР°РЅРёСЏ (quit - РІС‹С…РѕРґ): ";
 		std::string open_text{};
 		std::getline(std::cin, open_text);
 		if (open_text == "quit") break;
-		//Проверка строки на моноалфавит.
+		//РџСЂРѕРІРµСЂРєР° СЃС‚СЂРѕРєРё РЅР° РјРѕРЅРѕР°Р»С„Р°РІРёС‚.
 		const std::string type_alphabet{ CheckMixedAlphabet(open_text) };
 		if (type_alphabet == "MIXED") {
-			std::cout << "Ошибка! Строка для шифрования должна содержать символы из заданных алфавитов. Попробуйте снова." << std::endl << std::endl;
+			std::cout << "РћС€РёР±РєР°! РЎС‚СЂРѕРєР° РґР»СЏ С€РёС„СЂРѕРІР°РЅРёСЏ РґРѕР»Р¶РЅР° СЃРѕРґРµСЂР¶Р°С‚СЊ СЃРёРјРІРѕР»С‹ РёР· Р·Р°РґР°РЅРЅС‹С… Р°Р»С„Р°РІРёС‚РѕРІ. РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°." << std::endl << std::endl;
 			continue;
 		}
 
-		//Проверка необходимости шифровать.
+		//РџСЂРѕРІРµСЂРєР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё С€РёС„СЂРѕРІР°С‚СЊ.
 		if (type_alphabet == "NONE") {
-			std::cout << "***Шифровать/Дешифровать нечего!***" << std::endl;
-			std::cout << "Зашифрованная строка: " << open_text << std::endl;
-			std::cout << "Дешифрованная строка: " << open_text << std::endl;
+			std::cout << "***РЁРёС„СЂРѕРІР°С‚СЊ/Р”РµС€РёС„СЂРѕРІР°С‚СЊ РЅРµС‡РµРіРѕ!***" << std::endl;
+			std::cout << "Р—Р°С€РёС„СЂРѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР°: " << open_text << std::endl;
+			std::cout << "Р”РµС€РёС„СЂРѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР°: " << open_text << std::endl;
 			DrawLine();
 			std::cout << std::endl;
 			continue;
 		}
 
-		//КЛЮЧ.
-		std::cout << "Введите ключевое слово (символы " << ((type_alphabet == "RUS") ? "русского " : "латинского ") << "алфавита и цифры (0-9) (quit - выход)." << std::endl;
-		std::cout << "Ключ: ";
+		//РљР›Р®Р§.
+		std::cout << "Р’РІРµРґРёС‚Рµ РєР»СЋС‡РµРІРѕРµ СЃР»РѕРІРѕ (СЃРёРјРІРѕР»С‹ " << ((type_alphabet == "RUS") ? "СЂСѓСЃСЃРєРѕРіРѕ " : "Р»Р°С‚РёРЅСЃРєРѕРіРѕ ") << "Р°Р»С„Р°РІРёС‚Р° Рё С†РёС„СЂС‹ (0-9) (quit - РІС‹С…РѕРґ)." << std::endl;
+		std::cout << "РљР»СЋС‡: ";
 		std::string key_word{};
 		std::getline(std::cin, key_word);
 		if (key_word == "quit") break;
-		//Проверка ключа на корректность.
+		//РџСЂРѕРІРµСЂРєР° РєР»СЋС‡Р° РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ.
 		if (!CheckKeyViginer(key_word, type_alphabet)) {
-			std::cout << "Ошибка при вводе ключа! Попробуйте снова." << std::endl << std::endl;
+			std::cout << "РћС€РёР±РєР° РїСЂРё РІРІРѕРґРµ РєР»СЋС‡Р°! РџРѕРїСЂРѕР±СѓР№С‚Рµ СЃРЅРѕРІР°." << std::endl << std::endl;
 			continue;
 		}
 
-		//ОБРАБОТКА.
+		//РћР‘Р РђР‘РћРўРљРђ.
 		std::string encrypt_str{ ViginerEncryption(open_text, key_word, type_alphabet)};
 		std::string	decrypt_str{ ViginerDecryption(encrypt_str, key_word, type_alphabet)};
 
-		//ВЫВОД.
+		//Р’Р«Р’РћР”.
 		DisplayViginerTable(type_alphabet, open_text, key_word, encrypt_str);
-		std::cout << "Зашифрованная строка: " << encrypt_str << std::endl;
-		std::cout << "Дешифрованная строка: " << decrypt_str << std::endl;
+		std::cout << "Р—Р°С€РёС„СЂРѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР°: " << encrypt_str << std::endl;
+		std::cout << "Р”РµС€РёС„СЂРѕРІР°РЅРЅР°СЏ СЃС‚СЂРѕРєР°: " << decrypt_str << std::endl;
 		DrawLine();
 		std::cout << std::endl;
 	}
 }
-//Вывод таблицы Вижинера.
+//Р’С‹РІРѕРґ С‚Р°Р±Р»РёС†С‹ Р’РёР¶РёРЅРµСЂР°.
 void DisplayViginerTable(const std::string& type_alphabet, const std::string& open_text, const std::string& key_word, const std::string& encrypt_word) {
-	//Определение алфавита.
+	//РћРїСЂРµРґРµР»РµРЅРёРµ Р°Р»С„Р°РІРёС‚Р°.
 	std::string alphabet{};
-	if (type_alphabet == "RUS") alphabet = "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя";
+	if (type_alphabet == "RUS") alphabet = "РђР°Р‘Р±Р’РІР“РіР”РґР•РµРЃС‘Р–Р¶Р—Р·РРёР™Р№РљРєР›Р»РњРјРќРЅРћРѕРџРїР СЂРЎСЃРўС‚РЈСѓР¤С„РҐС…Р¦С†Р§С‡РЁС€Р©С‰РЄСЉР«С‹Р¬СЊР­СЌР®СЋРЇСЏ";
 	else if (type_alphabet == "LATIN") alphabet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
 	else return;
 
-	const int col_width{ 3 }; //Ширина столбца.
+	const int col_width{ 3 }; //РЁРёСЂРёРЅР° СЃС‚РѕР»Р±С†Р°.
 
-	//Заголовок.
+	//Р—Р°РіРѕР»РѕРІРѕРє.
 	std::cout << std::endl;
 	HorizontalDoubleLineForTable(col_width * 14 + col_width * 4 + 14);
-	std::cout << "|" << CenterText("Полученная таблица шифрования по методу Вижинера", col_width * 14 + col_width * 4 + 14) << "|" << std::endl;
+	std::cout << "|" << CenterText("РџРѕР»СѓС‡РµРЅРЅР°СЏ С‚Р°Р±Р»РёС†Р° С€РёС„СЂРѕРІР°РЅРёСЏ РїРѕ РјРµС‚РѕРґСѓ Р’РёР¶РёРЅРµСЂР°", col_width * 14 + col_width * 4 + 14) << "|" << std::endl;
 	HorizontalDoubleLineForTable(col_width * 14 + col_width * 4 + 14);
 
-	//Вывод таблицы подстановок.
+	//Р’С‹РІРѕРґ С‚Р°Р±Р»РёС†С‹ РїРѕРґСЃС‚Р°РЅРѕРІРѕРє.
 	int columns{ 14 };
 	int steps = static_cast<int>(open_text.size()) / columns + ((static_cast<int>(open_text.size()) % columns) == 0 ? 0 : 1);
 	int shift{};
-	//Этапы.
+	//Р­С‚Р°РїС‹.
 	for (size_t iter = 0; iter < steps; ++iter) {
-		//Подэтапы.
+		//РџРѕРґСЌС‚Р°РїС‹.
 		for (size_t row = 0; row < 3; ++row) {
 			switch (row) {
 			case 0:
-				std::cout << "|" << std::setw(static_cast<size_t>(col_width * 4)) << CenterText("Сообщение", col_width * 4) << "|";
-				//Колонки.
+				std::cout << "|" << std::setw(static_cast<size_t>(col_width * 4)) << CenterText("РЎРѕРѕР±С‰РµРЅРёРµ", col_width * 4) << "|";
+				//РљРѕР»РѕРЅРєРё.
 				for (size_t col = 0; col < columns; ++col) {
 					if (iter * columns + col < open_text.size())
 						std::cout << std::right << std::setw(col_width) << open_text[iter * columns + col] << "|";
@@ -767,20 +767,20 @@ void DisplayViginerTable(const std::string& type_alphabet, const std::string& op
 				}
 				break;
 			case 1:
-				std::cout << "|" << std::setw(static_cast<size_t>(col_width * 4)) << CenterText("Ключ", col_width * 4) << "|";
-				// Колонки.
+				std::cout << "|" << std::setw(static_cast<size_t>(col_width * 4)) << CenterText("РљР»СЋС‡", col_width * 4) << "|";
+				// РљРѕР»РѕРЅРєРё.
 				for (size_t col = 0; col < columns; ++col) {
 					size_t index = iter * columns + col;
 					if (index < open_text.size()) {
 						char current_char = open_text[index];
-						// Проверка, является ли символ частью алфавита
+						// РџСЂРѕРІРµСЂРєР°, СЏРІР»СЏРµС‚СЃСЏ Р»Рё СЃРёРјРІРѕР» С‡Р°СЃС‚СЊСЋ Р°Р»С„Р°РІРёС‚Р°
 						if (alphabet.find(current_char) != std::string::npos) {
 							std::cout << std::right << std::setw(col_width)
 								<< key_word[(index - shift) % key_word.size()] << "|";
 						}
 						else {
 							std::cout << std::right << std::setw(col_width) << " " << "|";
-							++shift; // Увеличиваем смещение только если символ не шифруется
+							++shift; // РЈРІРµР»РёС‡РёРІР°РµРј СЃРјРµС‰РµРЅРёРµ С‚РѕР»СЊРєРѕ РµСЃР»Рё СЃРёРјРІРѕР» РЅРµ С€РёС„СЂСѓРµС‚СЃСЏ
 						}
 					}
 					else {
@@ -789,7 +789,7 @@ void DisplayViginerTable(const std::string& type_alphabet, const std::string& op
 				}
 				break;
 			case 2:
-				std::cout << "|" << std::setw(static_cast<size_t>(col_width * 4)) << CenterText("Шифротекст", col_width * 4) << "|";
+				std::cout << "|" << std::setw(static_cast<size_t>(col_width * 4)) << CenterText("РЁРёС„СЂРѕС‚РµРєСЃС‚", col_width * 4) << "|";
 				for (size_t col = 0; col < columns; ++col) {
 					if (iter * columns + col < encrypt_word.size())
 						std::cout << std::right << std::setw(col_width) << encrypt_word[iter * columns + col] << "|";

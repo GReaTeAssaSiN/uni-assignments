@@ -1,19 +1,19 @@
 #include <iostream>
-#include <cstdlib> //std::srand() и std::rand()
+#include <cstdlib> //std::srand() Рё std::rand()
 #include <ctime> //std::time()
 #include <string>
 
-//ГПСЧ для генерации случайных чисел в заданном диапазоне.
+//Р“РџРЎР§ РґР»СЏ РіРµРЅРµСЂР°С†РёРё СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РІ Р·Р°РґР°РЅРЅРѕРј РґРёР°РїР°Р·РѕРЅРµ.
 static int getRandomNumber(int min, int max) {
     return min + std::rand() % (max - min + 1);
 }
 
-//Функция для генерации случайного пароля.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РіРµРЅРµСЂР°С†РёРё СЃР»СѓС‡Р°Р№РЅРѕРіРѕ РїР°СЂРѕР»СЏ.
 static std::string generatePassword(int length) {
-    const std::string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    const std::string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZР°Р±РІРіРґРµС‘Р¶Р·РёР№РєР»РјРЅРѕРїСЂСЃС‚СѓС„С…С†С‡С€С‰СЉС‹СЊСЌСЋСЏ";
     std::string password = "";
     for (int i{}; i < length; ++i) {
-        int randomIndex = getRandomNumber(0, alphabet.size() - 1); //Случайный индекс из alphabet.
+        int randomIndex = getRandomNumber(0, alphabet.size() - 1); //РЎР»СѓС‡Р°Р№РЅС‹Р№ РёРЅРґРµРєСЃ РёР· alphabet.
         password += alphabet[randomIndex];
     }
     return password;
@@ -21,14 +21,14 @@ static std::string generatePassword(int length) {
 
 int main() {
     setlocale(LC_ALL, "Rus");
-    //std::srand() используется в std::rand(), разные последовательности случайных чисел.
+    //std::srand() РёСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ РІ std::rand(), СЂР°Р·РЅС‹Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР».
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     
-    //Количество и длина паролей.
+    //РљРѕР»РёС‡РµСЃС‚РІРѕ Рё РґР»РёРЅР° РїР°СЂРѕР»РµР№.
     const int count{ 20 };
     const int length{ 6 };
 
-    //Генерация 20 паролей длиной 6 символов.
+    //Р“РµРЅРµСЂР°С†РёСЏ 20 РїР°СЂРѕР»РµР№ РґР»РёРЅРѕР№ 6 СЃРёРјРІРѕР»РѕРІ.
     for (int i{}; i < count; ++i)
         std::cout << generatePassword(length) << "\n";
 

@@ -7,25 +7,25 @@
 
 int main() {
 	setlocale(LC_ALL, "Rus");
-	//Задание исходных структур.
-	std::vector<std::string> subjects = { "Alex", "User_1", "User_2", "User_3" }; //Массив субъектов (Длина - 4).
-	std::vector<std::string> objects = { "File_1.txt", "File_2.txt", "File_3.txt", "File_4.txt" }; //Массив объектов (Длина - 4).
-	//std::map<int, std::string> PERMISSIONS = { //Контейнер для хранения множества типов доступа и соответствующих значений.
-	//	{0, "Запрет"}, {1, "Передача"}, {2, "Запись"}, {3, "Запись, Передача"},
-	//	{4, "Чтение"}, {5, "Чтение, Передача"}, {6, "Чтение, Запись"}, {7, "Полные права"}
+	//Р—Р°РґР°РЅРёРµ РёСЃС…РѕРґРЅС‹С… СЃС‚СЂСѓРєС‚СѓСЂ.
+	std::vector<std::string> subjects = { "Alex", "User_1", "User_2", "User_3" }; //РњР°СЃСЃРёРІ СЃСѓР±СЉРµРєС‚РѕРІ (Р”Р»РёРЅР° - 4).
+	std::vector<std::string> objects = { "File_1.txt", "File_2.txt", "File_3.txt", "File_4.txt" }; //РњР°СЃСЃРёРІ РѕР±СЉРµРєС‚РѕРІ (Р”Р»РёРЅР° - 4).
+	//std::map<int, std::string> PERMISSIONS = { //РљРѕРЅС‚РµР№РЅРµСЂ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ РјРЅРѕР¶РµСЃС‚РІР° С‚РёРїРѕРІ РґРѕСЃС‚СѓРїР° Рё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… Р·РЅР°С‡РµРЅРёР№.
+	//	{0, "Р—Р°РїСЂРµС‚"}, {1, "РџРµСЂРµРґР°С‡Р°"}, {2, "Р—Р°РїРёСЃСЊ"}, {3, "Р—Р°РїРёСЃСЊ, РџРµСЂРµРґР°С‡Р°"},
+	//	{4, "Р§С‚РµРЅРёРµ"}, {5, "Р§С‚РµРЅРёРµ, РџРµСЂРµРґР°С‡Р°"}, {6, "Р§С‚РµРЅРёРµ, Р—Р°РїРёСЃСЊ"}, {7, "РџРѕР»РЅС‹Рµ РїСЂР°РІР°"}
 	//};
-	std::vector<std::vector<int>> access_matrix(subjects.size(), std::vector<int>(objects.size())); //Матрица доступа.
-	//Заполнение матрицы доступа случайным образом с учетом наличия админа Alex на первой строке матрицы.
+	std::vector<std::vector<int>> access_matrix(subjects.size(), std::vector<int>(objects.size())); //РњР°С‚СЂРёС†Р° РґРѕСЃС‚СѓРїР°.
+	//Р—Р°РїРѕР»РЅРµРЅРёРµ РјР°С‚СЂРёС†С‹ РґРѕСЃС‚СѓРїР° СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј СЃ СѓС‡РµС‚РѕРј РЅР°Р»РёС‡РёСЏ Р°РґРјРёРЅР° Alex РЅР° РїРµСЂРІРѕР№ СЃС‚СЂРѕРєРµ РјР°С‚СЂРёС†С‹.
 	generate_access_matrix(access_matrix);
-	//Отображение исходных данных.
+	//РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….
 	display_table(subjects, objects, access_matrix);
-	//Вход в программу.
+	//Р’С…РѕРґ РІ РїСЂРѕРіСЂР°РјРјСѓ.
 	int user_index{ enter_the_program(subjects) };
 	if (user_index != -1) {
-		//Вывод прав пользователя.
+		//Р’С‹РІРѕРґ РїСЂР°РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		display_subject_permissions(user_index, objects, access_matrix);
 		std::cout << std::endl;
-		//Цикл работы программы.
+		//Р¦РёРєР» СЂР°Р±РѕС‚С‹ РїСЂРѕРіСЂР°РјРјС‹.
 		bool cycle{ true };
 		while (cycle) {
 			switch (getCase()) {
@@ -35,11 +35,11 @@ int main() {
 				break;
 			case '2':
 				system("cls");
-				//Оторбажение исходных данных.
+				//РћС‚РѕСЂР±Р°Р¶РµРЅРёРµ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….
 				display_table(subjects, objects, access_matrix);
 				user_index = enter_the_program(subjects);
 				if (user_index != -1) {
-					//Вывод прав пользователя.
+					//Р’С‹РІРѕРґ РїСЂР°РІ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 					display_subject_permissions(user_index, objects, access_matrix);
 				}
 				else cycle = false;

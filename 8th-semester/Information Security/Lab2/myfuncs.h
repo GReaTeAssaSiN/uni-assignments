@@ -1,13 +1,13 @@
 #ifndef MYFUNCS_H_
 #define MYFUNCS_H_
 
-/*œŒÀ‹«Œ¬¿“≈À‹— »≈ ‘”Õ ÷»»*/
+/*–ü–û–õ–¨–ó–û–í–ê–¢–ï–õ–¨–°–ö–ò–ï –§–£–ù–ö–¶–ò–ò*/
 void MenuForChoices();
 char getCase();
 void SubMenuForChoices(const std::string& object_name);
 char getSubmenuCase(const std::string& object_name);
 
-/*ƒŒœŒÀÕ»“≈À‹Õ€≈ ‘”Õ ÷»»*/
+/*–î–û–ü–û–õ–ù–ò–¢–ï–õ–¨–ù–´–ï –§–£–ù–ö–¶–ò–ò*/
 void horizontal_table_line(const int& col_width, const std::vector<std::string>& objects);
 std::string center_text(const std::string& text, const int& width);
 std::string access_level_to_string(const int& access);
@@ -15,7 +15,7 @@ void draw_line();
 int find_subject(const std::vector<std::string> subjects, const std::string subject_name);
 int find_object(const std::vector<std::string> objects, const std::string object_name);
 
-/*Œ—ÕŒ¬Õ€≈ ‘”Õ ÷»»*/
+/*–û–°–ù–û–í–ù–´–ï –§–£–ù–ö–¶–ò–ò*/
 void display_table(const std::vector<std::string> subjects, const std::vector<std::string>& objects, const std::vector<std::vector<int>>& access_matrix);
 void generate_access_matrix(std::vector<std::vector<int>>& access_matrix);
 int enter_the_program(const std::vector<std::string>& subjects);

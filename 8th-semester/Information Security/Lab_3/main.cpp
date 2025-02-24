@@ -7,50 +7,50 @@
 
 int main() {
 	setlocale(LC_ALL, "Rus");
-	//Задание исходных структур.
-	std::vector<std::string> subjects = { "Alex", "User_1", "User_2", "User_3" }; //Массив субъектов (Длина - 4).
-	std::vector<std::string> objects = { "File_1.txt", "File_2.txt", "File_3.txt", "File_4.txt", "File_5.txt", "File_6.txt" }; //Массив объектов (Длина - 6).
+	//Р—Р°РґР°РЅРёРµ РёСЃС…РѕРґРЅС‹С… СЃС‚СЂСѓРєС‚СѓСЂ.
+	std::vector<std::string> subjects = { "Alex", "User_1", "User_2", "User_3" }; //РњР°СЃСЃРёРІ СЃСѓР±СЉРµРєС‚РѕРІ (Р”Р»РёРЅР° - 4).
+	std::vector<std::string> objects = { "File_1.txt", "File_2.txt", "File_3.txt", "File_4.txt", "File_5.txt", "File_6.txt" }; //РњР°СЃСЃРёРІ РѕР±СЉРµРєС‚РѕРІ (Р”Р»РёРЅР° - 6).
 	/*std::map<int, std::string> PERMISSIONS = {
 		{0, "NONCONFIDENTIAL"}, {1, "CONFIDENTIAL"}, {2, "SECRET"}, {3, "TOP SECRET"}
 	};*/
-	//Модель БЛМ (Белла-ЛаПадулы).
-	std::vector<int> subjects_level_access(subjects.size()); //Уровни доступа субъектов.
-	std::vector<int> objects_level_access(objects.size()); //Грифы секретности объектов.
-	//Заполнение модели БЛМ случайным образом с учетом наличия админа Alex первым элементом массива субъектов.
+	//РњРѕРґРµР»СЊ Р‘Р›Рњ (Р‘РµР»Р»Р°-Р›Р°РџР°РґСѓР»С‹).
+	std::vector<int> subjects_level_access(subjects.size()); //РЈСЂРѕРІРЅРё РґРѕСЃС‚СѓРїР° СЃСѓР±СЉРµРєС‚РѕРІ.
+	std::vector<int> objects_level_access(objects.size()); //Р“СЂРёС„С‹ СЃРµРєСЂРµС‚РЅРѕСЃС‚Рё РѕР±СЉРµРєС‚РѕРІ.
+	//Р—Р°РїРѕР»РЅРµРЅРёРµ РјРѕРґРµР»Рё Р‘Р›Рњ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј СЃ СѓС‡РµС‚РѕРј РЅР°Р»РёС‡РёСЏ Р°РґРјРёРЅР° Alex РїРµСЂРІС‹Рј СЌР»РµРјРµРЅС‚РѕРј РјР°СЃСЃРёРІР° СЃСѓР±СЉРµРєС‚РѕРІ.
 	GenerateModelBLM(subjects_level_access, objects_level_access);
-	//Программная копия уровней доступа субъектов.
+	//РџСЂРѕРіСЂР°РјРјРЅР°СЏ РєРѕРїРёСЏ СѓСЂРѕРІРЅРµР№ РґРѕСЃС‚СѓРїР° СЃСѓР±СЉРµРєС‚РѕРІ.
 	std::vector<int> COPY_subjects_level_access(subjects_level_access);
-	//Отображение модели БЛМ.
+	//РћС‚РѕР±СЂР°Р¶РµРЅРёРµ РјРѕРґРµР»Рё Р‘Р›Рњ.
 	DisplayModelBLM(subjects, objects, subjects_level_access, objects_level_access);
-	//Вход в программу.
+	//Р’С…РѕРґ РІ РїСЂРѕРіСЂР°РјРјСѓ.
 	int subject_index{ EnterTheProgram(subjects) };
 	if (subject_index != -1) {
-		//Цикл работы с программой.
+		//Р¦РёРєР» СЂР°Р±РѕС‚С‹ СЃ РїСЂРѕРіСЂР°РјРјРѕР№.
 		bool cycle{ true };
 		while (cycle){
 			if (subject_index == -1) break;
 			switch (GetCase()) {
-			case '1'://Чтение.
+			case '1'://Р§С‚РµРЅРёРµ.
 				DrawLine();
 				std::cout << std::endl;
 				ReadTheObjectBySubject(subjects_level_access[subject_index], objects, objects_level_access);
 				break;
-			case '2'://Запись.
+			case '2'://Р—Р°РїРёСЃСЊ.
 				DrawLine();
 				std::cout << std::endl;
 				WriteToObjectBySubject(subjects_level_access[subject_index], objects, objects_level_access);
 				break;
-			case '3'://Изменение.
+			case '3'://РР·РјРµРЅРµРЅРёРµ.
 				DrawLine();
 				std::cout << std::endl;
 				ChangeLevelAccessBySubject(COPY_subjects_level_access, subjects_level_access, subject_index);
 				break;
-			case '4'://Показать модель БЛМ.
+			case '4'://РџРѕРєР°Р·Р°С‚СЊ РјРѕРґРµР»СЊ Р‘Р›Рњ.
 				DrawLine();
 				std::cout << std::endl;
 				DisplayModelBLM(subjects, objects, subjects_level_access, objects_level_access);
 				break;
-			case '0'://Выход.
+			case '0'://Р’С‹С…РѕРґ.
 				system("cls");
 				DisplayModelBLM(subjects, objects, subjects_level_access, objects_level_access);
 				subject_index = EnterTheProgram(subjects);

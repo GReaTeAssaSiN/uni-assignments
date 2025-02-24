@@ -4,22 +4,22 @@
 int main() 
 {
 	setlocale(LC_ALL, "Rus");
-	std::system("chcp 1251 > nul"); //Корректное отображение русских символов std::cin.
+	std::system("chcp 1251 > nul"); //РљРѕСЂСЂРµРєС‚РЅРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ СЂСѓСЃСЃРєРёС… СЃРёРјРІРѕР»РѕРІ std::cin.
 	WelcomeUser();
 	bool cycle{ true };
 	while (cycle) {
 		switch (GetCase()) {
-		case '1'://Простая моноалфавитная замена.
+		case '1'://РџСЂРѕСЃС‚Р°СЏ РјРѕРЅРѕР°Р»С„Р°РІРёС‚РЅР°СЏ Р·Р°РјРµРЅР°.
 			DrawLine();
 			std::cout << std::endl;
 			SimpleSubstitutionProcess();
 			break;
-		case '2'://Система шифрования Вижинера.
+		case '2'://РЎРёСЃС‚РµРјР° С€РёС„СЂРѕРІР°РЅРёСЏ Р’РёР¶РёРЅРµСЂР°.
 			DrawLine();
 			std::cout << std::endl;
 			ViginerProcess();
 			break;
-		case '0'://Выход.
+		case '0'://Р’С‹С…РѕРґ.
 			cycle = false;
 			break;
 		default:;
@@ -27,6 +27,6 @@ int main()
 		DrawLine();
 		std::cout << std::endl;
 	}
-	std::system("chcp 866 > nul"); //Возврат.
+	std::system("chcp 866 > nul"); //Р’РѕР·РІСЂР°С‚.
 	return 0;
 }

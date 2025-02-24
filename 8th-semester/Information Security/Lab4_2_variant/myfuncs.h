@@ -1,12 +1,12 @@
 #ifndef MYFUNCS_H_
 #define MYFUNCS_H_
 
-/*œŒÀ‹«Œ¬¿“≈À‹— »≈ ‘”Õ ÷»»*/
+/*–ü–û–õ–¨–ó–û–í–ê–¢–ï–õ–¨–°–ö–ò–ï –§–£–ù–ö–¶–ò–ò*/
 void WelcomeUser();
 void MenuForChoices();
 char GetCase();
 
-/*ƒŒœŒÀÕ»“≈À‹Õ€≈ ‘”Õ ÷»»*/
+/*–î–û–ü–û–õ–ù–ò–¢–ï–õ–¨–ù–´–ï –§–£–ù–ö–¶–ò–ò*/
 void DrawLine();
 void HorizontalLineForTable(const int& col_width);
 void HorizontalDoubleLineForTable(const int& col_width);
@@ -19,7 +19,7 @@ int modInverse(int a, int M);
 char UpperToLower(const char& c, const std::string& type_alphabet);
 char LowerToUpper(const char& c, const std::string& type_alphabet);
 
-/*Œ—ÕŒ¬Õ€≈ ‘”Õ ÷»»*/
+/*–û–°–ù–û–í–ù–´–ï –§–£–ù–ö–¶–ò–ò*/
 std::string SimpleSubstitutionEncryption(const std::string& text, const int& a, const int& shift, const std::string& type_alphabet);
 std::string SimpleSubstitutionDecryption(const std::string& text, const int& a_inv, const int& shift, const std::string& type_alphabet);
 void SimpleSubstitutionProcess();

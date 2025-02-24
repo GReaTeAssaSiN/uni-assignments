@@ -1,11 +1,11 @@
 #ifndef MYFUNCS_H_
 #define MYFUNCS_H_
 
-/*œŒÀ‹«Œ¬¿“≈À‹— »≈ ‘”Õ ÷»»*/
+/*–ü–û–õ–¨–ó–û–í–ê–¢–ï–õ–¨–°–ö–ò–ï –§–£–ù–ö–¶–ò–ò*/
 void MenuForChoices();
 char GetCase();
 
-/*ƒŒœŒÀÕ»“≈À‹Õ€≈ ‘”Õ ÷»»*/
+/*–î–û–ü–û–õ–ù–ò–¢–ï–õ–¨–ù–´–ï –§–£–ù–ö–¶–ò–ò*/
 void HorizontalLineForModel(const int& col_width);
 std::string CenterText(const std::string& text, const int& width);
 std::string AccessLevelToString(const int& access);
@@ -14,7 +14,7 @@ void DrawLine();
 int FindSubject(const std::vector<std::string> subjects, const std::string subject_name);
 int FindObject(const std::vector<std::string> objects, const std::string object_name);
 
-/*Œ—ÕŒ¬Õ€≈ ‘”Õ ÷»»*/
+/*–û–°–ù–û–í–ù–´–ï –§–£–ù–ö–¶–ò–ò*/
 void DisplayModelBLM(const std::vector<std::string>& subjects, const std::vector<std::string>& objects,
 	const std::vector<int>& subjects_level_access, const std::vector<int>& objects_level_access);
 void GenerateModelBLM(std::vector<int>& subjects_level_access, std::vector<int>& objects_level_access);
