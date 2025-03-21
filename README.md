@@ -15,3 +15,5 @@ Directories:
 +5th-semester - Databases (Transact-SQL and C++), Functional and Logical Programming (Visual Prolog and Lisp), Numerical Methods (C++) and Operation Systems (JavaScript and Linux commands)
 
 +6th-semester - Java programming, Numerical Methods (C++), Software Architecture (C++ and QT), Transact-SQL and Web-Programming (HTML, CSS, JSON, C and NodeJS, MongoDB)
+
++7th-semester - Computer Modelling, Optimization Methods (C++), System Programming (Qt, C++)
