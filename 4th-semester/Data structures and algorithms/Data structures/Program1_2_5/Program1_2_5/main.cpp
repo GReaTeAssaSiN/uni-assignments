@@ -13,28 +13,28 @@ int main()
 		{
 		case '1':
 			if (isEmptyQueue(myQueue))
-				std::cout << "Î÷åðåäü ïóñòà." << std::endl;
+				std::cout << "ÐžÑ‡ÐµÑ€ÐµÐ´ÑŒ Ð¿ÑƒÑÑ‚Ð°." << std::endl;
 			else
 			{
 				if (myQueue.frnt <= myQueue.rear)
-					std::cout << "Î÷åðåäü íå ïóñòà. Îíà ñîäåðæèò " << myQueue.rear - myQueue.frnt + 1 << " ýëåìåíò(-à, -îâ)" << std::endl;
+					std::cout << "ÐžÑ‡ÐµÑ€ÐµÐ´ÑŒ Ð½Ðµ Ð¿ÑƒÑÑ‚Ð°. ÐžÐ½Ð° ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ñ‚ " << myQueue.rear - myQueue.frnt + 1 << " ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚(-Ð°, -Ð¾Ð²)" << std::endl;
 				else
-					std::cout << "Î÷åðåäü íå ïóñòà. Îíà ñîäåðæèò " << (sizeQueue - myQueue.frnt) + (myQueue.rear + 1) << " ýëåìåíò(-à, -îâ)" << std::endl;
+					std::cout << "ÐžÑ‡ÐµÑ€ÐµÐ´ÑŒ Ð½Ðµ Ð¿ÑƒÑÑ‚Ð°. ÐžÐ½Ð° ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ñ‚ " << (sizeQueue - myQueue.frnt) + (myQueue.rear + 1) << " ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚(-Ð°, -Ð¾Ð²)" << std::endl;
 			}
 			break;
 		case '2':
 			if (isFullnessQueue(myQueue))
-				std::cout << "Î÷åðåäü çàïîëíåíà. " << std::endl;
+				std::cout << "ÐžÑ‡ÐµÑ€ÐµÐ´ÑŒ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð°. " << std::endl;
 			else
 				if (myQueue.frnt != -1 && myQueue.rear != -1)
 				{
 					if (myQueue.frnt <= myQueue.rear)
-						std::cout << "Î÷åðåäü íå çàïîëíåíà. Â íåé äîñòóïíî äëÿ çàïîëíåíèÿ " << sizeQueue - (myQueue.rear - myQueue.frnt + 1) << " ýëåìåíò(-à, -îâ)." << std::endl;
+						std::cout << "ÐžÑ‡ÐµÑ€ÐµÐ´ÑŒ Ð½Ðµ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð°. Ð’ Ð½ÐµÐ¹ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ Ð´Ð»Ñ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ " << sizeQueue - (myQueue.rear - myQueue.frnt + 1) << " ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚(-Ð°, -Ð¾Ð²)." << std::endl;
 					else
-						std::cout << "Î÷åðåäü íå çàïîëíåíà. Â íåé äîñòóïíî äëÿ çàïîëíåíèÿ " << sizeQueue - ((sizeQueue - myQueue.frnt) + (myQueue.rear + 1)) << " ýëåìåíò(-à, -îâ)." << std::endl;
+						std::cout << "ÐžÑ‡ÐµÑ€ÐµÐ´ÑŒ Ð½Ðµ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð°. Ð’ Ð½ÐµÐ¹ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ Ð´Ð»Ñ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ " << sizeQueue - ((sizeQueue - myQueue.frnt) + (myQueue.rear + 1)) << " ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚(-Ð°, -Ð¾Ð²)." << std::endl;
 				}
 				else
-					std::cout << "Î÷åðåäü íå çàïîëíåíà. Â íåé äîñòóïíî äëÿ çàïîëíåíèÿ " << sizeQueue << " ýëåìåíò(-à, -îâ)." << std::endl;
+					std::cout << "ÐžÑ‡ÐµÑ€ÐµÐ´ÑŒ Ð½Ðµ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð°. Ð’ Ð½ÐµÐ¹ Ð´Ð¾ÑÑ‚ÑƒÐ¿Ð½Ð¾ Ð´Ð»Ñ Ð·Ð°Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ " << sizeQueue << " ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚(-Ð°, -Ð¾Ð²)." << std::endl;
 			break;
 		case '3':
 			enQueue(myQueue);

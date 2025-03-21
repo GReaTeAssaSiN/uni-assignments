@@ -1,22 +1,22 @@
 #include <iostream>
-#include <cstdlib> //для функций rand() и srand()
-#include <ctime> //для функции time()
+#include <cstdlib> //РґР»СЏ С„СѓРЅРєС†РёР№ rand() Рё srand()
+#include <ctime> //РґР»СЏ С„СѓРЅРєС†РёРё time()
 #include "myfuncs.h"
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
-	//Привзяка ГПСЧ к календарному времени (случайные последовательности случайных чисел из диапазона).
+	//РџСЂРёРІР·СЏРєР° Р“РџРЎР§ Рє РєР°Р»РµРЅРґР°СЂРЅРѕРјСѓ РІСЂРµРјРµРЅРё (СЃР»СѓС‡Р°Р№РЅС‹Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РёР· РґРёР°РїР°Р·РѕРЅР°).
 	srand(static_cast<unsigned int>(time(0)));
-	//Задание корня дерева.
+	//Р—Р°РґР°РЅРёРµ РєРѕСЂРЅСЏ РґРµСЂРµРІР°.
 	Tree* binary_tree = new Tree{};
 	binary_tree->number_vertices = getNumberVertices();
 	recursivelyBuildingPBT(binary_tree->root, binary_tree->number_vertices);
-	std::cout << "Идеально сбалансированное двоичное дерево было построено." << std::endl << std::endl;
-	//Инициализация вспомогательного стека.
+	std::cout << "РРґРµР°Р»СЊРЅРѕ СЃР±Р°Р»Р°РЅСЃРёСЂРѕРІР°РЅРЅРѕРµ РґРІРѕРёС‡РЅРѕРµ РґРµСЂРµРІРѕ Р±С‹Р»Рѕ РїРѕСЃС‚СЂРѕРµРЅРѕ." << std::endl << std::endl;
+	//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅРѕРіРѕ СЃС‚РµРєР°.
 	Stack* auxiliary_stack = new Stack{};
 	auxiliary_stack->stackPtr = nullptr;
-	//Цикл обработки пользовательского ввода.
+	//Р¦РёРєР» РѕР±СЂР°Р±РѕС‚РєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР°.
 	bool cycle{ true };
 	while (cycle)
 	{
@@ -40,7 +40,7 @@ int main()
 		case '6':
 			clearBinaryTreeAndStack(binary_tree, auxiliary_stack);
 			cycle = false;
-			std::cout << "Вся выделенная динамическая память была возвращена в кучу. Завершение программы . . ." << std::endl;
+			std::cout << "Р’СЃСЏ РІС‹РґРµР»РµРЅРЅР°СЏ РґРёРЅР°РјРёС‡РµСЃРєР°СЏ РїР°РјСЏС‚СЊ Р±С‹Р»Р° РІРѕР·РІСЂР°С‰РµРЅР° РІ РєСѓС‡Сѓ. Р—Р°РІРµСЂС€РµРЅРёРµ РїСЂРѕРіСЂР°РјРјС‹ . . ." << std::endl;
 			break;
 		}
 		printDashes();

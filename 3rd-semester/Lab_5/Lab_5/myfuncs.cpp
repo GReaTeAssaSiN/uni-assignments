@@ -1,59 +1,59 @@
-#include <cstdlib> //для функций rand() и srand()
-#include <ctime> //для функции time()
+#include <cstdlib> //РґР»СЏ С„СѓРЅРєС†РёР№ rand() Рё srand()
+#include <ctime> //РґР»СЏ С„СѓРЅРєС†РёРё time()
 #include "myfuncs.h"
 #include "FiguresFuncs.h"
 #include "user_buttons.h"
 
-//ГПСЧ
+//Р“РџРЎР§
 float getRandomNumber(float min, float max)
 {
 	static const float fraction = 1.0 / (static_cast<float>(RAND_MAX) + 1.0);
 	return (rand() * fraction * (max - min + 1) + min);
 }
 
-//Оновная работа программы
+//РћРЅРѕРІРЅР°СЏ СЂР°Р±РѕС‚Р° РїСЂРѕРіСЂР°РјРјС‹
 int menu_processing(sf::RenderWindow& window, TFigure**& figures_array, int& size_figures_array)
 {
-	/*СОЗДАНИЕ ФОНА ОКНА*/
-	//Меню
+	/*РЎРћР—Р”РђРќРР• Р¤РћРќРђ РћРљРќРђ*/
+	//РњРµРЅСЋ
 	Rect_BG_buttons BG_general(0, 0, 700, 895, 5);
 	BG_general.m_setFillColor(5, 90, 1);
 	//IMAGE
 	User_texts image_text("Comic_Sans_MS.TTF", " I  M  A  G  E ", 870, 0, 70);
-	//Панель меню
+	//РџР°РЅРµР»СЊ РјРµРЅСЋ
 	Rect_BG_buttons BG_menu(5, 5, 695, 85, 5);
 	User_texts menu_text("Comic_Sans_MS.TTF", " M   E   N   U ", 120, 0, 70);
-	//Кнопка EXIT
+	//РљРЅРѕРїРєР° EXIT
 	Rect_BG_buttons BG_exit(5, 840, 160, 50, 5);
 	User_texts exit_text("Comic_Sans_MS.TTF", "E X I T", 25, 850, 30);
 
-	/*КНОПКИ ОБРАБОТКИ СОБЫТИЙ*/
-	//Массив
+	/*РљРќРћРџРљР РћР‘Р РђР‘РћРўРљР РЎРћР‘Р«РўРР™*/
+	//РњР°СЃСЃРёРІ
 	Rect_BG_buttons BG_ArrayFigures(5, 96, 200, 60, 5);
 	User_texts ArrayFigures_text("Comic_Sans_MS.TTF", "A R R A Y", 28, 110, 30);
-	//Создать массив
+	//РЎРѕР·РґР°С‚СЊ РјР°СЃСЃРёРІ
 	Rect_BG_buttons BG_CreateFigures(15, 171, 180, 40, 5);
 	User_texts CreateFigures_text("Comic_Sans_MS.TTF", "CREATE", 45, 175, 27);
-	//Уничтожить массв
+	//РЈРЅРёС‡С‚РѕР¶РёС‚СЊ РјР°СЃСЃРІ
 	Rect_BG_buttons BG_DestroyFigures(15, 226, 180, 40, 5);
 	User_texts DestroyFigures_text("Comic_Sans_MS.TTF", "DESTROY", 35, 230, 27);
-	//Стереть массв
+	//РЎС‚РµСЂРµС‚СЊ РјР°СЃСЃРІ
 	Rect_BG_buttons BG_EraseFigures(15, 281, 180, 40, 5);
 	User_texts EraseFigures_text("Comic_Sans_MS.TTF", "ERASE", 35, 285, 27);
-	//Показать массв
+	//РџРѕРєР°Р·Р°С‚СЊ РјР°СЃСЃРІ
 	Rect_BG_buttons BG_ShowFigures(15, 336, 180, 40, 5);
 	User_texts ShowFigures_text("Comic_Sans_MS.TTF", "SHOW", 35, 340, 27);
-	//Переместить массв
+	//РџРµСЂРµРјРµСЃС‚РёС‚СЊ РјР°СЃСЃРІ
 	Rect_BG_buttons BG_MoveFigures(15, 391, 180, 40, 5);
 	User_texts MoveFigures_text("Comic_Sans_MS.TTF", "MOVE", 35, 395, 27);
-	//Подиерархия кругов
+	//РџРѕРґРёРµСЂР°СЂС…РёСЏ РєСЂСѓРіРѕРІ
 	Rect_BG_buttons BG_MoveUnderCircleHierarchy(15, 446, 535, 40, 5);
 	User_texts MoveUnderCircleHierarchy_text("Comic_Sans_MS.TTF", "MOVE UNDER CIRCLE HEIRARCHY", 35, 450, 27);
 	User_texts ChangeDimensionsUnderCircleHierarchy_text("Comic_Sans_MS.TTF",
 		"\t\tUNDER CIRCLE HIERARCHY\n(q) - increase radius (circle)\n(e) - decrease radius (circle)\n(z) - increase semi major axis (ellipse)"
 		"\n(x) - decrease semi major axis(ellipse)\n(c) - increase semi minor axis(ellipse)\n(v) - decrease semi minor axis(ellipse)\n(f) - rotate(ellipse)", 
 		20, 560, 16);
-	//Подиерархия четырехугольников
+	//РџРѕРґРёРµСЂР°СЂС…РёСЏ С‡РµС‚С‹СЂРµС…СѓРіРѕР»СЊРЅРёРєРѕРІ
 	Rect_BG_buttons BG_MoveUnderQuadrilateralHierarchy(15, 501, 600, 40, 5);
 	User_texts MoveUnderQuadrilateralHierarchy_text("Comic_Sans_MS.TTF", "MOVE UNDER QUADRILATERAL HEIRARCHY", 35, 505, 24);
 	User_texts ChangeDimensionsUnderQuadrilateralHierarchy_text("Comic_Sans_MS.TTF",
@@ -62,26 +62,26 @@ int menu_processing(sf::RenderWindow& window, TFigure**& figures_array, int& siz
 		"\n(n) - increase TopBase (trapeze)\n(m) - decrease TopBase (trapeze)\n(UP) - increase height (trapeze)\n(DOWN) - decrease height (trapeze)\n(RIGHT) - increase BottomBase (trapeze)\n(LEFT) - decrease BottomBase (trapeze)",
 		230, 110, 13);
 
-	//Подиерархия четырехугольников
+	//РџРѕРґРёРµСЂР°СЂС…РёСЏ С‡РµС‚С‹СЂРµС…СѓРіРѕР»СЊРЅРёРєРѕРІ
 
-	//Привзяка ГПСЧ к календарному времени (случайные последовательности случайных чисел из диапазона)
+	//РџСЂРёРІР·СЏРєР° Р“РџРЎР§ Рє РєР°Р»РµРЅРґР°СЂРЅРѕРјСѓ РІСЂРµРјРµРЅРё (СЃР»СѓС‡Р°Р№РЅС‹Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РёР· РґРёР°РїР°Р·РѕРЅР°)
 	srand(static_cast<unsigned int>(time(0)));
 
-	//Внешние переменные функции
-	bool submenu_array{ false };//ARRAY->открывается подменю
-	//Подменю
-	bool create_array{ false }, destroy_array{false}, show_array{true}, move_array{ false };//bool erase_array{false}; было бы странно создавать...
-	//Обработка подиерархий
+	//Р’РЅРµС€РЅРёРµ РїРµСЂРµРјРµРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
+	bool submenu_array{ false };//ARRAY->РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ РїРѕРґРјРµРЅСЋ
+	//РџРѕРґРјРµРЅСЋ
+	bool create_array{ false }, destroy_array{false}, show_array{true}, move_array{ false };//bool erase_array{false}; Р±С‹Р»Рѕ Р±С‹ СЃС‚СЂР°РЅРЅРѕ СЃРѕР·РґР°РІР°С‚СЊ...
+	//РћР±СЂР°Р±РѕС‚РєР° РїРѕРґРёРµСЂР°СЂС…РёР№
 	bool move_under_circle_hierarchy{ false }, move_under_quadrilateral_hierarchy{ false };
 
 	while (window.isOpen())
 	{
-		/*ПОКАДРОВАЯ ОБРАБОТКА ЦВЕТОВ СОЗДАННЫХ ОБЪЕКТОВ НА ОКНЕ*/
-		//Фон меню и кнопки меню
+		/*РџРћРљРђР”Р РћР’РђРЇ РћР‘Р РђР‘РћРўРљРђ Р¦Р’Р•РўРћР’ РЎРћР—Р”РђРќРќР«РҐ РћР‘РЄР•РљРўРћР’ РќРђ РћРљРќР•*/
+		//Р¤РѕРЅ РјРµРЅСЋ Рё РєРЅРѕРїРєРё РјРµРЅСЋ
 		image_text.m_setFillColor(111, 206, 253);
 		BG_exit.m_setDefaultColor();
 		exit_text.m_setDefaultColor();
-		//Кнопки обработки фигур
+		//РљРЅРѕРїРєРё РѕР±СЂР°Р±РѕС‚РєРё С„РёРіСѓСЂ
 		BG_ArrayFigures.m_setFillColor(26, 255, 255);
 		ArrayFigures_text.m_setFillColor(24, 48, 229);
 		BG_CreateFigures.m_setFillColor(195, 195, 195);
@@ -95,15 +95,15 @@ int menu_processing(sf::RenderWindow& window, TFigure**& figures_array, int& siz
 		ChangeDimensionsUnderCircleHierarchy_text.m_setFillColor(209, 255, 26);
 		ChangeDimensionsUnderQuadrilateralHierarchy_text.m_setFillColor(209, 255, 26);
 
-		/*БУЛЕВЫЕ ПЕРЕМЕННЫЕ ДЛЯ ПОЛОЖЕНИЯ КУРСОРА НА КНОПКЕ*/
-		//Кнопки меню
+		/*Р‘РЈР›Р•Р’Р«Р• РџР•Р Р•РњР•РќРќР«Р• Р”Р›РЇ РџРћР›РћР–Р•РќРРЇ РљРЈР РЎРћР Рђ РќРђ РљРќРћРџРљР•*/
+		//РљРЅРѕРїРєРё РјРµРЅСЋ
 		bool stage_exit{ false };
-		//Кнопки обработки фигур
+		//РљРЅРѕРїРєРё РѕР±СЂР°Р±РѕС‚РєРё С„РёРіСѓСЂ
 		bool stage_array{ false }, stage_create_array{ false }, stage_destroy_array{ false }, stage_erase_array{false}, stage_show_array{false}, stage_move_array{false};
-		//Кнопки обработки подиерархий
+		//РљРЅРѕРїРєРё РѕР±СЂР°Р±РѕС‚РєРё РїРѕРґРёРµСЂР°СЂС…РёР№
 		bool stage_move_under_circle_hierarchy{ false }, stage_move_under_quadrilateral_hierarchy{false};
 
-		/*ОКРАШИВАНИЕ АКТИВНЫХ КНОПОК*/
+		/*РћРљР РђРЁРР’РђРќРР• РђРљРўРР’РќР«РҐ РљРќРћРџРћРљ*/
 		if (!submenu_array)
 		{
 			BG_ArrayFigures.m_setDefaultColor();
@@ -125,7 +125,7 @@ int menu_processing(sf::RenderWindow& window, TFigure**& figures_array, int& siz
 			MoveUnderQuadrilateralHierarchy_text.m_setDefaultColor();
 		}
 
-		/*ОКРАШИВАНИЕ КНОПОК ПРИ НАВЕДЕНИИ КУРСОРА МЫШИ (с изменением значения соответствующих переменных*/
+		/*РћРљР РђРЁРР’РђРќРР• РљРќРћРџРћРљ РџР Р РќРђР’Р•Р”Р•РќРР РљРЈР РЎРћР Рђ РњР«РЁР (СЃ РёР·РјРµРЅРµРЅРёРµРј Р·РЅР°С‡РµРЅРёСЏ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… РїРµСЂРµРјРµРЅРЅС‹С…*/
 		//EXIT
 		if (sf::IntRect(5, 840, 160, 50).contains(sf::Mouse::getPosition(window)))
 		{
@@ -133,14 +133,14 @@ int menu_processing(sf::RenderWindow& window, TFigure**& figures_array, int& siz
 			exit_text.m_setActiveColor();
 			stage_exit = true;
 		}
-		//Меню Array
+		//РњРµРЅСЋ Array
 		if (sf::IntRect(5, 96, 200, 60).contains(sf::Mouse::getPosition(window)))
 		{
 			BG_ArrayFigures.m_setActiveColor();
 			ArrayFigures_text.m_setActiveColor();
 			stage_array = true;
 		}
-		//Подменю Array
+		//РџРѕРґРјРµРЅСЋ Array
 		if (sf::IntRect(15, 171, 180, 40).contains(sf::Mouse::getPosition(window)) && submenu_array)
 		{
 			BG_CreateFigures.m_setActiveColor();
@@ -187,10 +187,10 @@ int menu_processing(sf::RenderWindow& window, TFigure**& figures_array, int& siz
 		sf::Event event_menu_click;
 		while (window.pollEvent(event_menu_click))
 		{
-			//Закрытие окна на "крестик"
+			//Р—Р°РєСЂС‹С‚РёРµ РѕРєРЅР° РЅР° "РєСЂРµСЃС‚РёРє"
 			if (event_menu_click.type == sf::Event::Closed)
 				window.close();
-			//Обработчик события формы OnCreate (нажатие на кнопку)
+			//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ С„РѕСЂРјС‹ OnCreate (РЅР°Р¶Р°С‚РёРµ РЅР° РєРЅРѕРїРєСѓ)
 			if (event_menu_click.type == event_menu_click.MouseButtonReleased && event_menu_click.mouseButton.button == sf::Mouse::Left)
 			{
 				//EXIT
@@ -225,7 +225,7 @@ int menu_processing(sf::RenderWindow& window, TFigure**& figures_array, int& siz
 				{
 					create_array = true;
 					int number_elems{ static_cast<int>(getRandomNumber(20, 30)) };
-					std::cout << "Создан массив из " << number_elems << " элемент(-а, -ов)." << std::endl;
+					std::cout << "РЎРѕР·РґР°РЅ РјР°СЃСЃРёРІ РёР· " << number_elems << " СЌР»РµРјРµРЅС‚(-Р°, -РѕРІ)." << std::endl;
 					for (int i{}; i < number_elems; i++)
 					{
 						int type_objs{ static_cast<int>(getRandomNumber(1, 6)) };
@@ -327,7 +327,7 @@ int menu_processing(sf::RenderWindow& window, TFigure**& figures_array, int& siz
 							break;
 						}
 						default:
-							std::cout << "Error! type_objs не принадлежит отрезку [1,6]." << std::endl;
+							std::cout << "Error! type_objs РЅРµ РїСЂРёРЅР°РґР»РµР¶РёС‚ РѕС‚СЂРµР·РєСѓ [1,6]." << std::endl;
 							break;
 						}
 					}
@@ -605,15 +605,15 @@ int menu_processing(sf::RenderWindow& window, TFigure**& figures_array, int& siz
 
 		window.clear(sf::Color(67, 136, 169));
 
-		/*РЕНДЕРИНГ ОКНА*/
-		//Фон меню и кнопки меню
+		/*Р Р•РќР”Р•Р РРќР“ РћРљРќРђ*/
+		//Р¤РѕРЅ РјРµРЅСЋ Рё РєРЅРѕРїРєРё РјРµРЅСЋ
 		BG_general.Show(window);
 		BG_menu.Show(window);
 		image_text.Show(window);
 		menu_text.Show(window);
 		BG_exit.Show(window);
 		exit_text.Show(window);
-		//Кнопки обработки фигур
+		//РљРЅРѕРїРєРё РѕР±СЂР°Р±РѕС‚РєРё С„РёРіСѓСЂ
 		BG_ArrayFigures.Show(window);
 		ArrayFigures_text.Show(window);
 		if (submenu_array)

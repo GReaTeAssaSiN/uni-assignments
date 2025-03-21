@@ -6,7 +6,7 @@ namespace CinemaServiceApplication
 	{
 		InitializeComponent();
 		//
-		//TODO: добавьте код конструктора
+		//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 		//
 	}
 	AdminPanelCinemaService::AdminPanelCinemaService(String^ userLogin)
@@ -134,7 +134,7 @@ namespace CinemaServiceApplication
 		this->admin_label->Name = L"admin_label";
 		this->admin_label->Size = System::Drawing::Size(1450, 50);
 		this->admin_label->TabIndex = 1;
-		this->admin_label->Text = L"АДМИНИСТРИРОВАНИЕ БАЗЫ ДАННЫХ CinemaService";
+		this->admin_label->Text = L"РђР”РњРРќРРЎРўР РР РћР’РђРќРР• Р‘РђР—Р« Р”РђРќРќР«РҐ CinemaService";
 		this->admin_label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 		// 
 		// admin_fromBtn_submain_panel
@@ -932,7 +932,7 @@ namespace CinemaServiceApplication
 		this->change_review_btn->Name = L"change_review_btn";
 		this->change_review_btn->Size = System::Drawing::Size(296, 50);
 		this->change_review_btn->TabIndex = 3;
-		this->change_review_btn->Text = L"Комментарий";
+		this->change_review_btn->Text = L"РљРѕРјРјРµРЅС‚Р°СЂРёР№";
 		this->change_review_btn->UseVisualStyleBackColor = false;
 		this->change_review_btn->Click += gcnew System::EventHandler(this, &AdminPanelCinemaService::change_review_btn_Click);
 		// 
@@ -952,7 +952,7 @@ namespace CinemaServiceApplication
 		this->change_movie_btn->Name = L"change_movie_btn";
 		this->change_movie_btn->Size = System::Drawing::Size(296, 50);
 		this->change_movie_btn->TabIndex = 2;
-		this->change_movie_btn->Text = L"Фильм";
+		this->change_movie_btn->Text = L"Р¤РёР»СЊРј";
 		this->change_movie_btn->UseVisualStyleBackColor = false;
 		this->change_movie_btn->Click += gcnew System::EventHandler(this, &AdminPanelCinemaService::change_movie_btn_Click);
 		// 
@@ -972,7 +972,7 @@ namespace CinemaServiceApplication
 		this->change_cinema_btn->Name = L"change_cinema_btn";
 		this->change_cinema_btn->Size = System::Drawing::Size(296, 50);
 		this->change_cinema_btn->TabIndex = 1;
-		this->change_cinema_btn->Text = L"Кинотеатр";
+		this->change_cinema_btn->Text = L"РљРёРЅРѕС‚РµР°С‚СЂ";
 		this->change_cinema_btn->UseVisualStyleBackColor = false;
 		this->change_cinema_btn->Click += gcnew System::EventHandler(this, &AdminPanelCinemaService::change_cinema_btn_Click);
 		// 
@@ -992,7 +992,7 @@ namespace CinemaServiceApplication
 		this->change_user_btn->Name = L"change_user_btn";
 		this->change_user_btn->Size = System::Drawing::Size(296, 50);
 		this->change_user_btn->TabIndex = 0;
-		this->change_user_btn->Text = L"Пользователь";
+		this->change_user_btn->Text = L"РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ";
 		this->change_user_btn->UseVisualStyleBackColor = false;
 		this->change_user_btn->Click += gcnew System::EventHandler(this, &AdminPanelCinemaService::change_user_btn_Click);
 		// 
@@ -1291,13 +1291,13 @@ namespace CinemaServiceApplication
 					{
 						DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 						if (queryDB->deleteUserAccountFromAdmin(userID, adminLogin))
-							MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 					else
-						MessageBox::Show("ID пользователя должно состоять только из цифр!", "Ошибка ID пользователя!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґРѕР»Р¶РЅРѕ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ!", "РћС€РёР±РєР° ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
 				else
-					MessageBox::Show("Заполните поле формы ID пользователя!", "Ошибка ID пользователя!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("Р—Р°РїРѕР»РЅРёС‚Рµ РїРѕР»Рµ С„РѕСЂРјС‹ ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!", "РћС€РёР±РєР° ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				break;
 			}
 			case 2:
@@ -1316,13 +1316,13 @@ namespace CinemaServiceApplication
 					{
 						DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 						if (queryDB->deleteCinemaFromAdmin(cinemaID))
-							MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 					else
-						MessageBox::Show("ID кинотеатра должно состоять только из цифр!", "Ошибка ID кинотеатра!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("ID РєРёРЅРѕС‚РµР°С‚СЂР° РґРѕР»Р¶РЅРѕ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ!", "РћС€РёР±РєР° ID РєРёРЅРѕС‚РµР°С‚СЂР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
 				else
-					MessageBox::Show("Заполните поле формы ID кинотеатра!", "Ошибка ID кинотеатра!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("Р—Р°РїРѕР»РЅРёС‚Рµ РїРѕР»Рµ С„РѕСЂРјС‹ ID РєРёРЅРѕС‚РµР°С‚СЂР°!", "РћС€РёР±РєР° ID РєРёРЅРѕС‚РµР°С‚СЂР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				break;
 			}
 			case 3:
@@ -1341,13 +1341,13 @@ namespace CinemaServiceApplication
 					{
 						DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 						if (queryDB->deleteMovieFromAdmin(movieID, (this->cinemaName_comboBox->SelectedItem == nullptr ? "None" : this->cinemaName_comboBox->SelectedItem->ToString())))
-							MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 					else
-						MessageBox::Show("ID фильма должно состоять только из цифр!", "Ошибка ID фильма!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("ID С„РёР»СЊРјР° РґРѕР»Р¶РЅРѕ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ!", "РћС€РёР±РєР° ID С„РёР»СЊРјР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
 				else
-					MessageBox::Show("Заполните поле формы ID фильма!", "Ошибка ID фильма!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("Р—Р°РїРѕР»РЅРёС‚Рµ РїРѕР»Рµ С„РѕСЂРјС‹ ID С„РёР»СЊРјР°!", "РћС€РёР±РєР° ID С„РёР»СЊРјР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				break;
 			}
 			case 4:
@@ -1366,13 +1366,13 @@ namespace CinemaServiceApplication
 					{
 						DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 						if (queryDB->deleteReviewFromAdmin(reviewID))
-							MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 					else
-						MessageBox::Show("ID отзыва должно состоять только из цифр!", "Ошибка ID отзыва!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("ID РѕС‚Р·С‹РІР° РґРѕР»Р¶РЅРѕ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ!", "РћС€РёР±РєР° ID РѕС‚Р·С‹РІР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
 				else
-					MessageBox::Show("Заполните поле формы ID отзыва!", "Ошибка ID отзыва!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("Р—Р°РїРѕР»РЅРёС‚Рµ РїРѕР»Рµ С„РѕСЂРјС‹ ID РѕС‚Р·С‹РІР°!", "РћС€РёР±РєР° ID РѕС‚Р·С‹РІР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				break;
 			}
 			default:;
@@ -1389,7 +1389,7 @@ namespace CinemaServiceApplication
 				Boolean true_userLogin{ true };
 				for (int i{}; i < userLogin->Length; i++)
 				{
-					if (userLogin[i] >= '0' && userLogin[i] <= '9' || userLogin[i] >= 'а' && userLogin[i] <= 'я' || userLogin[i] >= 'А' && userLogin[i] <= 'Я' ||
+					if (userLogin[i] >= '0' && userLogin[i] <= '9' || userLogin[i] >= 'Р°' && userLogin[i] <= 'СЏ' || userLogin[i] >= 'Рђ' && userLogin[i] <= 'РЇ' ||
 						userLogin[i] >= 'a' && userLogin[i] <= 'z' || userLogin[i] >= 'A' && userLogin[i] <= 'Z' || userLogin[i] == '-' || userLogin[i] == '_')
 					{
 						continue;
@@ -1403,21 +1403,21 @@ namespace CinemaServiceApplication
 				if (true_userLogin)
 				{
 					if (userLogin->Length < 5 || userLogin->Length > 20 || userPswd->Length < 5 || userPswd->Length > 20)
-						MessageBox::Show("Длина логина должна быть от 5 до 20 знаков, как и длина пароля.", "Ошибка! Неверная длина логина и/или пароля.", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("Р”Р»РёРЅР° Р»РѕРіРёРЅР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РѕС‚ 5 РґРѕ 20 Р·РЅР°РєРѕРІ, РєР°Рє Рё РґР»РёРЅР° РїР°СЂРѕР»СЏ.", "РћС€РёР±РєР°! РќРµРІРµСЂРЅР°СЏ РґР»РёРЅР° Р»РѕРіРёРЅР° Рё/РёР»Рё РїР°СЂРѕР»СЏ.", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					else
 					{
 						if (this->userRole_comboBox->SelectedIndex != -1)
 						{
 							DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 							if (queryDB->checkNewUserAccount(userLogin) && queryDB->addNewUserAccountFromAdmin(userLogin, userPswd, this->userRole_comboBox->SelectedItem->ToString(), adminLogin))
-								MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+								MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 						}
 						else
-							MessageBox::Show("Укажите права доступа для пользователя!", "Ошибка прав доступа пользователя!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("РЈРєР°Р¶РёС‚Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!", "РћС€РёР±РєР° РїСЂР°РІ РґРѕСЃС‚СѓРїР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 				}
 				else
-					MessageBox::Show("Логин должен состоять из букв русского или латинского алфаваита, цифр и/или символов '_' и '-'!", "Ошибка логина!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("Р›РѕРіРёРЅ РґРѕР»Р¶РµРЅ СЃРѕСЃС‚РѕСЏС‚СЊ РёР· Р±СѓРєРІ СЂСѓСЃСЃРєРѕРіРѕ РёР»Рё Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІР°РёС‚Р°, С†РёС„СЂ Рё/РёР»Рё СЃРёРјРІРѕР»РѕРІ '_' Рё '-'!", "РћС€РёР±РєР° Р»РѕРіРёРЅР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				break;
 			}
 			case 2:
@@ -1428,7 +1428,7 @@ namespace CinemaServiceApplication
 					this->houseNumber_textBox->Text->ToString() == "" || String::IsNullOrEmpty(this->openingTime_textBox->Text->ToString()) || String::IsNullOrWhiteSpace(this->openingTime_textBox->Text->ToString()) ||
 					String::IsNullOrEmpty(this->closingTime_textBox->Text->ToString()) || String::IsNullOrWhiteSpace(this->closingTime_textBox->Text->ToString()))
 				{
-					MessageBox::Show("Проверьте заполненность таких полей, как CinemaName|City|Street|HouseNumber|OpeningTime|ClosingTime", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("РџСЂРѕРІРµСЂСЊС‚Рµ Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ С‚Р°РєРёС… РїРѕР»РµР№, РєР°Рє CinemaName|City|Street|HouseNumber|OpeningTime|ClosingTime", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
 				else
 				{
@@ -1439,7 +1439,7 @@ namespace CinemaServiceApplication
 						this->houseNumber_textBox->Text->ToString(), this->houseLetter_textBox->Text->ToString(), this->houseDescr_textBox->Text->ToString(), this->openingTime_textBox->Text->ToString(),
 						this->closingTime_textBox->Text->ToString(), this->contactInf_textBox->Text->ToString()))
 					{
-						MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 				}
 				break;
@@ -1453,7 +1453,7 @@ namespace CinemaServiceApplication
 					if (this->movieName_textBox->Text->ToString() == "" || String::IsNullOrEmpty(this->release_textBox->Text->ToString()) || String::IsNullOrWhiteSpace(this->release_textBox->Text->ToString()) ||
 						this->genre_textBox->Text->ToString() == "" || String::IsNullOrEmpty(this->duration_textBox->Text->ToString()) || String::IsNullOrWhiteSpace(this->duration_textBox->Text->ToString()))
 					{
-						MessageBox::Show("Проверьте заполненность таких полей, как MovieName|Release|Genre|Duration", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("РџСЂРѕРІРµСЂСЊС‚Рµ Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ С‚Р°РєРёС… РїРѕР»РµР№, РєР°Рє MovieName|Release|Genre|Duration", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 					else
 					{
@@ -1465,7 +1465,7 @@ namespace CinemaServiceApplication
 							this->duration_textBox->Text->ToString(), (this->movieFormat_comboBox->SelectedItem == nullptr ? "" : this->movieFormat_comboBox->SelectedItem->ToString()),
 							(this->cinemaName_comboBox->SelectedItem == nullptr ? "None" : this->cinemaName_comboBox->SelectedItem->ToString())))
 						{
-							MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 						}
 						this->ageLimit_textBox->TextMaskFormat = System::Windows::Forms::MaskFormat::IncludePromptAndLiterals;
 					}
@@ -1473,12 +1473,12 @@ namespace CinemaServiceApplication
 				else
 				{
 					if (this->movieName_textBox->Text->ToString() == "")
-						MessageBox::Show("Укажите название фильма, которое хотите добавить в указанный кинотеатр!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("РЈРєР°Р¶РёС‚Рµ РЅР°Р·РІР°РЅРёРµ С„РёР»СЊРјР°, РєРѕС‚РѕСЂРѕРµ С…РѕС‚РёС‚Рµ РґРѕР±Р°РІРёС‚СЊ РІ СѓРєР°Р·Р°РЅРЅС‹Р№ РєРёРЅРѕС‚РµР°С‚СЂ!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					else
 					{
 						DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 						if (queryDB->addMovieFromAdmin(this->movieName_textBox->Text->ToString(), "", "", "", "", "", this->cinemaName_comboBox->SelectedItem->ToString()))
-							MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 				}
 				break;
@@ -1499,13 +1499,13 @@ namespace CinemaServiceApplication
 					{
 						DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 						if (queryDB->addReviewFromAdmin(reviewID, this->comment_textBox))
-							MessageBox::Show("Внимательно изучите комментарий, при необходимости измените его. Не забудьте нажать кнопку Apply!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("Р’РЅРёРјР°С‚РµР»СЊРЅРѕ РёР·СѓС‡РёС‚Рµ РєРѕРјРјРµРЅС‚Р°СЂРёР№, РїСЂРё РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚Рё РёР·РјРµРЅРёС‚Рµ РµРіРѕ. РќРµ Р·Р°Р±СѓРґСЊС‚Рµ РЅР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ Apply!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 					else
-						MessageBox::Show("ID отзыва должно состоять только из цифр!", "Ошибка ID отзыва!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("ID РѕС‚Р·С‹РІР° РґРѕР»Р¶РЅРѕ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ!", "РћС€РёР±РєР° ID РѕС‚Р·С‹РІР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
 				else
-					MessageBox::Show("Заполните поле формы ID отзыва!", "Ошибка ID отзыва!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("Р—Р°РїРѕР»РЅРёС‚Рµ РїРѕР»Рµ С„РѕСЂРјС‹ ID РѕС‚Р·С‹РІР°!", "РћС€РёР±РєР° ID РѕС‚Р·С‹РІР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				break;
 			}
 			default:;
@@ -1555,7 +1555,7 @@ namespace CinemaServiceApplication
 			case 1:
 			{
 				if (this->userID_textBox->Text == "" || this->userLogin_textBox->Text == "" || this->userPswd_textBox->Text == "" || this->userRole_comboBox->SelectedIndex == -1)
-					MessageBox::Show("Заполните все поля формы для изменения информации о пользователе!", "Ошибка изменения данных о пользователе!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("Р—Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ С„РѕСЂРјС‹ РґР»СЏ РёР·РјРµРЅРµРЅРёСЏ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ!", "РћС€РёР±РєР° РёР·РјРµРЅРµРЅРёСЏ РґР°РЅРЅС‹С… Рѕ РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				else
 				{
 					Boolean isNumeric{ true };
@@ -1573,7 +1573,7 @@ namespace CinemaServiceApplication
 						Boolean true_userLogin{ true };
 						for (int i{}; i < userLogin->Length; i++)
 						{
-							if (userLogin[i] >= '0' && userLogin[i] <= '9' || userLogin[i] >= 'а' && userLogin[i] <= 'я' || userLogin[i] >= 'А' && userLogin[i] <= 'Я' ||
+							if (userLogin[i] >= '0' && userLogin[i] <= '9' || userLogin[i] >= 'Р°' && userLogin[i] <= 'СЏ' || userLogin[i] >= 'Рђ' && userLogin[i] <= 'РЇ' ||
 								userLogin[i] >= 'a' && userLogin[i] <= 'z' || userLogin[i] >= 'A' && userLogin[i] <= 'Z' || userLogin[i] == '-' || userLogin[i] == '_')
 							{
 								continue;
@@ -1587,24 +1587,24 @@ namespace CinemaServiceApplication
 						if (true_userLogin)
 						{
 							if (userLogin->Length < 5 || userLogin->Length > 20 || userPswd->Length < 5 || userPswd->Length > 20)
-								MessageBox::Show("Длина логина должна быть от 5 до 20 знаков, как и длина пароля.", "Ошибка! Неверная длина логина и/или пароля.", MessageBoxButtons::OK, MessageBoxIcon::Information);
+								MessageBox::Show("Р”Р»РёРЅР° Р»РѕРіРёРЅР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РѕС‚ 5 РґРѕ 20 Р·РЅР°РєРѕРІ, РєР°Рє Рё РґР»РёРЅР° РїР°СЂРѕР»СЏ.", "РћС€РёР±РєР°! РќРµРІРµСЂРЅР°СЏ РґР»РёРЅР° Р»РѕРіРёРЅР° Рё/РёР»Рё РїР°СЂРѕР»СЏ.", MessageBoxButtons::OK, MessageBoxIcon::Information);
 							else
 							{
 								if (this->userRole_comboBox->SelectedIndex != -1)
 								{
 									DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 									if (queryDB->updateUserAccountFromAdmin(this->userID_textBox->Text, this->userLogin_textBox->Text, this->userPswd_textBox->Text, this->userRole_comboBox->SelectedItem->ToString(), adminLogin))
-										MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+										MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 								}
 								else
-									MessageBox::Show("Укажите права доступа для пользователя!", "Ошибка прав доступа пользователя!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+									MessageBox::Show("РЈРєР°Р¶РёС‚Рµ РїСЂР°РІР° РґРѕСЃС‚СѓРїР° РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!", "РћС€РёР±РєР° РїСЂР°РІ РґРѕСЃС‚СѓРїР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 							}
 						}
 						else
-							MessageBox::Show("Логин должен состоять из букв русского или латинского алфаваита, цифр и/или символов '_' и '-'!", "Ошибка логина!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("Р›РѕРіРёРЅ РґРѕР»Р¶РµРЅ СЃРѕСЃС‚РѕСЏС‚СЊ РёР· Р±СѓРєРІ СЂСѓСЃСЃРєРѕРіРѕ РёР»Рё Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІР°РёС‚Р°, С†РёС„СЂ Рё/РёР»Рё СЃРёРјРІРѕР»РѕРІ '_' Рё '-'!", "РћС€РёР±РєР° Р»РѕРіРёРЅР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 					else
-						MessageBox::Show("ID пользователя должно состоять только из цифр!", "Ошибка ID пользователя!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РґРѕР»Р¶РЅРѕ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ!", "РћС€РёР±РєР° ID РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
 				break;
 			}
@@ -1628,7 +1628,7 @@ namespace CinemaServiceApplication
 							this->houseNumber_textBox->Text->ToString() == "" || String::IsNullOrEmpty(this->openingTime_textBox->Text->ToString()) || String::IsNullOrWhiteSpace(this->openingTime_textBox->Text->ToString()) ||
 							String::IsNullOrEmpty(this->closingTime_textBox->Text->ToString()) || String::IsNullOrWhiteSpace(this->closingTime_textBox->Text->ToString()))
 						{
-							MessageBox::Show("Проверьте заполненность таких полей, как CinemaName|City|Street|HouseNumber|OpeningTime|ClosingTime", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("РџСЂРѕРІРµСЂСЊС‚Рµ Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ С‚Р°РєРёС… РїРѕР»РµР№, РєР°Рє CinemaName|City|Street|HouseNumber|OpeningTime|ClosingTime", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 						}
 						else
 						{
@@ -1639,21 +1639,21 @@ namespace CinemaServiceApplication
 								this->street_textBox->Text->ToString(), this->houseNumber_textBox->Text->ToString(), this->houseLetter_textBox->Text->ToString(), this->houseDescr_textBox->Text->ToString(),
 								this->openingTime_textBox->Text->ToString(), this->closingTime_textBox->Text->ToString(), this->contactInf_textBox->Text->ToString()))
 							{
-								MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+								MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 							}
 						}
 					}
 					else
-						MessageBox::Show("ID кинотеатра должно состоять только из цифр!", "Ошибка ID кинотеатра!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("ID РєРёРЅРѕС‚РµР°С‚СЂР° РґРѕР»Р¶РЅРѕ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ!", "РћС€РёР±РєР° ID РєРёРЅРѕС‚РµР°С‚СЂР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
 				else
-					MessageBox::Show("Укажите значение ID кинотеатра!", "Ошибка ID кинотеатра!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("РЈРєР°Р¶РёС‚Рµ Р·РЅР°С‡РµРЅРёРµ ID РєРёРЅРѕС‚РµР°С‚СЂР°!", "РћС€РёР±РєР° ID РєРёРЅРѕС‚РµР°С‚СЂР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				break;
 			}
 			case 3:
 			{
 				if (this->movieID_textBox->Text->ToString() == "")
-					MessageBox::Show("Укажите значение ID фильма!", "Ошибка ID фильма!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("РЈРєР°Р¶РёС‚Рµ Р·РЅР°С‡РµРЅРёРµ ID С„РёР»СЊРјР°!", "РћС€РёР±РєР° ID С„РёР»СЊРјР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				else
 				{
 					Boolean isNumeric{ true };
@@ -1671,7 +1671,7 @@ namespace CinemaServiceApplication
 						if (this->movieName_textBox->Text->ToString() == "" || String::IsNullOrEmpty(this->release_textBox->Text->ToString()) || String::IsNullOrWhiteSpace(this->release_textBox->Text->ToString()) ||
 							this->genre_textBox->Text->ToString() == "" || String::IsNullOrEmpty(this->duration_textBox->Text->ToString()) || String::IsNullOrWhiteSpace(this->duration_textBox->Text->ToString()))
 						{
-							MessageBox::Show("Проверьте заполненность таких полей, как MovieName|Release|Genre|Duration", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("РџСЂРѕРІРµСЂСЊС‚Рµ Р·Р°РїРѕР»РЅРµРЅРЅРѕСЃС‚СЊ С‚Р°РєРёС… РїРѕР»РµР№, РєР°Рє MovieName|Release|Genre|Duration", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 						}
 						else
 						{
@@ -1683,13 +1683,13 @@ namespace CinemaServiceApplication
 								this->ageLimit_textBox->Text->ToString(), this->duration_textBox->Text->ToString(), (this->movieFormat_comboBox->SelectedItem == nullptr ? "" : this->movieFormat_comboBox->SelectedItem->ToString()),
 								(this->cinemaName_comboBox->SelectedItem == nullptr ? "None" : this->cinemaName_comboBox->SelectedItem->ToString())))
 							{
-								MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+								MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 							}
 							this->ageLimit_textBox->TextMaskFormat = System::Windows::Forms::MaskFormat::IncludePromptAndLiterals;
 						}
 					}
 					else
-						MessageBox::Show("ID фильма должно состоять только из цифр!", "Ошибка ID фильма!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("ID С„РёР»СЊРјР° РґРѕР»Р¶РЅРѕ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ!", "РћС€РёР±РєР° ID С„РёР»СЊРјР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
 				break;
 			}
@@ -1709,13 +1709,13 @@ namespace CinemaServiceApplication
 					{
 						DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 						if (queryDB->updateReviewFromAdmin(reviewID, this->comment_textBox->Text->ToString()))
-							MessageBox::Show("Обновите данные, чтобы увидеть изменения в таблице!", "Подсказка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+							MessageBox::Show("РћР±РЅРѕРІРёС‚Рµ РґР°РЅРЅС‹Рµ, С‡С‚РѕР±С‹ СѓРІРёРґРµС‚СЊ РёР·РјРµРЅРµРЅРёСЏ РІ С‚Р°Р±Р»РёС†Рµ!", "РџРѕРґСЃРєР°Р·РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					}
 					else
-						MessageBox::Show("ID отзыва должно состоять только из цифр!", "Ошибка ID отзыва!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+						MessageBox::Show("ID РѕС‚Р·С‹РІР° РґРѕР»Р¶РЅРѕ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ!", "РћС€РёР±РєР° ID РѕС‚Р·С‹РІР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				}
 				else
-					MessageBox::Show("Заполните поле формы ID отзыва!", "Ошибка ID отзыва!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("Р—Р°РїРѕР»РЅРёС‚Рµ РїРѕР»Рµ С„РѕСЂРјС‹ ID РѕС‚Р·С‹РІР°!", "РћС€РёР±РєР° ID РѕС‚Р·С‹РІР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				break;
 			}
 			default:;

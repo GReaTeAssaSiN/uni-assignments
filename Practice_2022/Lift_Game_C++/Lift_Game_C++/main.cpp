@@ -11,28 +11,28 @@ int main()
 
 	bool inGame{ MenuGame(window) };
 
-	//Переменная для закрытия консоли при выходе из программы с помощью SFML event
+	//РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ Р·Р°РєСЂС‹С‚РёСЏ РєРѕРЅСЃРѕР»Рё РїСЂРё РІС‹С…РѕРґРµ РёР· РїСЂРѕРіСЂР°РјРјС‹ СЃ РїРѕРјРѕС‰СЊСЋ SFML event
 	bool close_program{ false };
 
 	if (inGame)
 	{
-		/////////////////Инициализация спрайтов////////////////////
-		//Загрузка спрайта лифта
+		/////////////////РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРїСЂР°Р№С‚РѕРІ////////////////////
+		//Р—Р°РіСЂСѓР·РєР° СЃРїСЂР°Р№С‚Р° Р»РёС„С‚Р°
 		User_Sprite lift("Lift.png", 10, 10);
 
-		//Загрузка кнопки
+		//Р—Р°РіСЂСѓР·РєР° РєРЅРѕРїРєРё
 		User_Sprite Button("Button.png", 115, 406);
 
-		//Загрузка левой двери
+		//Р—Р°РіСЂСѓР·РєР° Р»РµРІРѕР№ РґРІРµСЂРё
 		User_Sprite LeftDoor("Left_Door.png", 204, 213);
 
-		//Загрузка правой двери
+		//Р—Р°РіСЂСѓР·РєР° РїСЂР°РІРѕР№ РґРІРµСЂРё
 		User_Sprite RightDoor("Right_Door.png", 351, 213);
 
-		//BG лифта
+		//BG Р»РёС„С‚Р°
 		User_Sprite BGlift("Lift_BG.png", 204, 213);
 
-		//Загрузка текста вызова лифта
+		//Р—Р°РіСЂСѓР·РєР° С‚РµРєСЃС‚Р° РІС‹Р·РѕРІР° Р»РёС„С‚Р°
 		sf::Font button_doors_font;
 		button_doors_font.loadFromFile("fonts/Comic_Sans_MS.TTF");
 		sf::Text button_doors_text("", button_doors_font, 10);
@@ -40,52 +40,52 @@ int main()
 		button_doors_text.setString("Press button\nto call lift:");
 		button_doors_text.setPosition(105, 360);
 
-		//Загрузка выбора этажа
+		//Р—Р°РіСЂСѓР·РєР° РІС‹Р±РѕСЂР° СЌС‚Р°Р¶Р°
 		User_Sprite Button_plus("Plus.png", 915, 100);
 		User_Sprite Button_minus("Minus.png", 765, 100);
 
-		//Загрузка текста выбора этажа
+		//Р—Р°РіСЂСѓР·РєР° С‚РµРєСЃС‚Р° РІС‹Р±РѕСЂР° СЌС‚Р°Р¶Р°
 		sf::Font floor_font;
 		floor_font.loadFromFile("fonts/CyrilicOLD.TTF");
 		sf::Text floor_text("", floor_font, 20);
 		floor_text.setFillColor(sf::Color::Black);
-		floor_text.setString("Ваш этаж: 1");
+		floor_text.setString("Р’Р°С€ СЌС‚Р°Р¶: 1");
 		floor_text.setPosition(800, 100);
 
-		//Время и переменные (для анимации дверей)
+		//Р’СЂРµРјСЏ Рё РїРµСЂРµРјРµРЅРЅС‹Рµ (РґР»СЏ Р°РЅРёРјР°С†РёРё РґРІРµСЂРµР№)
 		float speed{ 0 };
 		float sum{ 0 };
 
-		//Загрузка кнопки готово
+		//Р—Р°РіСЂСѓР·РєР° РєРЅРѕРїРєРё РіРѕС‚РѕРІРѕ
 		User_Sprite ready_button("Ready_Button.png", 770, 130);
 
-		//Переменные для кнопок выбора этажа у человека
+		//РџРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ РєРЅРѕРїРѕРє РІС‹Р±РѕСЂР° СЌС‚Р°Р¶Р° Сѓ С‡РµР»РѕРІРµРєР°
 		int floor_num{ 1 };
 		std::ostringstream floor_str;
 		int isFloor{ 1 };
 
-		//marher_floor загрузка маркера этажа
+		//marher_floor Р·Р°РіСЂСѓР·РєР° РјР°СЂРєРµСЂР° СЌС‚Р°Р¶Р°
 		User_Sprite marker("marker_floor.png", 277, 150);
 
-		//Переменная для положения лифта (отправка)
+		//РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РїРѕР»РѕР¶РµРЅРёСЏ Р»РёС„С‚Р° (РѕС‚РїСЂР°РІРєР°)
 		int lift_pos_sending{ 1 };
 
-		//Загрузка текста входа
+		//Р—Р°РіСЂСѓР·РєР° С‚РµРєСЃС‚Р° РІС…РѕРґР°
 		sf::Font entrance_font;
 		entrance_font.loadFromFile("fonts/CyrilicOLD.TTF");
 		sf::Text entrance_text("", entrance_font, 30);
 		entrance_text.setFillColor(sf::Color::Magenta);
-		entrance_text.setString("Войти");
+		entrance_text.setString("Р’РѕР№С‚Рё");
 		entrance_text.setPosition(320, 280);
 
-		//Переменная для сдвига маркера этажа
+		//РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ СЃРґРІРёРіР° РјР°СЂРєРµСЂР° СЌС‚Р°Р¶Р°
 		int dx{ marker.x };
 
 		while (window.isOpen())
 		{
 			CloseWindow(window, close_program);
 
-			///////////////////////////////////////////Кнопки выбора этажа////////////////////////////////////////
+			///////////////////////////////////////////РљРЅРѕРїРєРё РІС‹Р±РѕСЂР° СЌС‚Р°Р¶Р°////////////////////////////////////////
 			while (isFloor)
 			{
 				Button_minus.sprite.setColor(sf::Color::White);
@@ -132,7 +132,7 @@ int main()
 						}
 						floor_str.str("");
 						floor_str << floor_num;
-						floor_text.setString("Ваш этаж: " + floor_str.str());
+						floor_text.setString("Р’Р°С€ СЌС‚Р°Р¶: " + floor_str.str());
 						std::cout << "Your floor is " << floor_str.str() << std::endl;
 					}
 				}
@@ -150,10 +150,10 @@ int main()
 
 			}
 
-			//Для положения отправки лифта
+			//Р”Р»СЏ РїРѕР»РѕР¶РµРЅРёСЏ РѕС‚РїСЂР°РІРєРё Р»РёС„С‚Р°
 			lift_pos_sending = floor_num;
 
-			//////////////////////////////////////////Анимация двери//////////////////////////////////
+			//////////////////////////////////////////РђРЅРёРјР°С†РёСЏ РґРІРµСЂРё//////////////////////////////////
 			if (isFloor == 0)
 			{
 
@@ -169,16 +169,16 @@ int main()
 						{
 							CloseWindow(window, close_program);
 
-							//SFML - время
+							//SFML - РІСЂРµРјСЏ
 							float time = clock.getElapsedTime().asMilliseconds();
 							clock.restart();
 							time = time / 800;
-							speed += time;//Скорость дверей (с ускорением)
-							sum += 0.04 * speed;//Смещение
+							speed += time;//РЎРєРѕСЂРѕСЃС‚СЊ РґРІРµСЂРµР№ (СЃ СѓСЃРєРѕСЂРµРЅРёРµРј)
+							sum += 0.04 * speed;//РЎРјРµС‰РµРЅРёРµ
 
-							LeftDoor.sprite.move(-0.04 * speed, 0);//Левая дверь
-							RightDoor.sprite.move(0.04 * speed, 0);//Правая дверь
-							//Покадровый вывод цикла
+							LeftDoor.sprite.move(-0.04 * speed, 0);//Р›РµРІР°СЏ РґРІРµСЂСЊ
+							RightDoor.sprite.move(0.04 * speed, 0);//РџСЂР°РІР°СЏ РґРІРµСЂСЊ
+							//РџРѕРєР°РґСЂРѕРІС‹Р№ РІС‹РІРѕРґ С†РёРєР»Р°
 							window.clear();
 							window.draw(BGlift.sprite);
 							window.draw(LeftDoor.sprite);
@@ -192,7 +192,7 @@ int main()
 					}
 				}
 
-				////Выгрузка всех спрайтов (лифт и кнопка)
+				////Р’С‹РіСЂСѓР·РєР° РІСЃРµС… СЃРїСЂР°Р№С‚РѕРІ (Р»РёС„С‚ Рё РєРЅРѕРїРєР°)
 				window.clear();
 				window.draw(BGlift.sprite);
 				window.draw(LeftDoor.sprite);

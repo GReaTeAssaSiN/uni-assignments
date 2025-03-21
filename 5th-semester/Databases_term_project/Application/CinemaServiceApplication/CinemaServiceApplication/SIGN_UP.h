@@ -13,7 +13,7 @@ namespace CinemaServiceApplication {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для SIGN_UP
+	/// РЎРІРѕРґРєР° РґР»СЏ SIGN_UP
 	/// </summary>
 	public ref class SIGN_UP : public System::Windows::Forms::Form
 	{
@@ -22,7 +22,7 @@ namespace CinemaServiceApplication {
 		SIGN_UP(LOG_IN^ parent_log_in_form);
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~SIGN_UP();
 	private: LOG_IN^ parent_log_in_form{};
@@ -51,14 +51,14 @@ namespace CinemaServiceApplication {
 	private: System::Windows::Forms::Button^ eye_show_btn;
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void);
 #pragma endregion

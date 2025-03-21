@@ -123,7 +123,7 @@ AddNewReviewToDB::AddNewReviewToDB(String^ userName)
 	this->movie_comboBox->MinimumSize = System::Drawing::Size(275, 33);
 	this->movie_comboBox->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 	this->movie_comboBox->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-	this->movie_comboBox->Items->Add(L"Âûáåðèòå êèíîòåàòð");
+	this->movie_comboBox->Items->Add(L"Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€");
 	this->movie_comboBox->SelectedIndex = 0;
 	this->movie_comboBox->DropDown += gcnew System::EventHandler(this, &AddNewReviewToDB::movie_comboBox_DropDown);
 	this->movie_comboBox->DropDownClosed += gcnew System::EventHandler(this, &AddNewReviewToDB::movie_comboBox_DropDownClosed);
@@ -209,11 +209,11 @@ System::Void AddNewReviewToDB::clear_btn_MouseClick(System::Object^ sender, Syst
 {
 	this->cinema_comboBox->SelectedIndex = -1;
 	this->movie_comboBox->Items->Clear();
-	this->movie_comboBox->Items->Add(L"Âûáåðèòå êèíîòåàòð");
+	this->movie_comboBox->Items->Add(L"Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€");
 	this->movie_comboBox->SelectedIndex = 0;
 	this->assmnt_comboBox->SelectedIndex = -1;
 	this->comment_textBox->Text = "";
-	//Îêðàñ.
+	//ÐžÐºÑ€Ð°Ñ.
 	this->cinema_comboBox->BackColor = System::Drawing::Color::LightPink;
 	this->cinema_comboBox->ForeColor = System::Drawing::Color::DarkRed;
 	this->movie_comboBox->BackColor = System::Drawing::Color::LightPink;
@@ -258,7 +258,7 @@ System::Void AddNewReviewToDB::movie_comboBox_DropDown(System::Object^ sender, S
 }
 System::Void AddNewReviewToDB::movie_comboBox_DropDownClosed(System::Object^ sender, System::EventArgs^ e)
 {
-	if ((this->movie_comboBox->SelectedIndex == 0 && this->movie_comboBox->SelectedItem == "Âûáåðèòå êèíîòåàòð") || (this->movie_comboBox->SelectedIndex == -1 && this->movie_comboBox->SelectedItem != "Âûáåðèòå êèíîòåàòð"))
+	if ((this->movie_comboBox->SelectedIndex == 0 && this->movie_comboBox->SelectedItem == "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€") || (this->movie_comboBox->SelectedIndex == -1 && this->movie_comboBox->SelectedItem != "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€"))
 	{
 		this->movie_comboBox->BackColor = System::Drawing::Color::LightPink;
 		this->movie_comboBox->ForeColor = System::Drawing::Color::DarkRed;
@@ -287,10 +287,10 @@ System::Void AddNewReviewToDB::post_review_btn_MouseClick(System::Object^ sender
 			forbidden_symbol = true;
 			break;
 		}
-	if (this->cinema_comboBox->SelectedIndex == -1 || this->assmnt_comboBox->SelectedIndex == -1 || (this->movie_comboBox->SelectedIndex == 0 && this->movie_comboBox->SelectedItem == "Âûáåðèòå êèíîòåàòð") || (this->movie_comboBox->SelectedIndex == -1 && this->movie_comboBox->SelectedItem != "Âûáåðèòå êèíîòåàòð"))
-		MessageBox::Show("Çàïîëíèòå âñå îòìå÷åííûå ïîëÿ ôîðìû!", "Îøèáêà!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	if (this->cinema_comboBox->SelectedIndex == -1 || this->assmnt_comboBox->SelectedIndex == -1 || (this->movie_comboBox->SelectedIndex == 0 && this->movie_comboBox->SelectedItem == "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€") || (this->movie_comboBox->SelectedIndex == -1 && this->movie_comboBox->SelectedItem != "Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€"))
+		MessageBox::Show("Ð—Ð°Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ð²ÑÐµ Ð¾Ñ‚Ð¼ÐµÑ‡ÐµÐ½Ð½Ñ‹Ðµ Ð¿Ð¾Ð»Ñ Ñ„Ð¾Ñ€Ð¼Ñ‹!", "ÐžÑˆÐ¸Ð±ÐºÐ°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	else if (forbidden_symbol)
-		MessageBox::Show("Íå èñïîëüçóéòå ñèìâîë ' (èñïîëüçóéòå ñèìâîë \" âìåñòî íåãî)!", "Îøèáêà!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("ÐÐµ Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ ÑÐ¸Ð¼Ð²Ð¾Ð» ' (Ð¸ÑÐ¿Ð¾Ð»ÑŒÐ·ÑƒÐ¹Ñ‚Ðµ ÑÐ¸Ð¼Ð²Ð¾Ð» \" Ð²Ð¼ÐµÑÑ‚Ð¾ Ð½ÐµÐ³Ð¾)!", "ÐžÑˆÐ¸Ð±ÐºÐ°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	else
 	{
 		DataBaseQueries^ queryDB = gcnew DataBaseQueries();
@@ -302,11 +302,11 @@ System::Void AddNewReviewToDB::post_review_btn_MouseClick(System::Object^ sender
 		queryDB->closeConnection();
 		this->cinema_comboBox->SelectedIndex = -1;
 		this->movie_comboBox->Items->Clear();
-		this->movie_comboBox->Items->Add(L"Âûáåðèòå êèíîòåàòð");
+		this->movie_comboBox->Items->Add(L"Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€");
 		this->movie_comboBox->SelectedIndex = 0;
 		this->assmnt_comboBox->SelectedIndex = -1;
 		this->comment_textBox->Text = "";
-		//Îêðàñ.
+		//ÐžÐºÑ€Ð°Ñ.
 		this->cinema_comboBox->BackColor = System::Drawing::Color::LightPink;
 		this->cinema_comboBox->ForeColor = System::Drawing::Color::DarkRed;
 		this->movie_comboBox->BackColor = System::Drawing::Color::LightPink;

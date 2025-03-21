@@ -19,8 +19,8 @@ private:
 public:
 	Rectangle()
 	{
-		std::cout << "Ñîçäàí êîíñòðóêòîðîì ïî óìîë÷àíèþ îáúåêò-ïðÿìîóãîëüíèê ñ êîîðäèíàòàìè áàçîâîé òî÷êè (âåðõíèé ëåâûé óãîë):\n(" << 
-			m_auxiliary_base_point_of_rect.getXPoint() << ", " << m_auxiliary_base_point_of_rect.getYPoint() << ")\nè ðàçìåðàìè: Lenght = " << m_length << 
+		std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð¾Ð±ÑŠÐµÐºÑ‚-Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð±Ð°Ð·Ð¾Ð²Ð¾Ð¹ Ñ‚Ð¾Ñ‡ÐºÐ¸ (Ð²ÐµÑ€Ñ…Ð½Ð¸Ð¹ Ð»ÐµÐ²Ñ‹Ð¹ ÑƒÐ³Ð¾Ð»):\n(" << 
+			m_auxiliary_base_point_of_rect.getXPoint() << ", " << m_auxiliary_base_point_of_rect.getYPoint() << ")\nÐ¸ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð°Ð¼Ð¸: Lenght = " << m_length << 
 			",\tWidth = " << m_width << std::endl;
 	}
 
@@ -32,8 +32,8 @@ public:
 		while (m_auxiliary_base_point_of_rect.getYPoint() + m_width > 895)
 			m_width--;
 
-		std::cout << "Ñîçäàí êîíñòðóêòîðîì ñî ñëó÷àéíûìè ïàðàìåòðàìè îáúåêò-ïðÿìîóãîëüíèê ñ êîîðäèíàòàìè áàçîâîé òî÷êè (âåðõíèé ëåâûé óãîë):\n(" <<
-			m_auxiliary_base_point_of_rect.getXPoint() << ", " << m_auxiliary_base_point_of_rect.getYPoint() << ")\nè ðàçìåðàìè: Lenght = " << m_length <<
+		std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ ÑÐ¾ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚-Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð±Ð°Ð·Ð¾Ð²Ð¾Ð¹ Ñ‚Ð¾Ñ‡ÐºÐ¸ (Ð²ÐµÑ€Ñ…Ð½Ð¸Ð¹ Ð»ÐµÐ²Ñ‹Ð¹ ÑƒÐ³Ð¾Ð»):\n(" <<
+			m_auxiliary_base_point_of_rect.getXPoint() << ", " << m_auxiliary_base_point_of_rect.getYPoint() << ")\nÐ¸ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð°Ð¼Ð¸: Lenght = " << m_length <<
 			",\tWidth = " << m_width << std::endl;
 	}
 
@@ -106,8 +106,8 @@ public:
 
 	/*~Rectangle() 
 	{
-		std::cout << "Óäàëåí îáúåêò-ïðÿìîóãîëüíèê ñ êîîðäèíàòàìè áàçîâîé òî÷êè (âåðõíèé ëåâûé óãîë):\n(" <<
-			m_auxiliary_base_point_of_rect.getXPoint() << ", " << m_auxiliary_base_point_of_rect.getYPoint() << ")\nè ðàçìåðàìè: Lenght = " << m_length <<
+		std::cout << "Ð£Ð´Ð°Ð»ÐµÐ½ Ð¾Ð±ÑŠÐµÐºÑ‚-Ð¿Ñ€ÑÐ¼Ð¾ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð±Ð°Ð·Ð¾Ð²Ð¾Ð¹ Ñ‚Ð¾Ñ‡ÐºÐ¸ (Ð²ÐµÑ€Ñ…Ð½Ð¸Ð¹ Ð»ÐµÐ²Ñ‹Ð¹ ÑƒÐ³Ð¾Ð»):\n(" <<
+			m_auxiliary_base_point_of_rect.getXPoint() << ", " << m_auxiliary_base_point_of_rect.getYPoint() << ")\nÐ¸ Ñ€Ð°Ð·Ð¼ÐµÑ€Ð°Ð¼Ð¸: Lenght = " << m_length <<
 			",\tWidth = " << m_width << std::endl;
 	};*/
 };

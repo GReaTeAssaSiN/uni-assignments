@@ -7,12 +7,12 @@ import os
 
 from numpy.core.numeric import outer
 
-# Функция для записи в файл.
+# Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°РїРёСЃРё РІ С„Р°Р№Р».
 def write_to_file(file_path, text):
     with open(file_path, 'a') as f:
         f.write(text + '\n')  
         
-# Загружаем данные из файла.
+# Р—Р°РіСЂСѓР¶Р°РµРј РґР°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°.
 def process_csv(file_path):
     headers = []
     subheaders = []
@@ -20,23 +20,23 @@ def process_csv(file_path):
 
     with open(file_path, 'r') as file:
         for i, line in enumerate(file):
-            # Разделяем строку по запятым.
+            # Р Р°Р·РґРµР»СЏРµРј СЃС‚СЂРѕРєСѓ РїРѕ Р·Р°РїСЏС‚С‹Рј.
             elements = line.strip().split(',')
 
             if i == 0:
-                # Первая строка: записываем в headers.
+                # РџРµСЂРІР°СЏ СЃС‚СЂРѕРєР°: Р·Р°РїРёСЃС‹РІР°РµРј РІ headers.
                 headers = elements
             else:
                 elements = line.strip().split(';')
-                # Остальные строки
-                subheaders.append(elements[0])  # Первый элемент добавляем в subheaders.
-                # Остальные элементы очищаем от пробелов и добавляем в data.
+                # РћСЃС‚Р°Р»СЊРЅС‹Рµ СЃС‚СЂРѕРєРё
+                subheaders.append(elements[0])  # РџРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РґРѕР±Р°РІР»СЏРµРј РІ subheaders.
+                # РћСЃС‚Р°Р»СЊРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ РѕС‡РёС‰Р°РµРј РѕС‚ РїСЂРѕР±РµР»РѕРІ Рё РґРѕР±Р°РІР»СЏРµРј РІ data.
                 row_data = [elem.replace(' ', '') for elem in elements[1:]]
                 data.append(row_data)
 
     return headers, subheaders, data
 
-# Функция нормализации данных.
+# Р¤СѓРЅРєС†РёСЏ РЅРѕСЂРјР°Р»РёР·Р°С†РёРё РґР°РЅРЅС‹С….
 def normalize_data(data):
     data_array = np.array(data, dtype=float)
     data_transposed = data_array.T
@@ -46,86 +46,86 @@ def normalize_data(data):
 
     return normalized_data_transposed
 
-# Инициализация сети Кохонена.
+# РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРµС‚Рё РљРѕС…РѕРЅРµРЅР°.
 def initialize_network(grid_size, num_features):
     return np.random.rand(grid_size, grid_size, num_features)
 
-# Вычисление расстояния между векторами.
+# Р’С‹С‡РёСЃР»РµРЅРёРµ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ РјРµР¶РґСѓ РІРµРєС‚РѕСЂР°РјРё.
 def calculate_distance(input_vector, weight_vector):
     return np.linalg.norm(input_vector - weight_vector)
 
-# Обновление весов нейронов относительно нейрона-победителя.
+# РћР±РЅРѕРІР»РµРЅРёРµ РІРµСЃРѕРІ РЅРµР№СЂРѕРЅРѕРІ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РЅРµР№СЂРѕРЅР°-РїРѕР±РµРґРёС‚РµР»СЏ.
 def update_weights(grid_size, weights, input_vector, winner_coords, learning_rate, neighborhood_radius):
     for x in range(grid_size):
         for y in range(grid_size):
-            distance_to_winner = np.sqrt((x - winner_coords[0]) ** 2 + (y - winner_coords[1]) ** 2) # Вычисление Евклидова расстояния между нейроном и нейроном-победителем.
+            distance_to_winner = np.sqrt((x - winner_coords[0]) ** 2 + (y - winner_coords[1]) ** 2) # Р’С‹С‡РёСЃР»РµРЅРёРµ Р•РІРєР»РёРґРѕРІР° СЂР°СЃСЃС‚РѕСЏРЅРёСЏ РјРµР¶РґСѓ РЅРµР№СЂРѕРЅРѕРј Рё РЅРµР№СЂРѕРЅРѕРј-РїРѕР±РµРґРёС‚РµР»РµРј.
             if distance_to_winner <= neighborhood_radius:
-                influence = np.exp( - (distance_to_winner ** 2) / (2 * (neighborhood_radius ** 2))) # Гауссиан, где distance_to_winner = Евклидову расстоянию (уже вычислено).
-                weights[x, y] += influence * learning_rate * (input_vector - weights[x, y]) # Обновление весов с учетом функции Гауссиан, т.е. чем дальше нейроны от нейрона-победителя, тем меньше влияние.
+                influence = np.exp( - (distance_to_winner ** 2) / (2 * (neighborhood_radius ** 2))) # Р“Р°СѓСЃСЃРёР°РЅ, РіРґРµ distance_to_winner = Р•РІРєР»РёРґРѕРІСѓ СЂР°СЃСЃС‚РѕСЏРЅРёСЋ (СѓР¶Рµ РІС‹С‡РёСЃР»РµРЅРѕ).
+                weights[x, y] += influence * learning_rate * (input_vector - weights[x, y]) # РћР±РЅРѕРІР»РµРЅРёРµ РІРµСЃРѕРІ СЃ СѓС‡РµС‚РѕРј С„СѓРЅРєС†РёРё Р“Р°СѓСЃСЃРёР°РЅ, С‚.Рµ. С‡РµРј РґР°Р»СЊС€Рµ РЅРµР№СЂРѕРЅС‹ РѕС‚ РЅРµР№СЂРѕРЅР°-РїРѕР±РµРґРёС‚РµР»СЏ, С‚РµРј РјРµРЅСЊС€Рµ РІР»РёСЏРЅРёРµ.
 
-# Обучение сети Кохонена.
+# РћР±СѓС‡РµРЅРёРµ СЃРµС‚Рё РљРѕС…РѕРЅРµРЅР°.
 def train_kohonen(data, grid_size, num_epochs, initial_learning_rate, initial_radius, output_file):
-    num_features = data.shape[1] # Количество координат (синаптических весов) нейронов = числу столбцов (X) в исходных данных.
-    # ШАГ 1. Инициализация сети.
+    num_features = data.shape[1] # РљРѕР»РёС‡РµСЃС‚РІРѕ РєРѕРѕСЂРґРёРЅР°С‚ (СЃРёРЅР°РїС‚РёС‡РµСЃРєРёС… РІРµСЃРѕРІ) РЅРµР№СЂРѕРЅРѕРІ = С‡РёСЃР»Сѓ СЃС‚РѕР»Р±С†РѕРІ (X) РІ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….
+    # РЁРђР“ 1. РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРµС‚Рё.
     weights = initialize_network(grid_size, num_features)
-    learning_rate = initial_learning_rate # Скорость обучения нейросети.
-    radius = initial_radius # Радиус соседства нейрона-победителя.
+    learning_rate = initial_learning_rate # РЎРєРѕСЂРѕСЃС‚СЊ РѕР±СѓС‡РµРЅРёСЏ РЅРµР№СЂРѕСЃРµС‚Рё.
+    radius = initial_radius # Р Р°РґРёСѓСЃ СЃРѕСЃРµРґСЃС‚РІР° РЅРµР№СЂРѕРЅР°-РїРѕР±РµРґРёС‚РµР»СЏ.
 
-    # Обучение нейросети по эпохам.
+    # РћР±СѓС‡РµРЅРёРµ РЅРµР№СЂРѕСЃРµС‚Рё РїРѕ СЌРїРѕС…Р°Рј.
     for epoch in range(num_epochs):
-        # ШАГ 2. Предъявление сети нового входного сигнала.
+        # РЁРђР“ 2. РџСЂРµРґСЉСЏРІР»РµРЅРёРµ СЃРµС‚Рё РЅРѕРІРѕРіРѕ РІС…РѕРґРЅРѕРіРѕ СЃРёРіРЅР°Р»Р°.
         for input_vector in data:
-            # ШАГ 3. Вычисление расстояния до всех нейронов сети.
+            # РЁРђР“ 3. Р’С‹С‡РёСЃР»РµРЅРёРµ СЂР°СЃСЃС‚РѕСЏРЅРёСЏ РґРѕ РІСЃРµС… РЅРµР№СЂРѕРЅРѕРІ СЃРµС‚Рё.
             distances = np.array(
                 [[calculate_distance(input_vector, weights[x, y]) for y in range(grid_size)] for x in range(grid_size)]
             )
-            # Шаг 4. Выбор нейрона с наименьшим расстоянием.
-            winner_coords = np.unravel_index(np.argmin(distances), distances.shape) # np.agrmin - возвращает индекс мин. элемента независимо от формы;
-                                                                                    # .shape - форму матрицы в виде кортежа (_;_);
-                                                                                    # np.unreavel_index - преобразует индекс относительно формы матрицы, т.е. индекс 14 в матрице 10x10 вернет (1;5).
-            # Шаг 5. Настраивание весов нейрона и его соседей.
+            # РЁР°Рі 4. Р’С‹Р±РѕСЂ РЅРµР№СЂРѕРЅР° СЃ РЅР°РёРјРµРЅСЊС€РёРј СЂР°СЃСЃС‚РѕСЏРЅРёРµРј.
+            winner_coords = np.unravel_index(np.argmin(distances), distances.shape) # np.agrmin - РІРѕР·РІСЂР°С‰Р°РµС‚ РёРЅРґРµРєСЃ РјРёРЅ. СЌР»РµРјРµРЅС‚Р° РЅРµР·Р°РІРёСЃРёРјРѕ РѕС‚ С„РѕСЂРјС‹;
+                                                                                    # .shape - С„РѕСЂРјСѓ РјР°С‚СЂРёС†С‹ РІ РІРёРґРµ РєРѕСЂС‚РµР¶Р° (_;_);
+                                                                                    # np.unreavel_index - РїСЂРµРѕР±СЂР°Р·СѓРµС‚ РёРЅРґРµРєСЃ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ С„РѕСЂРјС‹ РјР°С‚СЂРёС†С‹, С‚.Рµ. РёРЅРґРµРєСЃ 14 РІ РјР°С‚СЂРёС†Рµ 10x10 РІРµСЂРЅРµС‚ (1;5).
+            # РЁР°Рі 5. РќР°СЃС‚СЂР°РёРІР°РЅРёРµ РІРµСЃРѕРІ РЅРµР№СЂРѕРЅР° Рё РµРіРѕ СЃРѕСЃРµРґРµР№.
             update_weights(grid_size, weights, input_vector, winner_coords, learning_rate, radius)
 
-        # Уменьшаем скорость обучения ("ширину пакетов") и радиус влияния на соседей
+        # РЈРјРµРЅСЊС€Р°РµРј СЃРєРѕСЂРѕСЃС‚СЊ РѕР±СѓС‡РµРЅРёСЏ ("С€РёСЂРёРЅСѓ РїР°РєРµС‚РѕРІ") Рё СЂР°РґРёСѓСЃ РІР»РёСЏРЅРёСЏ РЅР° СЃРѕСЃРµРґРµР№
         learning_rate *= 0.9
         radius *= 0.9
-        # Шаг 6. Возвращаемся к шагу 2.
+        # РЁР°Рі 6. Р’РѕР·РІСЂР°С‰Р°РµРјСЃСЏ Рє С€Р°РіСѓ 2.
 
         if (epoch + 1) % 10 == 0:
-            print(f"Сеть Кохонена прошла обучение на {epoch + 1}/{num_epochs} эпох.")
-            write_to_file(output_file, f"Сеть Кохонена прошла обучение на {epoch + 1}/{num_epochs} эпох.")
+            print(f"РЎРµС‚СЊ РљРѕС…РѕРЅРµРЅР° РїСЂРѕС€Р»Р° РѕР±СѓС‡РµРЅРёРµ РЅР° {epoch + 1}/{num_epochs} СЌРїРѕС….")
+            write_to_file(output_file, f"РЎРµС‚СЊ РљРѕС…РѕРЅРµРЅР° РїСЂРѕС€Р»Р° РѕР±СѓС‡РµРЅРёРµ РЅР° {epoch + 1}/{num_epochs} СЌРїРѕС….")
     return weights
 
-# Распределение данных по нейронам (кластеризация примеров).
+# Р Р°СЃРїСЂРµРґРµР»РµРЅРёРµ РґР°РЅРЅС‹С… РїРѕ РЅРµР№СЂРѕРЅР°Рј (РєР»Р°СЃС‚РµСЂРёР·Р°С†РёСЏ РїСЂРёРјРµСЂРѕРІ).
 def assign_data_to_neurons(data, weights, grid_size, output_file):
-    # Создание словаря: ключ - коорд. нейрона, значение - индексы примеров.
+    # РЎРѕР·РґР°РЅРёРµ СЃР»РѕРІР°СЂСЏ: РєР»СЋС‡ - РєРѕРѕСЂРґ. РЅРµР№СЂРѕРЅР°, Р·РЅР°С‡РµРЅРёРµ - РёРЅРґРµРєСЃС‹ РїСЂРёРјРµСЂРѕРІ.
     clusters = {(x, y): [] for x in range(grid_size) for y in range(grid_size)}
 
-    # Итерация по исходной выборке.
+    # РС‚РµСЂР°С†РёСЏ РїРѕ РёСЃС…РѕРґРЅРѕР№ РІС‹Р±РѕСЂРєРµ.
     for idx, input_vector in enumerate(data):
-        # Вычисление расстояний примера до каждого обученного нейрона.
+        # Р’С‹С‡РёСЃР»РµРЅРёРµ СЂР°СЃСЃС‚РѕСЏРЅРёР№ РїСЂРёРјРµСЂР° РґРѕ РєР°Р¶РґРѕРіРѕ РѕР±СѓС‡РµРЅРЅРѕРіРѕ РЅРµР№СЂРѕРЅР°.
         distances = np.array(
             [[calculate_distance(input_vector, weights[x, y]) for y in range(grid_size)] for x in range(grid_size)]
         )
-        # Определение нейрона-победителя.
+        # РћРїСЂРµРґРµР»РµРЅРёРµ РЅРµР№СЂРѕРЅР°-РїРѕР±РµРґРёС‚РµР»СЏ.
         winner_coords = np.unravel_index(np.argmin(distances), distances.shape)
-        # По координатам нейрона победителя заносится индекс примера.
+        # РџРѕ РєРѕРѕСЂРґРёРЅР°С‚Р°Рј РЅРµР№СЂРѕРЅР° РїРѕР±РµРґРёС‚РµР»СЏ Р·Р°РЅРѕСЃРёС‚СЃСЏ РёРЅРґРµРєСЃ РїСЂРёРјРµСЂР°.
         clusters[winner_coords].append(idx)
 
-    # Вывод кластеров в консоль
-    write_to_file(output_file, f"Нейроны были разделены на следующие кластеры:")
+    # Р’С‹РІРѕРґ РєР»Р°СЃС‚РµСЂРѕРІ РІ РєРѕРЅСЃРѕР»СЊ
+    write_to_file(output_file, f"РќРµР№СЂРѕРЅС‹ Р±С‹Р»Рё СЂР°Р·РґРµР»РµРЅС‹ РЅР° СЃР»РµРґСѓСЋС‰РёРµ РєР»Р°СЃС‚РµСЂС‹:")
     for (x, y), indices in clusters.items():
-        write_to_file(output_file, f"Нейрон ({x}, {y}) имеет следующие индексы примеров: {indices}")
+        write_to_file(output_file, f"РќРµР№СЂРѕРЅ ({x}, {y}) РёРјРµРµС‚ СЃР»РµРґСѓСЋС‰РёРµ РёРЅРґРµРєСЃС‹ РїСЂРёРјРµСЂРѕРІ: {indices}")
 
     write_to_file(output_file, "")
 
-    print(f"Входные данные были распределены по кластерам.")
+    print(f"Р’С…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ Р±С‹Р»Рё СЂР°СЃРїСЂРµРґРµР»РµРЅС‹ РїРѕ РєР»Р°СЃС‚РµСЂР°Рј.")
     return clusters
 
-# Визуализация карты с подписями.
+# Р’РёР·СѓР°Р»РёР·Р°С†РёСЏ РєР°СЂС‚С‹ СЃ РїРѕРґРїРёСЃСЏРјРё.
 def visualize_kohonen_with_labels(weights, clusters, region_names, grid_size, output_file):
     umatrix = np.zeros((grid_size, grid_size))
-    # Вычисление U-матрицы (сходство между нейронами).
+    # Р’С‹С‡РёСЃР»РµРЅРёРµ U-РјР°С‚СЂРёС†С‹ (СЃС…РѕРґСЃС‚РІРѕ РјРµР¶РґСѓ РЅРµР№СЂРѕРЅР°РјРё).
     for x in range(grid_size):
         for y in range(grid_size):
             neighbors = []
@@ -138,91 +138,91 @@ def visualize_kohonen_with_labels(weights, clusters, region_names, grid_size, ou
             if y < grid_size - 1:
                 neighbors.append(weights[x, y + 1])
             umatrix[x, y] = np.mean([np.linalg.norm(weights[x, y] - neighbor) for neighbor in neighbors])
-            write_to_file(output_file, f"Нейрон ({x},{y}): {umatrix[x,y]}")
+            write_to_file(output_file, f"РќРµР№СЂРѕРЅ ({x},{y}): {umatrix[x,y]}")
 
-    # Транспонирование матрицы umatrix для поворота картинки (корректное отображение по осям).
+    # РўСЂР°РЅСЃРїРѕРЅРёСЂРѕРІР°РЅРёРµ РјР°С‚СЂРёС†С‹ umatrix РґР»СЏ РїРѕРІРѕСЂРѕС‚Р° РєР°СЂС‚РёРЅРєРё (РєРѕСЂСЂРµРєС‚РЅРѕРµ РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РїРѕ РѕСЃСЏРј).
     umatrix = umatrix.T
 
-    # Создание визуализации.
+    # РЎРѕР·РґР°РЅРёРµ РІРёР·СѓР°Р»РёР·Р°С†РёРё.
     plt.figure(figsize=(10, 8))
     plt.imshow(umatrix, cmap='coolwarm', interpolation='nearest', origin='lower')
     plt.colorbar(label="Cluster Similarity")
     plt.title("Self-Organizing Map with Region Labels")
-    write_to_file(output_file, "Проверка подписей:")
+    write_to_file(output_file, "РџСЂРѕРІРµСЂРєР° РїРѕРґРїРёСЃРµР№:")
     for (x, y), indices in clusters.items():
         if indices:
             label = ", ".join([region_names[idx] for idx in indices])[:10] + "..." if len(indices) > 1 else region_names[indices[0]][:10] + "..."
             plt.text(x, y, label, ha='center', va='center', fontsize=4, color='white', wrap=True)
-            write_to_file(output_file, f"Нейрон ({x},{y}) содержит объекты: {', '.join([region_names[idx] for idx in indices])}")
+            write_to_file(output_file, f"РќРµР№СЂРѕРЅ ({x},{y}) СЃРѕРґРµСЂР¶РёС‚ РѕР±СЉРµРєС‚С‹: {', '.join([region_names[idx] for idx in indices])}")
 
     plt.xlabel("Neuron X")
     plt.ylabel("Neuron Y")
     plt.show() 
 
-# Сохранение обученной сети в файл.
+# РЎРѕС…СЂР°РЅРµРЅРёРµ РѕР±СѓС‡РµРЅРЅРѕР№ СЃРµС‚Рё РІ С„Р°Р№Р».
 def save_kohonen_network(weights, file_path):
     with open(file_path, 'wb') as file:
         pickle.dump(weights, file)
 
-# Загрузка обученной сети из файла.
+# Р—Р°РіСЂСѓР·РєР° РѕР±СѓС‡РµРЅРЅРѕР№ СЃРµС‚Рё РёР· С„Р°Р№Р»Р°.
 def load_kohonen_network(file_path):
     with open(file_path, 'rb') as file:
         return pickle.load(file)
 
-# Основная функция
+# РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ
 def main():
-    # Чтение исходных данных.
-    file_path = "Банковские_депозиты.txt"
+    # Р§С‚РµРЅРёРµ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….
+    file_path = "Р‘Р°РЅРєРѕРІСЃРєРёРµ_РґРµРїРѕР·РёС‚С‹.txt"
     output_file = "output_log.txt"
     trained_model_path = "kohonen_network.pkl"
 
-    # Очищаем файл перед записью.
+    # РћС‡РёС‰Р°РµРј С„Р°Р№Р» РїРµСЂРµРґ Р·Р°РїРёСЃСЊСЋ.
     with open(output_file, 'w') as f:
         f.write('Training Log...\n\n')
 
     headers, subheaders, data = process_csv(file_path)
 
-    # Нормализация данных.
+    # РќРѕСЂРјР°Р»РёР·Р°С†РёСЏ РґР°РЅРЅС‹С….
     normalized_data = normalize_data(data)
 
-    # Параметры сети Кохонена.
-    grid_size = 10  # Размер карты нейронов (10x10).
-    num_epochs = 100 # Число эпох обучения.
-    initial_learning_rate = 0.5 # Начальная скорость обучения.
-    initial_radius = 3 # Начальный радиус влияния нейрона-победителя на соседей.
+    # РџР°СЂР°РјРµС‚СЂС‹ СЃРµС‚Рё РљРѕС…РѕРЅРµРЅР°.
+    grid_size = 10  # Р Р°Р·РјРµСЂ РєР°СЂС‚С‹ РЅРµР№СЂРѕРЅРѕРІ (10x10).
+    num_epochs = 100 # Р§РёСЃР»Рѕ СЌРїРѕС… РѕР±СѓС‡РµРЅРёСЏ.
+    initial_learning_rate = 0.5 # РќР°С‡Р°Р»СЊРЅР°СЏ СЃРєРѕСЂРѕСЃС‚СЊ РѕР±СѓС‡РµРЅРёСЏ.
+    initial_radius = 3 # РќР°С‡Р°Р»СЊРЅС‹Р№ СЂР°РґРёСѓСЃ РІР»РёСЏРЅРёСЏ РЅРµР№СЂРѕРЅР°-РїРѕР±РµРґРёС‚РµР»СЏ РЅР° СЃРѕСЃРµРґРµР№.
 
-    # Запрос пользователю.
-    user_choice = input("Хотите использовать уже обученную модель (y/n [any symbols])? ").strip().lower()
+    # Р—Р°РїСЂРѕСЃ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ.
+    user_choice = input("РҐРѕС‚РёС‚Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СѓР¶Рµ РѕР±СѓС‡РµРЅРЅСѓСЋ РјРѕРґРµР»СЊ (y/n [any symbols])? ").strip().lower()
     if user_choice == 'n':
-        # Запись в файл.
-        write_to_file(output_file, 'Исходные данные успешно загружены.')
-        write_to_file(output_file, f'Размер обучающей выборки: {len(normalized_data[0])} примеров.')
-        print("Обучение сети Кохонена...")
-        write_to_file(output_file, "Обучение сети Кохонена...")
+        # Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р».
+        write_to_file(output_file, 'РСЃС…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅС‹.')
+        write_to_file(output_file, f'Р Р°Р·РјРµСЂ РѕР±СѓС‡Р°СЋС‰РµР№ РІС‹Р±РѕСЂРєРё: {len(normalized_data[0])} РїСЂРёРјРµСЂРѕРІ.')
+        print("РћР±СѓС‡РµРЅРёРµ СЃРµС‚Рё РљРѕС…РѕРЅРµРЅР°...")
+        write_to_file(output_file, "РћР±СѓС‡РµРЅРёРµ СЃРµС‚Рё РљРѕС…РѕРЅРµРЅР°...")
         weights = train_kohonen(normalized_data, grid_size, num_epochs, initial_learning_rate, initial_radius, output_file)
-        # Сохранение обученной сети.
+        # РЎРѕС…СЂР°РЅРµРЅРёРµ РѕР±СѓС‡РµРЅРЅРѕР№ СЃРµС‚Рё.
         save_kohonen_network(weights, trained_model_path)
-        print("Обученная модель была сохранена в файл {trained_model_path}\n")
-        write_to_file(output_file, f"Обученная модель была сохранена в файл {trained_model_path}\n")
+        print("РћР±СѓС‡РµРЅРЅР°СЏ РјРѕРґРµР»СЊ Р±С‹Р»Р° СЃРѕС…СЂР°РЅРµРЅР° РІ С„Р°Р№Р» {trained_model_path}\n")
+        write_to_file(output_file, f"РћР±СѓС‡РµРЅРЅР°СЏ РјРѕРґРµР»СЊ Р±С‹Р»Р° СЃРѕС…СЂР°РЅРµРЅР° РІ С„Р°Р№Р» {trained_model_path}\n")
     else:
-        # Проверка наличия файла с обученной сетью.
+        # РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ С„Р°Р№Р»Р° СЃ РѕР±СѓС‡РµРЅРЅРѕР№ СЃРµС‚СЊСЋ.
         if not os.path.exists('kohonen_network.pkl'):
-            print("Файл с обученной сетью не найден. Завершение программы.")
+            print("Р¤Р°Р№Р» СЃ РѕР±СѓС‡РµРЅРЅРѕР№ СЃРµС‚СЊСЋ РЅРµ РЅР°Р№РґРµРЅ. Р—Р°РІРµСЂС€РµРЅРёРµ РїСЂРѕРіСЂР°РјРјС‹.")
             return
-        # Загрузка обученной сети.
-        print("Загружаем обученную модель...")
-        write_to_file(output_file, "Загружаем обученную модель...")
+        # Р—Р°РіСЂСѓР·РєР° РѕР±СѓС‡РµРЅРЅРѕР№ СЃРµС‚Рё.
+        print("Р—Р°РіСЂСѓР¶Р°РµРј РѕР±СѓС‡РµРЅРЅСѓСЋ РјРѕРґРµР»СЊ...")
+        write_to_file(output_file, "Р—Р°РіСЂСѓР¶Р°РµРј РѕР±СѓС‡РµРЅРЅСѓСЋ РјРѕРґРµР»СЊ...")
         weights = load_kohonen_network('kohonen_network.pkl')
 
-    # Распределение данных по нейронам (кластеризация примеров).
+    # Р Р°СЃРїСЂРµРґРµР»РµРЅРёРµ РґР°РЅРЅС‹С… РїРѕ РЅРµР№СЂРѕРЅР°Рј (РєР»Р°СЃС‚РµСЂРёР·Р°С†РёСЏ РїСЂРёРјРµСЂРѕРІ).
     data_clusters = assign_data_to_neurons(normalized_data, weights, grid_size, output_file)
 
-    # Визуализация карты с подписями для регионов.
-    print("Визуализация карты Кохонена...")
-    write_to_file(output_file, "Карта Кохонена была визуализирована!")
+    # Р’РёР·СѓР°Р»РёР·Р°С†РёСЏ РєР°СЂС‚С‹ СЃ РїРѕРґРїРёСЃСЏРјРё РґР»СЏ СЂРµРіРёРѕРЅРѕРІ.
+    print("Р’РёР·СѓР°Р»РёР·Р°С†РёСЏ РєР°СЂС‚С‹ РљРѕС…РѕРЅРµРЅР°...")
+    write_to_file(output_file, "РљР°СЂС‚Р° РљРѕС…РѕРЅРµРЅР° Р±С‹Р»Р° РІРёР·СѓР°Р»РёР·РёСЂРѕРІР°РЅР°!")
     region_names = subheaders
     visualize_kohonen_with_labels(weights, data_clusters, region_names, grid_size, output_file)
 
-# Запуск программы
+# Р—Р°РїСѓСЃРє РїСЂРѕРіСЂР°РјРјС‹
 if __name__ == '__main__':
     main()

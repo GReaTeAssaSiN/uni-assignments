@@ -1,12 +1,12 @@
-% Выбор номера варианта.
+% Р’С‹Р±РѕСЂ РЅРѕРјРµСЂР° РІР°СЂРёР°РЅС‚Р°.
 %g = 4212, n = 2,
-%v = (2(n–1)+(g(mod5))+1)(mod33),
+%v = (2(nвЂ“1)+(g(mod5))+1)(mod33),
 %v = (2(2-1)+(4212(mod5))+1)(mod33),
 %v = (2 + 2 + 1)(mod33),
 %v = 5.
 
-% Реализация в виде рекурсии приближенной формулы при заданном значении
-%количества членов ряда N и значении переменной x.
+% Р РµР°Р»РёР·Р°С†РёСЏ РІ РІРёРґРµ СЂРµРєСѓСЂСЃРёРё РїСЂРёР±Р»РёР¶РµРЅРЅРѕР№ С„РѕСЂРјСѓР»С‹ РїСЂРё Р·Р°РґР°РЅРЅРѕРј Р·РЅР°С‡РµРЅРёРё
+%РєРѕР»РёС‡РµСЃС‚РІР° С‡Р»РµРЅРѕРІ СЂСЏРґР° N Рё Р·РЅР°С‡РµРЅРёРё РїРµСЂРµРјРµРЅРЅРѕР№ x.
 approxCin(0, _, 1) :-!.
 approxCin(1, Variable, X_M):-
     Variable >= -1, Variable =< 1,
@@ -19,14 +19,14 @@ approxCin(N, Variable, X_N):-
     approxCin(M_2, Variable, X_M_2),
     X_N is (X_M_1 + (-1) * (X_M_1 - X_M_2) * (4*M_1 - 1) / (4*N) * Variable).
 
-% Реализация точного значения функции при заданном значении переменной
-%х.
+% Р РµР°Р»РёР·Р°С†РёСЏ С‚РѕС‡РЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ С„СѓРЅРєС†РёРё РїСЂРё Р·Р°РґР°РЅРЅРѕРј Р·РЅР°С‡РµРЅРёРё РїРµСЂРµРјРµРЅРЅРѕР№
+%С….
 stdCin(Variable, Result):-
     Variable >= -1, Variable =< 1,
     Result is sqrt(sqrt(1  + Variable)).
 
-% Реализация вычисления абсолютной погрешности точного и приближенного
-%значений функции.
+% Р РµР°Р»РёР·Р°С†РёСЏ РІС‹С‡РёСЃР»РµРЅРёСЏ Р°Р±СЃРѕР»СЋС‚РЅРѕР№ РїРѕРіСЂРµС€РЅРѕСЃС‚Рё С‚РѕС‡РЅРѕРіРѕ Рё РїСЂРёР±Р»РёР¶РµРЅРЅРѕРіРѕ
+%Р·РЅР°С‡РµРЅРёР№ С„СѓРЅРєС†РёРё.
 absError(N, Variable,  Abserr_Res):-
     N >= 0, integer(N), Variable >= -1, Variable =< 1,
     approxCin(N,Variable, ApproxCin_Res),
@@ -34,15 +34,15 @@ absError(N, Variable,  Abserr_Res):-
     abs(ApproxCin_Res, StdCin_Res, Abs_Res),
     Abserr_Res is Abs_Res.
 
-% Вычисление модуля числа (абсолютного значения) разности точного и
-%приближенного значений функции.
+% Р’С‹С‡РёСЃР»РµРЅРёРµ РјРѕРґСѓР»СЏ С‡РёСЃР»Р° (Р°Р±СЃРѕР»СЋС‚РЅРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ) СЂР°Р·РЅРѕСЃС‚Рё С‚РѕС‡РЅРѕРіРѕ Рё
+%РїСЂРёР±Р»РёР¶РµРЅРЅРѕРіРѕ Р·РЅР°С‡РµРЅРёР№ С„СѓРЅРєС†РёРё.
 abs(F_Number, S_Number, Abs_Res):-
     F_Number >= S_Number, Abs_Res is (F_Number - S_Number);
     F_Number < S_Number, Abs_Res is (S_Number - F_Number).
 
-% Вывод пользователю запрашиваемых данных, а также отлов некорректного
-%пользовательского ввода и вывод соответствующего сообщения на экран.
-%Приближенное значение функции.
+% Р’С‹РІРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ Р·Р°РїСЂР°С€РёРІР°РµРјС‹С… РґР°РЅРЅС‹С…, Р° С‚Р°РєР¶Рµ РѕС‚Р»РѕРІ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРіРѕ
+%РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР° Рё РІС‹РІРѕРґ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ СЃРѕРѕР±С‰РµРЅРёСЏ РЅР° СЌРєСЂР°РЅ.
+%РџСЂРёР±Р»РёР¶РµРЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ С„СѓРЅРєС†РёРё.
 printApproxCin(N, Variable, X_Print):-
     approxCin(N, Variable, X_Print),
     writef("Approximate value of the function ((1+X)^(1/4)) at x = %d with count of row member index %d is ", [Variable, N]),
@@ -57,7 +57,7 @@ printApproxCin(N,_,_):-
 printApproxCin(_,Variable,_):-
     (Variable < -1; Variable > 1),
     writeln("Variable value should lie in the segment: [-1,1].").
-%Точное значение функции.
+%РўРѕС‡РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ С„СѓРЅРєС†РёРё.
 printStdCin(Variable, Print_Result):-
     stdCin(Variable, Print_Result),
     writef("The exact value of the function (1 + %d)^(1/4) is ", [Variable]),
@@ -66,7 +66,7 @@ printStdCin(Variable, Print_Result):-
 printStdCin(Variable,_):-
     (Variable < -1; Variable > 1),
     writeln("Variable value should lie in the segment: [-1,1].").
-%Абсолютная погрешность приближенного и точного значений.
+%РђР±СЃРѕР»СЋС‚РЅР°СЏ РїРѕРіСЂРµС€РЅРѕСЃС‚СЊ РїСЂРёР±Р»РёР¶РµРЅРЅРѕРіРѕ Рё С‚РѕС‡РЅРѕРіРѕ Р·РЅР°С‡РµРЅРёР№.
 printAbsError(N, Variable, Print_AbsError):-
     absError(N, Variable, Print_AbsError),
     writef("The absolute error between the approximate and exact values of the function (1 + %d)^(1/4) is ", [Variable, N]),
@@ -81,7 +81,7 @@ printAbsError(N,_,_):-
 printAbsError(_,Variable,_):-
     (Variable < -1; Variable > 1),
     writeln("Variable value should lie in the segment: [-1,1].").
-%Вывод всех результатов.
+%Р’С‹РІРѕРґ РІСЃРµС… СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ.
 printResults(N, Variable):-
     N >= 0, integer(N), Variable >= -1, Variable =< 1,
     format('N = ~6f', [N]), nl,

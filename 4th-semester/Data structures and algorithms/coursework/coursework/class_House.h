@@ -39,9 +39,9 @@ public:
 	{
 		this->pNext = nullptr;
 		if (this->getHouseNumber() == -1)
-			std::cout << "\t* Дом (заголовочный элемент) успешно удален." << std::endl;
+			std::cout << "\t* Р”РѕРј (Р·Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ СЌР»РµРјРµРЅС‚) СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅ." << std::endl;
 		else
-			std::cout << "\t* Дом с номером " << this->getHouseNumber() << ", типом строения: " << this->getBuildingType() << ", был успешно удален." << std::endl;
+			std::cout << "\t* Р”РѕРј СЃ РЅРѕРјРµСЂРѕРј " << this->getHouseNumber() << ", С‚РёРїРѕРј СЃС‚СЂРѕРµРЅРёСЏ: " << this->getBuildingType() << ", Р±С‹Р» СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅ." << std::endl;
 	};
 };
 

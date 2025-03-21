@@ -4,8 +4,8 @@
 #include "constants.h"
 
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ ОТРЕЗКА*/
-//Сдвинуть отрезок случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РћРўР Р•Р—РљРђ*/
+//РЎРґРІРёРЅСѓС‚СЊ РѕС‚СЂРµР·РѕРє СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetlinesegment(Linesegment* f_ptr_obj_linesegment)
 {
 	while (true)
@@ -56,9 +56,9 @@ void doOffsetlinesegment(Linesegment* f_ptr_obj_linesegment)
 	}
 }
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ МАССИВА ОТРЕЗКОВ*/
-//Добавить элемент в конец и удалить последний элемент - шаблонные функции//Добавить элемент в конец и удалить последний элемент - шаблонные функции
-//Сдвинуть элементы случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РњРђРЎРЎРР’Рђ РћРўР Р•Р—РљРћР’*/
+//Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС† Рё СѓРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ - С€Р°Р±Р»РѕРЅРЅС‹Рµ С„СѓРЅРєС†РёРё//Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС† Рё СѓРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ - С€Р°Р±Р»РѕРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
+//РЎРґРІРёРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚С‹ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetArrayLinesegments(Linesegment** array_linesegments, int num_element)
 {
 	while (true)
@@ -108,7 +108,7 @@ void doOffsetArrayLinesegments(Linesegment** array_linesegments, int num_element
 		}
 	}
 }
-//Движение по клавишам WASD элементов
+//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ
 void doUserMoveArrayLinesegmentsW(Linesegment** array_linesegments, int array_linesegments_size)
 {
 	for (int i{}; i < array_linesegments_size; i++)
@@ -189,7 +189,7 @@ void doUserMoveArrayLinesegmentsD(Linesegment** array_linesegments, int array_li
 		}
 	}
 }
-//Изменение размеров элементов
+//РР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂРѕРІ СЌР»РµРјРµРЅС‚РѕРІ
 void array_linesegments_changeDimensions(Linesegment** array_linesegments, int array_linesegments_size, int dLength)
 {
 
@@ -219,7 +219,7 @@ void array_linesegments_changeDimensions(Linesegment** array_linesegments, int a
 		}
 	}
 }
-//Поворот элементов
+//РџРѕРІРѕСЂРѕС‚ СЌР»РµРјРµРЅС‚РѕРІ
 void array_linesegments_changeRotate(Linesegment** array_linesegments, int array_linesegments_size, int dDegree)
 {
 	for (int i{}; i < array_linesegments_size; i++)

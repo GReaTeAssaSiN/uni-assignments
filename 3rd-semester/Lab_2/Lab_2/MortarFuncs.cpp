@@ -3,8 +3,8 @@
 #include "myfuncs.h"
 #include "constants.h"
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ МОРТИРЫ*/
-//Сдвинуть мортиру случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РњРћР РўРР Р«*/
+//РЎРґРІРёРЅСѓС‚СЊ РјРѕСЂС‚РёСЂСѓ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetMortar(Mortar* f_ptr_obj_mortar)
 {
 	float x_wheel{ f_ptr_obj_mortar->getCircleObj().get_x_coordinate_base_point() };
@@ -30,9 +30,9 @@ void doOffsetMortar(Mortar* f_ptr_obj_mortar)
 	}
 }
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ МАССИВА МОРТИР*/
-//Добавить элемент в конец и удалить последний элемент - шаблонные функции
-//Сдвинуть элементы случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РњРђРЎРЎРР’Рђ РњРћР РўРР */
+//Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС† Рё СѓРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ - С€Р°Р±Р»РѕРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
+//РЎРґРІРёРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚С‹ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetArrayMortars(Mortar** array_mortars, int array_mortars_size)
 {
 	for (int i{}; i < array_mortars_size; i++)
@@ -60,7 +60,7 @@ void doOffsetArrayMortars(Mortar** array_mortars, int array_mortars_size)
 		}
 	}
 }
-//Движение по клавишам WASD элементов
+//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ
 void doUserMoveArrayMortarsW(Mortar** array_mortars, int array_mortars_size)
 {
 	for (int i{}; i < array_mortars_size; i++)
@@ -93,7 +93,7 @@ void doUserMoveArrayMortarsD(Mortar** array_mortars, int array_mortars_size)
 			array_mortars[i]->MoveTo(10, 0);
 	}
 }
-//Увеличить размер элементов
+//РЈРІРµР»РёС‡РёС‚СЊ СЂР°Р·РјРµСЂ СЌР»РµРјРµРЅС‚РѕРІ
 void array_mortars_DimensionsIncrease(Mortar** array_mortars, int array_mortars_size)
 {
 	for (int i{}; i < array_mortars_size; i++)
@@ -111,7 +111,7 @@ void array_mortars_DimensionsIncrease(Mortar** array_mortars, int array_mortars_
 			array_mortars[i]->getLineObj().MoveTo(0, -1);
 		}
 }
-//Уменьшить размер элементов
+//РЈРјРµРЅСЊС€РёС‚СЊ СЂР°Р·РјРµСЂ СЌР»РµРјРµРЅС‚РѕРІ
 void array_mortars_DimensionsDecrease(Mortar** array_mortars, int array_mortars_size)
 {
 	for (int i{}; i < array_mortars_size; i++)

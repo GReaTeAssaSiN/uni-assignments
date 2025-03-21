@@ -12,7 +12,7 @@ namespace CinemaServiceApplication {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для AdminPanelCinemaService
+	/// РЎРІРѕРґРєР° РґР»СЏ AdminPanelCinemaService
 	/// </summary>
 	public ref class AdminPanelCinemaService : public System::Windows::Forms::Form
 	{
@@ -22,12 +22,12 @@ namespace CinemaServiceApplication {
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~AdminPanelCinemaService();
 	private: Int32 choice{};
 	private: String^ adminLogin{};
-	//Общее для всех вкладок.
+	//РћР±С‰РµРµ РґР»СЏ РІСЃРµС… РІРєР»Р°РґРѕРє.
 	private: System::Windows::Forms::Button^ admin_close_btn;
 	private: System::Windows::Forms::Label^ admin_label;
 	private: System::Windows::Forms::Panel^ admin_fromBtn_submain_panel;
@@ -38,7 +38,7 @@ namespace CinemaServiceApplication {
 	private: System::Windows::Forms::Button^ change_review_btn;
 	private: System::Windows::Forms::Button^ change_movie_btn;
 	private: System::Windows::Forms::DataGridView^ info_DataGridView;
-	//Локальное для всех вкладок.
+	//Р›РѕРєР°Р»СЊРЅРѕРµ РґР»СЏ РІСЃРµС… РІРєР»Р°РґРѕРє.
 	private: System::Windows::Forms::Button^ delete_data_btn;
 	private: System::Windows::Forms::Button^ add_data_btn;
 	private: System::Windows::Forms::Button^ update_data_btn;
@@ -46,7 +46,7 @@ namespace CinemaServiceApplication {
 	private: System::Windows::Forms::Button^ clear_data_btn;
 	private: System::Windows::Forms::Panel^ change_data_panel;
 	private: System::Windows::Forms::Panel^ func_btns_panel;
-	//Вкладка пользователи.
+	//Р’РєР»Р°РґРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»Рё.
 	private: System::Windows::Forms::Label^ userID_label;
 	private: System::Windows::Forms::TextBox^ userID_textBox;
 	private: System::Windows::Forms::Label^ userLogin_label;
@@ -55,7 +55,7 @@ namespace CinemaServiceApplication {
 	private: System::Windows::Forms::Label^ userPswd_label;
 	private: System::Windows::Forms::ComboBox^ userRole_comboBox;
 	private: System::Windows::Forms::TextBox^ userPswd_textBox;
-	//Вкладка кинотеатры.
+	//Р’РєР»Р°РґРєР° РєРёРЅРѕС‚РµР°С‚СЂС‹.
 	private: System::Windows::Forms::Label^ cinemaID_label;
 	private: System::Windows::Forms::TextBox^ cinemaID_textBox;
 	private: System::Windows::Forms::Label^ street_label;
@@ -78,7 +78,7 @@ namespace CinemaServiceApplication {
 	private: System::Windows::Forms::MaskedTextBox^ closingTime_textBox;
 	private: System::Windows::Forms::MaskedTextBox^ openingTime_textBox;
 	private: System::Windows::Forms::TextBox^ houseLetter_textBox;
-	//Вкладка фильмы.
+	//Р’РєР»Р°РґРєР° С„РёР»СЊРјС‹.
 	private: System::Windows::Forms::Label^ movieID_label;
 	private: System::Windows::Forms::Label^ ageLimit_label;
 	private: System::Windows::Forms::Label^ genre_label;
@@ -95,7 +95,7 @@ namespace CinemaServiceApplication {
 	private: System::Windows::Forms::MaskedTextBox^ release_textBox;
 	private: System::Windows::Forms::ComboBox^ movieFormat_comboBox;
 	private: System::Windows::Forms::ComboBox^ cinemaName_comboBox;
-	//Вкладка комментарии.
+	//Р’РєР»Р°РґРєР° РєРѕРјРјРµРЅС‚Р°СЂРёРё.
 	private: System::Windows::Forms::Label^ reviewID_label;
 	private: System::Windows::Forms::TextBox^ comment_textBox;
 	private: System::Windows::Forms::TextBox^ reviewID_textBox;
@@ -103,14 +103,14 @@ namespace CinemaServiceApplication {
 
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void);
 #pragma endregion

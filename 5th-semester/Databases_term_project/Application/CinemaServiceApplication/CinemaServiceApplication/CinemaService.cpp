@@ -6,14 +6,14 @@ namespace CinemaServiceApplication
 	{
 		InitializeComponent();
 		//
-		//TODO: добавьте код конструктора
+		//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 		//
 	}
 	CinemaService::CinemaService(String^ UserName)
 	{
 		InitializeComponent();
 		this->UserName = UserName;
-		//Запрос каталога кинотеатров с описанием.
+		//Р—Р°РїСЂРѕСЃ РєР°С‚Р°Р»РѕРіР° РєРёРЅРѕС‚РµР°С‚СЂРѕРІ СЃ РѕРїРёСЃР°РЅРёРµРј.
 		DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 		queryDB->ConnectToDB();
 		queryDB->openConnection();
@@ -96,7 +96,7 @@ namespace CinemaServiceApplication
 		this->submain_cinema_label->Name = L"submain_cinema_label";
 		this->submain_cinema_label->Size = System::Drawing::Size(810, 50);
 		this->submain_cinema_label->TabIndex = 1;
-		this->submain_cinema_label->Text = L"Выберите кинотеатр из предложенного списка";
+		this->submain_cinema_label->Text = L"Р’С‹Р±РµСЂРёС‚Рµ РєРёРЅРѕС‚РµР°С‚СЂ РёР· РїСЂРµРґР»РѕР¶РµРЅРЅРѕРіРѕ СЃРїРёСЃРєР°";
 		this->submain_cinema_label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 		// 
 		// submain_cinema_panel
@@ -147,7 +147,7 @@ namespace CinemaServiceApplication
 		this->search_textBox->Name = L"search_textBox";
 		this->search_textBox->Size = System::Drawing::Size(168, 25);
 		this->search_textBox->TabIndex = 4;
-		this->search_textBox->Text = L"Поиск кинотеатра";
+		this->search_textBox->Text = L"РџРѕРёСЃРє РєРёРЅРѕС‚РµР°С‚СЂР°";
 		this->search_textBox->Enter += gcnew System::EventHandler(this, &CinemaService::search_textBox_Enter);
 		this->search_textBox->Leave += gcnew System::EventHandler(this, &CinemaService::search_textBox_Leave);
 		// 
@@ -187,13 +187,13 @@ namespace CinemaServiceApplication
 		queryDB->ConnectToDB();
 		queryDB->openConnection();
 		SqlDataReader^ reader{};
-		if (this->search_textBox->Text != "" && this->search_textBox->Text != "Поиск кинотеатра")
+		if (this->search_textBox->Text != "" && this->search_textBox->Text != "РџРѕРёСЃРє РєРёРЅРѕС‚РµР°С‚СЂР°")
 			reader = queryDB->getReaderSearchedCinemaCatalog(this->search_textBox->Text);
 		else
 		{
 			reader = queryDB->getReaderCinemaCatalog();
 			this->search_textBox->ForeColor = System::Drawing::Color::FromArgb(192, 192, 192);
-			this->search_textBox->Text = L"Поиск кинотеатра";
+			this->search_textBox->Text = L"РџРѕРёСЃРє РєРёРЅРѕС‚РµР°С‚СЂР°";
 		}
 		while (reader->Read())
 		{
@@ -209,7 +209,7 @@ namespace CinemaServiceApplication
 	}
 	System::Void CinemaService::search_textBox_Enter(System::Object^ sender, System::EventArgs^ e)
 	{
-		if (this->search_textBox->Text == "Поиск кинотеатра")
+		if (this->search_textBox->Text == "РџРѕРёСЃРє РєРёРЅРѕС‚РµР°С‚СЂР°")
 		{
 			this->search_textBox->Text = L"";
 			this->search_textBox->ForeColor = System::Drawing::Color::Navy;
@@ -220,7 +220,7 @@ namespace CinemaServiceApplication
 	if (this->search_textBox->Text == "")
 	{
 		this->search_textBox->ForeColor = System::Drawing::Color::FromArgb(192, 192, 192);
-		this->search_textBox->Text = L"Поиск кинотеатра";
+		this->search_textBox->Text = L"РџРѕРёСЃРє РєРёРЅРѕС‚РµР°С‚СЂР°";
 	}
 }
 }

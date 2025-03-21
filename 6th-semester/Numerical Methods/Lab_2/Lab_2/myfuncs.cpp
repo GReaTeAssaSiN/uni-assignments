@@ -4,23 +4,23 @@
 #include "myfuncs.h"
 #include "constants.h"
 
-/*ФУНКЦИИ ДЛЯ ВЫВОДА ИНФОРМАЦИИ НА КОНСОЛЬ*/
-//Вывод информации об авторе, варианте, задании.
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ Р’Р«Р’РћР”Рђ РРќР¤РћР РњРђР¦РР РќРђ РљРћРќРЎРћР›Р¬*/
+//Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Р°РІС‚РѕСЂРµ, РІР°СЂРёР°РЅС‚Рµ, Р·Р°РґР°РЅРёРё.
 void printTask()
 {
-	std::cout << std::setw(210) << "Горшков Алексей Олегович," << std::endl << std::setw(209) << "группа 4312" << std::endl;
+	std::cout << std::setw(210) << "Р“РѕСЂС€РєРѕРІ РђР»РµРєСЃРµР№ РћР»РµРіРѕРІРёС‡," << std::endl << std::setw(209) << "РіСЂСѓРїРїР° 4312" << std::endl;
 	printDash();
-	std::cout << "Вариант индивидуального задания: 9." << std::endl << std::endl;
-	std::cout << "Краевая задача:" << std::endl;
-	std::cout << "  Дифференциальное уравнение:\t y\" + (x-4)y' - 3.1y = 2x" << std::endl;
-	std::cout << "  Краевые условия:\t\t -y'(0) + y(0) = 1, y(1) = 1.7" << std::endl;
+	std::cout << "Р’Р°СЂРёР°РЅС‚ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕРіРѕ Р·Р°РґР°РЅРёСЏ: 9." << std::endl << std::endl;
+	std::cout << "РљСЂР°РµРІР°СЏ Р·Р°РґР°С‡Р°:" << std::endl;
+	std::cout << "  Р”РёС„С„РµСЂРµРЅС†РёР°Р»СЊРЅРѕРµ СѓСЂР°РІРЅРµРЅРёРµ:\t y\" + (x-4)y' - 3.1y = 2x" << std::endl;
+	std::cout << "  РљСЂР°РµРІС‹Рµ СѓСЃР»РѕРІРёСЏ:\t\t -y'(0) + y(0) = 1, y(1) = 1.7" << std::endl;
 }
-//Вывод разделительной черты.
+//Р’С‹РІРѕРґ СЂР°Р·РґРµР»РёС‚РµР»СЊРЅРѕР№ С‡РµСЂС‚С‹.
 void printDash()
 {
 	std::cout << std::string(208, '-') << std::endl;
 }
-//Вывод шапки исходной таблицы.	
+//Р’С‹РІРѕРґ С€Р°РїРєРё РёСЃС…РѕРґРЅРѕР№ С‚Р°Р±Р»РёС†С‹.	
 void printTable()
 {
 	std::cout << std::string(116, '_') << std::endl;
@@ -36,32 +36,32 @@ void printTable()
 	std::cout << std::string(116, '_') << std::endl;
 }
 
-/*ПОЛЬЗОВАТЕЛЬСКИЕ ФУНКЦИИ*/
-//Пользовательское меню.
+/*РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРР• Р¤РЈРќРљР¦РР*/
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РјРµРЅСЋ.
 void MenuForChoices()
 {
-	std::cout << "Что Вы хотите сделать?" << std::endl <<
-		"1) Запустить программу (выданное требование)." << std::endl <<
-		"2) Выйти из программы." << std::endl;
+	std::cout << "Р§С‚Рѕ Р’С‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ?" << std::endl <<
+		"1) Р—Р°РїСѓСЃС‚РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ (РІС‹РґР°РЅРЅРѕРµ С‚СЂРµР±РѕРІР°РЅРёРµ)." << std::endl <<
+		"2) Р’С‹Р№С‚Рё РёР· РїСЂРѕРіСЂР°РјРјС‹." << std::endl;
 }
-//Запрос дейтсвий у пользователя.
+//Р—Р°РїСЂРѕСЃ РґРµР№С‚СЃРІРёР№ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 char getCase()
 {
 	while (true)
 	{
 		MenuForChoices();
-		std::cout << "Ваш выбор: ";
+		std::cout << "Р’Р°С€ РІС‹Р±РѕСЂ: ";
 		std::string choice{};
 		std::getline(std::cin, choice);
 		if (choice == "1" || choice == "2")
 			return choice[0];
 		else
-			std::cout << std::endl << "Ошибка ввода! Вам нужно ввести номер вашего выбора в соответствии с нижеперечисленными пунктами (от 1 до 2). Повторите ввод:" << std::endl;
+			std::cout << std::endl << "РћС€РёР±РєР° РІРІРѕРґР°! Р’Р°Рј РЅСѓР¶РЅРѕ РІРІРµСЃС‚Рё РЅРѕРјРµСЂ РІР°С€РµРіРѕ РІС‹Р±РѕСЂР° РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РЅРёР¶РµРїРµСЂРµС‡РёСЃР»РµРЅРЅС‹РјРё РїСѓРЅРєС‚Р°РјРё (РѕС‚ 1 РґРѕ 2). РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:" << std::endl;
 	}
 }
 
-/*ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИ*/
-//Получение массива mass_x со значениями xi.
+/*Р’РЎРџРћРњРћР“РђРўР•Р›Р¬РќР«Р• Р¤РЈРќРљР¦Р*/
+//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІР° mass_x СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё xi.
 double* get_mass_x(const int& n, const double& h)
 {
 	double* mass_x = new double[n + 1] {};
@@ -70,7 +70,7 @@ double* get_mass_x(const int& n, const double& h)
 		mass_x[i] = mass_x[i - 1] + h;
 	return mass_x;
 }
-//Получение массива mass_p со значениями pi.
+//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІР° mass_p СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё pi.
 double* get_mass_p(const double* const mass_x, const int& n, const double& h)
 {
 	double* mass_p = new double[n + 1] {};
@@ -78,7 +78,7 @@ double* get_mass_p(const double* const mass_x, const int& n, const double& h)
 		mass_p[i] = mass_x[i] - 4;
 	return mass_p;
 }
-//Получение массива mass_q со значениями qi.
+//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІР° mass_q СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё qi.
 double* get_mass_q(const double* const mass_x, const int& n, const double& h)
 {
 	double* mass_q = new double[n + 1] {};
@@ -86,7 +86,7 @@ double* get_mass_q(const double* const mass_x, const int& n, const double& h)
 		mass_q[i] = -3.1;
 	return mass_q;
 }
-//Получение массива mass_f со значениями fi.
+//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІР° mass_f СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё fi.
 double* get_mass_f(const double* const mass_x, const int& n, const double& h)
 {
 	double* mass_f = new double[n + 1] {};
@@ -94,7 +94,7 @@ double* get_mass_f(const double* const mass_x, const int& n, const double& h)
 		mass_f[i] = 2 * mass_x[i];
 	return mass_f;
 }
-//Получение массива mass_m со значениями mi.
+//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІР° mass_m СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё mi.
 double* get_mass_m(const double* const mass_q, const double* const mass_p, const int& n, const double& h)
 {
 	double* mass_m = new double[n + 1] {};
@@ -102,7 +102,7 @@ double* get_mass_m(const double* const mass_q, const double* const mass_p, const
 		mass_m[i] = (2 * pow(h, 2) * mass_q[i] - 4) / (2 + h * mass_p[i]);
 	return mass_m;
 }
-//Получение массива mass_ri со значениями ri.
+//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІР° mass_ri СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё ri.
 double* get_mass_r(const double* const mass_p, const int& n, const double& h)
 {
 	double* mass_r = new double[n + 1] {};
@@ -110,7 +110,7 @@ double* get_mass_r(const double* const mass_p, const int& n, const double& h)
 		mass_r[i] = (2 - h * mass_p[i]) / (2 + h * mass_p[i]);
 	return mass_r;
 }
-//Получение массива mass_cp со значениями cpi.
+//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІР° mass_cp СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё cpi.
 double* get_mass_cp(const double* const mass_p, const double* const mass_f, const int& n, const double& h)
 {
 	double* mass_cp = new double[n + 1] {};
@@ -118,7 +118,7 @@ double* get_mass_cp(const double* const mass_p, const double* const mass_f, cons
 		mass_cp[i] = (2 * pow(h, 2)) / (2 + h * mass_p[i]) * mass_f[i];
 	return mass_cp;
 }
-//Получение массива mass_c со значениями ci.
+//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІР° mass_c СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё ci.
 double* get_mass_c(const double* const mass_m, const double* const mass_r, const int& n, const double& h)
 {
 	double* mass_c = new double[n + 1] {};
@@ -127,7 +127,7 @@ double* get_mass_c(const double* const mass_m, const double* const mass_r, const
 		mass_c[i] = 1 / (mass_m[i] - mass_r[i] * mass_c[i - 1]);
 	return mass_c;
 }
-//Получение массива mass_d со значениями di.
+//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІР° mass_d СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё di.
 double* get_mass_d(const double* const mass_cp, const double* const mass_r, const double* const mass_c, const int& n, const double& h)
 {
 	double* mass_d = new double[n + 1] {};
@@ -136,7 +136,7 @@ double* get_mass_d(const double* const mass_cp, const double* const mass_r, cons
 		mass_d[i] = mass_cp[i] - mass_r[i] * mass_c[i - 1] * mass_d[i - 1];
 	return mass_d;
 }
-//Получение массива mass_y со значениями yi.
+//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІР° mass_y СЃРѕ Р·РЅР°С‡РµРЅРёСЏРјРё yi.
 double* get_mass_y(const double* const mass_c, const double* const mass_d, const int& n, const double& h)
 {
 	double* mass_y = new double[n + 1] {};
@@ -146,34 +146,34 @@ double* get_mass_y(const double* const mass_c, const double* const mass_d, const
 	return mass_y;
 }
 
-/*ОСНОВНЫЕ ФУНКЦИИ*/
-//Метод прогонки.
+/*РћРЎРќРћР’РќР«Р• Р¤РЈРќРљР¦РР*/
+//РњРµС‚РѕРґ РїСЂРѕРіРѕРЅРєРё.
 void sweep_method(const int& n)
 {
-	//Вычисление шага h.
+	//Р’С‹С‡РёСЃР»РµРЅРёРµ С€Р°РіР° h.
 	double h{ static_cast<double>((b - a)) / n };
 
-	/*ПРЯМОЙ ХОД МЕТОДА ПРОГОНКИ*/
-	//Формирование массива mass_x.
+	/*РџР РЇРњРћР™ РҐРћР” РњР•РўРћР”Рђ РџР РћР“РћРќРљР*/
+	//Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РјР°СЃСЃРёРІР° mass_x.
 	double* mass_x = get_mass_x(n, h);
-	//Получение массивов коэффициентов pi, qi, fi, mi, ri, cpi.
+	//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІРѕРІ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ pi, qi, fi, mi, ri, cpi.
 	double* mass_p = get_mass_p(mass_x, n, h);
 	double* mass_q = get_mass_q(mass_x, n, h);
 	double* mass_f = get_mass_f(mass_x, n, h);
 	double* mass_m = get_mass_m(mass_q, mass_p, n, h);
 	double* mass_r = get_mass_r(mass_p, n, h);
 	double* mass_cp = get_mass_cp(mass_p, mass_f, n, h);
-	//Получение массивов коэффициентов ci, di.
+	//РџРѕР»СѓС‡РµРЅРёРµ РјР°СЃСЃРёРІРѕРІ РєРѕСЌС„С„РёС†РёРµРЅС‚РѕРІ ci, di.
 	double* mass_c = get_mass_c(mass_m, mass_r, n, h);
 	double* mass_d = get_mass_d(mass_cp, mass_r, mass_c, n, h);
 	
-	/*ОБРАТНЫЙ ХОД МЕТОДА ПРОГОНКИ*/
-	//Формирование массива mass_y.
+	/*РћР‘Р РђРўРќР«Р™ РҐРћР” РњР•РўРћР”Рђ РџР РћР“РћРќРљР*/
+	//Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ РјР°СЃСЃРёРІР° mass_y.
 	double* mass_y = get_mass_y(mass_c, mass_d, n, h);
-	//Вычисление y0 по формуле.
+	//Р’С‹С‡РёСЃР»РµРЅРёРµ y0 РїРѕ С„РѕСЂРјСѓР»Рµ.
 	double y0 = (A * h - alpha_0 * mass_y[1]) / (alpha_1 * h - alpha_0);
 
-	/*ВЫВОД РЕЗУЛЬТАТОВ*/
+	/*Р’Р«Р’РћР” Р Р•Р—РЈР›Р¬РўРђРўРћР’*/
 	for (int i{}; i <= n; i++)
 	{
 		std::cout << "|" << std::setw(2) << std::left << i <<
@@ -196,12 +196,12 @@ void sweep_method(const int& n)
 		std::cout << "|" << std::endl;
 		std::cout << std::string(116, '_') << std::endl;
 	}
-	//Сравнение y0 (по формуле) и yi[0] (по обратному ходу метода прогонки).
-	std::cout << std::endl << "Сравнение значений y0 (полученное по формуле из первого краевого условия) и yi[0] (полученное по обратному ходу метода прогонки):" << std::endl;
+	//РЎСЂР°РІРЅРµРЅРёРµ y0 (РїРѕ С„РѕСЂРјСѓР»Рµ) Рё yi[0] (РїРѕ РѕР±СЂР°С‚РЅРѕРјСѓ С…РѕРґСѓ РјРµС‚РѕРґР° РїСЂРѕРіРѕРЅРєРё).
+	std::cout << std::endl << "РЎСЂР°РІРЅРµРЅРёРµ Р·РЅР°С‡РµРЅРёР№ y0 (РїРѕР»СѓС‡РµРЅРЅРѕРµ РїРѕ С„РѕСЂРјСѓР»Рµ РёР· РїРµСЂРІРѕРіРѕ РєСЂР°РµРІРѕРіРѕ СѓСЃР»РѕРІРёСЏ) Рё yi[0] (РїРѕР»СѓС‡РµРЅРЅРѕРµ РїРѕ РѕР±СЂР°С‚РЅРѕРјСѓ С…РѕРґСѓ РјРµС‚РѕРґР° РїСЂРѕРіРѕРЅРєРё):" << std::endl;
 	std::cout << "y0 = " << std::setprecision(10) << y0 << "\t" << "yi[0] = " << std::setprecision(10) << mass_y[0] << "\t" << "|y0 - yi[0]| = " << std::fixed << std::setprecision(10) << abs(y0 - mass_y[0]) << std::endl << std::endl;
 	std::cout << std::defaultfloat;
 
-	//Освобождение выделенной динамической памяти.
+	//РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РІС‹РґРµР»РµРЅРЅРѕР№ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё.
 	delete[] mass_x;
 	delete[] mass_p;
 	delete[] mass_q;

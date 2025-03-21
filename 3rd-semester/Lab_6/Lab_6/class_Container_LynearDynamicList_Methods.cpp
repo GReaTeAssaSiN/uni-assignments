@@ -68,7 +68,7 @@ void LynearDynamicList::MoveElemsW(TFigure* ptr_current_data)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -134,7 +134,7 @@ void LynearDynamicList::MoveElemsA(TFigure* ptr_current_data)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -200,7 +200,7 @@ void LynearDynamicList::MoveElemsS(TFigure* ptr_current_data)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -266,7 +266,7 @@ void LynearDynamicList::MoveElemsD(TFigure* ptr_current_data)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -274,7 +274,7 @@ void LynearDynamicList::MoveElemsD(TFigure* ptr_current_data)
 
 LynearDynamicList::LynearDynamicList(int number_of_nodes)
 {
-	std::cout << "Создан контейнер на базе линейного динамического списка, рассчитанный на " << number_of_nodes << " узлов(-а)." << std::endl;
+	std::cout << "РЎРѕР·РґР°РЅ РєРѕРЅС‚РµР№РЅРµСЂ РЅР° Р±Р°Р·Рµ Р»РёРЅРµР№РЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР°, СЂР°СЃСЃС‡РёС‚Р°РЅРЅС‹Р№ РЅР° " << number_of_nodes << " СѓР·Р»РѕРІ(-Р°)." << std::endl;
 }
 
 void LynearDynamicList::addNewElem(TFigure* ptr_current_data)
@@ -408,12 +408,12 @@ void LynearDynamicList::Iterator(int attribute, sf::RenderWindow& window)
 			}
 			default:
 			{
-				std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+				std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 				break;
 			}
 			}
 			delete temp;
-			std::cout << "Удален " << i + 1 << "-й узел." << std::endl;
+			std::cout << "РЈРґР°Р»РµРЅ " << i + 1 << "-Р№ СѓР·РµР»." << std::endl;
 
 			break;
 		}
@@ -506,7 +506,7 @@ void LynearDynamicList::Iterator(int attribute, sf::RenderWindow& window)
 		}
 		default:
 		{
-			std::cout << "Error! attribute не имеет признака с таким номером." << std::endl;
+			std::cout << "Error! attribute РЅРµ РёРјРµРµС‚ РїСЂРёР·РЅР°РєР° СЃ С‚Р°РєРёРј РЅРѕРјРµСЂРѕРј." << std::endl;
 			break;
 		}
 		}
@@ -531,6 +531,6 @@ LynearDynamicList::~LynearDynamicList()
 			delete temp;
 		}
 	}
-	std::cout << "Контейнер на базе линейного динамического списка был зачищен и уничтожен." << std::endl;
+	std::cout << "РљРѕРЅС‚РµР№РЅРµСЂ РЅР° Р±Р°Р·Рµ Р»РёРЅРµР№РЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР° Р±С‹Р» Р·Р°С‡РёС‰РµРЅ Рё СѓРЅРёС‡С‚РѕР¶РµРЅ." << std::endl;
 	m_size = 0;
 }

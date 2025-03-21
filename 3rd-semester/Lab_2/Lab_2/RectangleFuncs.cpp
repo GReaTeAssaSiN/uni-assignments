@@ -3,8 +3,8 @@
 #include "myfuncs.h"
 #include "constants.h"
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ ПРЯМОУГОЛЬНИКА*/
-//Сдвинуть прямоугольник случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РџР РЇРњРћРЈР“РћР›Р¬РќРРљРђ*/
+//РЎРґРІРёРЅСѓС‚СЊ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetRect(Rectangle* f_ptr_obj_rect)
 {
 	float x_rect{ f_ptr_obj_rect->get_x_coordinate_base_point() };
@@ -23,9 +23,9 @@ void doOffsetRect(Rectangle* f_ptr_obj_rect)
 	}
 }
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ МАССИВА ПРЯМОУГОЛЬНИКОВ*/
-//Добавить элемент в конец и удалить последний элемент - шаблонные функции
-//Сдвинуть элементы случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РњРђРЎРЎРР’Рђ РџР РЇРњРћРЈР“РћР›Р¬РќРРљРћР’*/
+//Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС† Рё СѓРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ - С€Р°Р±Р»РѕРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
+//РЎРґРІРёРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚С‹ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetArrayRectangles(Rectangle** array_rectangles, int array_rectangles_size)
 {
 	for (int i{}; i < array_rectangles_size; i++)
@@ -46,7 +46,7 @@ void doOffsetArrayRectangles(Rectangle** array_rectangles, int array_rectangles_
 		}
 	}
 }
-//Движение по клавишам WASD элементов
+//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ
 void doUserMoveArrayRectanglesW(Rectangle** array_rectangles, int array_rectangles_size)
 {
 	for (int i{}; i < array_rectangles_size; i++)
@@ -79,7 +79,7 @@ void doUserMoveArrayRectanglesD(Rectangle** array_rectangles, int array_rectangl
 			array_rectangles[i]->MoveTo(10, 0);
 	}
 }
-//Изменение размеров элементов
+//РР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂРѕРІ СЌР»РµРјРµРЅС‚РѕРІ
 void array_rectangles_ChangeDimensions(Rectangle** array_rectangles, int array_rectangles_size, int dLength, int dWidth)
 {
 	for (int i{}; i < array_rectangles_size; i++)

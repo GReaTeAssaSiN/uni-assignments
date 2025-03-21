@@ -3,17 +3,17 @@
 
 #include "mystruct.h"
 
-//Второстепенные функции.
+//Р’С‚РѕСЂРѕСЃС‚РµРїРµРЅРЅС‹Рµ С„СѓРЅРєС†РёРё.
 bool checkStrIsNumeric(std::string const& tempStr);
 int convertStrToInt(std::string convertStr);
 float getRandomNumber(float min, float max);
 unsigned char get_0_1();
 
-//Пользовательское меню.
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РјРµРЅСЋ.
 void MenuForChoices();
 char getCase();
 
-//Функции работы со стеком.
+//Р¤СѓРЅРєС†РёРё СЂР°Р±РѕС‚С‹ СЃРѕ СЃС‚РµРєРѕРј.
 bool isEmpty(Stack* stack);
 void push(Stack* stack, const int& x);
 bool pass(Stack* from_stack, Stack* to_stack);
@@ -21,7 +21,7 @@ void pop(Stack* stack);
 void print(Stack* stack);
 void clear(Stack*& stack);
 
-//Функции работы со стеком с обработкой действий пользователя и выводом соообщений для него. 
+//Р¤СѓРЅРєС†РёРё СЂР°Р±РѕС‚С‹ СЃРѕ СЃС‚РµРєРѕРј СЃ РѕР±СЂР°Р±РѕС‚РєРѕР№ РґРµР№СЃС‚РІРёР№ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Рё РІС‹РІРѕРґРѕРј СЃРѕРѕРѕР±С‰РµРЅРёР№ РґР»СЏ РЅРµРіРѕ. 
 void user_push(Stack* baseStack, Stack* auxiliaryStack);
 void user_push_random(Stack* baseStack);
 void user_pop(Stack* baseStack, Stack* auxiliaryStack);

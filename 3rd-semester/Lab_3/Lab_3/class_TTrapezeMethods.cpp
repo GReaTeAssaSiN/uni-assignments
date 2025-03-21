@@ -15,9 +15,9 @@ TTrapeze::TTrapeze()
 	:TQuadrilateral()
 {
 	BalanceSides();
-	std::cout << "Ñîçäàí êîíñòðóêòîðîì ïî óìîë÷àíèþ îáúåêò-òðàïåöèÿ ñ êîîðäèíàòàìè îñíîâíûõ òî÷åê:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
+	std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð¾Ð±ÑŠÐµÐºÑ‚-Ñ‚Ñ€Ð°Ð¿ÐµÑ†Ð¸Ñ Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ñ… Ñ‚Ð¾Ñ‡ÐµÐº:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
 		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4 
-		<< "),\näëèíàìè îñíîâàíèé: TopBase = " << m_top_base_length << ",\tBottomBase = " << m_bottom_base_length<< "\nè óãëîì ìåæäó ñòîðîíîé è íèæíèì îñíîâàíèåì: Alpha = " << m_degree << std::endl;
+		<< "),\nÐ´Ð»Ð¸Ð½Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð¸Ð¹: TopBase = " << m_top_base_length << ",\tBottomBase = " << m_bottom_base_length<< "\nÐ¸ ÑƒÐ³Ð»Ð¾Ð¼ Ð¼ÐµÐ¶Ð´Ñƒ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð¾Ð¹ Ð¸ Ð½Ð¸Ð¶Ð½Ð¸Ð¼ Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð¸ÐµÐ¼: Alpha = " << m_degree << std::endl;
 }
 
 TTrapeze::TTrapeze(float base_point_x1, float base_point_y1, int degree, float bottom_base_length, float top_base_length, float height)
@@ -25,9 +25,9 @@ TTrapeze::TTrapeze(float base_point_x1, float base_point_y1, int degree, float b
 		base_point_y1 - height, base_point_x1 + bottom_base_length, base_point_y1 }, m_degree{ degree }, m_bottom_base_length{ bottom_base_length }, m_top_base_length{ top_base_length }, m_height{ height }
 {
 	BalanceSides();
-	std::cout << "Ñîçäàí êîíñòðóêòîðîì ñî ñëó÷àéíûìè ïàðàìåòðàìè îáúåêò-òðàïåöèÿ ñ êîîðäèíàòàìè îñíîâíûõ òî÷åê:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
+	std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ ÑÐ¾ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚-Ñ‚Ñ€Ð°Ð¿ÐµÑ†Ð¸Ñ Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ñ… Ñ‚Ð¾Ñ‡ÐµÐº:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
 		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4
-		<< "),\näëèíàìè îñíîâàíèé: TopBase = " << m_top_base_length << ",\tBottomBase = " << m_bottom_base_length << "\nè óãëîì ìåæäó ñòîðîíîé è íèæíèì îñíîâàíèåì: Alpha = " << m_degree << std::endl;
+		<< "),\nÐ´Ð»Ð¸Ð½Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð¸Ð¹: TopBase = " << m_top_base_length << ",\tBottomBase = " << m_bottom_base_length << "\nÐ¸ ÑƒÐ³Ð»Ð¾Ð¼ Ð¼ÐµÐ¶Ð´Ñƒ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð¾Ð¹ Ð¸ Ð½Ð¸Ð¶Ð½Ð¸Ð¼ Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð¸ÐµÐ¼: Alpha = " << m_degree << std::endl;
 }
 
 void TTrapeze::Show(sf::RenderWindow& window)
@@ -64,7 +64,7 @@ void TTrapeze::changeHeight(float d_height)
 
 //TTrapeze::~TTrapeze()
 //{
-//	std::cout << "Óäàëåí îáúåêò-òðàïåöèÿ ñ êîîðäèíàòàìè îñíîâíûõ òî÷åê:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
+//	std::cout << "Ð£Ð´Ð°Ð»ÐµÐ½ Ð¾Ð±ÑŠÐµÐºÑ‚-Ñ‚Ñ€Ð°Ð¿ÐµÑ†Ð¸Ñ Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ñ… Ñ‚Ð¾Ñ‡ÐµÐº:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
 //		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4
-//		<< "),\näëèíàìè îñíîâàíèé: TopBase = " << m_top_base_length << ",\tBottomBase = " << m_bottom_base_length << "\nè óãëîì ìåæäó ñòîðîíîé è íèæíèì îñíîâàíèåì: Alpha = " << m_degree << std::endl;
+//		<< "),\nÐ´Ð»Ð¸Ð½Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð¸Ð¹: TopBase = " << m_top_base_length << ",\tBottomBase = " << m_bottom_base_length << "\nÐ¸ ÑƒÐ³Ð»Ð¾Ð¼ Ð¼ÐµÐ¶Ð´Ñƒ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð¾Ð¹ Ð¸ Ð½Ð¸Ð¶Ð½Ð¸Ð¼ Ð¾ÑÐ½Ð¾Ð²Ð°Ð½Ð¸ÐµÐ¼: Alpha = " << m_degree << std::endl;
 //}

@@ -34,7 +34,7 @@ int main()
 		array_trapezes_size, array_trapezes,
 		array_quadrilaterals_size, array_quadrilaterals);
 
-	//Очистка занятой динамической памяти перед выходом из программы
+	//РћС‡РёСЃС‚РєР° Р·Р°РЅСЏС‚РѕР№ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё РїРµСЂРµРґ РІС‹С…РѕРґРѕРј РёР· РїСЂРѕРіСЂР°РјРјС‹
 	//Circle
 	delete ptr_obj_circle;
 	ptr_obj_circle = nullptr;
@@ -57,7 +57,7 @@ int main()
 	delete ptr_obj_quadrilateral;
 	ptr_obj_quadrilateral = nullptr;
 
-	//Массивы
+	//РњР°СЃСЃРёРІС‹
 	for (int i{}; i < array_circles_size; i++)
 		array_circles[i]->Free(array_circles[i]);
 	delete[] array_circles;

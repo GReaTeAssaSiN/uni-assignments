@@ -15,9 +15,9 @@ TRhomb::TRhomb()
 	:TQuadrilateral()
 {
 	BalanceSides();
-	std::cout << "Ñîçäàí êîíñòðóêòîðîì ïî óìîë÷àíèþ îáúåêò-ðîìá ñ êîîðäèíàòàìè îñíîâíûõ òî÷åê:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
-		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4 << ")\nè äëèíîé ñòîðîíû Length = "
-		<< getLength() << ", \tóãëîì ìåæäó ñòîðîíîé è ãîðèçîíòàëüíîé îñüþ: Alpha = " << getDegree() << std::endl;
+	std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð¾Ð±ÑŠÐµÐºÑ‚-Ñ€Ð¾Ð¼Ð± Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ñ… Ñ‚Ð¾Ñ‡ÐµÐº:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
+		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4 << ")\nÐ¸ Ð´Ð»Ð¸Ð½Ð¾Ð¹ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹ Length = "
+		<< getLength() << ", \tÑƒÐ³Ð»Ð¾Ð¼ Ð¼ÐµÐ¶Ð´Ñƒ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð¾Ð¹ Ð¸ Ð³Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚Ð°Ð»ÑŒÐ½Ð¾Ð¹ Ð¾ÑÑŒÑŽ: Alpha = " << getDegree() << std::endl;
 }
 
 TRhomb::TRhomb(float base_point_x1, float base_point_y1, float length, int degree)
@@ -25,9 +25,9 @@ TRhomb::TRhomb(float base_point_x1, float base_point_y1, float length, int degre
 		base_point_y1, base_point_x1 + length * cos(degree * PI / 180), base_point_y1 + length * sin(degree * PI / 180)), m_length{ length }, m_degree{ degree }
 {
 	BalanceSides();
-	std::cout << "Ñîçäàí êîíñòðóêòîðîì ñî ñëó÷àéíûìè ïàðàìåòðàìè îáúåêò-ðîìá ñ êîîðäèíàòàìè îñíîâíûõ òî÷åê:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
-		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4 << ")\nè äëèíîé ñòîðîíû Length = "
-		<< getLength() << ", \tóãëîì ìåæäó ñòîðîíîé è ãîðèçîíòàëüíîé îñüþ: Alpha = " << getDegree() << std::endl;
+	std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ ÑÐ¾ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚-Ñ€Ð¾Ð¼Ð± Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ñ… Ñ‚Ð¾Ñ‡ÐµÐº:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
+		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4 << ")\nÐ¸ Ð´Ð»Ð¸Ð½Ð¾Ð¹ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹ Length = "
+		<< getLength() << ", \tÑƒÐ³Ð»Ð¾Ð¼ Ð¼ÐµÐ¶Ð´Ñƒ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð¾Ð¹ Ð¸ Ð³Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚Ð°Ð»ÑŒÐ½Ð¾Ð¹ Ð¾ÑÑŒÑŽ: Alpha = " << getDegree() << std::endl;
 }
 
 void TRhomb::Show(sf::RenderWindow& window)
@@ -65,7 +65,7 @@ void TRhomb::changeDegree(int dDegree)
 
 //TRhomb::~TRhomb()
 //{
-//	std::cout << "Óäàëåí îáúåêò-ðîìá ñ êîîðäèíàòàìè îñíîâíûõ òî÷åê:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
-//		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4 << ")\nè äëèíîé ñòîðîíû Length = "
-//		<< getLength() << ", \tóãëîì ìåæäó ñòîðîíîé è ãîðèçîíòàëüíîé îñüþ: Alpha = " << getDegree() << std::endl;
+//	std::cout << "Ð£Ð´Ð°Ð»ÐµÐ½ Ð¾Ð±ÑŠÐµÐºÑ‚-Ñ€Ð¾Ð¼Ð± Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ñ… Ñ‚Ð¾Ñ‡ÐµÐº:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
+//		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4 << ")\nÐ¸ Ð´Ð»Ð¸Ð½Ð¾Ð¹ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ñ‹ Length = "
+//		<< getLength() << ", \tÑƒÐ³Ð»Ð¾Ð¼ Ð¼ÐµÐ¶Ð´Ñƒ ÑÑ‚Ð¾Ñ€Ð¾Ð½Ð¾Ð¹ Ð¸ Ð³Ð¾Ñ€Ð¸Ð·Ð¾Ð½Ñ‚Ð°Ð»ÑŒÐ½Ð¾Ð¹ Ð¾ÑÑŒÑŽ: Alpha = " << getDegree() << std::endl;
 //}

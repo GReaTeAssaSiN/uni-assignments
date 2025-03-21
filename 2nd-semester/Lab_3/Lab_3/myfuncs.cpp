@@ -7,11 +7,11 @@
 
 bool init(double*** mass, unsigned& NM, unsigned &i1, unsigned &i2)
 {
-    std::cout << "Çàäàéòå ğàçìåğíîñòü äåéñòâèòåëüíîé êâàäğàòíîé ìàòğèöû: ";
+    std::cout << "Ğ—Ğ°Ğ´Ğ°Ğ¹Ñ‚Ğµ Ñ€Ğ°Ğ·Ğ¼ĞµÑ€Ğ½Ğ¾ÑÑ‚ÑŒ Ğ´ĞµĞ¹ÑÑ‚Ğ²Ğ¸Ñ‚ĞµĞ»ÑŒĞ½Ğ¾Ğ¹ ĞºĞ²Ğ°Ğ´Ñ€Ğ°Ñ‚Ğ½Ğ¾Ğ¹ Ğ¼Ğ°Ñ‚Ñ€Ğ¸Ñ†Ñ‹: ";
     NM = getIndex();
-    std::cout << "Ââåäèòå íîìåğ ñòğîêè, êîòîğóş íåîáõîäèìî óäàëèòü: ";
+    std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ½Ğ¾Ğ¼ĞµÑ€ ÑÑ‚Ñ€Ğ¾ĞºĞ¸, ĞºĞ¾Ñ‚Ğ¾Ñ€ÑƒÑ Ğ½ĞµĞ¾Ğ±Ñ…Ğ¾Ğ´Ğ¸Ğ¼Ğ¾ ÑƒĞ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ: ";
     i1 = getIndex() - 1;
-    std::cout << "Ââåäèòå íîìåğ ñòîëáöà, êîòîğûé íåîáõîäèìî óäàëèòü: ";
+    std::cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ½Ğ¾Ğ¼ĞµÑ€ ÑÑ‚Ğ¾Ğ»Ğ±Ñ†Ğ°, ĞºĞ¾Ñ‚Ğ¾Ñ€Ñ‹Ğ¹ Ğ½ĞµĞ¾Ğ±Ñ…Ğ¾Ğ´Ğ¸Ğ¼Ğ¾ ÑƒĞ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ: ";
     i2 = getIndex() - 1;
     if (checkIndexes(i1, i2, NM))
     {
@@ -33,7 +33,7 @@ bool init(double*** mass, unsigned& NM, unsigned &i1, unsigned &i2)
     }
     else
     {
-        std::cout << "Îøèáî÷íî óêàçàí(-û) íîìåğ(-à) ñòğîêè è/èëè ñòîëáöà, êîòîğóş(-ûé/-ûå) íåîáõîäèìî óäàëèòü. Óêàæèòå èõ â ïğåäåëàõ ğàçìåğíîñòè ìàòğèöû." 
+        std::cout << "ĞÑˆĞ¸Ğ±Ğ¾Ñ‡Ğ½Ğ¾ ÑƒĞºĞ°Ğ·Ğ°Ğ½(-Ñ‹) Ğ½Ğ¾Ğ¼ĞµÑ€(-Ğ°) ÑÑ‚Ñ€Ğ¾ĞºĞ¸ Ğ¸/Ğ¸Ğ»Ğ¸ ÑÑ‚Ğ¾Ğ»Ğ±Ñ†Ğ°, ĞºĞ¾Ñ‚Ğ¾Ñ€ÑƒÑ(-Ñ‹Ğ¹/-Ñ‹Ğµ) Ğ½ĞµĞ¾Ğ±Ñ…Ğ¾Ğ´Ğ¸Ğ¼Ğ¾ ÑƒĞ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ. Ğ£ĞºĞ°Ğ¶Ğ¸Ñ‚Ğµ Ğ¸Ñ… Ğ² Ğ¿Ñ€ĞµĞ´ĞµĞ»Ğ°Ñ… Ñ€Ğ°Ğ·Ğ¼ĞµÑ€Ğ½Ğ¾ÑÑ‚Ğ¸ Ğ¼Ğ°Ñ‚Ñ€Ğ¸Ñ†Ñ‹." 
             << std::endl;
         return false;
     }
@@ -45,21 +45,21 @@ bool finit(std::istream& f, double*** mass, unsigned& NM, unsigned& i1, unsigned
     f >> NM;
     if (f.fail())
     {
-        std::cout << "Îøèáêà ââîäà èç ôàéëà ğàçìåğíîñòè ìàññèâà." << std::endl;
+        std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ° Ğ¸Ğ· Ñ„Ğ°Ğ¹Ğ»Ğ° Ñ€Ğ°Ğ·Ğ¼ĞµÑ€Ğ½Ğ¾ÑÑ‚Ğ¸ Ğ¼Ğ°ÑÑĞ¸Ğ²Ğ°." << std::endl;
         return false;
     }
     f >> i1;
     i1 -= 1;
     if (f.fail())
     {
-        std::cout << "Îøèáêà ââîäà èç ôàéëà íîìåğà ñòğîêè, êîòîğóş íåîáõîäèìî óäàëèòü!";
+        std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ° Ğ¸Ğ· Ñ„Ğ°Ğ¹Ğ»Ğ° Ğ½Ğ¾Ğ¼ĞµÑ€Ğ° ÑÑ‚Ñ€Ğ¾ĞºĞ¸, ĞºĞ¾Ñ‚Ğ¾Ñ€ÑƒÑ Ğ½ĞµĞ¾Ğ±Ñ…Ğ¾Ğ´Ğ¸Ğ¼Ğ¾ ÑƒĞ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ!";
         return false;
     }
     f >> i2;
     i2 -= 1;
     if (f.fail())
     {
-        std::cout << "Îøèáêà ââîäà èç ôàéëà íîìåğà ñòîëáöà, êîòîğûé íåîáõîäèìî óäàëèòü!";
+        std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ° Ğ¸Ğ· Ñ„Ğ°Ğ¹Ğ»Ğ° Ğ½Ğ¾Ğ¼ĞµÑ€Ğ° ÑÑ‚Ğ¾Ğ»Ğ±Ñ†Ğ°, ĞºĞ¾Ñ‚Ğ¾Ñ€Ñ‹Ğ¹ Ğ½ĞµĞ¾Ğ±Ñ…Ğ¾Ğ´Ğ¸Ğ¼Ğ¾ ÑƒĞ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ!";
         return false;
     }
     if (checkIndexes(i1, i2, NM) && makeMass(mass, NM))
@@ -71,7 +71,7 @@ bool finit(std::istream& f, double*** mass, unsigned& NM, unsigned& i1, unsigned
                 f >> *(*((*mass) + i) + j);
                 if (f.fail())
                 {
-                    std::cout << "Îøèáêà ââîäà èç ôàéëà ıëåìåíòà [" << i << "][" << j << "]." << std::endl;
+                    std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ° Ğ¸Ğ· Ñ„Ğ°Ğ¹Ğ»Ğ° ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ğ° [" << i << "][" << j << "]." << std::endl;
                     return false;
                 }
             }
@@ -79,7 +79,7 @@ bool finit(std::istream& f, double*** mass, unsigned& NM, unsigned& i1, unsigned
     }
     else
     {
-        std::cout << "Îøèáî÷íî óêàçàí(-û) íîìåğà(-à) ñòğîêè è/èëè ñòîëáöà, êîòîğóş(-ûé/-ûå) íåîáõîäèìî óäàëèòü." << std::endl;
+        std::cout << "ĞÑˆĞ¸Ğ±Ğ¾Ñ‡Ğ½Ğ¾ ÑƒĞºĞ°Ğ·Ğ°Ğ½(-Ñ‹) Ğ½Ğ¾Ğ¼ĞµÑ€Ğ°(-Ğ°) ÑÑ‚Ñ€Ğ¾ĞºĞ¸ Ğ¸/Ğ¸Ğ»Ğ¸ ÑÑ‚Ğ¾Ğ»Ğ±Ñ†Ğ°, ĞºĞ¾Ñ‚Ğ¾Ñ€ÑƒÑ(-Ñ‹Ğ¹/-Ñ‹Ğµ) Ğ½ĞµĞ¾Ğ±Ñ…Ğ¾Ğ´Ğ¸Ğ¼Ğ¾ ÑƒĞ´Ğ°Ğ»Ğ¸Ñ‚ÑŒ." << std::endl;
         return false;
     }
     return true;
@@ -87,7 +87,7 @@ bool finit(std::istream& f, double*** mass, unsigned& NM, unsigned& i1, unsigned
 
 void fdelpartmass(std::ostream& f, double** mass, unsigned NM, unsigned i1, unsigned i2)
 {
-    f << "Èñõîäíàÿ ìàòğèöà:" << std::endl;
+    f << "Ğ˜ÑÑ…Ğ¾Ğ´Ğ½Ğ°Ñ Ğ¼Ğ°Ñ‚Ñ€Ğ¸Ñ†Ğ°:" << std::endl;
     for (unsigned i = 0; i < NM; i++)
     {
         for (unsigned j = 0; j < NM; j++)
@@ -96,7 +96,7 @@ void fdelpartmass(std::ostream& f, double** mass, unsigned NM, unsigned i1, unsi
         }
         f << std::endl << std::endl;
     }
-    f << "Ïğåîáğàçîâàííàÿ ìàòğèöà ïîñëå óäàëåíèÿ " << i1 + 1 << "-é ñòğîêè è " << i2 + 1 << "-ãî ñòîëáöà:" << std::endl;
+    f << "ĞŸÑ€ĞµĞ¾Ğ±Ñ€Ğ°Ğ·Ğ¾Ğ²Ğ°Ğ½Ğ½Ğ°Ñ Ğ¼Ğ°Ñ‚Ñ€Ğ¸Ñ†Ğ° Ğ¿Ğ¾ÑĞ»Ğµ ÑƒĞ´Ğ°Ğ»ĞµĞ½Ğ¸Ñ " << i1 + 1 << "-Ğ¹ ÑÑ‚Ñ€Ğ¾ĞºĞ¸ Ğ¸ " << i2 + 1 << "-Ğ³Ğ¾ ÑÑ‚Ğ¾Ğ»Ğ±Ñ†Ğ°:" << std::endl;
     for (unsigned i = i1; i < NM - 1; i++)
     {
         for (unsigned j = 0; j < NM; j++)
@@ -132,7 +132,7 @@ unsigned getIndex()
         {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Îøèáêà ââîäà. Ââåäèòå íàòóğàëüíîå ÷èñëî: \n";
+            std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°. Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ½Ğ°Ñ‚ÑƒÑ€Ğ°Ğ»ÑŒĞ½Ğ¾Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾: \n";
         }
         else
         {
@@ -152,7 +152,7 @@ double getValue()
         {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Îøèáêà ââîäà. \n";
+            std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°. \n";
         }
         else
         {
@@ -164,7 +164,7 @@ double getValue()
 
 bool getNext()
 {
-    std::cout << "Õîòèòå ïîâòîğèòü ââîä èñõîäíûõ äàííûõ? Äà - 1, Íåò - 0:" << "\t";
+    std::cout << "Ğ¥Ğ¾Ñ‚Ğ¸Ñ‚Ğµ Ğ¿Ğ¾Ğ²Ñ‚Ğ¾Ñ€Ğ¸Ñ‚ÑŒ Ğ²Ğ²Ğ¾Ğ´ Ğ¸ÑÑ…Ğ¾Ğ´Ğ½Ñ‹Ñ… Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…? Ğ”Ğ° - 1, ĞĞµÑ‚ - 0:" << "\t";
     while (true)
     {
         char sm;
@@ -176,7 +176,7 @@ bool getNext()
         }
         else
         {
-            std::cout << "Îøèáêà ââîäà. Ââåäèòå 0 èëè 1: \n";
+            std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°. Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ 0 Ğ¸Ğ»Ğ¸ 1: \n";
         }
     }
 }
@@ -194,7 +194,7 @@ unsigned char get_0_1()
         }
         else
         {
-            std::cout << "Îøèáêà ââîäà. Ââåäèòå 0 èëè 1: \n";
+            std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°. Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ 0 Ğ¸Ğ»Ğ¸ 1: \n";
         }
     }
 }
@@ -209,7 +209,7 @@ bool makeMass(double*** mass, unsigned NM)
     *mass = new (std::nothrow) double* [NM];
     if (!(*mass))
     {
-        std::cout << "Íå óäàëîñü âûäåëèòü ïàìÿòü äëÿ ìàññèâà!" << std::endl;
+        std::cout << "ĞĞµ ÑƒĞ´Ğ°Ğ»Ğ¾ÑÑŒ Ğ²Ñ‹Ğ´ĞµĞ»Ğ¸Ñ‚ÑŒ Ğ¿Ğ°Ğ¼ÑÑ‚ÑŒ Ğ´Ğ»Ñ Ğ¼Ğ°ÑÑĞ¸Ğ²Ğ°!" << std::endl;
         return false;
     }
     else
@@ -219,7 +219,7 @@ bool makeMass(double*** mass, unsigned NM)
             *(*mass + i) = new (std::nothrow) double[NM];
             if (!(*(*mass + i)))
             {
-                std::cout << "Íå óäàëîñü âûäåëèòü ïàìÿòü äëÿ ìàññèâà!" << std::endl;
+                std::cout << "ĞĞµ ÑƒĞ´Ğ°Ğ»Ğ¾ÑÑŒ Ğ²Ñ‹Ğ´ĞµĞ»Ğ¸Ñ‚ÑŒ Ğ¿Ğ°Ğ¼ÑÑ‚ÑŒ Ğ´Ğ»Ñ Ğ¼Ğ°ÑÑĞ¸Ğ²Ğ°!" << std::endl;
                 return false;
             }
         }

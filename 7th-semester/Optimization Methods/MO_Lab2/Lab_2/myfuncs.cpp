@@ -5,8 +5,8 @@
 #include <string>
 #include <iostream>
 
-/*ОБЩИЙ ВЫВОД*/
-//Функция для выполнения поиска по правильному симплексу с заданными параметрами.
+/*РћР‘Р©РР™ Р’Р«Р’РћР”*/
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕРёСЃРєР° РїРѕ РїСЂР°РІРёР»СЊРЅРѕРјСѓ СЃРёРјРїР»РµРєСЃСѓ СЃ Р·Р°РґР°РЅРЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё.
 void perform_search_first(std::ofstream& results_file, const double& epsilon, double t) {
     for (int i{}; i < 99; ++i) {
         results_file << "=";
@@ -15,7 +15,7 @@ void perform_search_first(std::ofstream& results_file, const double& epsilon, do
     results_file << "Epsilon = " << epsilon << "; " << "t = " << t << "." << std::endl;
     search_by_correct_simplex(results_file, epsilon, t);
 }
-//Функция для выполнения поиска по деформируемому многограннику.
+//Р¤СѓРЅРєС†РёСЏ РґР»СЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїРѕРёСЃРєР° РїРѕ РґРµС„РѕСЂРјРёСЂСѓРµРјРѕРјСѓ РјРЅРѕРіРѕРіСЂР°РЅРЅРёРєСѓ.
 void perform_search_second(std::ofstream& results_file, const double& epsilon, const double& alpha, const double& beta, const double& gamma) {
     for (int i{}; i < 99; ++i) {
         results_file << "=";
@@ -24,16 +24,16 @@ void perform_search_second(std::ofstream& results_file, const double& epsilon, c
     results_file << "Epsilon = " << epsilon << "; " << "alpha = " << alpha << ", beta = " << beta << ", gamma = " << gamma << "." << std::endl;
     search_by_deformable_polyhedron(results_file, epsilon, alpha, beta, gamma);
 }
-//Запись в файл заголовка таблицы.
+//Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р» Р·Р°РіРѕР»РѕРІРєР° С‚Р°Р±Р»РёС†С‹.
 void printTableHeader(std::ofstream& output_file) {
-    output_file << std::setw(10) << "Итерация"
-        << std::setw(10) << "Точка"
+    output_file << std::setw(10) << "РС‚РµСЂР°С†РёСЏ"
+        << std::setw(10) << "РўРѕС‡РєР°"
         << std::setw(15) << "x1"
         << std::setw(15) << "x2"
         << std::setw(15) << "F(X)"
         << std::endl;
 }
-//Запись в файл строки таблицы.
+//Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р» СЃС‚СЂРѕРєРё С‚Р°Р±Р»РёС†С‹.
 static void printTableRow(std::ofstream& output_file, const std::string& pointName, const Point& p, const double& fValue) {
     output_file << std::setw(20) << pointName
         << std::setw(15) << p.x1
@@ -41,41 +41,41 @@ static void printTableRow(std::ofstream& output_file, const std::string& pointNa
         << std::setw(15) << fValue
         << std::endl;
 }
-//Вычисление значения заданной функции F(X)=5*x1^2 + 5*x2^2 + 8*x1*x2.
+//Р’С‹С‡РёСЃР»РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ Р·Р°РґР°РЅРЅРѕР№ С„СѓРЅРєС†РёРё F(X)=5*x1^2 + 5*x2^2 + 8*x1*x2.
 double F(const Point& p) {
     return 5 * pow(p.x1, 2) + 5 * pow(p.x2, 2) + 8 * p.x1 * p.x2;
 }
 
-/*ПОИСК ПО ПРАВИЛЬНОМУ СИМПЛЕКСУ*/
-//Запись в файл дополнительных данных строки.
+/*РџРћРРЎРљ РџРћ РџР РђР’РР›Р¬РќРћРњРЈ РЎРРњРџР›Р•РљРЎРЈ*/
+//Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р» РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РґР°РЅРЅС‹С… СЃС‚СЂРѕРєРё.
 static void printTableAdditionalRow(std::ofstream& output_file, const int& step, const double& t) {
     output_file << std::setw(10) << step
         << std::setw(65) << "t = " << t
         << std::endl;
 }
-//Запись в файл результатов.
+//Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р» СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ.
 static void printResults(std::ofstream& output_file, const std::vector<Point>& simplex, const std::vector<double>& fValues, const double& t) {
-    output_file << std::endl << "Конечные значения:" << std::endl;
+    output_file << std::endl << "РљРѕРЅРµС‡РЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ:" << std::endl;
     for (size_t i = 0; i < simplex.size(); ++i) {
         printTableRow(output_file, "X" + std::to_string(i), simplex[i], fValues[i]);
     }
     Point x_middle = Point((simplex[0].x1 + simplex[1].x1 + simplex[2].x1) / 3, (simplex[0].x2 + simplex[1].x2 + simplex[2].x2) / 3);
     output_file << std::setw(10) << ""
-        << std::setw(10) << "Xср."
+        << std::setw(10) << "XСЃСЂ."
         << std::setw(15) << x_middle.x1
         << std::setw(15) << x_middle.x2
         << std::setw(15) << F(x_middle)
         << std::setw(10) << "t = " << t
         << std::endl;
 }
-//Построение вершин начального симплекса по вершине X0.
+//РџРѕСЃС‚СЂРѕРµРЅРёРµ РІРµСЂС€РёРЅ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ СЃРёРјРїР»РµРєСЃР° РїРѕ РІРµСЂС€РёРЅРµ X0.
 static Point caculate_point_by_X0(const Point& X0, const double& d1, const double& d2, const int& number) {
     double x1{}, x2{};
     (number == 1) ? (x1 += X0.x1 + d1) : (x1 += X0.x1 + d2);
     (number == 2) ? (x2 += X0.x2 + d1) : (x2 += X0.x2 + d2);
     return Point(x1, x2);
 }
-//Сортировка вершин в порядке F(X0)<=F(X1)<=...<=F(XN).
+//РЎРѕСЂС‚РёСЂРѕРІРєР° РІРµСЂС€РёРЅ РІ РїРѕСЂСЏРґРєРµ F(X0)<=F(X1)<=...<=F(XN).
 static void sortVertices(std::vector<Point>& simplex, std::vector<double>& fValues) {
     for (size_t i = 0; i < simplex.size() - 1; ++i) {
         for (size_t j = i + 1; j < simplex.size(); ++j) {
@@ -86,7 +86,7 @@ static void sortVertices(std::vector<Point>& simplex, std::vector<double>& fValu
         }
     }
 }
-//Поиск центра тяжести Xc вершин X0,X1,...,X(N-1).
+//РџРѕРёСЃРє С†РµРЅС‚СЂР° С‚СЏР¶РµСЃС‚Рё Xc РІРµСЂС€РёРЅ X0,X1,...,X(N-1).
 static Point centroid_n(const std::vector<Point>& simplex) {
     Point c{};
     for (size_t i = 0; i < simplex.size() - 1; ++i) {
@@ -97,7 +97,7 @@ static Point centroid_n(const std::vector<Point>& simplex) {
     c.x2 /= (simplex.size() - 1);
     return c;
 }
-//Поиск центра тяжести Xc вершин X0,X1,...,X(N-2),XN.
+//РџРѕРёСЃРє С†РµРЅС‚СЂР° С‚СЏР¶РµСЃС‚Рё Xc РІРµСЂС€РёРЅ X0,X1,...,X(N-2),XN.
 static Point centroid_n_1(const std::vector<Point>& simplex) {
     Point c{};
     for (size_t i = 0; i < simplex.size(); ++i) {
@@ -110,53 +110,53 @@ static Point centroid_n_1(const std::vector<Point>& simplex) {
     c.x2 /= (simplex.size() - 1);
     return c;
 }
-//Отражение вершины X.
+//РћС‚СЂР°Р¶РµРЅРёРµ РІРµСЂС€РёРЅС‹ X.
 static Point reflect(const Point& centroid, const Point& worst) {
     return Point(2 * centroid.x1 - worst.x1, 2 * centroid.x2 - worst.x2);
 }
-//Главная функция поиска по правильному симплексу.
+//Р“Р»Р°РІРЅР°СЏ С„СѓРЅРєС†РёСЏ РїРѕРёСЃРєР° РїРѕ РїСЂР°РІРёР»СЊРЅРѕРјСѓ СЃРёРјРїР»РµРєСЃСѓ.
 void search_by_correct_simplex(std::ofstream& file, const double& epsilon, double& t) {
-    //Шаг 0.
-    double d1{ t / (n * sqrt(2)) * (sqrt(n + 1) + n - 1) }; //d1 для вычисления координат остальных вершин.
-    double d2{ t / (n * sqrt(2)) * (sqrt(n + 1) - 1) }; //d2 для вычисления координат остальных вершин.
-    Point X0 = Point(0, 0); // Базовая точка X0.
-    std::vector<Point> simplex = { // Построение начального симплекса.
+    //РЁР°Рі 0.
+    double d1{ t / (n * sqrt(2)) * (sqrt(n + 1) + n - 1) }; //d1 РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РєРѕРѕСЂРґРёРЅР°С‚ РѕСЃС‚Р°Р»СЊРЅС‹С… РІРµСЂС€РёРЅ.
+    double d2{ t / (n * sqrt(2)) * (sqrt(n + 1) - 1) }; //d2 РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РєРѕРѕСЂРґРёРЅР°С‚ РѕСЃС‚Р°Р»СЊРЅС‹С… РІРµСЂС€РёРЅ.
+    Point X0 = Point(0, 0); // Р‘Р°Р·РѕРІР°СЏ С‚РѕС‡РєР° X0.
+    std::vector<Point> simplex = { // РџРѕСЃС‚СЂРѕРµРЅРёРµ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ СЃРёРјРїР»РµРєСЃР°.
         X0,                                   // X0
         caculate_point_by_X0(X0, d1, d2, 1),  // X1
         caculate_point_by_X0(X0, d1, d2, 2)   // X2
     };
-    std::vector<double> fValues(n + 1); // Для хранения значений функции F(X) в точках X0, X1, X2.
-    int step = 0; // Учет числа итераций.
-    printTableHeader(file); //Вывод заголовка таблицы в файл.
+    std::vector<double> fValues(n + 1); // Р”Р»СЏ С…СЂР°РЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№ С„СѓРЅРєС†РёРё F(X) РІ С‚РѕС‡РєР°С… X0, X1, X2.
+    int step = 0; // РЈС‡РµС‚ С‡РёСЃР»Р° РёС‚РµСЂР°С†РёР№.
+    printTableHeader(file); //Р’С‹РІРѕРґ Р·Р°РіРѕР»РѕРІРєР° С‚Р°Р±Р»РёС†С‹ РІ С„Р°Р№Р».
     
-    //ГЛАВНЫЙ ЦИКЛ.
+    //Р“Р›РђР’РќР«Р™ Р¦РРљР›.
     while (true) {
-        // Шаг 1.
+        // РЁР°Рі 1.
         for (size_t i = 0; i < simplex.size(); ++i) {
             fValues[i] = F(simplex[i]);
         }
         
-        // Шаг 2.
+        // РЁР°Рі 2.
         sortVertices(simplex, fValues);
-        // Вывод строки с номером итерации и t.
+        // Р’С‹РІРѕРґ СЃС‚СЂРѕРєРё СЃ РЅРѕРјРµСЂРѕРј РёС‚РµСЂР°С†РёРё Рё t.
         printTableAdditionalRow(file, step, t);
-        // Вывод текущих вершин.
+        // Р’С‹РІРѕРґ С‚РµРєСѓС‰РёС… РІРµСЂС€РёРЅ.
         for (size_t i = 0; i < simplex.size(); ++i) {
             printTableRow(file, "X" + std::to_string(i), simplex[i], fValues[i]);
         }
 
-        // Шаг 3.
+        // РЁР°Рі 3.
         double sum = 0;
         for (size_t j = 0; j < fValues.size(); ++j) {
             sum += pow(fValues[j] - fValues[0], 2);
         }
         double accuracy = sum / (simplex.size() - 1);
         if (accuracy < epsilon) {
-            std::cout << "Точность поиска по правильному симплексу достигнута. Результаты записаны в файл */results_first.txt." << std::endl;
+            std::cout << "РўРѕС‡РЅРѕСЃС‚СЊ РїРѕРёСЃРєР° РїРѕ РїСЂР°РІРёР»СЊРЅРѕРјСѓ СЃРёРјРїР»РµРєСЃСѓ РґРѕСЃС‚РёРіРЅСѓС‚Р°. Р РµР·СѓР»СЊС‚Р°С‚С‹ Р·Р°РїРёСЃР°РЅС‹ РІ С„Р°Р№Р» */results_first.txt." << std::endl;
             break;
         }
 
-        // Шаг 4.
+        // РЁР°Рі 4.
         Point c = centroid_n(simplex);
         Point xr = reflect(c, simplex.back());
         double fXr = F(xr);
@@ -167,7 +167,7 @@ void search_by_correct_simplex(std::ofstream& file, const double& epsilon, doubl
             continue;
         }
 
-        // Шаг 5.
+        // РЁР°Рі 5.
         c = centroid_n_1(simplex);
         xr = reflect(c, simplex[simplex.size() - 2]);
         fXr = F(xr);
@@ -178,7 +178,7 @@ void search_by_correct_simplex(std::ofstream& file, const double& epsilon, doubl
             continue;
         }
 
-        // Шаг 6.
+        // РЁР°Рі 6.
         t = t / 2;
         for (int i{ 1 }; i < simplex.size(); ++i) {
             simplex[i].x1 = (simplex[i].x1 + simplex[0].x1) / 2;
@@ -188,37 +188,37 @@ void search_by_correct_simplex(std::ofstream& file, const double& epsilon, doubl
         step++;
     }
 
-    // Шаг 7.
+    // РЁР°Рі 7.
     printResults(file, simplex, fValues, t);
 }
 
-/*ПОИСК ПО ДЕФОРМИРУЕМОМУ МНОГОГРАННИКУ*/
-//Запись в файл дополнительных данных строки.
+/*РџРћРРЎРљ РџРћ Р”Р•Р¤РћР РњРР РЈР•РњРћРњРЈ РњРќРћР“РћР“Р РђРќРќРРљРЈ*/
+//Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р» РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹С… РґР°РЅРЅС‹С… СЃС‚СЂРѕРєРё.
 static void printTableAdditionalRow(std::ofstream& output_file, const int& step) {
     output_file << std::setw(10) << step
         << std::endl;
 }
-//Запиись в файл текущих вершин.
+//Р—Р°РїРёРёСЃСЊ РІ С„Р°Р№Р» С‚РµРєСѓС‰РёС… РІРµСЂС€РёРЅ.
 static void printCurrentPoints(std::ofstream& output_file, const std::vector<Point>& points, const std::vector<double>& fValues) {
     for (size_t i = 0; i < points.size(); ++i) {
         printTableRow(output_file, "X" + std::to_string(i), points[i], fValues[i]);
     }
 }
-//Запись в файл результатов.
+//Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р» СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ.
 static void printResults(std::ofstream& output_file, const std::vector<Point>& simplex, const std::vector<double>& fValues) {
-    output_file << std::endl << "Конечные значения:" << std::endl;
+    output_file << std::endl << "РљРѕРЅРµС‡РЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ:" << std::endl;
     for (size_t i = 0; i < simplex.size(); ++i) {
         printTableRow(output_file, "X" + std::to_string(i), simplex[i], fValues[i]);
     }
     Point x_middle = Point((simplex[0].x1 + simplex[1].x1 + simplex[2].x1) / 3, (simplex[0].x2 + simplex[1].x2 + simplex[2].x2) / 3);
     output_file << std::setw(10) << ""
-        << std::setw(10) << "Xср."
+        << std::setw(10) << "XСЃСЂ."
         << std::setw(15) << x_middle.x1
         << std::setw(15) << x_middle.x2
         << std::setw(15) << F(x_middle)
         << std::endl;
 }
-// Поиск номера вершины Xh, значение функции в которой максимальное.
+// РџРѕРёСЃРє РЅРѕРјРµСЂР° РІРµСЂС€РёРЅС‹ Xh, Р·РЅР°С‡РµРЅРёРµ С„СѓРЅРєС†РёРё РІ РєРѕС‚РѕСЂРѕР№ РјР°РєСЃРёРјР°Р»СЊРЅРѕРµ.
 static int search_point_max_value(const std::vector<double>& fValues) {
     int h{};
     for (size_t i = 1; i < fValues.size(); ++i) {
@@ -228,7 +228,7 @@ static int search_point_max_value(const std::vector<double>& fValues) {
     }
     return h;
 }
-// Поиск номера вершины XL, значение функции в которой минимальное.
+// РџРѕРёСЃРє РЅРѕРјРµСЂР° РІРµСЂС€РёРЅС‹ XL, Р·РЅР°С‡РµРЅРёРµ С„СѓРЅРєС†РёРё РІ РєРѕС‚РѕСЂРѕР№ РјРёРЅРёРјР°Р»СЊРЅРѕРµ.
 static int search_point_min_value(const std::vector<double>& fValues) {
     int L{};
     for (size_t i = 1; i < fValues.size(); ++i) {
@@ -238,7 +238,7 @@ static int search_point_min_value(const std::vector<double>& fValues) {
     }
     return L;
 }
-// Центр тяжести X(n+2) всех вершин, исключая Xh.
+// Р¦РµРЅС‚СЂ С‚СЏР¶РµСЃС‚Рё X(n+2) РІСЃРµС… РІРµСЂС€РёРЅ, РёСЃРєР»СЋС‡Р°СЏ Xh.
 static Point centroid_h(const std::vector<Point>& points, const int& h) {
     Point n_plus_2{};
     for (size_t i = 0; i < points.size(); ++i) {
@@ -251,28 +251,28 @@ static Point centroid_h(const std::vector<Point>& points, const int& h) {
     n_plus_2.x2 /= (points.size() - 1);
     return n_plus_2;
 }
-// Отражение вершины Xh через центр тяжести X(n+2).
+// РћС‚СЂР°Р¶РµРЅРёРµ РІРµСЂС€РёРЅС‹ Xh С‡РµСЂРµР· С†РµРЅС‚СЂ С‚СЏР¶РµСЃС‚Рё X(n+2).
 static Point reflection(const Point& n_plus_2, const Point& xh, const double& alpha) {
     Point n_plus_3{};
     n_plus_3.x1 = n_plus_2.x1 + alpha * (n_plus_2.x1 - xh.x1);
     n_plus_3.x2 = n_plus_2.x2 + alpha * (n_plus_2.x2 - xh.x2);
     return n_plus_3;
 }
-// Растяжение вектора X(n+3)-X(n+2).
+// Р Р°СЃС‚СЏР¶РµРЅРёРµ РІРµРєС‚РѕСЂР° X(n+3)-X(n+2).
 static Point stretching(const Point& n_plus_3, const Point& n_plus_2, const double& gamma) {
     Point n_plus_4{};
     n_plus_4.x1 = n_plus_2.x1 + gamma * (n_plus_3.x1 - n_plus_2.x1);
     n_plus_4.x2 = n_plus_2.x2 + gamma * (n_plus_3.x2 - n_plus_2.x2);
     return n_plus_4;
 }
-// Сжатие вектора Xh-X(n+2).
+// РЎР¶Р°С‚РёРµ РІРµРєС‚РѕСЂР° Xh-X(n+2).
 static Point compression(const Point& xh, const Point& n_plus_2, const double& beta) {
     Point n_plus_5{};
     n_plus_5.x1 = n_plus_2.x1 + beta * (xh.x1 - n_plus_2.x1);
     n_plus_5.x2 = n_plus_2.x2 + beta * (xh.x2 - n_plus_2.x2);
     return n_plus_5;
 }
-// Редукция векторов Xj-XL в 2 раза.
+// Р РµРґСѓРєС†РёСЏ РІРµРєС‚РѕСЂРѕРІ Xj-XL РІ 2 СЂР°Р·Р°.
 static std::vector<Point> reduction(const std::vector<Point>& points, const Point& xL) {
     std::vector<Point> red_points(n+1);
     for (size_t j{}; j < points.size(); ++j) {
@@ -281,7 +281,7 @@ static std::vector<Point> reduction(const std::vector<Point>& points, const Poin
     }
     return red_points;
 }
-// Проверка критерия окончания поиска.
+// РџСЂРѕРІРµСЂРєР° РєСЂРёС‚РµСЂРёСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ РїРѕРёСЃРєР°.
 static bool check_finished(const std::vector<Point>& points, const std::vector<double>& fValues, const double& f_n_plus_2, const double& epsilon) {
     double sum = 0;
     for (size_t j = 0; j < fValues.size(); ++j) {
@@ -289,62 +289,62 @@ static bool check_finished(const std::vector<Point>& points, const std::vector<d
     }
     long double accuracy = sqrt(sum / points.size());
     if (accuracy <= epsilon) {
-        std::cout << "Точность поиска по деформируемому многограннику достигнута. Результаты записаны в файл */results_second.txt." << std::endl;
+        std::cout << "РўРѕС‡РЅРѕСЃС‚СЊ РїРѕРёСЃРєР° РїРѕ РґРµС„РѕСЂРјРёСЂСѓРµРјРѕРјСѓ РјРЅРѕРіРѕРіСЂР°РЅРЅРёРєСѓ РґРѕСЃС‚РёРіРЅСѓС‚Р°. Р РµР·СѓР»СЊС‚Р°С‚С‹ Р·Р°РїРёСЃР°РЅС‹ РІ С„Р°Р№Р» */results_second.txt." << std::endl;
         return true;
     }
     return false;
 }
-//Главная функция поиска по деформируемому многограннику.
+//Р“Р»Р°РІРЅР°СЏ С„СѓРЅРєС†РёСЏ РїРѕРёСЃРєР° РїРѕ РґРµС„РѕСЂРјРёСЂСѓРµРјРѕРјСѓ РјРЅРѕРіРѕРіСЂР°РЅРЅРёРєСѓ.
 void search_by_deformable_polyhedron(std::ofstream& file, const double& epsilon, const double& alpha, const double& beta, const double& gamma) {
-    //Используемый многогранник в качестве базы.
+    //РСЃРїРѕР»СЊР·СѓРµРјС‹Р№ РјРЅРѕРіРѕРіСЂР°РЅРЅРёРє РІ РєР°С‡РµСЃС‚РІРµ Р±Р°Р·С‹.
     Point X1 = Point(-1, 4);
     Point X2 = Point(-1, 8);
     Point X3 = Point(-3, 6);
-    //Для хранения исследуемых вершин X1, X2, X3.
+    //Р”Р»СЏ С…СЂР°РЅРµРЅРёСЏ РёСЃСЃР»РµРґСѓРµРјС‹С… РІРµСЂС€РёРЅ X1, X2, X3.
     std::vector<Point> points = {
         X1, // X1
         X2, // X2
         X3, // X3
     };
-    std::vector<double> fValues(n+1); // Для хранения значений функции F(X) в вершинах X1, X2, X3.
-    //Вычисление значений функции в вершинах X1, X2, X3.
+    std::vector<double> fValues(n+1); // Р”Р»СЏ С…СЂР°РЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№ С„СѓРЅРєС†РёРё F(X) РІ РІРµСЂС€РёРЅР°С… X1, X2, X3.
+    //Р’С‹С‡РёСЃР»РµРЅРёРµ Р·РЅР°С‡РµРЅРёР№ С„СѓРЅРєС†РёРё РІ РІРµСЂС€РёРЅР°С… X1, X2, X3.
     for (size_t i = 0; i < points.size(); ++i) {
         fValues[i] = F(points[i]);
     }
     
-    //Вспомогательные вершины.
-    Point n_plus_2{}; //Центр тяжести X(n+2).
-    Point n_plus_3 = Point(); //Отражение - X(n+3).
-    Point n_plus_4 = Point(); //Растяжение - X(n+4).
-    Point n_plus_5 = Point(); //Сжатие - X(n+5).
+    //Р’СЃРїРѕРјРѕРіР°С‚РµР»СЊРЅС‹Рµ РІРµСЂС€РёРЅС‹.
+    Point n_plus_2{}; //Р¦РµРЅС‚СЂ С‚СЏР¶РµСЃС‚Рё X(n+2).
+    Point n_plus_3 = Point(); //РћС‚СЂР°Р¶РµРЅРёРµ - X(n+3).
+    Point n_plus_4 = Point(); //Р Р°СЃС‚СЏР¶РµРЅРёРµ - X(n+4).
+    Point n_plus_5 = Point(); //РЎР¶Р°С‚РёРµ - X(n+5).
 
-    int step = 0; // Учет числа итераций.
-    printTableHeader(file); //Вывод заголовка таблицы в файл.
-    printTableAdditionalRow(file, step); // Вывод строки с номером итерации.
-    printCurrentPoints(file, points, fValues); // Вывод текущих вершин.
+    int step = 0; // РЈС‡РµС‚ С‡РёСЃР»Р° РёС‚РµСЂР°С†РёР№.
+    printTableHeader(file); //Р’С‹РІРѕРґ Р·Р°РіРѕР»РѕРІРєР° С‚Р°Р±Р»РёС†С‹ РІ С„Р°Р№Р».
+    printTableAdditionalRow(file, step); // Р’С‹РІРѕРґ СЃС‚СЂРѕРєРё СЃ РЅРѕРјРµСЂРѕРј РёС‚РµСЂР°С†РёРё.
+    printCurrentPoints(file, points, fValues); // Р’С‹РІРѕРґ С‚РµРєСѓС‰РёС… РІРµСЂС€РёРЅ.
 
-    //ГЛАВНЫЙ ЦИКЛ.
+    //Р“Р›РђР’РќР«Р™ Р¦РРљР›.
     while (true) {
-        int h = search_point_max_value(fValues); //Вершина, значение функции в которой максимально, - Xh (худшая).
-        int L = search_point_min_value(fValues); //Вершина, значение функции в которой минимально, - XL (лучшая).
-        //Центр тяжести.
+        int h = search_point_max_value(fValues); //Р’РµСЂС€РёРЅР°, Р·РЅР°С‡РµРЅРёРµ С„СѓРЅРєС†РёРё РІ РєРѕС‚РѕСЂРѕР№ РјР°РєСЃРёРјР°Р»СЊРЅРѕ, - Xh (С…СѓРґС€Р°СЏ).
+        int L = search_point_min_value(fValues); //Р’РµСЂС€РёРЅР°, Р·РЅР°С‡РµРЅРёРµ С„СѓРЅРєС†РёРё РІ РєРѕС‚РѕСЂРѕР№ РјРёРЅРёРјР°Р»СЊРЅРѕ, - XL (Р»СѓС‡С€Р°СЏ).
+        //Р¦РµРЅС‚СЂ С‚СЏР¶РµСЃС‚Рё.
         n_plus_2 = centroid_h(points, h);
         double f_n_plus_2 = F(n_plus_2);
         
-        //Проверка критерия окончания поиска.
+        //РџСЂРѕРІРµСЂРєР° РєСЂРёС‚РµСЂРёСЏ РѕРєРѕРЅС‡Р°РЅРёСЏ РїРѕРёСЃРєР°.
         if (check_finished(points, fValues, f_n_plus_2, epsilon))
             break;
 
-        printTableAdditionalRow(file, step + 1); // Вывод строки с номером итерации.
+        printTableAdditionalRow(file, step + 1); // Р’С‹РІРѕРґ СЃС‚СЂРѕРєРё СЃ РЅРѕРјРµСЂРѕРј РёС‚РµСЂР°С†РёРё.
         
-        //Отражение.
+        //РћС‚СЂР°Р¶РµРЅРёРµ.
         n_plus_3 = reflection(n_plus_2, points[h], alpha);
         double f_n_plus_3 = F(n_plus_3);
 
-        //Если отраженная вершина лучше не только худшей, то имеет смысл выполнить растяжение, иначе - сжатие.
-        //Проверка на сжатие.
+        //Р•СЃР»Рё РѕС‚СЂР°Р¶РµРЅРЅР°СЏ РІРµСЂС€РёРЅР° Р»СѓС‡С€Рµ РЅРµ С‚РѕР»СЊРєРѕ С…СѓРґС€РµР№, С‚Рѕ РёРјРµРµС‚ СЃРјС‹СЃР» РІС‹РїРѕР»РЅРёС‚СЊ СЂР°СЃС‚СЏР¶РµРЅРёРµ, РёРЅР°С‡Рµ - СЃР¶Р°С‚РёРµ.
+        //РџСЂРѕРІРµСЂРєР° РЅР° СЃР¶Р°С‚РёРµ.
         bool compress{ true };
-        for (size_t j{}; j < points.size(); ++j) {// Отраженная вершина хуже остальных вершин, но лучше худшей?
+        for (size_t j{}; j < points.size(); ++j) {// РћС‚СЂР°Р¶РµРЅРЅР°СЏ РІРµСЂС€РёРЅР° С…СѓР¶Рµ РѕСЃС‚Р°Р»СЊРЅС‹С… РІРµСЂС€РёРЅ, РЅРѕ Р»СѓС‡С€Рµ С…СѓРґС€РµР№?
             if (j != h) {
                 if (!(f_n_plus_3 > fValues[j]) || f_n_plus_3 > fValues[h]) {
                     compress = false;
@@ -353,21 +353,21 @@ void search_by_deformable_polyhedron(std::ofstream& file, const double& epsilon,
             }
         }
 
-        //Проверка на рястяжение.
-        if (f_n_plus_3 < fValues[h] && !compress) { //Отраженная вершина не только лучше худшей?
-            //Растяжение.
-            n_plus_4 = stretching(n_plus_3, n_plus_2, gamma);// Растянутая отраженная вершина лучше лучшей?
+        //РџСЂРѕРІРµСЂРєР° РЅР° СЂСЏСЃС‚СЏР¶РµРЅРёРµ.
+        if (f_n_plus_3 < fValues[h] && !compress) { //РћС‚СЂР°Р¶РµРЅРЅР°СЏ РІРµСЂС€РёРЅР° РЅРµ С‚РѕР»СЊРєРѕ Р»СѓС‡С€Рµ С…СѓРґС€РµР№?
+            //Р Р°СЃС‚СЏР¶РµРЅРёРµ.
+            n_plus_4 = stretching(n_plus_3, n_plus_2, gamma);// Р Р°СЃС‚СЏРЅСѓС‚Р°СЏ РѕС‚СЂР°Р¶РµРЅРЅР°СЏ РІРµСЂС€РёРЅР° Р»СѓС‡С€Рµ Р»СѓС‡С€РµР№?
             double f_n_plus_4 = F(n_plus_4);
-            if (f_n_plus_4 < fValues[L] && f_n_plus_4 < f_n_plus_3) { //Если да, то худшая вершина = растянутой отраженной вершине, если растянутая лучше отраженной.
-                file << "После шага " << step << " выполнено отражение->растяжение." << std::endl;
+            if (f_n_plus_4 < fValues[L] && f_n_plus_4 < f_n_plus_3) { //Р•СЃР»Рё РґР°, С‚Рѕ С…СѓРґС€Р°СЏ РІРµСЂС€РёРЅР° = СЂР°СЃС‚СЏРЅСѓС‚РѕР№ РѕС‚СЂР°Р¶РµРЅРЅРѕР№ РІРµСЂС€РёРЅРµ, РµСЃР»Рё СЂР°СЃС‚СЏРЅСѓС‚Р°СЏ Р»СѓС‡С€Рµ РѕС‚СЂР°Р¶РµРЅРЅРѕР№.
+                file << "РџРѕСЃР»Рµ С€Р°РіР° " << step << " РІС‹РїРѕР»РЅРµРЅРѕ РѕС‚СЂР°Р¶РµРЅРёРµ->СЂР°СЃС‚СЏР¶РµРЅРёРµ." << std::endl;
                 points[h] = n_plus_4; // Xh = X(n+4).
                 fValues[h] = f_n_plus_4;
                 printCurrentPoints(file, points, fValues);
                 step++;
                 continue;
             }
-            else { //Иначе худшая вершина = отраженной.
-                file << "После шага " << step << " выполнено отражение." << std::endl;
+            else { //РРЅР°С‡Рµ С…СѓРґС€Р°СЏ РІРµСЂС€РёРЅР° = РѕС‚СЂР°Р¶РµРЅРЅРѕР№.
+                file << "РџРѕСЃР»Рµ С€Р°РіР° " << step << " РІС‹РїРѕР»РЅРµРЅРѕ РѕС‚СЂР°Р¶РµРЅРёРµ." << std::endl;
                 points[h] = n_plus_3; // Xh = X(n+3).
                 fValues[h] = f_n_plus_3;
                 printCurrentPoints(file, points, fValues);
@@ -376,9 +376,9 @@ void search_by_deformable_polyhedron(std::ofstream& file, const double& epsilon,
             }
         }
         
-        //Сжатие.
-        if (compress) {// Если имеет смысл выполнить сжатие, а отражение и растяжение не дает лучших результатов.
-            file << "После шага " << step << " выполнено сжатие." << std::endl;
+        //РЎР¶Р°С‚РёРµ.
+        if (compress) {// Р•СЃР»Рё РёРјРµРµС‚ СЃРјС‹СЃР» РІС‹РїРѕР»РЅРёС‚СЊ СЃР¶Р°С‚РёРµ, Р° РѕС‚СЂР°Р¶РµРЅРёРµ Рё СЂР°СЃС‚СЏР¶РµРЅРёРµ РЅРµ РґР°РµС‚ Р»СѓС‡С€РёС… СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ.
+            file << "РџРѕСЃР»Рµ С€Р°РіР° " << step << " РІС‹РїРѕР»РЅРµРЅРѕ СЃР¶Р°С‚РёРµ." << std::endl;
             n_plus_5 = compression(points[h], n_plus_2, beta);
             double f_n_plus_5 = F(n_plus_5);
             points[h] = n_plus_5; // Xh = X(n+5).
@@ -388,9 +388,9 @@ void search_by_deformable_polyhedron(std::ofstream& file, const double& epsilon,
             continue;
         }
 
-        //Редукция.
-        if (f_n_plus_3 > fValues[h]) { //Отраженная вершина еще хуже, чем худшая => редукция.
-            file << "После шага " << step << " выполнена редукция." << std::endl;
+        //Р РµРґСѓРєС†РёСЏ.
+        if (f_n_plus_3 > fValues[h]) { //РћС‚СЂР°Р¶РµРЅРЅР°СЏ РІРµСЂС€РёРЅР° РµС‰Рµ С…СѓР¶Рµ, С‡РµРј С…СѓРґС€Р°СЏ => СЂРµРґСѓРєС†РёСЏ.
+            file << "РџРѕСЃР»Рµ С€Р°РіР° " << step << " РІС‹РїРѕР»РЅРµРЅР° СЂРµРґСѓРєС†РёСЏ." << std::endl;
             points = reduction(points, points[L]);
             for (size_t i{}; i < points.size(); ++i) {
                 fValues[i] = F(points[i]);

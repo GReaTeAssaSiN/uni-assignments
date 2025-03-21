@@ -1,6 +1,6 @@
 #include "DataBaseQueries.h"
 
-//ПОДКЛЮЧЕНИЕ ИЛИ ОТКЛЮЧЕНИЕ СОЕДИНЕНИЯ С БД.
+//РџРћР”РљР›Р®Р§Р•РќРР• РР›Р РћРўРљР›Р®Р§Р•РќРР• РЎРћР•Р”РРќР•РќРРЇ РЎ Р‘Р”.
 void DataBaseQueries::ConnectToDB()
 {
 	//Data Source=GORSHKOVALOPC;Initial Catalog=CinemaService;Integrated Security=True.
@@ -19,7 +19,7 @@ void DataBaseQueries::closeConnection()
 	if (conn != nullptr)
 		conn->Close();
 }
-//ПОЛЬЗОВАТЕЛЬСКИЕ ЗАПРОСЫ.
+//РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРР• Р—РђРџР РћРЎР«.
 SqlDataReader^ DataBaseQueries::getReaderSearchedCinemaCatalog(String^ cinemaNamePart)
 {
 	String^ query = "SELECT * FROM Cinema WHERE CinemaName LIKE '%" + cinemaNamePart->ToLower() + "%'";
@@ -49,12 +49,12 @@ Boolean DataBaseQueries::logInUserAccount(String^ userLogin, String^ userPswd)
 
 	if (table->Rows->Count == 1)
 	{
-		MessageBox::Show("Вы успешно вошли!", "Упешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("Р’С‹ СѓСЃРїРµС€РЅРѕ РІРѕС€Р»Рё!", "РЈРїРµС€РЅРѕ!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return true;
 	}
 	else
 	{
-		MessageBox::Show("Такого аккаунта не существует!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РўР°РєРѕРіРѕ Р°РєРєР°СѓРЅС‚Р° РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 }
@@ -91,7 +91,7 @@ Boolean DataBaseQueries::checkNewUserAccount(String^ userLogin)
 		return true;
 	else
 	{
-		MessageBox::Show("Пользователь уже существует!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 }
@@ -106,12 +106,12 @@ Boolean DataBaseQueries::addNewUserAccountData(String^ userLogin, String^ userPs
 
 	if (SQL_command->ExecuteNonQuery())
 	{
-		MessageBox::Show("Вы успешно зарегистрировались!", "Упешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("Р’С‹ СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°Р»РёСЃСЊ!", "РЈРїРµС€РЅРѕ!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		succesful = true;
 	}
 	else
 	{
-		MessageBox::Show("Аккаунт не создан. Ошибка со стороны сервера!");
+		MessageBox::Show("РђРєРєР°СѓРЅС‚ РЅРµ СЃРѕР·РґР°РЅ. РћС€РёР±РєР° СЃРѕ СЃС‚РѕСЂРѕРЅС‹ СЃРµСЂРІРµСЂР°!");
 		succesful = false;
 	}
 
@@ -164,7 +164,7 @@ void DataBaseQueries::addNewReviewToDB(Int32^ CinemaID, Int32^ MovieID, String^ 
 	SqlCommand^ SQL_command = gcnew SqlCommand(query, conn);
 	if (SQL_command->ExecuteNonQuery())
 	{
-		//Полчение UserID.
+		//РџРѕР»С‡РµРЅРёРµ UserID.
 		Int32^ UserID{};
 		query = "SELECT UserID FROM UserInformation WHERE UserLogin = '" + UserLogin + "'";
 		SQL_command = gcnew SqlCommand(query, conn);
@@ -172,7 +172,7 @@ void DataBaseQueries::addNewReviewToDB(Int32^ CinemaID, Int32^ MovieID, String^ 
 		while (reader->Read())
 			UserID = reader->GetInt32(0);
 		reader->Close();
-		//Получение AssessmentID.
+		//РџРѕР»СѓС‡РµРЅРёРµ AssessmentID.
 		Int32^ AssessmentID{};
 		query = "SELECT TOP(1) AssessmentID FROM Assessment ORDER BY AssessmentID DESC";
 		SQL_command = gcnew SqlCommand(query, conn);
@@ -180,24 +180,24 @@ void DataBaseQueries::addNewReviewToDB(Int32^ CinemaID, Int32^ MovieID, String^ 
 		while (reader->Read())
 			AssessmentID = reader->GetInt32(0);
 		reader->Close();
-		//Вставка отзыва.
+		//Р’СЃС‚Р°РІРєР° РѕС‚Р·С‹РІР°.
 		query = "INSERT INTO Review (UserID, Comment, AssessmentID) VALUES (" + UserID + ", '" + Comment + "', " + AssessmentID + ")";
 		SQL_command = gcnew SqlCommand(query, conn);
 		if (SQL_command->ExecuteNonQuery())
 		{
-			MessageBox::Show("Ваш комментарий успешно добавлен!", "Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Р’Р°С€ РєРѕРјРјРµРЅС‚Р°СЂРёР№ СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ!", "РЈСЃРїРµС€РЅРѕ!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 		else
 		{
-			MessageBox::Show("Ваш комментарий не был добавлен!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Р’Р°С€ РєРѕРјРјРµРЅС‚Р°СЂРёР№ РЅРµ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		}
 	}
 	else
 	{
-		MessageBox::Show("Ваш комментарий не был добавлен!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("Р’Р°С€ РєРѕРјРјРµРЅС‚Р°СЂРёР№ РЅРµ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 }
-//ВСПОМОГАТЕЛЬНЫЕ ЗАПРОСЫ.
+//Р’РЎРџРћРњРћР“РђРўР•Р›Р¬РќР«Р• Р—РђРџР РћРЎР«.
 Int32^ DataBaseQueries::getCinemaIDbyCinemaName(String^ cinemaName)
 {
 	Int32^ cinemaID{};
@@ -220,7 +220,7 @@ Int32^ DataBaseQueries::getMovieIDbyMovieName(Int32^ cinemaID, String^ movieName
 	reader->Close();
 	return movieID;
 }
-//ЗАПРОСЫ ОТ АДМИНА.
+//Р—РђРџР РћРЎР« РћРў РђР”РњРРќРђ.
 String^ DataBaseQueries::getMainAdminLogin()
 {
 	String^ mainUserLogin{};
@@ -232,7 +232,7 @@ String^ DataBaseQueries::getMainAdminLogin()
 	reader->Close();
 	return mainUserLogin;
 }
-//Общие.
+//РћР±С‰РёРµ.
 void DataBaseQueries::userInformationShow(DataGridView^ data)
 {
 	this->ConnectToDB();
@@ -305,7 +305,7 @@ void DataBaseQueries::commentShow(DataGridView^ data)
 
 	data->DataSource = table;
 }
-//Изменение данных БД.
+//РР·РјРµРЅРµРЅРёРµ РґР°РЅРЅС‹С… Р‘Р”.
 Boolean DataBaseQueries::addNewUserAccountFromAdmin(String^ userLogin, String^ userPswd, String^ userRole, String^ adminLogin)
 {
 	this->ConnectToDB();
@@ -313,7 +313,7 @@ Boolean DataBaseQueries::addNewUserAccountFromAdmin(String^ userLogin, String^ u
 	String^ mainAdminLogin{ this->getMainAdminLogin() };
 	if (adminLogin->ToLower() != mainAdminLogin->ToLower() && userRole != "User")
 	{
-		MessageBox::Show("Изменять информацию об админах может только главный админ!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РР·РјРµРЅСЏС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± Р°РґРјРёРЅР°С… РјРѕР¶РµС‚ С‚РѕР»СЊРєРѕ РіР»Р°РІРЅС‹Р№ Р°РґРјРёРЅ!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		this->closeConnection();
 		return false;
 	}
@@ -324,13 +324,13 @@ Boolean DataBaseQueries::addNewUserAccountFromAdmin(String^ userLogin, String^ u
 
 		if (SQL_command->ExecuteNonQuery())
 		{
-			MessageBox::Show("Вы успешно зарегистрировали аккаунт!", "Упешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Р’С‹ СѓСЃРїРµС€РЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°Р»Рё Р°РєРєР°СѓРЅС‚!", "РЈРїРµС€РЅРѕ!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			this->closeConnection();
 			return true;
 		}
 		else
 		{
-			MessageBox::Show("Аккаунт не создан. Ошибка со стороны сервера!");
+			MessageBox::Show("РђРєРєР°СѓРЅС‚ РЅРµ СЃРѕР·РґР°РЅ. РћС€РёР±РєР° СЃРѕ СЃС‚РѕСЂРѕРЅС‹ СЃРµСЂРІРµСЂР°!");
 			this->closeConnection();
 			return false;
 		}
@@ -350,7 +350,7 @@ Boolean DataBaseQueries::updateUserAccountFromAdmin(String^ userID, String^ user
 
 	if (table->Rows->Count == 0)
 	{
-		MessageBox::Show("Пользователя с указанными данными не существует. Проверьте корректность введенных данных!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё РґР°РЅРЅС‹РјРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚. РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 	else
@@ -368,13 +368,13 @@ Boolean DataBaseQueries::updateUserAccountFromAdmin(String^ userID, String^ user
 		this->reader->Close();
 		if (adminLogin->ToLower() == mainAdminLogin->ToLower() && adminLogin->ToLower() == changedUserLogin->ToLower() && changedUserRole != "Admin")
 		{
-			MessageBox::Show("Вы не можете изменить себе роль на пользователя!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РёР·РјРµРЅРёС‚СЊ СЃРµР±Рµ СЂРѕР»СЊ РЅР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			this->closeConnection();
 			return false;
 		}
 		else if (adminLogin->ToLower() != mainAdminLogin->ToLower() && (changedUserRole != "User" || userRole != "User"))
 		{
-			MessageBox::Show("Изменять информацию об админах может только главный админ!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("РР·РјРµРЅСЏС‚СЊ РёРЅС„РѕСЂРјР°С†РёСЋ РѕР± Р°РґРјРёРЅР°С… РјРѕР¶РµС‚ С‚РѕР»СЊРєРѕ РіР»Р°РІРЅС‹Р№ Р°РґРјРёРЅ!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			this->closeConnection();
 			return false;
 		}
@@ -392,7 +392,7 @@ Boolean DataBaseQueries::updateUserAccountFromAdmin(String^ userID, String^ user
 			}	
 			else
 			{
-				MessageBox::Show("Данные об указанном пользователе не были изменены. Ошибка со стороны сервера!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("Р”Р°РЅРЅС‹Рµ РѕР± СѓРєР°Р·Р°РЅРЅРѕРј РїРѕР»СЊР·РѕРІР°С‚РµР»Рµ РЅРµ Р±С‹Р»Рё РёР·РјРµРЅРµРЅС‹. РћС€РёР±РєР° СЃРѕ СЃС‚РѕСЂРѕРЅС‹ СЃРµСЂРІРµСЂР°!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				this->closeConnection();
 				return false;
 			}
@@ -413,7 +413,7 @@ Boolean DataBaseQueries::deleteUserAccountFromAdmin(String^ userID, String^ admi
 
 	if (table->Rows->Count == 0)
 	{
-		MessageBox::Show("Пользователя с указанными данными не существует. Проверьте корректность введенных данных!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РџРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё РґР°РЅРЅС‹РјРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚. РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 	else
@@ -431,7 +431,7 @@ Boolean DataBaseQueries::deleteUserAccountFromAdmin(String^ userID, String^ admi
 		this->reader->Close();
 		if (changedUserLogin->ToLower() == adminLogin->ToLower())
 		{
-			MessageBox::Show("Вы не можете удалить себя!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ СѓРґР°Р»РёС‚СЊ СЃРµР±СЏ!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			this->closeConnection();
 			return false;
 		}
@@ -446,13 +446,13 @@ Boolean DataBaseQueries::deleteUserAccountFromAdmin(String^ userID, String^ admi
 			this->reader->Close();
 			if (adminLogin->ToLower() != mainAdminLogin->ToLower() && changedUserRole != "User")
 			{
-				MessageBox::Show("У вас нет прав на удаление админов!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("РЈ РІР°СЃ РЅРµС‚ РїСЂР°РІ РЅР° СѓРґР°Р»РµРЅРёРµ Р°РґРјРёРЅРѕРІ!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				this->closeConnection();
 				return false;
 			}
 			else
 			{
-				DialogResult result = MessageBox::Show("ПРОДОЛЖИТЬ? Будут удалены все отзывы, связанные с данным пользователем, как и сам пользователь!", "Предупреждение!", MessageBoxButtons::YesNo, MessageBoxIcon::Information);
+				DialogResult result = MessageBox::Show("РџР РћР”РћР›Р–РРўР¬? Р‘СѓРґСѓС‚ СѓРґР°Р»РµРЅС‹ РІСЃРµ РѕС‚Р·С‹РІС‹, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РґР°РЅРЅС‹Рј РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј, РєР°Рє Рё СЃР°Рј РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ!", "РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ!", MessageBoxButtons::YesNo, MessageBoxIcon::Information);
 				if (result == DialogResult::Yes)
 				{
 					if (assessmentID == nullptr)
@@ -501,32 +501,32 @@ Boolean DataBaseQueries::deleteCinemaFromAdmin(String^ cinemaID)
 
 	if (table->Rows->Count == 0)
 	{
-		MessageBox::Show("Кинотеатра с указанными данными не существует. Проверьте корректность введенных данных!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РљРёРЅРѕС‚РµР°С‚СЂР° СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё РґР°РЅРЅС‹РјРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚. РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 	else
 	{
-		DialogResult result = MessageBox::Show("ПРОДОЛЖИТЬ? Будут удалены все фильмы и отзывы, связанные с данным кинотеатром, как и сам кинотеатр!", "Предупреждение!", MessageBoxButtons::YesNo, MessageBoxIcon::Information);
+		DialogResult result = MessageBox::Show("РџР РћР”РћР›Р–РРўР¬? Р‘СѓРґСѓС‚ СѓРґР°Р»РµРЅС‹ РІСЃРµ С„РёР»СЊРјС‹ Рё РѕС‚Р·С‹РІС‹, СЃРІСЏР·Р°РЅРЅС‹Рµ СЃ РґР°РЅРЅС‹Рј РєРёРЅРѕС‚РµР°С‚СЂРѕРј, РєР°Рє Рё СЃР°Рј РєРёРЅРѕС‚РµР°С‚СЂ!", "РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ!", MessageBoxButtons::YesNo, MessageBoxIcon::Information);
 		if (result == DialogResult::Yes)
 		{
 			this->openConnection();
-			//Удаление связей фильмов с данным кинотеатром.
+			//РЈРґР°Р»РµРЅРёРµ СЃРІСЏР·РµР№ С„РёР»СЊРјРѕРІ СЃ РґР°РЅРЅС‹Рј РєРёРЅРѕС‚РµР°С‚СЂРѕРј.
 			query = "DELETE FROM CinemaMovie WHERE CinemaID = " + cinemaID;
 			SQL_command = gcnew SqlCommand(query, conn);
 			SQL_command->ExecuteNonQuery();
-			//Удаление отзывов, связанных с данным кинотеатром.
+			//РЈРґР°Р»РµРЅРёРµ РѕС‚Р·С‹РІРѕРІ, СЃРІСЏР·Р°РЅРЅС‹С… СЃ РґР°РЅРЅС‹Рј РєРёРЅРѕС‚РµР°С‚СЂРѕРј.
 			query = "DELETE FROM Review WHERE AssessmentID IN (SELECT AssessmentID FROM Assessment WHERE CinemaID = " + cinemaID + ")";
 			SQL_command = gcnew SqlCommand(query, conn);
 			SQL_command->ExecuteNonQuery();
-			//Удаление оценок, связанных с данным кинотеатром.
+			//РЈРґР°Р»РµРЅРёРµ РѕС†РµРЅРѕРє, СЃРІСЏР·Р°РЅРЅС‹С… СЃ РґР°РЅРЅС‹Рј РєРёРЅРѕС‚РµР°С‚СЂРѕРј.
 			query = "DELETE FROM Assessment WHERE CinemaID = " + cinemaID;
 			SQL_command = gcnew SqlCommand(query, conn);
 			SQL_command->ExecuteNonQuery();
-			//Удаление данного кинотеатра.
+			//РЈРґР°Р»РµРЅРёРµ РґР°РЅРЅРѕРіРѕ РєРёРЅРѕС‚РµР°С‚СЂР°.
 			query = "DELETE FROM Cinema WHERE CinemaID = " + cinemaID;
 			SQL_command = gcnew SqlCommand(query, conn);
 			SQL_command->ExecuteNonQuery();
-			//Удаление фильмов, которые теперь не связаны ни с одним кинотеатром.
+			//РЈРґР°Р»РµРЅРёРµ С„РёР»СЊРјРѕРІ, РєРѕС‚РѕСЂС‹Рµ С‚РµРїРµСЂСЊ РЅРµ СЃРІСЏР·Р°РЅС‹ РЅРё СЃ РѕРґРЅРёРј РєРёРЅРѕС‚РµР°С‚СЂРѕРј.
 			query = "DELETE FROM Movie WHERE Movie.MovieID IN (SELECT Movie.MovieID FROM (Movie LEFT JOIN CinemaMovie ON Movie.MovieID = CinemaMovie.MovieID) WHERE CinemaMovie.CinemaID IS NULL)";
 			SQL_command = gcnew SqlCommand(query, conn);
 			SQL_command->ExecuteNonQuery();
@@ -551,7 +551,7 @@ Boolean DataBaseQueries::addNewCinemaFromAdmin(String^ CinemaPicturePath, String
 
 	if (table->Rows->Count != 0)
 	{
-		MessageBox::Show("Кинотеатр с таким названием уже существует!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РљРёРЅРѕС‚РµР°С‚СЂ СЃ С‚Р°РєРёРј РЅР°Р·РІР°РЅРёРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 	else
@@ -565,7 +565,7 @@ Boolean DataBaseQueries::addNewCinemaFromAdmin(String^ CinemaPicturePath, String
 			}
 		if (!isNumericHouseNumber)
 		{
-			MessageBox::Show("Номер дома должен состоять только из цифр или символа /!", "Ошибка номера дома!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("РќРѕРјРµСЂ РґРѕРјР° РґРѕР»Р¶РµРЅ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ РёР»Рё СЃРёРјРІРѕР»Р° /!", "РћС€РёР±РєР° РЅРѕРјРµСЂР° РґРѕРјР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			return false;
 		}
 		else
@@ -576,7 +576,7 @@ Boolean DataBaseQueries::addNewCinemaFromAdmin(String^ CinemaPicturePath, String
 			{
 				if (!(HouseLetter[0] >= 'a' && HouseLetter[0] <= 'z' || HouseLetter[0] >= 'A' && HouseLetter[0] <= 'Z' ))
 				{
-					MessageBox::Show("Литера дома должна представлять из себя букву латинского алфавита!", "Ошибка литеры дома!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("Р›РёС‚РµСЂР° РґРѕРјР° РґРѕР»Р¶РЅР° РїСЂРµРґСЃС‚Р°РІР»СЏС‚СЊ РёР· СЃРµР±СЏ Р±СѓРєРІСѓ Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°!", "РћС€РёР±РєР° Р»РёС‚РµСЂС‹ РґРѕРјР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					return false;
 				}
 			}
@@ -594,7 +594,7 @@ Boolean DataBaseQueries::addNewCinemaFromAdmin(String^ CinemaPicturePath, String
 			}
 			catch (System::Data::SqlClient::SqlException^ exception)
 			{
-				MessageBox::Show("Время открытия и/или закрытия введены некорректно. Заполните все пропуски или введите корректное время!", "Ошибка формата времени!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("Р’СЂРµРјСЏ РѕС‚РєСЂС‹С‚РёСЏ Рё/РёР»Рё Р·Р°РєСЂС‹С‚РёСЏ РІРІРµРґРµРЅС‹ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ. Р—Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїСЂРѕРїСѓСЃРєРё РёР»Рё РІРІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕРµ РІСЂРµРјСЏ!", "РћС€РёР±РєР° С„РѕСЂРјР°С‚Р° РІСЂРµРјРµРЅРё!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				this->closeConnection();
 				return false;
 			}
@@ -608,7 +608,7 @@ Boolean DataBaseQueries::addNewCinemaFromAdmin(String^ CinemaPicturePath, String
 			}
 			catch (System::Data::SqlClient::SqlException^ exception)
 			{
-				MessageBox::Show("Проверьте путь к файлу и не забудьте указать формат файла (.jpg, .png)!", "Ошибка открытия файла с изображением!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("РџСЂРѕРІРµСЂСЊС‚Рµ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ Рё РЅРµ Р·Р°Р±СѓРґСЊС‚Рµ СѓРєР°Р·Р°С‚СЊ С„РѕСЂРјР°С‚ С„Р°Р№Р»Р° (.jpg, .png)!", "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° СЃ РёР·РѕР±СЂР°Р¶РµРЅРёРµРј!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				this->closeConnection();
 				return true;
 			}
@@ -629,7 +629,7 @@ Boolean DataBaseQueries::updateCinemaFromAdmin(String^ cinemaID, String^ CinemaP
 
 	if (table->Rows->Count == 0)
 	{
-		MessageBox::Show("Нельзя изменить кинотеатр, который еще не был добавлен. Проверьте ID кинотеатра!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РќРµР»СЊР·СЏ РёР·РјРµРЅРёС‚СЊ РєРёРЅРѕС‚РµР°С‚СЂ, РєРѕС‚РѕСЂС‹Р№ РµС‰Рµ РЅРµ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ. РџСЂРѕРІРµСЂСЊС‚Рµ ID РєРёРЅРѕС‚РµР°С‚СЂР°!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 	else
@@ -649,7 +649,7 @@ Boolean DataBaseQueries::updateCinemaFromAdmin(String^ cinemaID, String^ CinemaP
 			{
 				if (!(HouseLetter[0] >= 'a' && HouseLetter[0] <= 'z' || HouseLetter[0] >= 'A' && HouseLetter[0] <= 'Z'))
 				{
-					MessageBox::Show("Литера дома должна представлять из себя букву латинского алфавита!", "Ошибка литеры дома!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("Р›РёС‚РµСЂР° РґРѕРјР° РґРѕР»Р¶РЅР° РїСЂРµРґСЃС‚Р°РІР»СЏС‚СЊ РёР· СЃРµР±СЏ Р±СѓРєРІСѓ Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°!", "РћС€РёР±РєР° Р»РёС‚РµСЂС‹ РґРѕРјР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					return false;
 				}
 			}
@@ -685,7 +685,7 @@ Boolean DataBaseQueries::updateCinemaFromAdmin(String^ cinemaID, String^ CinemaP
 				}
 				else
 				{
-					MessageBox::Show("Кинотеатр с таким названием уже существует!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("РљРёРЅРѕС‚РµР°С‚СЂ СЃ С‚Р°РєРёРј РЅР°Р·РІР°РЅРёРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					this->closeConnection();
 					return false;
 				}
@@ -697,7 +697,7 @@ Boolean DataBaseQueries::updateCinemaFromAdmin(String^ cinemaID, String^ CinemaP
 			}
 			catch (System::Data::SqlClient::SqlException ^ exception)
 			{
-				MessageBox::Show("Время открытия и/или закрытия введены некорректно. Заполните все пропуски или введите корректное время!", "Ошибка формата времени!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("Р’СЂРµРјСЏ РѕС‚РєСЂС‹С‚РёСЏ Рё/РёР»Рё Р·Р°РєСЂС‹С‚РёСЏ РІРІРµРґРµРЅС‹ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ. Р—Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїСЂРѕРїСѓСЃРєРё РёР»Рё РІРІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕРµ РІСЂРµРјСЏ!", "РћС€РёР±РєР° С„РѕСЂРјР°С‚Р° РІСЂРµРјРµРЅРё!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				this->closeConnection();
 				return false;
 			}
@@ -711,14 +711,14 @@ Boolean DataBaseQueries::updateCinemaFromAdmin(String^ cinemaID, String^ CinemaP
 			}
 			catch (System::Data::SqlClient::SqlException^ exception)
 			{
-				MessageBox::Show("Проверьте путь к файлу и не забудьте указать формат файла (.jpg, .png)!", "Ошибка открытия файла с изображением!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("РџСЂРѕРІРµСЂСЊС‚Рµ РїСѓС‚СЊ Рє С„Р°Р№Р»Сѓ Рё РЅРµ Р·Р°Р±СѓРґСЊС‚Рµ СѓРєР°Р·Р°С‚СЊ С„РѕСЂРјР°С‚ С„Р°Р№Р»Р° (.jpg, .png)!", "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° СЃ РёР·РѕР±СЂР°Р¶РµРЅРёРµРј!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				this->closeConnection();
 				return true;
 			}
 		}
 		else
 		{
-			MessageBox::Show("Номер дома должен состоять только из цифр или символа /!", "Ошибка номера дома!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("РќРѕРјРµСЂ РґРѕРјР° РґРѕР»Р¶РµРЅ СЃРѕСЃС‚РѕСЏС‚СЊ С‚РѕР»СЊРєРѕ РёР· С†РёС„СЂ РёР»Рё СЃРёРјРІРѕР»Р° /!", "РћС€РёР±РєР° РЅРѕРјРµСЂР° РґРѕРјР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			return false;
 		}
 	}
@@ -737,31 +737,31 @@ Boolean DataBaseQueries::deleteMovieFromAdmin(String^ movieID, String^ cinemaNam
 
 	if (table->Rows->Count == 0)
 	{
-		MessageBox::Show("Фильма с указанными данными не существует. Проверьте корректность введенных данных!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("Р¤РёР»СЊРјР° СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё РґР°РЅРЅС‹РјРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚. РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 	else
 	{
 		this->openConnection();
-		//Полное удаление фильма.
+		//РџРѕР»РЅРѕРµ СѓРґР°Р»РµРЅРёРµ С„РёР»СЊРјР°.
 		if (cinemaName == "None")
 		{
-			DialogResult result = MessageBox::Show("ПРОДОЛЖИТЬ? Указанный фильм будет удален со всеми отзывами изо всех кинотеатров!", "Предупреждение!", MessageBoxButtons::YesNo, MessageBoxIcon::Information);
+			DialogResult result = MessageBox::Show("РџР РћР”РћР›Р–РРўР¬? РЈРєР°Р·Р°РЅРЅС‹Р№ С„РёР»СЊРј Р±СѓРґРµС‚ СѓРґР°Р»РµРЅ СЃРѕ РІСЃРµРјРё РѕС‚Р·С‹РІР°РјРё РёР·Рѕ РІСЃРµС… РєРёРЅРѕС‚РµР°С‚СЂРѕРІ!", "РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ!", MessageBoxButtons::YesNo, MessageBoxIcon::Information);
 			if (result == DialogResult::Yes)
 			{
-				//Удаление связей кинотеатров с данным фильмом.
+				//РЈРґР°Р»РµРЅРёРµ СЃРІСЏР·РµР№ РєРёРЅРѕС‚РµР°С‚СЂРѕРІ СЃ РґР°РЅРЅС‹Рј С„РёР»СЊРјРѕРј.
 				query = "DELETE FROM CinemaMovie WHERE MovieID = " + movieID;
 				SQL_command = gcnew SqlCommand(query, conn);
 				SQL_command->ExecuteNonQuery();
-				//Удаление отзывов, связанных с данным фильмом.
+				//РЈРґР°Р»РµРЅРёРµ РѕС‚Р·С‹РІРѕРІ, СЃРІСЏР·Р°РЅРЅС‹С… СЃ РґР°РЅРЅС‹Рј С„РёР»СЊРјРѕРј.
 				query = "DELETE FROM Review WHERE AssessmentID IN (SELECT AssessmentID FROM Assessment WHERE MovieID = " + movieID + ")";
 				SQL_command = gcnew SqlCommand(query, conn);
 				SQL_command->ExecuteNonQuery();
-				//Удаление оценок, связанных с данным фильмом.
+				//РЈРґР°Р»РµРЅРёРµ РѕС†РµРЅРѕРє, СЃРІСЏР·Р°РЅРЅС‹С… СЃ РґР°РЅРЅС‹Рј С„РёР»СЊРјРѕРј.
 				query = "DELETE FROM Assessment WHERE MovieID = " + movieID;
 				SQL_command = gcnew SqlCommand(query, conn);
 				SQL_command->ExecuteNonQuery();
-				//Удаление данного фильма.
+				//РЈРґР°Р»РµРЅРёРµ РґР°РЅРЅРѕРіРѕ С„РёР»СЊРјР°.
 				query = "DELETE FROM Movie WHERE MovieID = " + movieID;
 				SQL_command = gcnew SqlCommand(query, conn);
 				SQL_command->ExecuteNonQuery();
@@ -772,13 +772,13 @@ Boolean DataBaseQueries::deleteMovieFromAdmin(String^ movieID, String^ cinemaNam
 				return false;
 			}
 		}																   
-		//Удаление фильма из указанного кинотеатра.
+		//РЈРґР°Р»РµРЅРёРµ С„РёР»СЊРјР° РёР· СѓРєР°Р·Р°РЅРЅРѕРіРѕ РєРёРЅРѕС‚РµР°С‚СЂР°.
 		else
 		{
-			DialogResult result = MessageBox::Show("ПРОДОЛЖИТЬ? Указанный фильм будет удален со всеми отзывами из данного кинотеатра. Если фильм шел только в данном кинотеатре, то он будет полностью удален!", "Предупреждение!", MessageBoxButtons::YesNo, MessageBoxIcon::Information);
+			DialogResult result = MessageBox::Show("РџР РћР”РћР›Р–РРўР¬? РЈРєР°Р·Р°РЅРЅС‹Р№ С„РёР»СЊРј Р±СѓРґРµС‚ СѓРґР°Р»РµРЅ СЃРѕ РІСЃРµРјРё РѕС‚Р·С‹РІР°РјРё РёР· РґР°РЅРЅРѕРіРѕ РєРёРЅРѕС‚РµР°С‚СЂР°. Р•СЃР»Рё С„РёР»СЊРј С€РµР» С‚РѕР»СЊРєРѕ РІ РґР°РЅРЅРѕРј РєРёРЅРѕС‚РµР°С‚СЂРµ, С‚Рѕ РѕРЅ Р±СѓРґРµС‚ РїРѕР»РЅРѕСЃС‚СЊСЋ СѓРґР°Р»РµРЅ!", "РџСЂРµРґСѓРїСЂРµР¶РґРµРЅРёРµ!", MessageBoxButtons::YesNo, MessageBoxIcon::Information);
 			if (result == DialogResult::Yes)
 			{
-				//Получение ID кинотеатра по его названию.
+				//РџРѕР»СѓС‡РµРЅРёРµ ID РєРёРЅРѕС‚РµР°С‚СЂР° РїРѕ РµРіРѕ РЅР°Р·РІР°РЅРёСЋ.
 				Int32^ cinemaID{};
 				query = "SELECT CinemaID FROM Cinema WHERE CinemaName = '" + cinemaName + "'";
 				SQL_command = gcnew SqlCommand(query, conn);
@@ -786,7 +786,7 @@ Boolean DataBaseQueries::deleteMovieFromAdmin(String^ movieID, String^ cinemaNam
 				while (this->reader->Read())
 					cinemaID = reader->GetInt32(0);
 				this->reader->Close();
-				//Проверка наличия указаного фильма в данном кинотеатре.
+				//РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ СѓРєР°Р·Р°РЅРѕРіРѕ С„РёР»СЊРјР° РІ РґР°РЅРЅРѕРј РєРёРЅРѕС‚РµР°С‚СЂРµ.
 				table = gcnew DataTable();
 				query = "SELECT * FROM CinemaMovie WHERE MovieID = " + movieID + " AND CinemaID = " + cinemaID;
 				SqlCommand^ SQL_command = gcnew SqlCommand(query, conn);
@@ -797,25 +797,25 @@ Boolean DataBaseQueries::deleteMovieFromAdmin(String^ movieID, String^ cinemaNam
 
 				if (table->Rows->Count == 0)
 				{
-					MessageBox::Show("Данный фильм отсутствует в указанном кинотеатре. Проверьте корректность введенных данных!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					MessageBox::Show("Р”Р°РЅРЅС‹Р№ С„РёР»СЊРј РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ СѓРєР°Р·Р°РЅРЅРѕРј РєРёРЅРѕС‚РµР°С‚СЂРµ. РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					this->closeConnection();
 					return false;
 				}
 				else
 				{
-					//Удаление связи кинотеатра с данным фильмом.
+					//РЈРґР°Р»РµРЅРёРµ СЃРІСЏР·Рё РєРёРЅРѕС‚РµР°С‚СЂР° СЃ РґР°РЅРЅС‹Рј С„РёР»СЊРјРѕРј.
 					query = "DELETE FROM CinemaMovie WHERE CinemaID = " + cinemaID->ToString() + " AND MovieID = " + movieID;
 					SQL_command = gcnew SqlCommand(query, conn);
 					SQL_command->ExecuteNonQuery();
-					//Удаление отзывов, связанных с данным фильмом в указанном кинотеатре.
+					//РЈРґР°Р»РµРЅРёРµ РѕС‚Р·С‹РІРѕРІ, СЃРІСЏР·Р°РЅРЅС‹С… СЃ РґР°РЅРЅС‹Рј С„РёР»СЊРјРѕРј РІ СѓРєР°Р·Р°РЅРЅРѕРј РєРёРЅРѕС‚РµР°С‚СЂРµ.
 					query = "DELETE FROM Review WHERE AssessmentID IN (SELECT AssessmentID FROM Assessment WHERE CinemaID = " + cinemaID->ToString() + "AND MovieID = " + movieID + ")";
 					SQL_command = gcnew SqlCommand(query, conn);
 					SQL_command->ExecuteNonQuery();
-					//Удаление оценок, связанных с данным фильмом в указанном кинотеатре.
+					//РЈРґР°Р»РµРЅРёРµ РѕС†РµРЅРѕРє, СЃРІСЏР·Р°РЅРЅС‹С… СЃ РґР°РЅРЅС‹Рј С„РёР»СЊРјРѕРј РІ СѓРєР°Р·Р°РЅРЅРѕРј РєРёРЅРѕС‚РµР°С‚СЂРµ.
 					query = "DELETE FROM Assessment WHERE CinemaID = " + cinemaID->ToString() + " AND MovieID = " + movieID;
 					SQL_command = gcnew SqlCommand(query, conn);
 					SQL_command->ExecuteNonQuery();
-					//Удаление данного фильма, если он больше не идет ни в одном кинотеатре.
+					//РЈРґР°Р»РµРЅРёРµ РґР°РЅРЅРѕРіРѕ С„РёР»СЊРјР°, РµСЃР»Рё РѕРЅ Р±РѕР»СЊС€Рµ РЅРµ РёРґРµС‚ РЅРё РІ РѕРґРЅРѕРј РєРёРЅРѕС‚РµР°С‚СЂРµ.
 					query = "DELETE FROM Movie WHERE Movie.MovieID = (SELECT Movie.MovieID FROM (Movie LEFT JOIN CinemaMovie ON Movie.MovieID = CinemaMovie.MovieID) WHERE Movie.MovieID = " + movieID + " AND CinemaMovie.CinemaID IS NULL)";
 					SQL_command = gcnew SqlCommand(query, conn);
 					SQL_command->ExecuteNonQuery();
@@ -847,13 +847,13 @@ Boolean DataBaseQueries::addMovieFromAdmin(String^ movieName, String^ release, S
 	{
 		if (cinemaName == "None")
 		{
-			MessageBox::Show("Название регистрируемого фильма должно быть уникальным. Проверьте корректность введенных данных!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("РќР°Р·РІР°РЅРёРµ СЂРµРіРёСЃС‚СЂРёСЂСѓРµРјРѕРіРѕ С„РёР»СЊРјР° РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ СѓРЅРёРєР°Р»СЊРЅС‹Рј. РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			return false;
 		}
-		//Добавление фильма в кинотеатр.
+		//Р”РѕР±Р°РІР»РµРЅРёРµ С„РёР»СЊРјР° РІ РєРёРЅРѕС‚РµР°С‚СЂ.
 		else
 		{
-			//Получение ID добавляемого фильма и соответствующего кинотеатра.
+			//РџРѕР»СѓС‡РµРЅРёРµ ID РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ С„РёР»СЊРјР° Рё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ РєРёРЅРѕС‚РµР°С‚СЂР°.
 			this->openConnection();
 			Int32^ addedMovieID{}, ^ changedCinemaID{};
 			query = "SELECT MovieID FROM Movie WHERE MovieName = '" + movieName + "'";
@@ -868,7 +868,7 @@ Boolean DataBaseQueries::addMovieFromAdmin(String^ movieName, String^ release, S
 			while (this->reader->Read())
 				changedCinemaID = reader->GetInt32(0);
 			this->reader->Close();
-			//Проверка наличия добавляемой связи.
+			//РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёСЏ РґРѕР±Р°РІР»СЏРµРјРѕР№ СЃРІСЏР·Рё.
 			table = gcnew DataTable();
 			query = "SELECT * FROM CinemaMovie WHERE CinemaID = " + changedCinemaID->ToString() + " AND MovieID = " + addedMovieID->ToString();
 			SQL_command = gcnew SqlCommand(query, conn);
@@ -877,13 +877,13 @@ Boolean DataBaseQueries::addMovieFromAdmin(String^ movieName, String^ release, S
 			adapter->Fill(table);
 			if (table->Rows->Count != 0)
 			{
-				MessageBox::Show("Указанный фильм уже был добавлен в выбранный кинотеатр!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("РЈРєР°Р·Р°РЅРЅС‹Р№ С„РёР»СЊРј СѓР¶Рµ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РІ РІС‹Р±СЂР°РЅРЅС‹Р№ РєРёРЅРѕС‚РµР°С‚СЂ!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				this->closeConnection();
 				return false;
 			}
 			else
 			{
-				//Добавление связи фильма с кинотеатром.
+				//Р”РѕР±Р°РІР»РµРЅРёРµ СЃРІСЏР·Рё С„РёР»СЊРјР° СЃ РєРёРЅРѕС‚РµР°С‚СЂРѕРј.
 				query = "INSERT INTO CinemaMovie VALUES (" + changedCinemaID->ToString() + ", " + addedMovieID->ToString() + ")";
 				SQL_command = gcnew SqlCommand(query, conn);
 				SQL_command->ExecuteNonQuery();
@@ -894,7 +894,7 @@ Boolean DataBaseQueries::addMovieFromAdmin(String^ movieName, String^ release, S
 	}
 	else
 	{
-		//Добавлление фильма в таблицу.
+		//Р”РѕР±Р°РІР»Р»РµРЅРёРµ С„РёР»СЊРјР° РІ С‚Р°Р±Р»РёС†Сѓ.
 		if (cinemaName == "None")
 		{
 			Boolean true_ageLimit{ true };
@@ -914,13 +914,13 @@ Boolean DataBaseQueries::addMovieFromAdmin(String^ movieName, String^ release, S
 			catch (System::Data::SqlClient::SqlException^ exception)
 			{
 				this->closeConnection();
-				MessageBox::Show("Неккорректный ввод в поля с форматом. Проверьте, чтобы были заполнены все пропуски у используемых полей с форматом, при этом значения в полях были корректными!", "Ошибка полей с форматом!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("РќРµРєРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ РІ РїРѕР»СЏ СЃ С„РѕСЂРјР°С‚РѕРј. РџСЂРѕРІРµСЂСЊС‚Рµ, С‡С‚РѕР±С‹ Р±С‹Р»Рё Р·Р°РїРѕР»РЅРµРЅС‹ РІСЃРµ РїСЂРѕРїСѓСЃРєРё Сѓ РёСЃРїРѕР»СЊР·СѓРµРјС‹С… РїРѕР»РµР№ СЃ С„РѕСЂРјР°С‚РѕРј, РїСЂРё СЌС‚РѕРј Р·РЅР°С‡РµРЅРёСЏ РІ РїРѕР»СЏС… Р±С‹Р»Рё РєРѕСЂСЂРµРєС‚РЅС‹РјРё!", "РћС€РёР±РєР° РїРѕР»РµР№ СЃ С„РѕСЂРјР°С‚РѕРј!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				return false;
 			}
 		}
 		else
 		{
-			MessageBox::Show("Фильм с указанным названием еще не был зарегистрирован. Проверьте корректность введенных данных!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Р¤РёР»СЊРј СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РЅР°Р·РІР°РЅРёРµРј РµС‰Рµ РЅРµ Р±С‹Р» Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ. РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			return false;
 		}
 	}
@@ -939,7 +939,7 @@ Boolean DataBaseQueries::updateMovieFromAdmin(String^ movieID, String^ movieName
 
 	if (table->Rows->Count == 0)
 	{
-		MessageBox::Show("Нельзя изменить фильм, который еще не был добавлен. Проверьте ID фильма!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РќРµР»СЊР·СЏ РёР·РјРµРЅРёС‚СЊ С„РёР»СЊРј, РєРѕС‚РѕСЂС‹Р№ РµС‰Рµ РЅРµ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ. РџСЂРѕРІРµСЂСЊС‚Рµ ID С„РёР»СЊРјР°!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 	else
@@ -956,7 +956,7 @@ Boolean DataBaseQueries::updateMovieFromAdmin(String^ movieID, String^ movieName
 		while (this->reader->Read())
 			changedMovieName = this->reader->GetString(0);
 		this->reader->Close();
-		//Изменение информации о фильме.
+		//РР·РјРµРЅРµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё Рѕ С„РёР»СЊРјРµ.
 		if (movieName->ToLower() == changedMovieName->ToLower())
 			query = "UPDATE Movie SET Release = '" + release + "', Genre = '" + genre + "', AgeLimit = '" + ageLimit + (ageLimit == L"0+" ? "', Duration = '" : "+', Duration = '") + duration + "', MovieFormat = '" + movieFormat + "' WHERE MovieID = " + movieID;
 		else
@@ -973,7 +973,7 @@ Boolean DataBaseQueries::updateMovieFromAdmin(String^ movieID, String^ movieName
 				query = "UPDATE Movie SET MovieName = '" + movieName + "', Release = '" + release + "', Genre = '" + genre + "', AgeLimit = '" + ageLimit + (ageLimit == L"0+" ? "', Duration = '" : "+', Duration = '") + duration + "', MovieFormat = '" + movieFormat + "' WHERE MovieID = " + movieID;
 			else
 			{
-				MessageBox::Show("Фильм с таким названием уже существует!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("Р¤РёР»СЊРј СЃ С‚Р°РєРёРј РЅР°Р·РІР°РЅРёРµРј СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 				this->closeConnection();
 				return false;
 			}
@@ -986,7 +986,7 @@ Boolean DataBaseQueries::updateMovieFromAdmin(String^ movieID, String^ movieName
 		}
 		catch (System::Data::SqlClient::SqlException^ exception)
 		{
-			MessageBox::Show("Неккорректный ввод в поля с форматом. Проверьте, чтобы были заполнены все пропуски у используемых полей с форматом, при этом значения в полях были корректными!", "Ошибка полей с форматом!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("РќРµРєРєРѕСЂСЂРµРєС‚РЅС‹Р№ РІРІРѕРґ РІ РїРѕР»СЏ СЃ С„РѕСЂРјР°С‚РѕРј. РџСЂРѕРІРµСЂСЊС‚Рµ, С‡С‚РѕР±С‹ Р±С‹Р»Рё Р·Р°РїРѕР»РЅРµРЅС‹ РІСЃРµ РїСЂРѕРїСѓСЃРєРё Сѓ РёСЃРїРѕР»СЊР·СѓРµРјС‹С… РїРѕР»РµР№ СЃ С„РѕСЂРјР°С‚РѕРј, РїСЂРё СЌС‚РѕРј Р·РЅР°С‡РµРЅРёСЏ РІ РїРѕР»СЏС… Р±С‹Р»Рё РєРѕСЂСЂРµРєС‚РЅС‹РјРё!", "РћС€РёР±РєР° РїРѕР»РµР№ СЃ С„РѕСЂРјР°С‚РѕРј!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			this->closeConnection();
 			return false;
 		}
@@ -1006,13 +1006,13 @@ Boolean DataBaseQueries::deleteReviewFromAdmin(String^ reviewID)
 
 	if (table->Rows->Count == 0)
 	{
-		MessageBox::Show("Отзыва с указанными данными не существует. Проверьте корректность введенных данных!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РћС‚Р·С‹РІР° СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё РґР°РЅРЅС‹РјРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚. РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 	else
 	{
 		this->openConnection();
-		//ID оценки удаляемого отзыва.
+		//ID РѕС†РµРЅРєРё СѓРґР°Р»СЏРµРјРѕРіРѕ РѕС‚Р·С‹РІР°.
 		Int32^ assessmentID{};
 		query = "SELECT AssessmentID FROM Review WHERE ReviewID = " + reviewID;
 		SQL_command = gcnew SqlCommand(query, conn);
@@ -1020,11 +1020,11 @@ Boolean DataBaseQueries::deleteReviewFromAdmin(String^ reviewID)
 		while (this->reader->Read())
 			assessmentID = reader->GetInt32(0);
 		this->reader->Close();
-		//Удаление отзыва.
+		//РЈРґР°Р»РµРЅРёРµ РѕС‚Р·С‹РІР°.
 		query = "DELETE FROM Review WHERE ReviewID = " + reviewID;
 		SQL_command = gcnew SqlCommand(query, conn);
 		SQL_command->ExecuteNonQuery();
-		//Удаление оценки.
+		//РЈРґР°Р»РµРЅРёРµ РѕС†РµРЅРєРё.
 		query = "DELETE FROM Assessment WHERE AssessmentID = " + assessmentID;
 		SQL_command = gcnew SqlCommand(query, conn);
 		SQL_command->ExecuteNonQuery();
@@ -1046,13 +1046,13 @@ Boolean DataBaseQueries::addReviewFromAdmin(String^ reviewID, TextBox^ comment)
 
 	if (table->Rows->Count == 0)
 	{
-		MessageBox::Show("Отзыва с указанными данными не существует. Проверьте корректность введенных данных!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РћС‚Р·С‹РІР° СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё РґР°РЅРЅС‹РјРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚. РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 	else
 	{
 		this->openConnection();
-		//Получение отзыва пользователя.
+		//РџРѕР»СѓС‡РµРЅРёРµ РѕС‚Р·С‹РІР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 		String^ commentText{};
 		query = "SELECT comment FROM Review WHERE ReviewID = " + reviewID;
 		SQL_command = gcnew SqlCommand(query, conn);
@@ -1079,7 +1079,7 @@ Boolean DataBaseQueries::updateReviewFromAdmin(String^ reviewID, String^ comment
 
 	if (table->Rows->Count == 0)
 	{
-		MessageBox::Show("Отзыва с указанными данными не существует. Проверьте корректность введенных данных!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		MessageBox::Show("РћС‚Р·С‹РІР° СЃ СѓРєР°Р·Р°РЅРЅС‹РјРё РґР°РЅРЅС‹РјРё РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚. РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…!", "РћС€РёР±РєР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return false;
 	}
 	else

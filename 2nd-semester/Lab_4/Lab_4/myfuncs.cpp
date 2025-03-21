@@ -9,7 +9,7 @@
 std::string selectFile(Blank blank, const std::string defaultPath)
 {
 	std::string s;
-	std::cout << "Ïóòü äî ôàéëà " << ((blank == Blank::INPUT) ? "ââîäà" : "âûâîäà") << "[" << defaultPath << "]: ";
+	std::cout << "ÐŸÑƒÑ‚ÑŒ Ð´Ð¾ Ñ„Ð°Ð¹Ð»Ð° " << ((blank == Blank::INPUT) ? "Ð²Ð²Ð¾Ð´Ð°" : "Ð²Ñ‹Ð²Ð¾Ð´Ð°") << "[" << defaultPath << "]: ";
 	std::getline(std::cin, s);
 	if (s.empty())
 	{
@@ -23,7 +23,7 @@ std::string selectFile(Blank blank, const std::string defaultPath)
 
 bool getNext()
 {
-	std::cout << "Ïðîäîëæèòü?(0 - íåò, 1 - äà): ";
+	std::cout << "ÐŸÑ€Ð¾Ð´Ð¾Ð»Ð¶Ð¸Ñ‚ÑŒ?(0 - Ð½ÐµÑ‚, 1 - Ð´Ð°): ";
 	while (true)
 	{
 		char sm;
@@ -35,7 +35,7 @@ bool getNext()
 		}
 		else
 		{
-			std::cout << "Îøèáêà ââîäà. Ââåäèòå 0 èëè 1: \n";
+			std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°. Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ 0 Ð¸Ð»Ð¸ 1: \n";
 		}
 	}
 }
@@ -53,7 +53,7 @@ unsigned char get_0_1()
 		}
 		else
 		{
-			std::cout << "Îøèáêà ââîäà. Ââåäèòå 0 èëè 1: \n";
+			std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°. Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ 0 Ð¸Ð»Ð¸ 1: \n";
 		}
 	}
 }
@@ -68,7 +68,7 @@ double getLength()
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "Îøèáêà ââîäà. Ââåäèòå íàòóðàëüíîå ÷èñëî. \n";
+			std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð°. Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð½Ð°Ñ‚ÑƒÑ€Ð°Ð»ÑŒÐ½Ð¾Ðµ Ñ‡Ð¸ÑÐ»Ð¾. \n";
 		}
 		else
 		{
@@ -86,8 +86,8 @@ std::string CheckStrLength(unsigned NM)
 		std::getline(std::cin, StrForCheck);
 		if (StrForCheck.length() != NM)
 		{
-			std::cout << "Äëèíà ïîñëåäîâàòåëüíîñòè íå óäîâëåòâîðÿåò óêàçàííîìó N (N=" << NM << " != " << StrForCheck.length() << ")."
-				<< " Ïîâòîðèòå ââîä: " << std::endl;
+			std::cout << "Ð”Ð»Ð¸Ð½Ð° Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸ Ð½Ðµ ÑƒÐ´Ð¾Ð²Ð»ÐµÑ‚Ð²Ð¾Ñ€ÑÐµÑ‚ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ð¼Ñƒ N (N=" << NM << " != " << StrForCheck.length() << ")."
+				<< " ÐŸÐ¾Ð²Ñ‚Ð¾Ñ€Ð¸Ñ‚Ðµ Ð²Ð²Ð¾Ð´: " << std::endl;
 		}
 		else
 		{
@@ -100,10 +100,10 @@ bool initStr(Select select, std::istream& f, std::string &subsequence, unsigned 
 {
 	if (select == Select::CONSOLE)
 	{
-		std::cout << "Ââåäèòå ÷èñëî N (êîë-âî ñèìâîëîâ â ïîñëåäîâàòåëüíîñòè): ";
+		std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ñ‡Ð¸ÑÐ»Ð¾ N (ÐºÐ¾Ð»-Ð²Ð¾ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð² Ð² Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸): ";
 		double a = getLength();
 		NM = int(a);
-		std::cout << "Ââåäèòå ïîñëåäîâàòåëüíîñòü ñèìâîëîâ S1,S2,...,Sn: ";
+		std::cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð² S1,S2,...,Sn: ";
 		subsequence = CheckStrLength(NM);
 	}
 	else
@@ -112,7 +112,7 @@ bool initStr(Select select, std::istream& f, std::string &subsequence, unsigned 
 		f >> length;
 		if (f.fail() || length <0 || length != int(length))
 		{
-			std::cout << "Îøèáêà ââîäà èç ôàéëà äëèíû ïîñëåäîâàòåëüíîñòè S1,S2,...,Sn. ";
+			std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð° Ð¸Ð· Ñ„Ð°Ð¹Ð»Ð° Ð´Ð»Ð¸Ð½Ñ‹ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸ S1,S2,...,Sn. ";
 			return false;
 		}
 		NM = int(length);
@@ -121,13 +121,13 @@ bool initStr(Select select, std::istream& f, std::string &subsequence, unsigned 
 		std::getline(f, subsequence);
 		if (subsequence.length() != NM)
 		{
-			std::cout << "Äëèíà ïîñëåäîâàòåëüíîñòè íå óäîâëåòâîðÿåò óêàçàííîìó N (N=" << NM << " != " << subsequence.length() << ")." << std::endl;
+			std::cout << "Ð”Ð»Ð¸Ð½Ð° Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸ Ð½Ðµ ÑƒÐ´Ð¾Ð²Ð»ÐµÑ‚Ð²Ð¾Ñ€ÑÐµÑ‚ ÑƒÐºÐ°Ð·Ð°Ð½Ð½Ð¾Ð¼Ñƒ N (N=" << NM << " != " << subsequence.length() << ")." << std::endl;
 			return false;
 		}
 	}
 	if (f.fail())
 	{
-		std::cout << "Îøèáêà ââîäà ñàìîé ïîñëåäîâàòåëüíîñòè èç " << ((Select::FILE == select) ? "ôàéëà" : "êîíñîëè") << "." << std::endl;
+		std::cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð²Ð²Ð¾Ð´Ð° ÑÐ°Ð¼Ð¾Ð¹ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚Ð¸ Ð¸Ð· " << ((Select::FILE == select) ? "Ñ„Ð°Ð¹Ð»Ð°" : "ÐºÐ¾Ð½ÑÐ¾Ð»Ð¸") << "." << std::endl;
 		return false;
 	}
 	return true;
@@ -135,7 +135,7 @@ bool initStr(Select select, std::istream& f, std::string &subsequence, unsigned 
 
 void result(std::ostream& f, unsigned NM, std::string strOut)
 {
-	f << "Èñõîäíàÿ ïîñëåäîâàòåëüíîñòü: " << std::endl;
+	f << "Ð˜ÑÑ…Ð¾Ð´Ð½Ð°Ñ Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ: " << std::endl;
 	unsigned number{ 0 };
 	for (unsigned i = 0; i < NM; i++)
 	{
@@ -158,7 +158,7 @@ void result(std::ostream& f, unsigned NM, std::string strOut)
 	unsigned countPlus{ 0 };
 	unsigned countStar{ 0 };
 	unsigned countDash{ 0 };
-	f << "a) Ñêîëüêî ðàç ñðåäè äàííûõ ñèìâîëîâ âñòðå÷àåòñÿ ñèìâîë \"+\" è ñêîëüêî ðàç ñèìâîë \"*\"?" << std::endl;
+	f << "a) Ð¡ÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€Ð°Ð· ÑÑ€ÐµÐ´Ð¸ Ð´Ð°Ð½Ð½Ñ‹Ñ… ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð² Ð²ÑÑ‚Ñ€ÐµÑ‡Ð°ÐµÑ‚ÑÑ ÑÐ¸Ð¼Ð²Ð¾Ð» \"+\" Ð¸ ÑÐºÐ¾Ð»ÑŒÐºÐ¾ Ñ€Ð°Ð· ÑÐ¸Ð¼Ð²Ð¾Ð» \"*\"?" << std::endl;
 	for (unsigned i = 0; i < count; i++)
 	{
 		if (mass[i] == '+')
@@ -174,9 +174,9 @@ void result(std::ostream& f, unsigned NM, std::string strOut)
 			countDash += 1;
 		}
 	}
-	f << "*** Ñèìâîë \"+\" âñòðå÷àåòñÿ: " << countPlus << " ðàç(-à)." << std::endl;
-	f << "*** Ñèìâîë \"*\" âñòðå÷àåòñÿ: " << countStar << " ðàç(-à)." << std::endl << std::endl;
-	f << "á) Îáùåå ÷èñëî âõîæäåíèé ñèìâîëîâ \"+\",\"-\",\"*\" â ïîñëåäîâàòåëüíîñòü S1,S2,...,Sn: " << std::endl;
-	f << "*** Ñèìâîëû \"+\",\"-\",\"*\" âñòðå÷àþòñÿ â ñóììå: " << countPlus + countStar + countDash << " ðàç(-à)." << std::endl << std::endl;
+	f << "*** Ð¡Ð¸Ð¼Ð²Ð¾Ð» \"+\" Ð²ÑÑ‚Ñ€ÐµÑ‡Ð°ÐµÑ‚ÑÑ: " << countPlus << " Ñ€Ð°Ð·(-Ð°)." << std::endl;
+	f << "*** Ð¡Ð¸Ð¼Ð²Ð¾Ð» \"*\" Ð²ÑÑ‚Ñ€ÐµÑ‡Ð°ÐµÑ‚ÑÑ: " << countStar << " Ñ€Ð°Ð·(-Ð°)." << std::endl << std::endl;
+	f << "Ð±) ÐžÐ±Ñ‰ÐµÐµ Ñ‡Ð¸ÑÐ»Ð¾ Ð²Ñ…Ð¾Ð¶Ð´ÐµÐ½Ð¸Ð¹ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð¾Ð² \"+\",\"-\",\"*\" Ð² Ð¿Ð¾ÑÐ»ÐµÐ´Ð¾Ð²Ð°Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ S1,S2,...,Sn: " << std::endl;
+	f << "*** Ð¡Ð¸Ð¼Ð²Ð¾Ð»Ñ‹ \"+\",\"-\",\"*\" Ð²ÑÑ‚Ñ€ÐµÑ‡Ð°ÑŽÑ‚ÑÑ Ð² ÑÑƒÐ¼Ð¼Ðµ: " << countPlus + countStar + countDash << " Ñ€Ð°Ð·(-Ð°)." << std::endl << std::endl;
 	delete[] mass;
 }

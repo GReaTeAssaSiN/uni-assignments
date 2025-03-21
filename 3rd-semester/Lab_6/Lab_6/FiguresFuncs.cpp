@@ -1,6 +1,6 @@
 #include "FiguresFuncs.h"
 
-//Èçìåíåíèå ãåîìåòðè÷åñêèõ ñâîéñòâ îáúåêòîâ êëàññà-êîíòåéíåðà íà áàçå äèíàìè÷åñêîãî ìàññèâà
+//Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ Ð³ÐµÐ¾Ð¼ÐµÑ‚Ñ€Ð¸Ñ‡ÐµÑÐºÐ¸Ñ… ÑÐ²Ð¾Ð¹ÑÑ‚Ð² Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² ÐºÐ»Ð°ÑÑÐ°-ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð° Ð½Ð° Ð±Ð°Ð·Ðµ Ð´Ð¸Ð½Ð°Ð¼Ð¸Ñ‡ÐµÑÐºÐ¾Ð³Ð¾ Ð¼Ð°ÑÑÐ¸Ð²Ð°
 void increaseRadiusCFDA(DynamicArray* ptr_container_figures_dinamic_array, int index_of_element)
 {
 	int figures_choice{ ptr_container_figures_dinamic_array->getChoiceFigureElem(index_of_element) };
@@ -464,7 +464,7 @@ void decreaseBottomBaseTrapezeCFDA(DynamicArray* ptr_container_figures_dinamic_a
 	}
 }
 
-//Èçìåíåíèå ãåîìåòðè÷åñêèõ ñâîéñòâ îáúåêòîâ êëàññà-êîíòåéíåðà íà áàçå ëèíåéíîãî äèíàìè÷åñêîãî ñïèñêà
+//Ð˜Ð·Ð¼ÐµÐ½ÐµÐ½Ð¸Ðµ Ð³ÐµÐ¾Ð¼ÐµÑ‚Ñ€Ð¸Ñ‡ÐµÑÐºÐ¸Ñ… ÑÐ²Ð¾Ð¹ÑÑ‚Ð² Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² ÐºÐ»Ð°ÑÑÐ°-ÐºÐ¾Ð½Ñ‚ÐµÐ¹Ð½ÐµÑ€Ð° Ð½Ð° Ð±Ð°Ð·Ðµ Ð»Ð¸Ð½ÐµÐ¹Ð½Ð¾Ð³Ð¾ Ð´Ð¸Ð½Ð°Ð¼Ð¸Ñ‡ÐµÑÐºÐ¾Ð³Ð¾ ÑÐ¿Ð¸ÑÐºÐ°
 void increaseRadiusCFLDL(LynearDynamicList* ptr_container_figures_lynear_dynamic_list, TFigure* ptr_current_data)
 {
 	int figures_choice{ ptr_container_figures_lynear_dynamic_list->getChoiceFigure(ptr_current_data) };

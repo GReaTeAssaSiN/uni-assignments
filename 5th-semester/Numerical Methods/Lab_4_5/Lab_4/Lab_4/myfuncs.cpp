@@ -4,8 +4,8 @@
 #include "myfuncs.h"
 #include "constants.h"
 
-/*ФУНКЦИИ ДЛЯ ПРОВЕРКИ ПОЛЗОВАТЕЛЬСКОГО ВВОДА*/
-//Проверка введённой пользователем строки на возможность преобразования в число.
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РџР РћР’Р•Р РљР РџРћР›Р—РћР’РђРўР•Р›Р¬РЎРљРћР“Рћ Р’Р’РћР”Рђ*/
+//РџСЂРѕРІРµСЂРєР° РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РЅР° РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РІ С‡РёСЃР»Рѕ.
 bool checkStrIsNumeric(std::string const& tempStr)
 {
 	bool negative_number{ false }, separator{ false };
@@ -26,7 +26,7 @@ bool checkStrIsNumeric(std::string const& tempStr)
 	}
 	return !tempStr.empty();
 }
-//Преобразование введённой пользователем строки в число.
+//РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РІ С‡РёСЃР»Рѕ.
 long double convertStrToNumber(std::string convertStr)
 {
 	long double number{}, number_for_fraction{};
@@ -70,24 +70,24 @@ long double convertStrToNumber(std::string convertStr)
 		return negative_number ? static_cast<long double>(-number / number_for_fraction) : static_cast<long double>(number / number_for_fraction);
 }
 
-/*ФУНКЦИИ ДЛЯ ВЫВОДА ИНФОРМАЦИИ НА КОНСОЛЬ*/
-//Вывод информации об авторе, варианте, задании.
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ Р’Р«Р’РћР”Рђ РРќР¤РћР РњРђР¦РР РќРђ РљРћРќРЎРћР›Р¬*/
+//Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Р°РІС‚РѕСЂРµ, РІР°СЂРёР°РЅС‚Рµ, Р·Р°РґР°РЅРёРё.
 void printTask()
 {
-	std::cout << std::setw(210) << "Горшков Алексей Олегович," << std::endl << std::setw(209) << "группа 4312" << std::endl;
+	std::cout << std::setw(210) << "Р“РѕСЂС€РєРѕРІ РђР»РµРєСЃРµР№ РћР»РµРіРѕРІРёС‡," << std::endl << std::setw(209) << "РіСЂСѓРїРїР° 4312" << std::endl;
 	printDash();
-	std::cout << "Вариант индивидуального задания: 2." << std::endl;
-	std::cout << "Заданная функция:" << std::endl;
+	std::cout << "Р’Р°СЂРёР°РЅС‚ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕРіРѕ Р·Р°РґР°РЅРёСЏ: 2." << std::endl;
+	std::cout << "Р—Р°РґР°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ:" << std::endl;
 	std::cout << "f(x) = 12x*sqrt(x^3 + 3)			D(f): x>= -1." << std::endl;
-	std::cout << "Выбранный отрезок, где функция имеет наиболее пологий вид: [-0.72;-0.7]." << std::endl;
-	std::cout << "Выбранынй шаг: h = " << h << std::endl;
+	std::cout << "Р’С‹Р±СЂР°РЅРЅС‹Р№ РѕС‚СЂРµР·РѕРє, РіРґРµ С„СѓРЅРєС†РёСЏ РёРјРµРµС‚ РЅР°РёР±РѕР»РµРµ РїРѕР»РѕРіРёР№ РІРёРґ: [-0.72;-0.7]." << std::endl;
+	std::cout << "Р’С‹Р±СЂР°РЅС‹РЅР№ С€Р°Рі: h = " << h << std::endl;
 }
-//Вывод разделительной черты.
+//Р’С‹РІРѕРґ СЂР°Р·РґРµР»РёС‚РµР»СЊРЅРѕР№ С‡РµСЂС‚С‹.
 void printDash()
 {
 	std::cout << std::string(208, '-') << std::endl;
 }
-//Вывод шапки исходной таблицы для интерполирования.
+//Р’С‹РІРѕРґ С€Р°РїРєРё РёСЃС…РѕРґРЅРѕР№ С‚Р°Р±Р»РёС†С‹ РґР»СЏ РёРЅС‚РµСЂРїРѕР»РёСЂРѕРІР°РЅРёСЏ.
 void printTableInterpolation()
 {
 	std::cout << std::string(204, '_') << std::endl;
@@ -104,7 +104,7 @@ void printTableInterpolation()
 		"|" << std::endl;
 	std::cout << std::string(204, '_') << std::endl;
 }
-//Вывод шапки исходной таблицы для численного дифференцирования.
+//Р’С‹РІРѕРґ С€Р°РїРєРё РёСЃС…РѕРґРЅРѕР№ С‚Р°Р±Р»РёС†С‹ РґР»СЏ С‡РёСЃР»РµРЅРЅРѕРіРѕ РґРёС„С„РµСЂРµРЅС†РёСЂРѕРІР°РЅРёСЏ.
 void printTableNumericalDefferentiation()
 {
 	std::cout << std::string(183, '_') << std::endl;
@@ -122,43 +122,43 @@ void printTableNumericalDefferentiation()
 	std::cout << std::string(183, '_') << std::endl;
 }
 
-/*ПОЛЬЗОВАТЕЛЬСКИЕ ФУНКЦИИ*/
-//Пользовательское меню.
+/*РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРР• Р¤РЈРќРљР¦РР*/
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РјРµРЅСЋ.
 void MenuForChoices()
 {
-	std::cout << "Что Вы хотите сделать?" << std::endl <<
-		"1) Запустить программу (выданное требование)." << std::endl <<
-		"2) Выйти из программы." << std::endl;
+	std::cout << "Р§С‚Рѕ Р’С‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ?" << std::endl <<
+		"1) Р—Р°РїСѓСЃС‚РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ (РІС‹РґР°РЅРЅРѕРµ С‚СЂРµР±РѕРІР°РЅРёРµ)." << std::endl <<
+		"2) Р’С‹Р№С‚Рё РёР· РїСЂРѕРіСЂР°РјРјС‹." << std::endl;
 }
-//Запрос дейтсвий у пользователя.
+//Р—Р°РїСЂРѕСЃ РґРµР№С‚СЃРІРёР№ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 char getCase()
 {
 	while (true)
 	{
 		MenuForChoices();
-		std::cout << "Ваш выбор: ";
+		std::cout << "Р’Р°С€ РІС‹Р±РѕСЂ: ";
 		std::string choice{};
 		std::getline(std::cin, choice);
 		if (choice == "1" || choice == "2")
 			return choice[0];
 		else
-			std::cout << std::endl << "Ошибка ввода! Вам нужно ввести номер вашего выбора в соответствии с нижеперечисленными пунктами (от 1 до 2). Повторите ввод:" << std::endl;
+			std::cout << std::endl << "РћС€РёР±РєР° РІРІРѕРґР°! Р’Р°Рј РЅСѓР¶РЅРѕ РІРІРµСЃС‚Рё РЅРѕРјРµСЂ РІР°С€РµРіРѕ РІС‹Р±РѕСЂР° РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РЅРёР¶РµРїРµСЂРµС‡РёСЃР»РµРЅРЅС‹РјРё РїСѓРЅРєС‚Р°РјРё (РѕС‚ 1 РґРѕ 2). РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:" << std::endl;
 	}
 }
-//Получение значения x от пользователя из выбранного отрезка.
+//РџРѕР»СѓС‡РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ x РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· РІС‹Р±СЂР°РЅРЅРѕРіРѕ РѕС‚СЂРµР·РєР°.
 long double getXValue(const int& number)
 {
 
 	switch (number)
 	{
 	case 1:
-		std::cout << "Введите первое значение x: ";
+		std::cout << "Р’РІРµРґРёС‚Рµ РїРµСЂРІРѕРµ Р·РЅР°С‡РµРЅРёРµ x: ";
 		break;
 	case 2:
-		std::cout << "Введите второе значение x: ";
+		std::cout << "Р’РІРµРґРёС‚Рµ РІС‚РѕСЂРѕРµ Р·РЅР°С‡РµРЅРёРµ x: ";
 		break;
 	case 3:
-		std::cout << "Введите третье значение x: ";
+		std::cout << "Р’РІРµРґРёС‚Рµ С‚СЂРµС‚СЊРµ Р·РЅР°С‡РµРЅРёРµ x: ";
 		break;
 	default:
 		break;
@@ -174,15 +174,15 @@ long double getXValue(const int& number)
 				return numeric_x_value;
 			else
 			{
-				std::cout << "Значение x должно принадлежать выбранному отрезку. Повторите ввод: ";
+				std::cout << "Р—РЅР°С‡РµРЅРёРµ x РґРѕР»Р¶РЅРѕ РїСЂРёРЅР°РґР»РµР¶Р°С‚СЊ РІС‹Р±СЂР°РЅРЅРѕРјСѓ РѕС‚СЂРµР·РєСѓ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 			}
 		}
 		else
-			std::cout << "Ошибка ввода! Вы ввели не число. Повторите ввод: ";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°! Р’С‹ РІРІРµР»Рё РЅРµ С‡РёСЃР»Рѕ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 	}
 }
 
-/*ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ*/
+/*Р’РЎРџРћРњРћР“РђРўР•Р›Р¬РќР«Р• Р¤РЈРќРљР¦РР*/
 long double getClosestToX(const long double& x_value, const int& method)
 {
 	long double x0{ -0.72 }, x1{ -0.716 }, x2{ -0.712 }, x3{ -0.708 }, x4{ -0.704 }, x5{ -0.7 };
@@ -292,8 +292,8 @@ long double getClosestToX(const long double& x_value, const int& method)
 	}
 }
 
-/*ОСНОВНЫЕ ФУНКЦИИ*/
-//Формулы интерполирования.
+/*РћРЎРќРћР’РќР«Р• Р¤РЈРќРљР¦РР*/
+//Р¤РѕСЂРјСѓР»С‹ РёРЅС‚РµСЂРїРѕР»РёСЂРѕРІР°РЅРёСЏ.
 void interpolation_formulas(const long double& x1, const long double& x2, const long double& x3)
 {
 	long double x_value{};
@@ -305,24 +305,24 @@ void interpolation_formulas(const long double& x1, const long double& x2, const 
 			x_value = x2;
 		else
 			x_value = x3;
-		//Вычисление y(x).
+		//Р’С‹С‡РёСЃР»РµРЅРёРµ y(x).
 		long double y_value{ 12 * x_value * sqrt(pow(x_value, 3) + 1) };
-		//Вычисление q.
+		//Р’С‹С‡РёСЃР»РµРЅРёРµ q.
 		long double q{ (x_value - a_x0) / h };
-		//Вычилсение PI(x).
+		//Р’С‹С‡РёР»СЃРµРЅРёРµ PI(x).
 		long double PI_x{ -6.84009 + q * 0.00452 + (q * (q - 1) * 0.00089) / 2 + (q * (q - 1) * (q - 2)) * 0.00001 / 6 + (q * (q - 1) * (q - 2) * (q - 3) * (-0.00005)) / 24 + (q * (q - 1) * (q - 2) * (q - 3) * (q - 4) * 0.00007 / 120) };
-		//Вычисление t.
+		//Р’С‹С‡РёСЃР»РµРЅРёРµ t.
 		long double t{ (x_value - b_x5) / h };
-		//Вычисление PII(x).
+		//Р’С‹С‡РёСЃР»РµРЅРёРµ PII(x).
 		long double PII_x{ -6.80867 + t * 0.00801 + (t * (t + 1)) / 2 * 0.00084 + (t * (t + 1) * (t + 2)) / 6 * (-0.00002) + (t * (t + 1) * (t + 2) * (t + 3)) / 24 * 0.00002 + (t * (t + 1) * (t + 2) * (t + 3) * (t + 4)) / 120 * 0.00007 };
-		//Вычисление L(x).
+		//Р’С‹С‡РёСЃР»РµРЅРёРµ L(x).
 		long double L_x{ 55664794921.875 * (x_value + 0.716) * (x_value + 0.712) * (x_value + 0.708) * (x_value + 0.704) * (x_value + 0.7) +
 						 -278140055338.54167 * (x_value + 0.72) * (x_value + 0.712) * (x_value + 0.708) * (x_value + 0.704) * (x_value + 0.7) +
 						 +555839843750 * (x_value + 0.72) * (x_value + 0.716) * (x_value + 0.708) * (x_value + 0.704) * (x_value + 0.7) +
 						 -555326334635 * (x_value + 0.72) * (x_value + 0.716) * (x_value + 0.712) * (x_value + 0.704) * (x_value + 0.7) +
 						 +277371419270.833 * (x_value + 0.72) * (x_value + 0.716) * (x_value + 0.712) * (x_value + 0.708) * (x_value + 0.7) +
 						 -55409098307.29167 * (x_value + 0.72) * (x_value + 0.716) * (x_value + 0.712) * (x_value + 0.708) * (x_value + 0.704) };
-		//Заполнение таблицы.
+		//Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹.
 		std::cout << "|" << std::setw(13) << std::setprecision(13) << x_value <<
 			"|" << std::setw(13) << std::setprecision(10) << y_value <<
 			"|" << std::setw(20) << std::setprecision(10) << PI_x <<
@@ -337,7 +337,7 @@ void interpolation_formulas(const long double& x1, const long double& x2, const 
 		std::cout << std::string(204, '_') << std::endl;
 	}
 }
-//Формулы численного дифференцирования.
+//Р¤РѕСЂРјСѓР»С‹ С‡РёСЃР»РµРЅРЅРѕРіРѕ РґРёС„С„РµСЂРµРЅС†РёСЂРѕРІР°РЅРёСЏ.
 void numerical_differentiation_formulas(const long double& x1, const long double& x2, const long double& x3)
 {
 	long double x_value{};
@@ -349,21 +349,21 @@ void numerical_differentiation_formulas(const long double& x1, const long double
 			x_value = x2;
 		else
 			x_value = x3;
-		//Вычисление y'(x).
+		//Р’С‹С‡РёСЃР»РµРЅРёРµ y'(x).
 		long double dy_value{ (30 * pow(x_value, 3) + 12) / sqrt(pow(x_value, 3) + 1) };
-		//Вычисление ~x_0.
+		//Р’С‹С‡РёСЃР»РµРЅРёРµ ~x_0.
 		long double tilde_x_0{ getClosestToX(x_value, 1) };
-		//Вычисление q.
+		//Р’С‹С‡РёСЃР»РµРЅРёРµ q.
 		long double q{ (x_value - tilde_x_0) / h };
-		//Вычилсение (PI(x))'.
+		//Р’С‹С‡РёР»СЃРµРЅРёРµ (PI(x))'.
 		long double dPI_x{ 1 / h * (0.00452 + (2 * q - 1) * 0.00089 / 2 + (3 * pow(q,2) - 6 * q + 2) * 0.00001 / 6 + (4 * pow(q, 3) - 18 * pow(q,2) + 22 * q - 6) * (-0.00005) / 24 + (5 * pow(q,4) - 40 * pow(q,3) + 105 * pow(q,2) - 100 * q + 24) * 0.00007 / 120) };
-		//Вычисление ~x_n.
+		//Р’С‹С‡РёСЃР»РµРЅРёРµ ~x_n.
 		long double tilde_x_n{ getClosestToX(x_value, 2) };
-		//Вычисление t.
+		//Р’С‹С‡РёСЃР»РµРЅРёРµ t.
 		long double t{ (x_value - tilde_x_n) / h };
-		//Вычисление (PII(x))'.
+		//Р’С‹С‡РёСЃР»РµРЅРёРµ (PII(x))'.
 		long double dPII_x{ 1 / h * (0.00801 + (2 * t + 1) * 0.00084 / 2 + (3 * pow(t, 2) + 6 * t + 2) * (-0.00002) / 6 + (4 * pow(t,3) + 18 * pow(t,2) + 22 * t + 6) * 0.00002 / 24 + (5 * pow(t,4) + 40 * pow(t,3) + 105 * pow(t,2) + 100 * t + 24) * 0.00007 / 120) };
-		//Заполнение таблицы.
+		//Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹.
 		std::cout << "|" << std::setw(13) << std::setprecision(13) << x_value <<
 			"|" << std::setw(13) << std::setprecision(10) << dy_value <<
 			"|" << std::setw(13) << std::setprecision(10) << tilde_x_0 <<

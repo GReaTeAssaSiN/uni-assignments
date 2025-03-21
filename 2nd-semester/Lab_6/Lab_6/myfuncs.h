@@ -5,7 +5,7 @@
 #include "mystructs.h"
 #include "ArrayThreeStrings.h"
 
-//Основные функции
+//РћСЃРЅРѕРІРЅС‹Рµ С„СѓРЅРєС†РёРё
 bool LoadingList(const std::string fileName, Trade*& head);
 bool UnloadingList(const std::string fileName, Trade* head);
 unsigned ListLength(Trade* head);
@@ -14,7 +14,7 @@ void DeleteElement(Trade* search_prev_del, const Trade* ed);
 void SortList(Trade* head);
 void PrintList(const Trade* head);
 
-//Всопомгательные функции
+//Р’СЃРѕРїРѕРјРіР°С‚РµР»СЊРЅС‹Рµ С„СѓРЅРєС†РёРё
 bool getListFromFile(Trade*& head, std::ifstream& fileName);
 bool CheckCorrectField(std::string check_DataLine, unsigned count);
 bool FastInput_TradingVolume(Trade* ea, std::string fast_AddNewElement);
@@ -29,7 +29,7 @@ char getCase();
 double GetNumber();
 void SortChoice(unsigned choice, Trade* def_current, Trade* def_index);
 
-//Пользовательские функции
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёРµ С„СѓРЅРєС†РёРё
 void MenuForChoices();
 void case1(Trade* head);
 void case2(Trade* head);

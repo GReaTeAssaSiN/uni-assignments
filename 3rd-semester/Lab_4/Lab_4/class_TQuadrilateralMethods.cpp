@@ -3,14 +3,14 @@
 TQuadrilateral::TQuadrilateral()
 	:TFigure()
 {
-	std::cout << "Ñîçäàí êîíñòðóêòîðîì ïî óìîë÷àíèþ îáúåêò-÷åòûð¸õóãîëüíèê ñ êîîðäèíàòàìè îñíîâíûõ òî÷åê:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
+	std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð¾Ð±ÑŠÐµÐºÑ‚-Ñ‡ÐµÑ‚Ñ‹Ñ€Ñ‘Ñ…ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ñ… Ñ‚Ð¾Ñ‡ÐµÐº:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
 		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4 << ")" << std::endl;
 }
 TQuadrilateral::TQuadrilateral(float base_point_x1, float base_point_y1, float base_point_x2, float base_point_y2, float base_point_x3, float base_point_y3, float base_point_x4, float base_point_y4)
 	: TFigure{ base_point_x1, base_point_y1 }, m_base_point_x2{ base_point_x2 }, m_base_point_y2{ base_point_y2 }, m_base_point_x3{ base_point_x3 }, m_base_point_y3{ base_point_y3 },
 	m_base_point_x4{ base_point_x4 }, m_base_point_y4{ base_point_y4 }
 {
-	std::cout << "Ñîçäàí êîíñòðóêòîðîì cî ñëó÷àéíûìè ïàðàìåòðàìè îáúåêò-÷åòûð¸õóãîëüíèê ñ êîîðäèíàòàìè îñíîâíûõ òî÷åê:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
+	std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ cÐ¾ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚-Ñ‡ÐµÑ‚Ñ‹Ñ€Ñ‘Ñ…ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ñ… Ñ‚Ð¾Ñ‡ÐµÐº:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
 		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4 << ")" << std::endl;
 }
 
@@ -84,6 +84,6 @@ float TQuadrilateral::getY4Point()
 
 //TQuadrilateral::~TQuadrilateral()
 //{
-//	std::cout << "Óäàëåí îáúåêò-÷åòûð¸õóãîëüíèê ñ êîîðäèíàòàìè îñíîâíûõ òî÷åê:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
+//	std::cout << "Ð£Ð´Ð°Ð»ÐµÐ½ Ð¾Ð±ÑŠÐµÐºÑ‚-Ñ‡ÐµÑ‚Ñ‹Ñ€Ñ‘Ñ…ÑƒÐ³Ð¾Ð»ÑŒÐ½Ð¸Ðº Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ð¾ÑÐ½Ð¾Ð²Ð½Ñ‹Ñ… Ñ‚Ð¾Ñ‡ÐµÐº:\n1.(" << getXPoint() << ", " << getYPoint() << ")\n"
 //		<< "2.(" << m_base_point_x2 << ", " << m_base_point_y2 << ")\n" << "3.(" << m_base_point_x3 << ", " << m_base_point_y3 << ")\n" << "4.(" << m_base_point_x4 << ", " << m_base_point_y4 << ")" << std::endl;
 //}

@@ -1,6 +1,6 @@
 # -*- coding: Windows-1251 -*-
 
-# Функции принадлежности
+# Р¤СѓРЅРєС†РёРё РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё
 def triangular(x, a, b, c):
     if a <= x <= b:
         return (x - a) / (b - a)
@@ -18,67 +18,67 @@ def trapezoidal(x, a, b, c, d):
     else:
         return 0
 
-# Функции фаззификации
+# Р¤СѓРЅРєС†РёРё С„Р°Р·Р·РёС„РёРєР°С†РёРё
 def fuzzify_delta_T(value):
     return {
-        "малая": triangular(value, -15, 0, 15),
-        "средняя": triangular(value, 0, 15, 30),
-        "большая": trapezoidal(value, 15, 30, 35, 100),
+        "РјР°Р»Р°СЏ": triangular(value, -15, 0, 15),
+        "СЃСЂРµРґРЅСЏСЏ": triangular(value, 0, 15, 30),
+        "Р±РѕР»СЊС€Р°СЏ": trapezoidal(value, 15, 30, 35, 100),
     }
 def fuzzify_dT_dt(value):
     return {
-        "малая": triangular(value, -0.15, 0, 0.15),
-        "средняя": triangular(value, 0, 0.15, 0.3),
-        "большая": trapezoidal(value, 0.15, 0.3, 0.4, 100),
+        "РјР°Р»Р°СЏ": triangular(value, -0.15, 0, 0.15),
+        "СЃСЂРµРґРЅСЏСЏ": triangular(value, 0, 0.15, 0.3),
+        "Р±РѕР»СЊС€Р°СЏ": trapezoidal(value, 0.15, 0.3, 0.4, 100),
     }
 def fuzzify_compressor_speed(value):
     return {
-        "очень малая": trapezoidal(value, -31.5, 0, 0.5, 32),
-        "малая": triangular(value, 17, 32, 47),
-        "средняя": triangular(value, 49, 64, 79),
-        "большая": triangular(value, 81, 96, 111),
-        "очень большая": trapezoidal(value, 105, 128, 138, 1000),
+        "РѕС‡РµРЅСЊ РјР°Р»Р°СЏ": trapezoidal(value, -31.5, 0, 0.5, 32),
+        "РјР°Р»Р°СЏ": triangular(value, 17, 32, 47),
+        "СЃСЂРµРґРЅСЏСЏ": triangular(value, 49, 64, 79),
+        "Р±РѕР»СЊС€Р°СЏ": triangular(value, 81, 96, 111),
+        "РѕС‡РµРЅСЊ Р±РѕР»СЊС€Р°СЏ": trapezoidal(value, 105, 128, 138, 1000),
     }
 
-# Правила нечеткой логики
+# РџСЂР°РІРёР»Р° РЅРµС‡РµС‚РєРѕР№ Р»РѕРіРёРєРё
 rules = [
-    (["малая", "малая"], "очень малая"),
-    (["малая", "средняя"], "малая"),
-    (["малая", "большая"], "средняя"),
-    (["средняя", "малая"], "малая"),
-    (["средняя", "средняя"], "средняя"),
-    (["средняя", "большая"], "большая"),
-    (["большая", "малая"], "средняя"),
-    (["большая", "средняя"], "большая"),
-    (["большая", "большая"], "очень большая"),
+    (["РјР°Р»Р°СЏ", "РјР°Р»Р°СЏ"], "РѕС‡РµРЅСЊ РјР°Р»Р°СЏ"),
+    (["РјР°Р»Р°СЏ", "СЃСЂРµРґРЅСЏСЏ"], "РјР°Р»Р°СЏ"),
+    (["РјР°Р»Р°СЏ", "Р±РѕР»СЊС€Р°СЏ"], "СЃСЂРµРґРЅСЏСЏ"),
+    (["СЃСЂРµРґРЅСЏСЏ", "РјР°Р»Р°СЏ"], "РјР°Р»Р°СЏ"),
+    (["СЃСЂРµРґРЅСЏСЏ", "СЃСЂРµРґРЅСЏСЏ"], "СЃСЂРµРґРЅСЏСЏ"),
+    (["СЃСЂРµРґРЅСЏСЏ", "Р±РѕР»СЊС€Р°СЏ"], "Р±РѕР»СЊС€Р°СЏ"),
+    (["Р±РѕР»СЊС€Р°СЏ", "РјР°Р»Р°СЏ"], "СЃСЂРµРґРЅСЏСЏ"),
+    (["Р±РѕР»СЊС€Р°СЏ", "СЃСЂРµРґРЅСЏСЏ"], "Р±РѕР»СЊС€Р°СЏ"),
+    (["Р±РѕР»СЊС€Р°СЏ", "Р±РѕР»СЊС€Р°СЏ"], "РѕС‡РµРЅСЊ Р±РѕР»СЊС€Р°СЏ"),
 ]
 
-# Агрегация правил
+# РђРіСЂРµРіР°С†РёСЏ РїСЂР°РІРёР»
 def aggregate_rules(delta_T, dT_dt):
-    aggregated = {"очень малая": 0, "малая": 0, "средняя": 0, "большая": 0, "очень большая": 0}
+    aggregated = {"РѕС‡РµРЅСЊ РјР°Р»Р°СЏ": 0, "РјР°Р»Р°СЏ": 0, "СЃСЂРµРґРЅСЏСЏ": 0, "Р±РѕР»СЊС€Р°СЏ": 0, "РѕС‡РµРЅСЊ Р±РѕР»СЊС€Р°СЏ": 0}
     for antecedents, consequent in rules:
         rule_value = min(delta_T[antecedents[0]], dT_dt[antecedents[1]])
         aggregated[consequent] = max(aggregated[consequent], rule_value)
     return aggregated
 
-# Дефаззификация: метод центра тяжести
+# Р”РµС„Р°Р·Р·РёС„РёРєР°С†РёСЏ: РјРµС‚РѕРґ С†РµРЅС‚СЂР° С‚СЏР¶РµСЃС‚Рё
 def defuzzify(aggregated):
     numerator = 0
     denominator = 0
     x_range = list(range(136))
     for x in x_range:
         membership = max(
-            trapezoidal(x, -31.5, 0, 0.5, 32) * aggregated["очень малая"],
-            triangular(x, 17, 32, 47) * aggregated["малая"],
-            triangular(x, 49, 64, 79) * aggregated["средняя"],
-            triangular(x, 81, 96, 111) * aggregated["большая"],
-            trapezoidal(x, 105, 128, 138, 1000) * aggregated["очень большая"],
+            trapezoidal(x, -31.5, 0, 0.5, 32) * aggregated["РѕС‡РµРЅСЊ РјР°Р»Р°СЏ"],
+            triangular(x, 17, 32, 47) * aggregated["РјР°Р»Р°СЏ"],
+            triangular(x, 49, 64, 79) * aggregated["СЃСЂРµРґРЅСЏСЏ"],
+            triangular(x, 81, 96, 111) * aggregated["Р±РѕР»СЊС€Р°СЏ"],
+            trapezoidal(x, 105, 128, 138, 1000) * aggregated["РѕС‡РµРЅСЊ Р±РѕР»СЊС€Р°СЏ"],
         )
         numerator += x * membership
         denominator += membership
     return numerator / denominator if denominator != 0 else 0
 
-# Функция запроса ввода неотрицательных чисел у пользователя
+# Р¤СѓРЅРєС†РёСЏ Р·Р°РїСЂРѕСЃР° РІРІРѕРґР° РЅРµРѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹С… С‡РёСЃРµР» Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 def get_non_negative_float(prompt):
     while True:
         user_input = input(prompt)
@@ -89,58 +89,58 @@ def get_non_negative_float(prompt):
             if value >= 0:
                 return value
             else:
-                print("Ошибка: введите неотрицательное число.")
+                print("РћС€РёР±РєР°: РІРІРµРґРёС‚Рµ РЅРµРѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ С‡РёСЃР»Рѕ.")
         except ValueError:
-            print("Ошибка: введите корректное число.")
+            print("РћС€РёР±РєР°: РІРІРµРґРёС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕРµ С‡РёСЃР»Рѕ.")
 
-# Функция записи данных в файл
+# Р¤СѓРЅРєС†РёСЏ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С… РІ С„Р°Р№Р»
 def log_to_file(file_name, data):
     with open(file_name, 'a') as file:
         file.write(data + "\n")
 
-# Основная функция
+# РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ
 def main():
     file_path = "input_output_log.txt"
     while True:
-        # Запрос у пользователя значения для каждого параметра
-        delta_T_value = get_non_negative_float("Введите значение для разности температур (delta_T) (неотрицательное число или 'exit' для выхода): ")
+        # Р—Р°РїСЂРѕСЃ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ Р·РЅР°С‡РµРЅРёСЏ РґР»СЏ РєР°Р¶РґРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°
+        delta_T_value = get_non_negative_float("Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ СЂР°Р·РЅРѕСЃС‚Рё С‚РµРјРїРµСЂР°С‚СѓСЂ (delta_T) (РЅРµРѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ С‡РёСЃР»Рѕ РёР»Рё 'exit' РґР»СЏ РІС‹С…РѕРґР°): ")
         if delta_T_value is None:
-            print("Выход из программы.")
+            print("Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹.")
             break
 
-        dT_dt_value = get_non_negative_float("Введите значение для скорости изменения температуры (dT/dt) (неотрицательное число или 'exit' для выхода): ")
+        dT_dt_value = get_non_negative_float("Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РґР»СЏ СЃРєРѕСЂРѕСЃС‚Рё РёР·РјРµРЅРµРЅРёСЏ С‚РµРјРїРµСЂР°С‚СѓСЂС‹ (dT/dt) (РЅРµРѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ С‡РёСЃР»Рѕ РёР»Рё 'exit' РґР»СЏ РІС‹С…РѕРґР°): ")
         if dT_dt_value is None:
-            print("Выход из программы.")
+            print("Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹.")
             break
 
-        # Запись в файл
+        # Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р»
         log_to_file(file_path, f"delta_T: {delta_T_value}")
         log_to_file(file_path, f"dT/dt: {dT_dt_value}")
 
-        # Фаззификация
+        # Р¤Р°Р·Р·РёС„РёРєР°С†РёСЏ
         delta_T = fuzzify_delta_T(delta_T_value)
         dT_dt = fuzzify_dT_dt(dT_dt_value)
    
-        # Вывод
-        print(f"Результат фаззификации:\n{delta_T},\n{dT_dt}")
-        log_to_file(file_path, f"Результат фаззификации:\n{delta_T},\n{dT_dt}")
+        # Р’С‹РІРѕРґ
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚ С„Р°Р·Р·РёС„РёРєР°С†РёРё:\n{delta_T},\n{dT_dt}")
+        log_to_file(file_path, f"Р РµР·СѓР»СЊС‚Р°С‚ С„Р°Р·Р·РёС„РёРєР°С†РёРё:\n{delta_T},\n{dT_dt}")
 
-        # Агрегация
+        # РђРіСЂРµРіР°С†РёСЏ
         aggregated = aggregate_rules(delta_T, dT_dt)
         
-        # Вывод
-        print(f"Результат агрегации:\n{aggregated}")
-        log_to_file(file_path, f"Результат агрегации:\n{aggregated}")
+        # Р’С‹РІРѕРґ
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚ Р°РіСЂРµРіР°С†РёРё:\n{aggregated}")
+        log_to_file(file_path, f"Р РµР·СѓР»СЊС‚Р°С‚ Р°РіСЂРµРіР°С†РёРё:\n{aggregated}")
 
-        # Дефаззификация
+        # Р”РµС„Р°Р·Р·РёС„РёРєР°С†РёСЏ
         compressor_speed = defuzzify(aggregated)
-        print(f"Результат частоты вращения компрессора: {compressor_speed:.5f}\n")
-        log_to_file(file_path, f"Результат частоты вращения компрессора: {compressor_speed:.5f}\n")
+        print(f"Р РµР·СѓР»СЊС‚Р°С‚ С‡Р°СЃС‚РѕС‚С‹ РІСЂР°С‰РµРЅРёСЏ РєРѕРјРїСЂРµСЃСЃРѕСЂР°: {compressor_speed:.5f}\n")
+        log_to_file(file_path, f"Р РµР·СѓР»СЊС‚Р°С‚ С‡Р°СЃС‚РѕС‚С‹ РІСЂР°С‰РµРЅРёСЏ РєРѕРјРїСЂРµСЃСЃРѕСЂР°: {compressor_speed:.5f}\n")
 
-        # Запрос на продолжение или выход
-        continue_input = input("Хотите ввести другие значения? (y [any symbols] / exit): ").lower()
+        # Р—Р°РїСЂРѕСЃ РЅР° РїСЂРѕРґРѕР»Р¶РµРЅРёРµ РёР»Рё РІС‹С…РѕРґ
+        continue_input = input("РҐРѕС‚РёС‚Рµ РІРІРµСЃС‚Рё РґСЂСѓРіРёРµ Р·РЅР°С‡РµРЅРёСЏ? (y [any symbols] / exit): ").lower()
         if continue_input == "exit":
-            print("Выход из программы.")
+            print("Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹.")
             break
 
 if __name__ == "__main__":

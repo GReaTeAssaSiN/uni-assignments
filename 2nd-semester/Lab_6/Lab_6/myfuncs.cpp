@@ -5,14 +5,14 @@
 #include "myfuncs.h"
 #include "ArrayThreeStrings.h"
 
-//ОСНОВНЫЕ ФУНКЦИИ
-//Вывод данных из файла в динамический список
+//РћРЎРќРћР’РќР«Р• Р¤РЈРќРљР¦РР
+//Р’С‹РІРѕРґ РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° РІ РґРёРЅР°РјРёС‡РµСЃРєРёР№ СЃРїРёСЃРѕРє
 bool LoadingList(const std::string fileName, Trade*& head)
 {
 	std::ifstream out_DataFile(fileName);
 	if (!out_DataFile)
 	{
-		std::cerr << "Не удалось открыть файл!" << std::endl;
+		std::cerr << "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»!" << std::endl;
 		return false;
 	}
 	else
@@ -24,14 +24,14 @@ bool LoadingList(const std::string fileName, Trade*& head)
 	}
 }
 
-//Вывод данных из динамического списка в файл
+//Р’С‹РІРѕРґ РґР°РЅРЅС‹С… РёР· РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР° РІ С„Р°Р№Р»
 bool UnloadingList(const std::string fileName, Trade* head)
 {
 	Trade* tail{ head };
 	std::ofstream in_DataFile(fileName);
 	if (!in_DataFile)
 	{
-		std::cerr << "Не удалось открыть файл!" << std::endl;
+		std::cerr << "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»!" << std::endl;
 		return false;
 	}
 	else
@@ -54,7 +54,7 @@ bool UnloadingList(const std::string fileName, Trade* head)
 			{
 				Trade* clean_ptr{ tail };
 				tail = tail->next;
-				std::cout << "Данные о ценной бумаге " << clean_ptr->data.TypeOfSecurities << ",... выгружены и удалены из оперативной памяти." << std::endl;
+				std::cout << "Р”Р°РЅРЅС‹Рµ Рѕ С†РµРЅРЅРѕР№ Р±СѓРјР°РіРµ " << clean_ptr->data.TypeOfSecurities << ",... РІС‹РіСЂСѓР¶РµРЅС‹ Рё СѓРґР°Р»РµРЅС‹ РёР· РѕРїРµСЂР°С‚РёРІРЅРѕР№ РїР°РјСЏС‚Рё." << std::endl;
 				delete clean_ptr;
 				if (tail == head)
 					break;
@@ -66,7 +66,7 @@ bool UnloadingList(const std::string fileName, Trade* head)
 	}
 }
 
-//Для case1 - количество элементов динамического списка
+//Р”Р»СЏ case1 - РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР°
 unsigned ListLength(Trade* head)
 {
 	Trade* current{ head };
@@ -93,7 +93,7 @@ unsigned ListLength(Trade* head)
 	}
 }
 
-//Для case2 - добавить новый элемент динамический в список
+//Р”Р»СЏ case2 - РґРѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ РґРёРЅР°РјРёС‡РµСЃРєРёР№ РІ СЃРїРёСЃРѕРє
 void AddNewElement(Trade*& previous, Trade* ea)
 {
 	std::string AddNewElement{};
@@ -102,20 +102,20 @@ void AddNewElement(Trade*& previous, Trade* ea)
 	ea = new Trade{};
 	after = previous->next;
 	previous->next = ea;
-	std::cout << "Введите данные о новом элементе:" << std::endl;
+	std::cout << "Р’РІРµРґРёС‚Рµ РґР°РЅРЅС‹Рµ Рѕ РЅРѕРІРѕРј СЌР»РµРјРµРЅС‚Рµ:" << std::endl;
 
-	std::cout << "<Название ценной бумаги>: ";
+	std::cout << "<РќР°Р·РІР°РЅРёРµ С†РµРЅРЅРѕР№ Р±СѓРјР°РіРё>: ";
 	std::getline(std::cin, AddNewElement);
 	ea->data.TypeOfSecurities = AddNewElement;
 
-	std::cout << "<Количество сделок>: ";
+	std::cout << "<РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРґРµР»РѕРє>: ";
 	AddNewElement = checkData2();
 	ea->data.AmountOfDeals = AddNewElement;
 
-	std::cout << "<Объём продаж>. ";
+	std::cout << "<РћР±СЉС‘Рј РїСЂРѕРґР°Р¶>. ";
 	if (!FastInput_TradingVolume(ea, AddNewElement))
 	{
-		std::cout << "<Объём продаж>: ";
+		std::cout << "<РћР±СЉС‘Рј РїСЂРѕРґР°Р¶>: ";
 		std::getline(std::cin, AddNewElement);
 		ea->data.TradingVolume = AddNewElement;
 	}
@@ -123,7 +123,7 @@ void AddNewElement(Trade*& previous, Trade* ea)
 	ea->next = after;
 }
 
-//Для case3 - удалить элемент из списка
+//Р”Р»СЏ case3 - СѓРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ РёР· СЃРїРёСЃРєР°
 void DeleteElement(Trade* search_prev_del, const Trade* ed)
 {
 	while (search_prev_del->next != ed)
@@ -134,12 +134,12 @@ void DeleteElement(Trade* search_prev_del, const Trade* ed)
 	delete ed;
 }
 
-//Для case4 - отсортировать динамический список
+//Р”Р»СЏ case4 - РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°С‚СЊ РґРёРЅР°РјРёС‡РµСЃРєРёР№ СЃРїРёСЃРѕРє
 void SortList(Trade* head)
 {
 	if (head == nullptr)
 	{
-		std::cout << "Список пуст." << std::endl;
+		std::cout << "РЎРїРёСЃРѕРє РїСѓСЃС‚." << std::endl;
 	}
 	else
 	{
@@ -159,14 +159,14 @@ void SortList(Trade* head)
 	}
 }
 
-//Для case5 - печать списка на консоль
+//Р”Р»СЏ case5 - РїРµС‡Р°С‚СЊ СЃРїРёСЃРєР° РЅР° РєРѕРЅСЃРѕР»СЊ
 void PrintList(const Trade* head)
 {
 	const Trade* tail{ head };
 	if (head != nullptr)
 	{
 		int index_number{};
-		std::cout << "____________________ Ваш список: ____________________" << std::endl;
+		std::cout << "____________________ Р’Р°С€ СЃРїРёСЃРѕРє: ____________________" << std::endl;
 		do {
 			index_number++;
 			std::cout << index_number << ") " << tail->data.TypeOfSecurities << ";" << tail->data.AmountOfDeals << ";" << tail->data.TradingVolume << std::endl;
@@ -175,13 +175,13 @@ void PrintList(const Trade* head)
 	}
 	else
 	{
-		std::cout << "Список пуст." << std::endl;
+		std::cout << "РЎРїРёСЃРѕРє РїСѓСЃС‚." << std::endl;
 	}
 }
 
 
-//ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ
-//Построчное чтение данных из файла \, либо запрос о введении корня динамического списка, если файл пустой
+//Р’РЎРџРћРњРћР“РђРўР•Р›Р¬РќР«Р• Р¤РЈРќРљР¦РР
+//РџРѕСЃС‚СЂРѕС‡РЅРѕРµ С‡С‚РµРЅРёРµ РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° \, Р»РёР±Рѕ Р·Р°РїСЂРѕСЃ Рѕ РІРІРµРґРµРЅРёРё РєРѕСЂРЅСЏ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР°, РµСЃР»Рё С„Р°Р№Р» РїСѓСЃС‚РѕР№
 bool getListFromFile(Trade*& head, std::ifstream& fileName)
 {
 	int count_str{ 0 }, flag{};
@@ -200,9 +200,9 @@ bool getListFromFile(Trade*& head, std::ifstream& fileName)
 		}
 		else if (flag == 0)
 		{
-			std::cout << "Ваш файл пустой. Вы хотите ввести первый элемент?" << std::endl <<
-				"Да - 1" << std::endl <<
-				"Нет - 0" << std::endl;
+			std::cout << "Р’Р°С€ С„Р°Р№Р» РїСѓСЃС‚РѕР№. Р’С‹ С…РѕС‚РёС‚Рµ РІРІРµСЃС‚Рё РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚?" << std::endl <<
+				"Р”Р° - 1" << std::endl <<
+				"РќРµС‚ - 0" << std::endl;
 			while (true)
 			{
 				char sm;
@@ -220,7 +220,7 @@ bool getListFromFile(Trade*& head, std::ifstream& fileName)
 				}
 				else
 				{
-					std::cerr << "Ошибка ввода. Введите 0 или 1. Повторите ввод: ";
+					std::cerr << "РћС€РёР±РєР° РІРІРѕРґР°. Р’РІРµРґРёС‚Рµ 0 РёР»Рё 1. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 				}
 			}
 		}
@@ -228,7 +228,7 @@ bool getListFromFile(Trade*& head, std::ifstream& fileName)
 	return true;
 }
 
-// Проверка, чтобы в файле было 3 поля, 2-ое из которых - число
+// РџСЂРѕРІРµСЂРєР°, С‡С‚РѕР±С‹ РІ С„Р°Р№Р»Рµ Р±С‹Р»Рѕ 3 РїРѕР»СЏ, 2-РѕРµ РёР· РєРѕС‚РѕСЂС‹С… - С‡РёСЃР»Рѕ
 bool CheckCorrectField(std::string check_DataLine, unsigned count)
 {
 	std::stringstream DataNode{ check_DataLine };
@@ -250,7 +250,7 @@ bool CheckCorrectField(std::string check_DataLine, unsigned count)
 					}
 					else
 					{
-						std::cout << count << "-й элемент имеет неправильные данные во 2-м информационном поле." << std::endl;
+						std::cout << count << "-Р№ СЌР»РµРјРµРЅС‚ РёРјРµРµС‚ РЅРµРїСЂР°РІРёР»СЊРЅС‹Рµ РґР°РЅРЅС‹Рµ РІРѕ 2-Рј РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРј РїРѕР»Рµ." << std::endl;
 						return false;
 					}
 				}
@@ -259,22 +259,22 @@ bool CheckCorrectField(std::string check_DataLine, unsigned count)
 	}
 	if (index_field != 3)
 	{
-		std::cout << count << "-й элемент имеет неправильно количество данных информационного поля." << std::endl;
+		std::cout << count << "-Р№ СЌР»РµРјРµРЅС‚ РёРјРµРµС‚ РЅРµРїСЂР°РІРёР»СЊРЅРѕ РєРѕР»РёС‡РµСЃС‚РІРѕ РґР°РЅРЅС‹С… РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРіРѕ РїРѕР»СЏ." << std::endl;
 		return false;
 	}
 	return true;
 }
 
-//Быстрый ввод 3-го поля в информационном поле элемента <Объём продаж>
+//Р‘С‹СЃС‚СЂС‹Р№ РІРІРѕРґ 3-РіРѕ РїРѕР»СЏ РІ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРј РїРѕР»Рµ СЌР»РµРјРµРЅС‚Р° <РћР±СЉС‘Рј РїСЂРѕРґР°Р¶>
 bool FastInput_TradingVolume(Trade* ea, std::string fast_AddNewElement)
 {
-	std::cout << "Выберите один из следуюших вариантов или введите свой, отказавшись от выбора." << std::endl <<
-		"Очень маленький -\t 1" << std::endl <<
-		"Маленький \t-\t 2" << std::endl <<
-		"Средний \t-\t 3" << std::endl <<
-		"Большой \t-\t 4" << std::endl <<
-		"Очень большой \t-\t 5" << std::endl <<
-		"Ввести свой \t-\t 6" << std::endl;
+	std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РѕРґРёРЅ РёР· СЃР»РµРґСѓСЋС€РёС… РІР°СЂРёР°РЅС‚РѕРІ РёР»Рё РІРІРµРґРёС‚Рµ СЃРІРѕР№, РѕС‚РєР°Р·Р°РІС€РёСЃСЊ РѕС‚ РІС‹Р±РѕСЂР°." << std::endl <<
+		"РћС‡РµРЅСЊ РјР°Р»РµРЅСЊРєРёР№ -\t 1" << std::endl <<
+		"РњР°Р»РµРЅСЊРєРёР№ \t-\t 2" << std::endl <<
+		"РЎСЂРµРґРЅРёР№ \t-\t 3" << std::endl <<
+		"Р‘РѕР»СЊС€РѕР№ \t-\t 4" << std::endl <<
+		"РћС‡РµРЅСЊ Р±РѕР»СЊС€РѕР№ \t-\t 5" << std::endl <<
+		"Р’РІРµСЃС‚Рё СЃРІРѕР№ \t-\t 6" << std::endl;
 	while (true)
 	{
 		{
@@ -284,35 +284,35 @@ bool FastInput_TradingVolume(Trade* ea, std::string fast_AddNewElement)
 			switch (sm)
 			{
 			case '1':
-				fast_AddNewElement = "Очень маленький";
+				fast_AddNewElement = "РћС‡РµРЅСЊ РјР°Р»РµРЅСЊРєРёР№";
 				ea->data.TradingVolume = fast_AddNewElement;
 				return true;
 			case '2':
-				fast_AddNewElement = "Маленький";
+				fast_AddNewElement = "РњР°Р»РµРЅСЊРєРёР№";
 				ea->data.TradingVolume = fast_AddNewElement;
 				return true;
 			case '3':
-				fast_AddNewElement = "Средний";
+				fast_AddNewElement = "РЎСЂРµРґРЅРёР№";
 				ea->data.TradingVolume = fast_AddNewElement;
 				return true;
 			case '4':
-				fast_AddNewElement = "Большой";
+				fast_AddNewElement = "Р‘РѕР»СЊС€РѕР№";
 				ea->data.TradingVolume = fast_AddNewElement;
 				return true;
 			case '5':
-				fast_AddNewElement = "Очень большой";
+				fast_AddNewElement = "РћС‡РµРЅСЊ Р±РѕР»СЊС€РѕР№";
 				ea->data.TradingVolume = fast_AddNewElement;
 				return true;
 			case '6':
 				return false;
 			default:
-				std::cout << "Введите один из вариантов выше (цифру). Повторите ввод:" << std::endl;
+				std::cout << "Р’РІРµРґРёС‚Рµ РѕРґРёРЅ РёР· РІР°СЂРёР°РЅС‚РѕРІ РІС‹С€Рµ (С†РёС„СЂСѓ). РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:" << std::endl;
 			}
 		}
 	}
 }
 
-//Получение нового элемента по указателю и информационному полю
+//РџРѕР»СѓС‡РµРЅРёРµ РЅРѕРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РїРѕ СѓРєР°Р·Р°С‚РµР»СЋ Рё РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРјСѓ РїРѕР»СЋ
 void getNewTrade(Trade*& head, std::stringstream& lineStream)
 {
 	if (head == nullptr)
@@ -335,7 +335,7 @@ void getNewTrade(Trade*& head, std::stringstream& lineStream)
 	}
 }
 
-//Обеспечение записи данных в информационное поле элемента динамического списка с привязыванием их к указателю
+//РћР±РµСЃРїРµС‡РµРЅРёРµ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С… РІ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРµ РїРѕР»Рµ СЌР»РµРјРµРЅС‚Р° РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР° СЃ РїСЂРёРІСЏР·С‹РІР°РЅРёРµРј РёС… Рє СѓРєР°Р·Р°С‚РµР»СЋ
 void InitializationNewTrade(std::stringstream& lineStream, Trade*& init_head)
 {
 	std::string data{};
@@ -352,21 +352,21 @@ void InitializationNewTrade(std::stringstream& lineStream, Trade*& init_head)
 	init_head->data.TradingVolume = str_value[2];
 }
 
-//Создание корня списка
+//РЎРѕР·РґР°РЅРёРµ РєРѕСЂРЅСЏ СЃРїРёСЃРєР°
 void CreateHeadOfList(Trade*& head)
 {
 	std::string AddDataToHead{};
 	head = new Trade{};
-	std::cout << "Введите данные корневого элемента: " << std::endl;
-	std::cout << "<Название ценной бумаги>: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ РґР°РЅРЅС‹Рµ РєРѕСЂРЅРµРІРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: " << std::endl;
+	std::cout << "<РќР°Р·РІР°РЅРёРµ С†РµРЅРЅРѕР№ Р±СѓРјР°РіРё>: ";
 	std::getline(std::cin, AddDataToHead);
 	head->data.TypeOfSecurities = AddDataToHead;
 
-	std::cout << "<Количество сделок>: ";
+	std::cout << "<РљРѕР»РёС‡РµСЃС‚РІРѕ СЃРґРµР»РѕРє>: ";
 	AddDataToHead = checkData2();
 	head->data.AmountOfDeals = AddDataToHead;
 
-	std::cout << "<Объём продаж>: ";
+	std::cout << "<РћР±СЉС‘Рј РїСЂРѕРґР°Р¶>: ";
 	if (!FastInput_TradingVolume(head, AddDataToHead))
 	{
 		std::getline(std::cin, AddDataToHead);
@@ -376,7 +376,7 @@ void CreateHeadOfList(Trade*& head)
 	head->next = head;
 }
 
-//Проверка 2-го поля в информационном поле элемента на число или "-"
+//РџСЂРѕРІРµСЂРєР° 2-РіРѕ РїРѕР»СЏ РІ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРј РїРѕР»Рµ СЌР»РµРјРµРЅС‚Р° РЅР° С‡РёСЃР»Рѕ РёР»Рё "-"
 std::string checkData2()
 {
 	while (true)
@@ -400,7 +400,7 @@ std::string checkData2()
 				}
 				else
 				{
-					std::cout << "Вам нужно ввести только число или просто прочерк \"-\". Повторите ввод:" << std::endl;
+					std::cout << "Р’Р°Рј РЅСѓР¶РЅРѕ РІРІРµСЃС‚Рё С‚РѕР»СЊРєРѕ С‡РёСЃР»Рѕ РёР»Рё РїСЂРѕСЃС‚Рѕ РїСЂРѕС‡РµСЂРє \"-\". РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:" << std::endl;
 					break;
 				}
 			}
@@ -408,13 +408,13 @@ std::string checkData2()
 	}
 }
 
-//Выбор поля сортировки
+//Р’С‹Р±РѕСЂ РїРѕР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё
 unsigned getSortChoice()
 {
-	std::cout << "Сортировка по: " << std::endl <<
-		"Названию ценной бумаги\t\t- 1" << std::endl <<
-		"Количеству сделок\t\t- 2" << std::endl <<
-		"Объёму продаж\t\t\t- 3" << std::endl;
+	std::cout << "РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ: " << std::endl <<
+		"РќР°Р·РІР°РЅРёСЋ С†РµРЅРЅРѕР№ Р±СѓРјР°РіРё\t\t- 1" << std::endl <<
+		"РљРѕР»РёС‡РµСЃС‚РІСѓ СЃРґРµР»РѕРє\t\t- 2" << std::endl <<
+		"РћР±СЉС‘РјСѓ РїСЂРѕРґР°Р¶\t\t\t- 3" << std::endl;
 	while (true)
 	{
 		double choice;
@@ -423,12 +423,12 @@ unsigned getSortChoice()
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "Ошибка ввода, Вы ввели не число. Повторите ввод:\n";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°, Р’С‹ РІРІРµР»Рё РЅРµ С‡РёСЃР»Рѕ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:\n";
 		}
 		else if (static_cast<int>(choice) != choice || choice < 1 || choice > 3)
 		{
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "Нужно ввести натуральное число от 1 до 3 в соответствии с вышеперечисленным выбором. Повторите ввод:\n";
+			std::cout << "РќСѓР¶РЅРѕ РІРІРµСЃС‚Рё РЅР°С‚СѓСЂР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ РѕС‚ 1 РґРѕ 3 РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РІС‹С€РµРїРµСЂРµС‡РёСЃР»РµРЅРЅС‹Рј РІС‹Р±РѕСЂРѕРј. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:\n";
 		}
 		else
 		{
@@ -438,7 +438,7 @@ unsigned getSortChoice()
 	}
 }
 
-//Передача в функцию swapData полей в информационном поле элемента относительно выбранной сортировки
+//РџРµСЂРµРґР°С‡Р° РІ С„СѓРЅРєС†РёСЋ swapData РїРѕР»РµР№ РІ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРј РїРѕР»Рµ СЌР»РµРјРµРЅС‚Р° РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РІС‹Р±СЂР°РЅРЅРѕР№ СЃРѕСЂС‚РёСЂРѕРІРєРё
 void SortChoice(unsigned choice, Trade* def_current, Trade* def_index)
 {
 	switch (choice)
@@ -450,7 +450,7 @@ void SortChoice(unsigned choice, Trade* def_current, Trade* def_index)
 	}
 }
 
-//Перестановка данных в информационных полях элементов - сортировка
+//РџРµСЂРµСЃС‚Р°РЅРѕРІРєР° РґР°РЅРЅС‹С… РІ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹С… РїРѕР»СЏС… СЌР»РµРјРµРЅС‚РѕРІ - СЃРѕСЂС‚РёСЂРѕРІРєР°
 void swapData(const std::string& currentDataStr, const std::string& indexDataStr, TradeData& currentData, TradeData& indexData, unsigned choice)
 {
 	if (choice == 1 || choice == 3)
@@ -468,7 +468,7 @@ void swapData(const std::string& currentDataStr, const std::string& indexDataStr
 	}
 }
 
-//Сравнение чисел из второго поля в информационных полях элементов для сортировки
+//РЎСЂР°РІРЅРµРЅРёРµ С‡РёСЃРµР» РёР· РІС‚РѕСЂРѕРіРѕ РїРѕР»СЏ РІ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅС‹С… РїРѕР»СЏС… СЌР»РµРјРµРЅС‚РѕРІ РґР»СЏ СЃРѕСЂС‚РёСЂРѕРІРєРё
 void ComparisonNumber(const std::string& currentDataStr, const std::string& indexDataStr, TradeData& currentData, TradeData& indexData)
 {
 	if ((currentDataStr != "-") && (indexDataStr != "-"))
@@ -484,13 +484,13 @@ void ComparisonNumber(const std::string& currentDataStr, const std::string& inde
 	}
 }
 
-//Запрос дейтсвий с динамическим списком у пользователя
+//Р—Р°РїСЂРѕСЃ РґРµР№С‚СЃРІРёР№ СЃ РґРёРЅР°РјРёС‡РµСЃРєРёРј СЃРїРёСЃРєРѕРј Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ
 char getCase()
 {
 	while (true)
 	{
 		MenuForChoices();
-		std::cout << "Ваш выбор: ";
+		std::cout << "Р’Р°С€ РІС‹Р±РѕСЂ: ";
 		std::string choice{};
 		std::getline(std::cin, choice);
 		if (choice == "1" || choice == "2" || choice == "3" || choice == "4" || choice == "5" || choice == "6" || choice == "7")
@@ -499,12 +499,12 @@ char getCase()
 		}
 		else
 		{
-			std::cout << std::endl << "Ошибка ввода, Вам нужно ввести номер вашего выбора в соответствии с нижеперечисленными пунктами (от 1 до 7). Повторите ввод:" << std::endl;
+			std::cout << std::endl << "РћС€РёР±РєР° РІРІРѕРґР°, Р’Р°Рј РЅСѓР¶РЅРѕ РІРІРµСЃС‚Рё РЅРѕРјРµСЂ РІР°С€РµРіРѕ РІС‹Р±РѕСЂР° РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РЅРёР¶РµРїРµСЂРµС‡РёСЃР»РµРЅРЅС‹РјРё РїСѓРЅРєС‚Р°РјРё (РѕС‚ 1 РґРѕ 7). РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:" << std::endl;
 		}
 	}
 }
 
-//Получение номера элемента у пользователя (для добавления и удаления элементов в списке)
+//РџРѕР»СѓС‡РµРЅРёРµ РЅРѕРјРµСЂР° СЌР»РµРјРµРЅС‚Р° Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ (РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ Рё СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ РІ СЃРїРёСЃРєРµ)
 double GetNumber()
 {
 	while (true)
@@ -515,12 +515,12 @@ double GetNumber()
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "Ошибка ввода, Вы ввели не число. Повторите ввод:\n";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°, Р’С‹ РІРІРµР»Рё РЅРµ С‡РёСЃР»Рѕ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:\n";
 		}
 		else if (num != static_cast<int>(num))
 		{
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "Вы ввели не натуральное число. Повторите ввод:\n ";
+			std::cout << "Р’С‹ РІРІРµР»Рё РЅРµ РЅР°С‚СѓСЂР°Р»СЊРЅРѕРµ С‡РёСЃР»Рѕ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:\n ";
 		}
 		else
 		{
@@ -531,35 +531,35 @@ double GetNumber()
 }
 
 
-//ПОЛЬЗОВАТЕЛЬСКИЕ ФУНКЦИИ
-//Пользовательское меню
+//РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРР• Р¤РЈРќРљР¦РР
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РјРµРЅСЋ
 void MenuForChoices()
 {
-	std::cout << "Что Вы хотите сделать?" << std::endl <<
-		"1) Подсчитать число элементов списка." << std::endl <<
-		"2) Добавить заданный элемент в список по порядковому номеру. " << std::endl <<
-		"3) Удалить заданный элемент из списка по порядковому номеру." << std::endl <<
-		"4) Сортировка списка (по указанному полю)." << std::endl <<
-		"5) Печать всех элементов (вывод на консоль)." << std::endl <<
-		"6) Сброс значений всех элементов (все значения элементов будут обнулены)." << std::endl <<
-		"7) Выход." << std::endl;
+	std::cout << "Р§С‚Рѕ Р’С‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ?" << std::endl <<
+		"1) РџРѕРґСЃС‡РёС‚Р°С‚СЊ С‡РёСЃР»Рѕ СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР°." << std::endl <<
+		"2) Р”РѕР±Р°РІРёС‚СЊ Р·Р°РґР°РЅРЅС‹Р№ СЌР»РµРјРµРЅС‚ РІ СЃРїРёСЃРѕРє РїРѕ РїРѕСЂСЏРґРєРѕРІРѕРјСѓ РЅРѕРјРµСЂСѓ. " << std::endl <<
+		"3) РЈРґР°Р»РёС‚СЊ Р·Р°РґР°РЅРЅС‹Р№ СЌР»РµРјРµРЅС‚ РёР· СЃРїРёСЃРєР° РїРѕ РїРѕСЂСЏРґРєРѕРІРѕРјСѓ РЅРѕРјРµСЂСѓ." << std::endl <<
+		"4) РЎРѕСЂС‚РёСЂРѕРІРєР° СЃРїРёСЃРєР° (РїРѕ СѓРєР°Р·Р°РЅРЅРѕРјСѓ РїРѕР»СЋ)." << std::endl <<
+		"5) РџРµС‡Р°С‚СЊ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ (РІС‹РІРѕРґ РЅР° РєРѕРЅСЃРѕР»СЊ)." << std::endl <<
+		"6) РЎР±СЂРѕСЃ Р·РЅР°С‡РµРЅРёР№ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ (РІСЃРµ Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ Р±СѓРґСѓС‚ РѕР±РЅСѓР»РµРЅС‹)." << std::endl <<
+		"7) Р’С‹С…РѕРґ." << std::endl;
 }
 
-//Запрос количества элементов в списке у пользователем
+//Р—Р°РїСЂРѕСЃ РєРѕР»РёС‡РµСЃС‚РІР° СЌР»РµРјРµРЅС‚РѕРІ РІ СЃРїРёСЃРєРµ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 void case1(Trade* head)
 {
 	unsigned length = ListLength(head);
-	std::cout << "Длина Вашего списка на данный момент: " << length << std::endl;
+	std::cout << "Р”Р»РёРЅР° Р’Р°С€РµРіРѕ СЃРїРёСЃРєР° РЅР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚: " << length << std::endl;
 }
 
-//Запрос добавления элемента в список у пользователем
+//Р—Р°РїСЂРѕСЃ РґРѕР±Р°РІР»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ СЃРїРёСЃРѕРє Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 void case2(Trade* head)
 {
 	if (head != nullptr)
 	{
 		Trade* previous{ head }, * ea{};
 		double num{};
-		std::cout << "После какого порядкового номера элементов в списке Вы хотите добавить новый элемент?" << std::endl;
+		std::cout << "РџРѕСЃР»Рµ РєР°РєРѕРіРѕ РїРѕСЂСЏРґРєРѕРІРѕРіРѕ РЅРѕРјРµСЂР° СЌР»РµРјРµРЅС‚РѕРІ РІ СЃРїРёСЃРєРµ Р’С‹ С…РѕС‚РёС‚Рµ РґРѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚?" << std::endl;
 		bool inList{ false };
 		while (!inList)
 		{
@@ -567,7 +567,7 @@ void case2(Trade* head)
 			unsigned length = ListLength(head);
 			if (num < 1 || num > length)
 			{
-				std::cout << "Был возвращен указатель nullptr, элемента по данному порядковому номеру в списке не существует." << std::endl;
+				std::cout << "Р‘С‹Р» РІРѕР·РІСЂР°С‰РµРЅ СѓРєР°Р·Р°С‚РµР»СЊ nullptr, СЌР»РµРјРµРЅС‚Р° РїРѕ РґР°РЅРЅРѕРјСѓ РїРѕСЂСЏРґРєРѕРІРѕРјСѓ РЅРѕРјРµСЂСѓ РІ СЃРїРёСЃРєРµ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚." << std::endl;
 			}
 			else
 			{
@@ -579,7 +579,7 @@ void case2(Trade* head)
 			previous = previous->next;
 		}
 		AddNewElement(previous, ea);
-		std::cout << "Новый " << num + 1 << "-й элемент был добавлен." << std::endl;
+		std::cout << "РќРѕРІС‹Р№ " << num + 1 << "-Р№ СЌР»РµРјРµРЅС‚ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ." << std::endl;
 	}
 	else
 	{
@@ -587,14 +587,14 @@ void case2(Trade* head)
 	}
 }
 
-//Запрос удаления элемента в списке у пользователем
+//Р—Р°РїСЂРѕСЃ СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РІ СЃРїРёСЃРєРµ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 void case3(Trade*& head)
 {
 	if (head != nullptr)
 	{
 		Trade* current{ head }, * search{ head };
 		double num{};
-		std::cout << "Какой элемент по порядковому номеру Вы хотите удалить?" << std::endl;
+		std::cout << "РљР°РєРѕР№ СЌР»РµРјРµРЅС‚ РїРѕ РїРѕСЂСЏРґРєРѕРІРѕРјСѓ РЅРѕРјРµСЂСѓ Р’С‹ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ?" << std::endl;
 		bool inList{ false };
 		unsigned length{};
 		while (!inList)
@@ -603,7 +603,7 @@ void case3(Trade*& head)
 			length = ListLength(head);
 			if (num < 1 || num > length)
 			{
-				std::cout << "Был возвращен указатель nullptr, элемента по данному порядковому номеру в списке не существует." << std::endl;
+				std::cout << "Р‘С‹Р» РІРѕР·РІСЂР°С‰РµРЅ СѓРєР°Р·Р°С‚РµР»СЊ nullptr, СЌР»РµРјРµРЅС‚Р° РїРѕ РґР°РЅРЅРѕРјСѓ РїРѕСЂСЏРґРєРѕРІРѕРјСѓ РЅРѕРјРµСЂСѓ РІ СЃРїРёСЃРєРµ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚." << std::endl;
 			}
 			else
 			{
@@ -633,35 +633,35 @@ void case3(Trade*& head)
 				head = nullptr;
 			}
 		}
-		std::cout << num << "-й элемент был удален." << std::endl;
+		std::cout << num << "-Р№ СЌР»РµРјРµРЅС‚ Р±С‹Р» СѓРґР°Р»РµРЅ." << std::endl;
 	}
 	else
 	{
-		std::cerr << "Список пуст, данное действие не может быть выполнено." << std::endl;
+		std::cerr << "РЎРїРёСЃРѕРє РїСѓСЃС‚, РґР°РЅРЅРѕРµ РґРµР№СЃС‚РІРёРµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РІС‹РїРѕР»РЅРµРЅРѕ." << std::endl;
 	}
 }
 
-//Запрос сортировки списка у пользователем
+//Р—Р°РїСЂРѕСЃ СЃРѕСЂС‚РёСЂРѕРІРєРё СЃРїРёСЃРєР° Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 void case4(Trade* head)
 {
 	SortList(head);
 }
 
-//Запрос печати списка у пользователем
+//Р—Р°РїСЂРѕСЃ РїРµС‡Р°С‚Рё СЃРїРёСЃРєР° Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 void case5(const Trade* head)
 {
 	PrintList(head);
 }
 
-//Основная функция и пользовательская - запрос сброса значений элементов в списке у пользователем
+//РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ Рё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєР°СЏ - Р·Р°РїСЂРѕСЃ СЃР±СЂРѕСЃР° Р·РЅР°С‡РµРЅРёР№ СЌР»РµРјРµРЅС‚РѕРІ РІ СЃРїРёСЃРєРµ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 void case6(Trade* head)
 {
 	if (head != nullptr)
 	{
 		Trade* tail{ head };
-		std::cout << "Вы уверены?" << std::endl <<
-			"Да - 1" << std::endl <<
-			"Нет - 2" << std::endl;
+		std::cout << "Р’С‹ СѓРІРµСЂРµРЅС‹?" << std::endl <<
+			"Р”Р° - 1" << std::endl <<
+			"РќРµС‚ - 2" << std::endl;
 		while (true)
 		{
 			char sm;
@@ -675,7 +675,7 @@ void case6(Trade* head)
 					tail->data.TradingVolume = DEFAULT_TRADE.def_TradingVolume;
 					tail = tail->next;
 				} while (tail != head);
-				std::cout << "Список был обновлен: все значения элементов сброшены." << std::endl;
+				std::cout << "РЎРїРёСЃРѕРє Р±С‹Р» РѕР±РЅРѕРІР»РµРЅ: РІСЃРµ Р·РЅР°С‡РµРЅРёСЏ СЌР»РµРјРµРЅС‚РѕРІ СЃР±СЂРѕС€РµРЅС‹." << std::endl;
 				break;
 			}
 			else if (sm == '2')
@@ -684,12 +684,12 @@ void case6(Trade* head)
 			}
 			else
 			{
-				std::cout << "Ошибка ввода. Введите 1 или 2: \n";
+				std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’РІРµРґРёС‚Рµ 1 РёР»Рё 2: \n";
 			}
 		}
 	}
 	else
 	{
-		std::cerr << "Список пуст, данное действие не может быть выполнено." << std::endl;
+		std::cerr << "РЎРїРёСЃРѕРє РїСѓСЃС‚, РґР°РЅРЅРѕРµ РґРµР№СЃС‚РІРёРµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РІС‹РїРѕР»РЅРµРЅРѕ." << std::endl;
 	}
 }

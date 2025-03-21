@@ -10,7 +10,7 @@
 #include "class_Container_DynamicArray.h"
 #include "class_Container_LynearDynamicList.h"
 
-//Изменение геометрических свойств объектов класса-контейнера на базе динамического массива
+//РР·РјРµРЅРµРЅРёРµ РіРµРѕРјРµС‚СЂРёС‡РµСЃРєРёС… СЃРІРѕР№СЃС‚РІ РѕР±СЉРµРєС‚РѕРІ РєР»Р°СЃСЃР°-РєРѕРЅС‚РµР№РЅРµСЂР° РЅР° Р±Р°Р·Рµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°
 void increaseRadiusCFDA(DynamicArray* ptr_container_figures_dinamic_array, int index_of_element);
 void decreaseRadiusCFDA(DynamicArray* ptr_container_figures_dinamic_array, int index_of_element);
 void increaseSemiMajorAxisCFDA(DynamicArray* ptr_container_figures_dinamic_array, int index_of_element);
@@ -36,7 +36,7 @@ void decreaseHeightTrapezeCFDA(DynamicArray* ptr_container_figures_dinamic_array
 void increaseBottomBaseTrapezeCFDA(DynamicArray* ptr_container_figures_dinamic_array, int index_of_element);
 void decreaseBottomBaseTrapezeCFDA(DynamicArray* ptr_container_figures_dinamic_array, int index_of_element);
 
-//Изменение геометрических свойств объектов класса-контейнера на базе линейного динамического списка
+//РР·РјРµРЅРµРЅРёРµ РіРµРѕРјРµС‚СЂРёС‡РµСЃРєРёС… СЃРІРѕР№СЃС‚РІ РѕР±СЉРµРєС‚РѕРІ РєР»Р°СЃСЃР°-РєРѕРЅС‚РµР№РЅРµСЂР° РЅР° Р±Р°Р·Рµ Р»РёРЅРµР№РЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР°
 void increaseRadiusCFLDL(LynearDynamicList* ptr_container_figures_lynear_dinamic_list, TFigure* ptr_current_data);
 void decreaseRadiusCFLDL(LynearDynamicList* ptr_container_figures_lynear_dinamic_list, TFigure* ptr_current_data);
 void increaseSemiMajorAxisCFLDL(LynearDynamicList* ptr_container_figures_lynear_dinamic_list, TFigure* ptr_current_data);

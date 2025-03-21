@@ -3,8 +3,8 @@
 #include "myfuncs.h"
 #include "constants.h"
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ КОЛЬЦА*/
-//Сдвинуть кольцо случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РљРћР›Р¬Р¦Рђ*/
+//РЎРґРІРёРЅСѓС‚СЊ РєРѕР»СЊС†Рѕ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetRing(Ring* f_ptr_obj_ring)
 {
 	float x_ring{ f_ptr_obj_ring->getCircleOuter().get_x_coordinate_base_point()};
@@ -23,9 +23,9 @@ void doOffsetRing(Ring* f_ptr_obj_ring)
 	}
 }
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ МАССИВА КОЛЕЦ*/
-//Добавить элемент в конец и удалить последний элемент - шаблонные функции
-//Сдвинуть элементы случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РњРђРЎРЎРР’Рђ РљРћР›Р•Р¦*/
+//Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС† Рё СѓРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ - С€Р°Р±Р»РѕРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
+//РЎРґРІРёРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚С‹ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetArrayRings(Ring** array_rings, int array_rings_size)
 {
 	for (int i{}; i < array_rings_size; i++)
@@ -46,7 +46,7 @@ void doOffsetArrayRings(Ring** array_rings, int array_rings_size)
 		}
 	}
 }
-//Движение по клавишам WASD элементов
+//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ
 void doUserMoveArrayRingsW(Ring** array_rings, int array_rings_size)
 {
 	for (int i{}; i < array_rings_size; i++)
@@ -79,7 +79,7 @@ void doUserMoveArrayRingsD(Ring** array_rings, int array_rings_size)
 			array_rings[i]->MoveTo(10, 0);
 	}
 }
-//Увеличить размер элементов
+//РЈРІРµР»РёС‡РёС‚СЊ СЂР°Р·РјРµСЂ СЌР»РµРјРµРЅС‚РѕРІ
 void array_rings_DimensionsIncrease(Ring** array_rings, int array_rings_size)
 {
 	for (int i{}; i < array_rings_size; i++)
@@ -92,7 +92,7 @@ void array_rings_DimensionsIncrease(Ring** array_rings, int array_rings_size)
 			array_rings[i]->getCircleInner().changeRadius(2);
 		}
 }
-//Уменьшить размер элементов
+//РЈРјРµРЅСЊС€РёС‚СЊ СЂР°Р·РјРµСЂ СЌР»РµРјРµРЅС‚РѕРІ
 void array_rings_DimensionsDecrease(Ring** array_rings, int array_rings_size)
 {
 	for (int i{}; i < array_rings_size; i++)

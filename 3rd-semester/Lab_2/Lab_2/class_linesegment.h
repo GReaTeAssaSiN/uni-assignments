@@ -19,8 +19,8 @@ private:
 public:
 	Linesegment()
 	{
-		std::cout << "Ñîçäàí êîíñòğóêòîğîì ïî óìîë÷àíèş îáúåêò-ëèíèÿ ñ êîîğäèíàòàìè áàçîâîé òî÷êè (êğàéíÿÿ ëåâàÿ òî÷êà):\n(" <<
-			m_auxiliary_base_point_of_line.getXPoint() << " ," << m_auxiliary_base_point_of_line.getYPoint() << " )\nè ïàğàìåòğàìè: Lenght = " << m_length <<
+		std::cout << "Ğ¡Ğ¾Ğ·Ğ´Ğ°Ğ½ ĞºĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€Ğ¾Ğ¼ Ğ¿Ğ¾ ÑƒĞ¼Ğ¾Ğ»Ñ‡Ğ°Ğ½Ğ¸Ñ Ğ¾Ğ±ÑŠĞµĞºÑ‚-Ğ»Ğ¸Ğ½Ğ¸Ñ Ñ ĞºĞ¾Ğ¾Ñ€Ğ´Ğ¸Ğ½Ğ°Ñ‚Ğ°Ğ¼Ğ¸ Ğ±Ğ°Ğ·Ğ¾Ğ²Ğ¾Ğ¹ Ñ‚Ğ¾Ñ‡ĞºĞ¸ (ĞºÑ€Ğ°Ğ¹Ğ½ÑÑ Ğ»ĞµĞ²Ğ°Ñ Ñ‚Ğ¾Ñ‡ĞºĞ°):\n(" <<
+			m_auxiliary_base_point_of_line.getXPoint() << " ," << m_auxiliary_base_point_of_line.getYPoint() << " )\nĞ¸ Ğ¿Ğ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ğ°Ğ¼Ğ¸: Lenght = " << m_length <<
 			"\tDegree = " << m_degree << std::endl;
 	}
 
@@ -60,8 +60,8 @@ public:
 			}
 		}
 
-		std::cout << "Ñîçäàí êîíñòğóêòîğîì ñî ñëó÷àéíûìè ïàğàìåòğàìè îáúåêò-ëèíèÿ ñ êîîğäèíàòàìè áàçîâîé òî÷êè (êğàéíÿÿ ëåâàÿ òî÷êà):\n(" <<
-			m_auxiliary_base_point_of_line.getXPoint() << " ," << m_auxiliary_base_point_of_line.getYPoint() << " )\nè ïàğàìåòğàìè: Lenght = " << m_length <<
+		std::cout << "Ğ¡Ğ¾Ğ·Ğ´Ğ°Ğ½ ĞºĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€Ğ¾Ğ¼ ÑĞ¾ ÑĞ»ÑƒÑ‡Ğ°Ğ¹Ğ½Ñ‹Ğ¼Ğ¸ Ğ¿Ğ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ğ°Ğ¼Ğ¸ Ğ¾Ğ±ÑŠĞµĞºÑ‚-Ğ»Ğ¸Ğ½Ğ¸Ñ Ñ ĞºĞ¾Ğ¾Ñ€Ğ´Ğ¸Ğ½Ğ°Ñ‚Ğ°Ğ¼Ğ¸ Ğ±Ğ°Ğ·Ğ¾Ğ²Ğ¾Ğ¹ Ñ‚Ğ¾Ñ‡ĞºĞ¸ (ĞºÑ€Ğ°Ğ¹Ğ½ÑÑ Ğ»ĞµĞ²Ğ°Ñ Ñ‚Ğ¾Ñ‡ĞºĞ°):\n(" <<
+			m_auxiliary_base_point_of_line.getXPoint() << " ," << m_auxiliary_base_point_of_line.getYPoint() << " )\nĞ¸ Ğ¿Ğ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ğ°Ğ¼Ğ¸: Lenght = " << m_length <<
 			"\tDegree = " << m_degree << std::endl;
 	}
 
@@ -131,8 +131,8 @@ public:
 
 	/*~Linesegment() 
 	{
-		std::cout << "Óäàëåí îáúåêò-ëèíèÿ ñ êîîğäèíàòàìè áàçîâîé òî÷êè (êğàéíÿÿ ëåâàÿ òî÷êà):\n(" <<
-			m_auxiliary_base_point_of_line.getXPoint() << " ," << m_auxiliary_base_point_of_line.getYPoint() << " )\nè ïàğàìåòğàìè: Lenght = " << m_length <<
+		std::cout << "Ğ£Ğ´Ğ°Ğ»ĞµĞ½ Ğ¾Ğ±ÑŠĞµĞºÑ‚-Ğ»Ğ¸Ğ½Ğ¸Ñ Ñ ĞºĞ¾Ğ¾Ñ€Ğ´Ğ¸Ğ½Ğ°Ñ‚Ğ°Ğ¼Ğ¸ Ğ±Ğ°Ğ·Ğ¾Ğ²Ğ¾Ğ¹ Ñ‚Ğ¾Ñ‡ĞºĞ¸ (ĞºÑ€Ğ°Ğ¹Ğ½ÑÑ Ğ»ĞµĞ²Ğ°Ñ Ñ‚Ğ¾Ñ‡ĞºĞ°):\n(" <<
+			m_auxiliary_base_point_of_line.getXPoint() << " ," << m_auxiliary_base_point_of_line.getYPoint() << " )\nĞ¸ Ğ¿Ğ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ğ°Ğ¼Ğ¸: Lenght = " << m_length <<
 			"\tDegree = " << m_degree << std::endl;
 	};*/
 };

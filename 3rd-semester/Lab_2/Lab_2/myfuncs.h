@@ -10,7 +10,7 @@
 
 float getRandomNumber(float min, float max);
 
-/*ШАБЛОННЫЕ ФУНКЦИИ*/
+/*РЁРђР‘Р›РћРќРќР«Р• Р¤РЈРќРљР¦РР*/
 template <class Shape>
 void push_back_shapes(Shape**& array_shapes, int& array_shapes_size, Shape* ptr_new_obj_shape)
 {
@@ -38,7 +38,7 @@ void pop_back_shapes(Shape**& array_shapes, int& array_shapes_size)
 	array_shapes_size -= 1;
 	array_shapes = new_array_shapes;
 }
-//Для массивов объектных указателей на сложные объекты класса (Ring и др.)
+//Р”Р»СЏ РјР°СЃСЃРёРІРѕРІ РѕР±СЉРµРєС‚РЅС‹С… СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° СЃР»РѕР¶РЅС‹Рµ РѕР±СЉРµРєС‚С‹ РєР»Р°СЃСЃР° (Ring Рё РґСЂ.)
 template<class Shape>
 void pop_back_complex_shapes(Shape**& array_complex_shapes, int& array_complex_shapes_size)
 {

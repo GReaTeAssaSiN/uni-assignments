@@ -8,16 +8,16 @@
 #include "class_TTrapeze.h"
 #include "class_TQuadrilateral.h"
 
-//Определение типа фигуры
+//РћРїСЂРµРґРµР»РµРЅРёРµ С‚РёРїР° С„РёРіСѓСЂС‹
 int getChoiceFigure(TFigure** figures_array, int index_of_element);
-//Перемещение
+//РџРµСЂРµРјРµС‰РµРЅРёРµ
 void figuresMoveW(TFigure** figures_array, int index_of_element);
 void figuresMoveA(TFigure** figures_array, int index_of_element);
 void figuresMoveS(TFigure** figures_array, int index_of_element);
 void figuresMoveD(TFigure** figures_array, int index_of_element);
-//Удаление
+//РЈРґР°Р»РµРЅРёРµ
 void deleteFigure(TFigure**& figures_array, int& size_figures_array);
-//Изменение геометрических свойств
+//РР·РјРµРЅРµРЅРёРµ РіРµРѕРјРµС‚СЂРёС‡РµСЃРєРёС… СЃРІРѕР№СЃС‚РІ
 void increaseRadius(TFigure** figures_array, int index_of_element);
 void decreaseRadius(TFigure** figures_array, int index_of_element);
 void increaseSemiMajorAxis(TFigure** figures_array, int index_of_element);

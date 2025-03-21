@@ -7,7 +7,7 @@ namespace CinemaServiceApplication
 	{
 		InitializeComponent();
 		//
-		//TODO: добавьте код конструктора
+		//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 		//
 	}
 	LOG_IN::~LOG_IN()

@@ -2,13 +2,13 @@
 
 TFigure::TFigure()
 {
-	std::cout << "Ñîçäàí êîíñòğóêòîğîì ïî óìîë÷àíèş îáúåêò-òî÷êà ñ êîîğäèíàòàìè:\n(" << m_base_point_x << ", " << m_base_point_y << ")" << std::endl;
+	std::cout << "Ğ¡Ğ¾Ğ·Ğ´Ğ°Ğ½ ĞºĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€Ğ¾Ğ¼ Ğ¿Ğ¾ ÑƒĞ¼Ğ¾Ğ»Ñ‡Ğ°Ğ½Ğ¸Ñ Ğ¾Ğ±ÑŠĞµĞºÑ‚-Ñ‚Ğ¾Ñ‡ĞºĞ° Ñ ĞºĞ¾Ğ¾Ñ€Ğ´Ğ¸Ğ½Ğ°Ñ‚Ğ°Ğ¼Ğ¸:\n(" << m_base_point_x << ", " << m_base_point_y << ")" << std::endl;
 }
 
 TFigure::TFigure(float x_point, float y_point)
 	: m_base_point_x{ x_point }, m_base_point_y{ y_point }
 {
-	std::cout << "Ñîçäàí êîíñòğóêòîğîì ñî ñëó÷àéíûìè ïàğàìåòğàìè îáúåêò-òî÷êà ñ êîîğäèíàòàìè:\n(" << m_base_point_x << ", " << m_base_point_y << ")" << std::endl;
+	std::cout << "Ğ¡Ğ¾Ğ·Ğ´Ğ°Ğ½ ĞºĞ¾Ğ½ÑÑ‚Ñ€ÑƒĞºÑ‚Ğ¾Ñ€Ğ¾Ğ¼ ÑĞ¾ ÑĞ»ÑƒÑ‡Ğ°Ğ¹Ğ½Ñ‹Ğ¼Ğ¸ Ğ¿Ğ°Ñ€Ğ°Ğ¼ĞµÑ‚Ñ€Ğ°Ğ¼Ğ¸ Ğ¾Ğ±ÑŠĞµĞºÑ‚-Ñ‚Ğ¾Ñ‡ĞºĞ° Ñ ĞºĞ¾Ğ¾Ñ€Ğ´Ğ¸Ğ½Ğ°Ñ‚Ğ°Ğ¼Ğ¸:\n(" << m_base_point_x << ", " << m_base_point_y << ")" << std::endl;
 }
 
 void TFigure::Show(sf::RenderWindow& window) {};
@@ -60,5 +60,5 @@ void TFigure::setVisibility(int visibility)
 
 //TFigure::~TFigure()
 //	{
-//		std::cout << "Óäàëåí îáúåêò-òî÷êà ñ êîîğäèíàòàìè:\n(" << m_base_point_x << ", " << m_base_point_y << ")" << std::endl << std::endl;
+//		std::cout << "Ğ£Ğ´Ğ°Ğ»ĞµĞ½ Ğ¾Ğ±ÑŠĞµĞºÑ‚-Ñ‚Ğ¾Ñ‡ĞºĞ° Ñ ĞºĞ¾Ğ¾Ñ€Ğ´Ğ¸Ğ½Ğ°Ñ‚Ğ°Ğ¼Ğ¸:\n(" << m_base_point_x << ", " << m_base_point_y << ")" << std::endl << std::endl;
 //	}

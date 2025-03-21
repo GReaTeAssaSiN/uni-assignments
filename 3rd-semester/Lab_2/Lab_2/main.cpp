@@ -30,7 +30,7 @@ int main()
 		array_rings_size, array_rings,
 		array_mortars_size, array_mortars);
 
-	//Очистка занятой динамической памяти перед выходом из программы
+	//РћС‡РёСЃС‚РєР° Р·Р°РЅСЏС‚РѕР№ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё РїРµСЂРµРґ РІС‹С…РѕРґРѕРј РёР· РїСЂРѕРіСЂР°РјРјС‹
 	//Circle
 	delete ptr_obj_circle;
 	ptr_obj_circle = nullptr;
@@ -46,7 +46,7 @@ int main()
 	//Mortar
 	delete ptr_obj_mortar;
 	ptr_obj_mortar = nullptr;
-	//Массивы кружков, прямоугольников, отрезков и колец
+	//РњР°СЃСЃРёРІС‹ РєСЂСѓР¶РєРѕРІ, РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРѕРІ, РѕС‚СЂРµР·РєРѕРІ Рё РєРѕР»РµС†
 	for (int i{}; i < array_circles_size; i++)
 		array_circles[i]->Free(array_circles[i]);
 	delete[] array_circles;

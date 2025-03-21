@@ -30,7 +30,7 @@ House* House::getPNext()
 House::~House()
 {
 	if (this->getHouseNumber() == -1)
-		std::cout << "\t\t* Заголовочный элемент списка домов был успешно удален." << std::endl;
+		std::cout << "\t\t* Р—Р°РіРѕР»РѕРІРѕС‡РЅС‹Р№ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР° РґРѕРјРѕРІ Р±С‹Р» СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅ." << std::endl;
 	else
-		std::cout << "\t\t* Дом с номером " << this->getHouseNumber() << " и типом строения " << this->getBuildingType() << " был успешно удален." << std::endl;
+		std::cout << "\t\t* Р”РѕРј СЃ РЅРѕРјРµСЂРѕРј " << this->getHouseNumber() << " Рё С‚РёРїРѕРј СЃС‚СЂРѕРµРЅРёСЏ " << this->getBuildingType() << " Р±С‹Р» СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅ." << std::endl;
 };

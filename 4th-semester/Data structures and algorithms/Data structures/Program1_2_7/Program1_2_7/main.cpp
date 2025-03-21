@@ -1,18 +1,18 @@
 #include <iostream>
-#include <cstdlib> //для функций rand() и srand()
-#include <windows.h>//для функции Sleep()
-#include <ctime> //для функции time()
+#include <cstdlib> //РґР»СЏ С„СѓРЅРєС†РёР№ rand() Рё srand()
+#include <windows.h>//РґР»СЏ С„СѓРЅРєС†РёРё Sleep()
+#include <ctime> //РґР»СЏ С„СѓРЅРєС†РёРё time()
 #include "myfuncs.h"
 
 int main()
 {
 	setlocale(LC_ALL, "Rus");
 	Queue* myQueue = new Queue{};
-	srand(static_cast<unsigned int>(time(0)));//Привзяка ГПСЧ к календарному времени (случайные последовательности случайных чисел из диапазона).
-	std::cout << "Датчик псевдослучайных чисел был инициализрован." << std::endl;
+	srand(static_cast<unsigned int>(time(0)));//РџСЂРёРІР·СЏРєР° Р“РџРЎР§ Рє РєР°Р»РµРЅРґР°СЂРЅРѕРјСѓ РІСЂРµРјРµРЅРё (СЃР»СѓС‡Р°Р№РЅС‹Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РёР· РґРёР°РїР°Р·РѕРЅР°).
+	std::cout << "Р”Р°С‚С‡РёРє РїСЃРµРІРґРѕСЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» Р±С‹Р» РёРЅРёС†РёР°Р»РёР·СЂРѕРІР°РЅ." << std::endl;
 	printDashes();
-	int add_remove_elems{}, number_added_removed_elems{}; char symbol{};//Переменные для выбора и реализации действия каждую указанную единицу времени.
-	bool cycle{ true }; int numberActions{};//Переменные для работы с пользователем.
+	int add_remove_elems{}, number_added_removed_elems{}; char symbol{};//РџРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ РІС‹Р±РѕСЂР° Рё СЂРµР°Р»РёР·Р°С†РёРё РґРµР№СЃС‚РІРёСЏ РєР°Р¶РґСѓСЋ СѓРєР°Р·Р°РЅРЅСѓСЋ РµРґРёРЅРёС†Сѓ РІСЂРµРјРµРЅРё.
+	bool cycle{ true }; int numberActions{};//РџРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј.
 	while (cycle)
 	{
 		numberActions++;
@@ -20,7 +20,7 @@ int main()
 		number_added_removed_elems = static_cast<int>(getRandomNumber(1, 3));
 		if (add_remove_elems % 2 == 0)
 		{
-			std::cout << numberActions << ": В очередь будет добавлен(-о) " << number_added_removed_elems << " элемент(-а,-ов)." << std::endl;
+			std::cout << numberActions << ": Р’ РѕС‡РµСЂРµРґСЊ Р±СѓРґРµС‚ РґРѕР±Р°РІР»РµРЅ(-Рѕ) " << number_added_removed_elems << " СЌР»РµРјРµРЅС‚(-Р°,-РѕРІ)." << std::endl;
 			for (int i{ number_added_removed_elems }; i > 0; i--)
 			{
 				symbol = static_cast<char>(getRandomNumber(65, 90));
@@ -29,12 +29,12 @@ int main()
 		}
 		else
 		{
-			std::cout << numberActions << ": Из очереди будет удален(-о) " << number_added_removed_elems << " элемент(-а,-ов)." << std::endl;
+			std::cout << numberActions << ": РР· РѕС‡РµСЂРµРґРё Р±СѓРґРµС‚ СѓРґР°Р»РµРЅ(-Рѕ) " << number_added_removed_elems << " СЌР»РµРјРµРЅС‚(-Р°,-РѕРІ)." << std::endl;
 			for (int i{ number_added_removed_elems }; i > 0; i--)
 			{
 				if (isEmptyQueue(myQueue))
 				{
-					std::cout << "Операция удаления " << i << " (оставшегося(-ихся)) элемента(-ов) из очереди невозможна." << std::endl;
+					std::cout << "РћРїРµСЂР°С†РёСЏ СѓРґР°Р»РµРЅРёСЏ " << i << " (РѕСЃС‚Р°РІС€РµРіРѕСЃСЏ(-РёС…СЃСЏ)) СЌР»РµРјРµРЅС‚Р°(-РѕРІ) РёР· РѕС‡РµСЂРµРґРё РЅРµРІРѕР·РјРѕР¶РЅР°." << std::endl;
 					break;
 				}
 				else
@@ -42,10 +42,10 @@ int main()
 			}
 		}
 		printQueue(myQueue);
-		if (isSymbolQ())//Выход из программы при вводе пользователем символа 'q'.
+		if (isSymbolQ())//Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹ РїСЂРё РІРІРѕРґРµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃРёРјРІРѕР»Р° 'q'.
 			break;
 		printDashes();
-		//Sleep(5000);//Sleep() считает время в тясячных долях секунды.
+		//Sleep(5000);//Sleep() СЃС‡РёС‚Р°РµС‚ РІСЂРµРјСЏ РІ С‚СЏСЃСЏС‡РЅС‹С… РґРѕР»СЏС… СЃРµРєСѓРЅРґС‹.
 	}
 	printDashes();
 	clearQueue(myQueue);

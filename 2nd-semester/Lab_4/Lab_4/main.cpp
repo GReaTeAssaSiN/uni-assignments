@@ -15,9 +15,9 @@ int main()
 	std::string workStr;
 	while (true)
 	{
-		std::cout << "Ââîä ñ êîíñîëè (0) èëè èç ôàéëà (1): ";
+		std::cout << "Ð’Ð²Ð¾Ð´ Ñ ÐºÐ¾Ð½ÑÐ¾Ð»Ð¸ (0) Ð¸Ð»Ð¸ Ð¸Ð· Ñ„Ð°Ð¹Ð»Ð° (1): ";
 		in_lab = get_0_1();
-		std::cout << "Âûâîä íà êîíñîëü (0) èëè â ôàéë (1): ";
+		std::cout << "Ð’Ñ‹Ð²Ð¾Ð´ Ð½Ð° ÐºÐ¾Ð½ÑÐ¾Ð»ÑŒ (0) Ð¸Ð»Ð¸ Ð² Ñ„Ð°Ð¹Ð» (1): ";
 		out_lab = get_0_1();
 		if (in_lab == '1')
 		{
@@ -25,7 +25,7 @@ int main()
 			fin.open(tmpFile);
 			if (!fin.is_open())
 			{
-				std::cout << "Íå óäàëîñü îòêðûòü ôàéë : " << tmpFile << "!" << std::endl;
+				std::cout << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚ÑŒ Ñ„Ð°Ð¹Ð» : " << tmpFile << "!" << std::endl;
 				break;
 			}
 		}
@@ -35,7 +35,7 @@ int main()
 			fout.open(tmpFile);
 			if (!fout.is_open())
 			{
-				std::cout << "Íå óäàëîñü îòêðûòü ôàéë : " << tmpFile << "!" << std::endl;
+				std::cout << "ÐÐµ ÑƒÐ´Ð°Ð»Ð¾ÑÑŒ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚ÑŒ Ñ„Ð°Ð¹Ð» : " << tmpFile << "!" << std::endl;
 				break;
 			}
 		}

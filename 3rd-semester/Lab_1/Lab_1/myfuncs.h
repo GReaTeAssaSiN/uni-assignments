@@ -8,7 +8,7 @@
 
 float getRandomNumber(float min, float max);
 
-/*ØÀÁËÎÍÍÛÅ ÔÓÍÊÖÈÈ*/
+/*Ğ¨ĞĞ‘Ğ›ĞĞĞĞ«Ğ• Ğ¤Ğ£ĞĞšĞ¦Ğ˜Ğ˜*/
 template <class Shape>
 void push_back_shapes(Shape**& array_shapes, int& array_shapes_size, Shape* ptr_new_obj_shape)
 {

@@ -6,23 +6,23 @@
 
 void FirstFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, int& lift_pos_arrival, bool& close_programOut)
 {
-	/////////////////Инициализация спрайтов////////////////////
-	//Загрузка спрайта лифта
+	/////////////////РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРїСЂР°Р№С‚РѕРІ////////////////////
+	//Р—Р°РіСЂСѓР·РєР° СЃРїСЂР°Р№С‚Р° Р»РёС„С‚Р°
 	User_Sprite lift("Lift.png", 10, 10);
 
-	//Загрузка кнопки
+	//Р—Р°РіСЂСѓР·РєР° РєРЅРѕРїРєРё
 	User_Sprite Button("Button.png", 115, 406);
 
-	//Загрузка левой двери
+	//Р—Р°РіСЂСѓР·РєР° Р»РµРІРѕР№ РґРІРµСЂРё
 	User_Sprite LeftDoor("Left_Door.png", 204, 213);
 
-	//Загрузка правой двери
+	//Р—Р°РіСЂСѓР·РєР° РїСЂР°РІРѕР№ РґРІРµСЂРё
 	User_Sprite RightDoor("Right_Door.png", 351, 213);
 
-	//BG лифта
+	//BG Р»РёС„С‚Р°
 	User_Sprite BGlift("Lift_BG.png", 204, 213);
 
-	//Загрузка текста вызова лифта
+	//Р—Р°РіСЂСѓР·РєР° С‚РµРєСЃС‚Р° РІС‹Р·РѕРІР° Р»РёС„С‚Р°
 	sf::Font button_doors_font;
 	button_doors_font.loadFromFile("fonts/Comic_Sans_MS.TTF");
 	sf::Text button_doors_text("", button_doors_font, 10);
@@ -30,49 +30,49 @@ void FirstFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, int& lif
 	button_doors_text.setString("Press button\nto call lift:");
 	button_doors_text.setPosition(105, 360);
 
-	//Загрузка выбора этажа
+	//Р—Р°РіСЂСѓР·РєР° РІС‹Р±РѕСЂР° СЌС‚Р°Р¶Р°
 	User_Sprite Button_plus("Plus.png", 915, 100);
 	User_Sprite Button_minus("Minus.png", 765, 100);
 
-	//Загрузка текста выбора этажа
+	//Р—Р°РіСЂСѓР·РєР° С‚РµРєСЃС‚Р° РІС‹Р±РѕСЂР° СЌС‚Р°Р¶Р°
 	sf::Font floor_font;
 	floor_font.loadFromFile("fonts/CyrilicOLD.TTF");
 	sf::Text floor_text("", floor_font, 20);
 	floor_text.setFillColor(sf::Color::Black);
-	floor_text.setString("Ваш этаж: 1");
+	floor_text.setString("Р’Р°С€ СЌС‚Р°Р¶: 1");
 	floor_text.setPosition(800, 100);
 
-	//Время и переменные (для анимации дверей)
+	//Р’СЂРµРјСЏ Рё РїРµСЂРµРјРµРЅРЅС‹Рµ (РґР»СЏ Р°РЅРёРјР°С†РёРё РґРІРµСЂРµР№)
 	float speed_doors{ 0 };
 	float sum_doors{ 0 };
 
-	//Загрузка кнопки готово
+	//Р—Р°РіСЂСѓР·РєР° РєРЅРѕРїРєРё РіРѕС‚РѕРІРѕ
 	User_Sprite ready_button("Ready_Button.png", 770, 130);
 
-	//Переменные для кнопок выбора этажа у человека
+	//РџРµСЂРµРјРµРЅРЅС‹Рµ РґР»СЏ РєРЅРѕРїРѕРє РІС‹Р±РѕСЂР° СЌС‚Р°Р¶Р° Сѓ С‡РµР»РѕРІРµРєР°
 	int floor_num{ 1 };
 	std::ostringstream floor_str;
 	int isFloor{ 1 };
 
-	//marher_floor загрузка маркера этажа
+	//marher_floor Р·Р°РіСЂСѓР·РєР° РјР°СЂРєРµСЂР° СЌС‚Р°Р¶Р°
 	User_Sprite marker("marker_floor.png", 277 + 15 * (lift_pos_arrival - 1), 150);
 
-	//Загрузка текста входа
+	//Р—Р°РіСЂСѓР·РєР° С‚РµРєСЃС‚Р° РІС…РѕРґР°
 	sf::Font entrance_font;
 	entrance_font.loadFromFile("fonts/CyrilicOLD.TTF");
 	sf::Text entrance_text("", entrance_font, 30);
 	entrance_text.setFillColor(sf::Color::Magenta);
-	entrance_text.setString("Войти");
+	entrance_text.setString("Р’РѕР№С‚Рё");
 	entrance_text.setPosition(320, 280);
 
-	//Переменная для передвижения маркера
+	//РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ РїРµСЂРµРґРІРёР¶РµРЅРёСЏ РјР°СЂРєРµСЂР°
 	int dx{ marker.x };
 
 	while (window.isOpen())
 	{
 		CloseWindow(window, close_programOut);
 
-		///////////////////////////////////////////Кнопки выбора этажа////////////////////////////////////////
+		///////////////////////////////////////////РљРЅРѕРїРєРё РІС‹Р±РѕСЂР° СЌС‚Р°Р¶Р°////////////////////////////////////////
 		while (isFloor)
 		{
 			Button_minus.sprite.setColor(sf::Color::White);
@@ -119,7 +119,7 @@ void FirstFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, int& lif
 					}
 					floor_str.str("");
 					floor_str << floor_num;
-					floor_text.setString("Ваш этаж: " + floor_str.str());
+					floor_text.setString("Р’Р°С€ СЌС‚Р°Р¶: " + floor_str.str());
 					std::cout << "Your floor is " << floor_str.str() << std::endl;
 				}
 			}
@@ -137,10 +137,10 @@ void FirstFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, int& lif
 
 		}
 
-		//Для положения отправки лифта
+		//Р”Р»СЏ РїРѕР»РѕР¶РµРЅРёСЏ РѕС‚РїСЂР°РІРєРё Р»РёС„С‚Р°
 		lift_pos_sending = floor_num;
 
-		//////////////////////////////////////////Анимация двери//////////////////////////////////
+		//////////////////////////////////////////РђРЅРёРјР°С†РёСЏ РґРІРµСЂРё//////////////////////////////////
 		if (isFloor == 0)
 		{
 			Button.sprite.setColor(sf::Color::White);
@@ -157,7 +157,7 @@ void FirstFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, int& lif
 						CloseWindow(window, close_programOut);
 
 						sf::Clock clock_marker;
-						//Время и переменный (для анимации маркера)
+						//Р’СЂРµРјСЏ Рё РїРµСЂРµРјРµРЅРЅС‹Р№ (РґР»СЏ Р°РЅРёРјР°С†РёРё РјР°СЂРєРµСЂР°)
 						int wait_marker{ 0 };
 						int sum_marker{ 0 };
 
@@ -165,8 +165,8 @@ void FirstFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, int& lif
 						{
 							float time = clock_marker.getElapsedTime().asMilliseconds();
 							clock_marker.restart();
-							wait_marker += time;//Ожидание маркера для движения на следующий этаж
-							sum_marker += 0.005 * wait_marker;//Накапливание ожидания маркера
+							wait_marker += time;//РћР¶РёРґР°РЅРёРµ РјР°СЂРєРµСЂР° РґР»СЏ РґРІРёР¶РµРЅРёСЏ РЅР° СЃР»РµРґСѓСЋС‰РёР№ СЌС‚Р°Р¶
+							sum_marker += 0.005 * wait_marker;//РќР°РєР°РїР»РёРІР°РЅРёРµ РѕР¶РёРґР°РЅРёСЏ РјР°СЂРєРµСЂР°
 							std::cout << "Your floor is " << lift_pos_sending << ". Floor of elevator is " << lift_pos_arrival << std::endl;
 						}
 
@@ -208,22 +208,22 @@ void FirstFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, int& lif
 						}
 					}
 
-					sf::Clock clock_doors; //Чтобы не было мчащих дверей
+					sf::Clock clock_doors; //Р§С‚РѕР±С‹ РЅРµ Р±С‹Р»Рѕ РјС‡Р°С‰РёС… РґРІРµСЂРµР№
 
 					while (sum_doors <= 120)
 					{
 						CloseWindow(window, close_programOut);
 
-						//SFML - время
+						//SFML - РІСЂРµРјСЏ
 						float time = clock_doors.getElapsedTime().asMilliseconds();
 						clock_doors.restart();
 						time = time / 800;
-						speed_doors += time;//Скорость дверей (с ускорением)
-						sum_doors += 0.04 * speed_doors;//Смещение
+						speed_doors += time;//РЎРєРѕСЂРѕСЃС‚СЊ РґРІРµСЂРµР№ (СЃ СѓСЃРєРѕСЂРµРЅРёРµРј)
+						sum_doors += 0.04 * speed_doors;//РЎРјРµС‰РµРЅРёРµ
 
-						LeftDoor.sprite.move(-0.04 * speed_doors, 0);//Левая дверь
-						RightDoor.sprite.move(0.04 * speed_doors, 0);//Правая дверь
-						//Покадровый вывод цикла
+						LeftDoor.sprite.move(-0.04 * speed_doors, 0);//Р›РµРІР°СЏ РґРІРµСЂСЊ
+						RightDoor.sprite.move(0.04 * speed_doors, 0);//РџСЂР°РІР°СЏ РґРІРµСЂСЊ
+						//РџРѕРєР°РґСЂРѕРІС‹Р№ РІС‹РІРѕРґ С†РёРєР»Р°
 						window.clear();
 						window.draw(BGlift.sprite);
 						window.draw(LeftDoor.sprite);
@@ -237,7 +237,7 @@ void FirstFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, int& lif
 				}
 			}
 
-			////Выгрузка всех спрайтов (лифт и кнопка)
+			////Р’С‹РіСЂСѓР·РєР° РІСЃРµС… СЃРїСЂР°Р№С‚РѕРІ (Р»РёС„С‚ Рё РєРЅРѕРїРєР°)
 			window.clear();
 			window.draw(BGlift.sprite);
 			window.draw(LeftDoor.sprite);
@@ -268,22 +268,22 @@ void FirstFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, int& lif
 
 void SecondFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, bool& close_programOut)
 {
-	//Положение лифта на этаже (прибытие)
+	//РџРѕР»РѕР¶РµРЅРёРµ Р»РёС„С‚Р° РЅР° СЌС‚Р°Р¶Рµ (РїСЂРёР±С‹С‚РёРµ)
 	int lift_pos_arrival{ 1 };
 
-	//Нажать можно только одну кнопку и контроль
+	//РќР°Р¶Р°С‚СЊ РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ РѕРґРЅСѓ РєРЅРѕРїРєСѓ Рё РєРѕРЅС‚СЂРѕР»СЊ
 	int isTap{ 1 };
 
-	//Загрузка кабины лифта
+	//Р—Р°РіСЂСѓР·РєР° РєР°Р±РёРЅС‹ Р»РёС„С‚Р°
 	User_Sprite CabinPanel("Cabin_panel.png", 10, 10);
 
-	//Загрузка индикаторов
+	//Р—Р°РіСЂСѓР·РєР° РёРЅРґРёРєР°С‚РѕСЂРѕРІ
 	User_Sprite Indicators("Indicator_Panel.png", 0, 0);
 
-	//Загрузка спрайта выхода
+	//Р—Р°РіСЂСѓР·РєР° СЃРїСЂР°Р№С‚Р° РІС‹С…РѕРґР°
 	User_Sprite exit("Exit.png", 200, 100);
 
-	///////////////////////////////////Загрузка кнопок лифта
+	///////////////////////////////////Р—Р°РіСЂСѓР·РєР° РєРЅРѕРїРѕРє Р»РёС„С‚Р°
 	sf::CircleShape circle1;
 	circle1.setFillColor(sf::Color(221, 221, 221));
 	circle1.setRadius(13);
@@ -354,7 +354,7 @@ void SecondFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, bool& c
 	circle10.setOutlineThickness(5);
 	circle10.setPosition(633, 403);
 
-	//////////////////////Загрузка текста для кнопок, чтобы не окрашивались
+	//////////////////////Р—Р°РіСЂСѓР·РєР° С‚РµРєСЃС‚Р° РґР»СЏ РєРЅРѕРїРѕРє, С‡С‚РѕР±С‹ РЅРµ РѕРєСЂР°С€РёРІР°Р»РёСЃСЊ
 	sf::Font circles_font;
 	circles_font.loadFromFile("fonts/Comic_Sans_MS.TTF");
 
@@ -445,7 +445,7 @@ void SecondFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, bool& c
 					window.draw(Indicators.sprite);
 				}
 
-			//Возврат цвета кнопок
+			//Р’РѕР·РІСЂР°С‚ С†РІРµС‚Р° РєРЅРѕРїРѕРє
 			circle1.setFillColor(sf::Color::White);
 			circle2.setFillColor(sf::Color::White);
 			circle3.setFillColor(sf::Color::White);
@@ -597,7 +597,7 @@ void SecondFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, bool& c
 			{
 				CloseWindow(window, close_programOut);
 
-				//SFML время для задержки смены тайлсета
+				//SFML РІСЂРµРјСЏ РґР»СЏ Р·Р°РґРµСЂР¶РєРё СЃРјРµРЅС‹ С‚Р°Р№Р»СЃРµС‚Р°
 				sf::Clock clock;
 				int wait{ 0 }, sum{ 0 };
 
@@ -637,7 +637,7 @@ void SecondFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, bool& c
 						}
 				}
 
-				//Задержка
+				//Р—Р°РґРµСЂР¶РєР°
 				while ((sum <= 120) && (close_programOut == false))
 				{
 					float time = clock.getElapsedTime().asMilliseconds();
@@ -647,7 +647,7 @@ void SecondFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, bool& c
 					std::cout << "TIME_WAIT_TILESET = " << sum << std::endl;
 				}
 
-				//После задержки вывод тайлсетов
+				//РџРѕСЃР»Рµ Р·Р°РґРµСЂР¶РєРё РІС‹РІРѕРґ С‚Р°Р№Р»СЃРµС‚РѕРІ
 				if (sum > 120)
 				{
 					if (lift_pos_sending == 1)
@@ -762,7 +762,7 @@ void SecondFrameProgram(sf::RenderWindow& window, int& lift_pos_sending, bool& c
 								window.draw(Indicators.sprite);
 							}
 				}
-				//Рисует пустой тайлсет стрелки, так как Вы приехали
+				//Р РёСЃСѓРµС‚ РїСѓСЃС‚РѕР№ С‚Р°Р№Р»СЃРµС‚ СЃС‚СЂРµР»РєРё, С‚Р°Рє РєР°Рє Р’С‹ РїСЂРёРµС…Р°Р»Рё
 				if (lift_pos_sending == lift_pos_arrival)
 					for (unsigned i = 0; i < HEIGHT_PANEL; i++)
 						for (unsigned j = 0; j < WIDTH_PANEL_ARROW; j++)
@@ -978,7 +978,7 @@ bool MenuGame(sf::RenderWindow& window)
 	menu1.setPosition(10, 160);
 	menu2.setPosition(6, 220);
 
-	//////////////////////////МЕНЮ//////////////////////////
+	//////////////////////////РњР•РќР®//////////////////////////
 	while (isMenu)
 	{
 		menu1.setColor(sf::Color::White);

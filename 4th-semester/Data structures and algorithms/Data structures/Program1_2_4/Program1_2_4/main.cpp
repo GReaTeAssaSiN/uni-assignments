@@ -13,9 +13,9 @@ int main()
 		{
 		case '1':
 			if (isEmpty(baseStack))
-				std::cout << "Îñíîâíîé ñòåê ïóñò." << std::endl;
+				std::cout << "ÐžÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ ÑÑ‚ÐµÐº Ð¿ÑƒÑÑ‚." << std::endl;
 			else
-				std::cout << "Îñíîâíîé ñòåê ñîäåðæèò " << baseStack->count << " ýëåìåíò(-à, -îâ)." << std::endl;
+				std::cout << "ÐžÑÐ½Ð¾Ð²Ð½Ð¾Ð¹ ÑÑ‚ÐµÐº ÑÐ¾Ð´ÐµÑ€Ð¶Ð¸Ñ‚ " << baseStack->count << " ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚(-Ð°, -Ð¾Ð²)." << std::endl;
 			break;
 		case '2':
 			user_push(baseStack, auxiliaryStack);

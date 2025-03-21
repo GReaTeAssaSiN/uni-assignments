@@ -35,7 +35,7 @@ ReviewButtonForReviewCatalog::ReviewButtonForReviewCatalog(SqlDataReader^ reader
 	this->cinemaName_label->Size = System::Drawing::Size(415, 50);
 	this->cinemaName_label->MaximumSize = System::Drawing::Size(415, 50);
 	this->cinemaName_label->MinimumSize = System::Drawing::Size(415, 50);
-	this->cinemaName_label->Text = "ÊÈÍÎÒÅÀÒÐ: " + this->review->getCinemaName();
+	this->cinemaName_label->Text = "ÐšÐ˜ÐÐžÐ¢Ð•ÐÐ¢Ð : " + this->review->getCinemaName();
 	this->cinemaName_label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 	//
 	// movieName_label
@@ -48,7 +48,7 @@ ReviewButtonForReviewCatalog::ReviewButtonForReviewCatalog(SqlDataReader^ reader
 	this->movieName_label->Size = System::Drawing::Size(210, 50);
 	this->movieName_label->MaximumSize = System::Drawing::Size(210, 50);
 	this->movieName_label->MinimumSize = System::Drawing::Size(210, 50);
-	this->movieName_label->Text = "ÔÈËÜÌ: " + this->review->getMovieName();
+	this->movieName_label->Text = "Ð¤Ð˜Ð›Ð¬Ðœ: " + this->review->getMovieName();
 	this->movieName_label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 	//
 	// assmnt_movie_pictBox

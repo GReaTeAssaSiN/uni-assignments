@@ -1,68 +1,68 @@
-#include <cstdlib> //для функций rand() и srand()
-#include <ctime> //для функции time()
+#include <cstdlib> //РґР»СЏ С„СѓРЅРєС†РёР№ rand() Рё srand()
+#include <ctime> //РґР»СЏ С„СѓРЅРєС†РёРё time()
 #include "myfuncs.h"
 #include "FiguresFuncs.h"
 #include "user_buttons.h"
 
-//ГПСЧ
+//Р“РџРЎР§
 float getRandomNumber(float min, float max)
 {
 	static const float fraction = 1.0 / (static_cast<float>(RAND_MAX) + 1.0);
 	return (rand() * fraction * (max - min + 1) + min);
 }
 
-//Оновная работа программы
+//РћРЅРѕРІРЅР°СЏ СЂР°Р±РѕС‚Р° РїСЂРѕРіСЂР°РјРјС‹
 int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figures_dynamic_array, LynearDynamicList*& ptr_container_figures_lynear_dynamic_list, 
 	TFigure*& ptr_graphic_primitive, int& size_container_figures_dynamic_array, int& size_container_figures_lynear_dynamic_list)
 {
-	/*СОЗДАНИЕ ФОНА ОКНА*/
-	//Меню
+	/*РЎРћР—Р”РђРќРР• Р¤РћРќРђ РћРљРќРђ*/
+	//РњРµРЅСЋ
 	Rect_BG_buttons BG_general(0, 0, 700, 895, 5);
 	BG_general.m_setFillColor(5, 90, 1);
 	//IMAGE
 	User_texts image_text("Comic_Sans_MS.TTF", " I  M  A  G  E ", 870, 0, 70);
-	//Панель меню
+	//РџР°РЅРµР»СЊ РјРµРЅСЋ
 	Rect_BG_buttons BG_menu(5, 5, 695, 85, 5);
 	User_texts menu_text("Comic_Sans_MS.TTF", "M E N U ", 120, 0, 70);
-	//Кнопка EXIT
+	//РљРЅРѕРїРєР° EXIT
 	Rect_BG_buttons BG_exit(5, 840, 160, 50, 5);
 	User_texts exit_text("Comic_Sans_MS.TTF", "E X I T", 25, 850, 30);
-	//Переход на следующую или предыдущую страницу
+	//РџРµСЂРµС…РѕРґ РЅР° СЃР»РµРґСѓСЋС‰СѓСЋ РёР»Рё РїСЂРµРґС‹РґСѓС‰СѓСЋ СЃС‚СЂР°РЅРёС†Сѓ
 	Rect_BG_buttons BG_next(600, 5, 100, 85, 5);
 	User_texts next_text("Comic_Sans_MS.TTF", "NEXT", 605, 30, 30);
 	Rect_BG_buttons BG_back(495, 5, 100, 85, 5);
 	User_texts back_text("Comic_Sans_MS.TTF", "BACK", 500, 30, 30);
 
-	/*КНОПКИ ОБРАБОТКИ СОБЫТИЙ*/
-	//Контейнер на базе динамического массива
+	/*РљРќРћРџРљР РћР‘Р РђР‘РћРўРљР РЎРћР‘Р«РўРР™*/
+	//РљРѕРЅС‚РµР№РЅРµСЂ РЅР° Р±Р°Р·Рµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°
 	Rect_BG_buttons BG_ContainerFiguresDynamicArray(5, 96, 200, 60, 5);
 	User_texts ContainerFiguresDynamicArray_text("Comic_Sans_MS.TTF", "   CONTAINER\n(DYNAMIC_ARRAY)", 10, 100, 18);
-	//Создать
+	//РЎРѕР·РґР°С‚СЊ
 	Rect_BG_buttons BG_CreateContainerFiguresDynamicArray(15, 171, 180, 40, 5);
 	User_texts CreateContainerFiguresDynamicArray_text("Comic_Sans_MS.TTF", "CREATE", 45, 175, 27);
-	//Добавить элемент
+	//Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚
 	Rect_BG_buttons BG_AddNewElemCFDA(15, 226, 180, 40, 5);
 	User_texts AddNewElemCFDA_text("Comic_Sans_MS.TTF", "ADD NEW ELEM", 25, 235, 20);
-	//Уничтожить
+	//РЈРЅРёС‡С‚РѕР¶РёС‚СЊ
 	Rect_BG_buttons BG_DestroyCFDA(15, 281, 180, 40, 5);
 	User_texts DestroyCFDA_text("Comic_Sans_MS.TTF", "DESTROY", 35, 285, 27);
-	//Стереть
+	//РЎС‚РµСЂРµС‚СЊ
 	Rect_BG_buttons BG_EraseCFDA(15, 336, 180, 40, 5);
 	User_texts EraseCFDA_text("Comic_Sans_MS.TTF", "ERASE", 35, 340, 27);
-	//Показать
+	//РџРѕРєР°Р·Р°С‚СЊ
 	Rect_BG_buttons BG_ShowCFDA(15, 391, 180, 40, 5);
 	User_texts ShowCFDA_text("Comic_Sans_MS.TTF", "SHOW", 35, 395, 27);
-	//Переместить
+	//РџРµСЂРµРјРµСЃС‚РёС‚СЊ
 	Rect_BG_buttons BG_MoveCFDA(15, 446, 180, 40, 5);
 	User_texts MoveCFDA_text("Comic_Sans_MS.TTF", "MOVE", 35, 450, 27);
-	//Подиерархия кругов
+	//РџРѕРґРёРµСЂР°СЂС…РёСЏ РєСЂСѓРіРѕРІ
 	Rect_BG_buttons BG_MoveUnderCircleHierarchyCFDA(15, 501, 600, 40, 5);
 	User_texts MoveUnderCircleHierarchyCFDA_text("Comic_Sans_MS.TTF", "MOVE UNDER CIRCLE HEIRARCHY", 35, 505, 24);
 	User_texts ChangeDimensionsUnderCircleHierarchyCFDA_text("Comic_Sans_MS.TTF",
 		"\t\tUNDER CIRCLE HIERARCHY\n(q) - increase radius (circle)\n(e) - decrease radius (circle)\n(z) - increase semi major axis (ellipse)"
 		"\n(x) - decrease semi major axis(ellipse)\n(c) - increase semi minor axis(ellipse)\n(v) - decrease semi minor axis(ellipse)\n(f) - rotate(ellipse)",
 		20, 605, 16);
-	//Подиерархия четырехугольников
+	//РџРѕРґРёРµСЂР°СЂС…РёСЏ С‡РµС‚С‹СЂРµС…СѓРіРѕР»СЊРЅРёРєРѕРІ
 	Rect_BG_buttons BG_MoveUnderQuadrilateralHierarchyCFDA(15, 556, 600, 40, 5);
 	User_texts MoveUnderQuadrilateralHierarchyCFDA_text("Comic_Sans_MS.TTF", "MOVE UNDER QUADRILATERAL HEIRARCHY", 35, 560, 24);
 	User_texts ChangeDimensionsUnderQuadrilateralHierarchyCFDA_text("Comic_Sans_MS.TTF",
@@ -71,35 +71,35 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 		"\n(n) - increase TopBase (trapeze)\n(m) - decrease TopBase (trapeze)\n(UP) - increase height (trapeze)\n(DOWN) - decrease height (trapeze)\n(RIGHT) - increase BottomBase (trapeze)\n(LEFT) - decrease BottomBase (trapeze)",
 		230, 110, 13);
 
-	//Контейнер на базе линейного списка (односвязного динамического)
+	//РљРѕРЅС‚РµР№РЅРµСЂ РЅР° Р±Р°Р·Рµ Р»РёРЅРµР№РЅРѕРіРѕ СЃРїРёСЃРєР° (РѕРґРЅРѕСЃРІСЏР·РЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ)
 	Rect_BG_buttons BG_ContainerFiguresLinearDynamicList(5, 96, 200, 60, 5);
 	User_texts ContainerFiguresLinearDynamicList_text("Comic_Sans_MS.TTF", "         CONTAINER\n(LYNEAR_DYNAMIC_LIST)", 6, 110, 13);
-	//Создать
+	//РЎРѕР·РґР°С‚СЊ
 	Rect_BG_buttons BG_CreateContainerFiguresLinearDynamicList(15, 171, 180, 40, 5);
 	User_texts CreateContainerFiguresLinearDynamicList_text("Comic_Sans_MS.TTF", "CREATE", 45, 175, 27);
-	//Добавить элемент
+	//Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚
 	Rect_BG_buttons BG_AddNewElemCFLDL(15, 226, 180, 40, 5);
 	User_texts AddNewElemCFLDL_text("Comic_Sans_MS.TTF", "ADD NEW ELEM", 25, 235, 20);
-	//Уничтожить
+	//РЈРЅРёС‡С‚РѕР¶РёС‚СЊ
 	Rect_BG_buttons BG_DestroyCFLDL(15, 281, 180, 40, 5);
 	User_texts DestroyCFLDL_text("Comic_Sans_MS.TTF", "DESTROY", 35, 285, 27);
-	//Стереть
+	//РЎС‚РµСЂРµС‚СЊ
 	Rect_BG_buttons BG_EraseCFLDL(15, 336, 180, 40, 5);
 	User_texts EraseCFLDL_text("Comic_Sans_MS.TTF", "ERASE", 35, 340, 27);
-	//Показать
+	//РџРѕРєР°Р·Р°С‚СЊ
 	Rect_BG_buttons BG_ShowCFLDL(15, 391, 180, 40, 5);
 	User_texts ShowCFLDL_text("Comic_Sans_MS.TTF", "SHOW", 35, 395, 27);
-	//Переместить
+	//РџРµСЂРµРјРµСЃС‚РёС‚СЊ
 	Rect_BG_buttons BG_MoveCFLDL(15, 446, 180, 40, 5);
 	User_texts MoveCFLDL_text("Comic_Sans_MS.TTF", "MOVE", 35, 450, 27);
-	//Подиерархия кругов
+	//РџРѕРґРёРµСЂР°СЂС…РёСЏ РєСЂСѓРіРѕРІ
 	Rect_BG_buttons BG_MoveUnderCircleHierarchyCFLDL(15, 501, 600, 40, 5);
 	User_texts MoveUnderCircleHierarchyCFLDL_text("Comic_Sans_MS.TTF", "MOVE UNDER CIRCLE HEIRARCHY", 35, 505, 24);
 	User_texts ChangeDimensionsUnderCircleHierarchyCFLDL_text("Comic_Sans_MS.TTF",
 		"\t\tUNDER CIRCLE HIERARCHY\n(q) - increase radius (circle)\n(e) - decrease radius (circle)\n(z) - increase semi major axis (ellipse)"
 		"\n(x) - decrease semi major axis(ellipse)\n(c) - increase semi minor axis(ellipse)\n(v) - decrease semi minor axis(ellipse)\n(f) - rotate(ellipse)",
 		20, 605, 16);
-	//Подиерархия четырехугольников
+	//РџРѕРґРёРµСЂР°СЂС…РёСЏ С‡РµС‚С‹СЂРµС…СѓРіРѕР»СЊРЅРёРєРѕРІ
 	Rect_BG_buttons BG_MoveUnderQuadrilateralHierarchyCFLDL(15, 556, 600, 40, 5);
 	User_texts MoveUnderQuadrilateralHierarchyCFLDL_text("Comic_Sans_MS.TTF", "MOVE UNDER QUADRILATERAL HEIRARCHY", 35, 560, 24);
 	User_texts ChangeDimensionsUnderQuadrilateralHierarchyCFLDL_text("Comic_Sans_MS.TTF",
@@ -109,26 +109,26 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 		230, 110, 13);
 
 
-	//Привзяка ГПСЧ к календарному времени (случайные последовательности случайных чисел из диапазона)
+	//РџСЂРёРІР·СЏРєР° Р“РџРЎР§ Рє РєР°Р»РµРЅРґР°СЂРЅРѕРјСѓ РІСЂРµРјРµРЅРё (СЃР»СѓС‡Р°Р№РЅС‹Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РёР· РґРёР°РїР°Р·РѕРЅР°)
 	srand(static_cast<unsigned int>(time(0)));
 
 	//EXTRAMENU
 	int extramenu{ 1 };
 
-	//Внешние переменные функции
-	bool submenu_container_figures_dynamic_array{ false };//CONTAINER_FIGURES_DYNAMIC_ARRAY->открывается подменю
-	bool submenu_container_figures_linear_dynamic_list{ false };//CONTAINER_FIGURES_LINEAR_DYNAMIC_LIST->открывается подменю
-	//Подменю
+	//Р’РЅРµС€РЅРёРµ РїРµСЂРµРјРµРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
+	bool submenu_container_figures_dynamic_array{ false };//CONTAINER_FIGURES_DYNAMIC_ARRAY->РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ РїРѕРґРјРµРЅСЋ
+	bool submenu_container_figures_linear_dynamic_list{ false };//CONTAINER_FIGURES_LINEAR_DYNAMIC_LIST->РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ РїРѕРґРјРµРЅСЋ
+	//РџРѕРґРјРµРЅСЋ
 	bool create_CFDA{ false }, destroy_CFDA{ false }, show_CFDA{ true }, move_CFDA{ false };
 	bool create_CFLDL{ false }, destroy_CFLDL{ false }, show_CFLDL{ true }, move_CFLDL{ false };
-	//Обработка подиерархий
+	//РћР±СЂР°Р±РѕС‚РєР° РїРѕРґРёРµСЂР°СЂС…РёР№
 	bool move_under_circle_hierarchy_CFDA{ false }, move_under_quadrilateral_hierarchy_CFDA{ false };
 	bool move_under_circle_hierarchy_CFLDL{ false }, move_under_quadrilateral_hierarchy_CFLDL{ false };
 
 	while (window.isOpen())
 	{
-		/*ПОКАДРОВАЯ ОБРАБОТКА ЦВЕТОВ СОЗДАННЫХ ОБЪЕКТОВ НА ОКНЕ*/
-		//Фон меню и кнопки меню
+		/*РџРћРљРђР”Р РћР’РђРЇ РћР‘Р РђР‘РћРўРљРђ Р¦Р’Р•РўРћР’ РЎРћР—Р”РђРќРќР«РҐ РћР‘РЄР•РљРўРћР’ РќРђ РћРљРќР•*/
+		//Р¤РѕРЅ РјРµРЅСЋ Рё РєРЅРѕРїРєРё РјРµРЅСЋ
 		image_text.m_setFillColor(111, 206, 253);
 		BG_exit.m_setDefaultColor();
 		exit_text.m_setDefaultColor();
@@ -136,8 +136,8 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 		next_text.m_setDefaultColor();
 		BG_back.m_setFillColor(195, 195, 195);
 		back_text.m_setDefaultColor();
-		//Кнопки обработки фигур
-		//Динамический массив
+		//РљРЅРѕРїРєРё РѕР±СЂР°Р±РѕС‚РєРё С„РёРіСѓСЂ
+		//Р”РёРЅР°РјРёС‡РµСЃРєРёР№ РјР°СЃСЃРёРІ
 		BG_ContainerFiguresDynamicArray.m_setFillColor(26, 255, 255);
 		ContainerFiguresDynamicArray_text.m_setFillColor(24, 48, 229);
 		BG_CreateContainerFiguresDynamicArray.m_setFillColor(195, 195, 195);
@@ -152,7 +152,7 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 		ShowCFDA_text.m_setDefaultColor();
 		ChangeDimensionsUnderCircleHierarchyCFDA_text.m_setFillColor(209, 255, 26);
 		ChangeDimensionsUnderQuadrilateralHierarchyCFDA_text.m_setFillColor(209, 255, 26);
-		//Динамический линейный список
+		//Р”РёРЅР°РјРёС‡РµСЃРєРёР№ Р»РёРЅРµР№РЅС‹Р№ СЃРїРёСЃРѕРє
 		BG_ContainerFiguresLinearDynamicList.m_setFillColor(26, 255, 255);
 		ContainerFiguresLinearDynamicList_text.m_setFillColor(24, 48, 229);
 		BG_CreateContainerFiguresLinearDynamicList.m_setFillColor(195, 195, 195);
@@ -168,22 +168,22 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 		ChangeDimensionsUnderCircleHierarchyCFLDL_text.m_setFillColor(209, 255, 26);
 		ChangeDimensionsUnderQuadrilateralHierarchyCFLDL_text.m_setFillColor(209, 255, 26);
 
-		/*БУЛЕВЫЕ ПЕРЕМЕННЫЕ ДЛЯ ПОЛОЖЕНИЯ КУРСОРА НА КНОПКЕ*/
-		//Кнопки меню
+		/*Р‘РЈР›Р•Р’Р«Р• РџР•Р Р•РњР•РќРќР«Р• Р”Р›РЇ РџРћР›РћР–Р•РќРРЇ РљРЈР РЎРћР Рђ РќРђ РљРќРћРџРљР•*/
+		//РљРЅРѕРїРєРё РјРµРЅСЋ
 		bool stage_exit{ false }, stage_next{ false }, stage_back{ false };
-		//Кнопки обработки фигур
-		/*Контейнер на базе динамического массива*/
+		//РљРЅРѕРїРєРё РѕР±СЂР°Р±РѕС‚РєРё С„РёРіСѓСЂ
+		/*РљРѕРЅС‚РµР№РЅРµСЂ РЅР° Р±Р°Р·Рµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°*/
 		bool stage_container_figures_dynamic_array{ false }, stage_create_CFDA{ false }, stage_add_new_elem_CFDA{ false }, stage_destroy_CFDA{ false },
 			stage_erase_CFDA{ false }, stage_show_CFDA{ false }, stage_move_CFDA{ false };
-		//Кнопки обработки подиерархий
+		//РљРЅРѕРїРєРё РѕР±СЂР°Р±РѕС‚РєРё РїРѕРґРёРµСЂР°СЂС…РёР№
 		bool stage_move_under_circle_hierarchy_CFDA{ false }, stage_move_under_quadrilateral_hierarchy_CFDA{ false };
-		/*Контейнер на базе динамического линейного списка*/
+		/*РљРѕРЅС‚РµР№РЅРµСЂ РЅР° Р±Р°Р·Рµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ Р»РёРЅРµР№РЅРѕРіРѕ СЃРїРёСЃРєР°*/
 		bool stage_container_figures_linear_dynamic_list{ false }, stage_create_CFLDL{ false }, stage_add_new_elem_CFLDL{ false }, stage_destroy_CFLDL{ false },
 			stage_erase_CFLDL{ false }, stage_show_CFLDL{ false }, stage_move_CFLDL{ false };
-		//Кнопки обработки подиерархий
+		//РљРЅРѕРїРєРё РѕР±СЂР°Р±РѕС‚РєРё РїРѕРґРёРµСЂР°СЂС…РёР№
 		bool stage_move_under_circle_hierarchy_CFLDL{ false }, stage_move_under_quadrilateral_hierarchy_CFLDL{ false };
 
-		/*ОКРАШИВАНИЕ АКТИВНЫХ КНОПОК*/
+		/*РћРљР РђРЁРР’РђРќРР• РђРљРўРР’РќР«РҐ РљРќРћРџРћРљ*/
 		if (!submenu_container_figures_dynamic_array)
 		{
 			BG_ContainerFiguresDynamicArray.m_setDefaultColor();
@@ -225,7 +225,7 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 			MoveUnderQuadrilateralHierarchyCFLDL_text.m_setDefaultColor();
 		}
 
-		/*ОКРАШИВАНИЕ КНОПОК ПРИ НАВЕДЕНИИ КУРСОРА МЫШИ (с изменением значения соответствующих переменных*/
+		/*РћРљР РђРЁРР’РђРќРР• РљРќРћРџРћРљ РџР Р РќРђР’Р•Р”Р•РќРР РљРЈР РЎРћР Рђ РњР«РЁР (СЃ РёР·РјРµРЅРµРЅРёРµРј Р·РЅР°С‡РµРЅРёСЏ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… РїРµСЂРµРјРµРЅРЅС‹С…*/
 		//EXIT
 		if (sf::IntRect(5, 840, 160, 50).contains(sf::Mouse::getPosition(window)))
 		{
@@ -247,14 +247,14 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 		}
 		if (extramenu == 1)
 		{
-			//Меню контейнера на базе динамического массива
+			//РњРµРЅСЋ РєРѕРЅС‚РµР№РЅРµСЂР° РЅР° Р±Р°Р·Рµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°
 			if (sf::IntRect(5, 96, 200, 60).contains(sf::Mouse::getPosition(window)))
 			{
 				BG_ContainerFiguresDynamicArray.m_setActiveColor();
 				ContainerFiguresDynamicArray_text.m_setActiveColor();
 				stage_container_figures_dynamic_array = true;
 			}
-			//Подменю
+			//РџРѕРґРјРµРЅСЋ
 			if (sf::IntRect(15, 171, 180, 40).contains(sf::Mouse::getPosition(window)) && submenu_container_figures_dynamic_array)
 			{
 				BG_CreateContainerFiguresDynamicArray.m_setActiveColor();
@@ -306,14 +306,14 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 		}
 		else if (extramenu == 2)
 		{
-			//Меню контейнера на базе линейного динамического списка
+			//РњРµРЅСЋ РєРѕРЅС‚РµР№РЅРµСЂР° РЅР° Р±Р°Р·Рµ Р»РёРЅРµР№РЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР°
 			if (sf::IntRect(5, 96, 200, 60).contains(sf::Mouse::getPosition(window)))
 			{
 				BG_ContainerFiguresLinearDynamicList.m_setActiveColor();
 				ContainerFiguresLinearDynamicList_text.m_setActiveColor();
 				stage_container_figures_linear_dynamic_list = true;
 			}
-			//Подменю
+			//РџРѕРґРјРµРЅСЋ
 			if (sf::IntRect(15, 171, 180, 40).contains(sf::Mouse::getPosition(window)) && submenu_container_figures_linear_dynamic_list)
 			{
 				BG_CreateContainerFiguresLinearDynamicList.m_setActiveColor();
@@ -367,10 +367,10 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 		sf::Event event_menu_click;
 		while (window.pollEvent(event_menu_click))
 		{
-			//Закрытие окна на "крестик"
+			//Р—Р°РєСЂС‹С‚РёРµ РѕРєРЅР° РЅР° "РєСЂРµСЃС‚РёРє"
 			if (event_menu_click.type == sf::Event::Closed)
 				window.close();
-			//Обработчик события формы OnCreate (нажатие на кнопку)
+			//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ С„РѕСЂРјС‹ OnCreate (РЅР°Р¶Р°С‚РёРµ РЅР° РєРЅРѕРїРєСѓ)
 			if (event_menu_click.type == event_menu_click.MouseButtonReleased && event_menu_click.mouseButton.button == sf::Mouse::Left)
 			{
 				//NEXT
@@ -518,7 +518,7 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 						break;
 					}
 					default:
-						std::cout << "Error! type_objs не принадлежит отрезку [1,6]." << std::endl;
+						std::cout << "Error! type_objs РЅРµ РїСЂРёРЅР°РґР»РµР¶РёС‚ РѕС‚СЂРµР·РєСѓ [1,6]." << std::endl;
 						break;
 					}
 					ptr_container_figures_dynamic_array->addNewElem(size_container_figures_dynamic_array - 1, ptr_graphic_primitive);
@@ -673,7 +673,7 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 						break;
 					}
 					default:
-						std::cout << "Error! type_objs не принадлежит отрезку [1,6]." << std::endl;
+						std::cout << "Error! type_objs РЅРµ РїСЂРёРЅР°РґР»РµР¶РёС‚ РѕС‚СЂРµР·РєСѓ [1,6]." << std::endl;
 						break;
 					}
 					ptr_container_figures_lynear_dynamic_list->addNewElem(ptr_graphic_primitive);
@@ -1180,15 +1180,15 @@ int menu_processing(sf::RenderWindow& window, DynamicArray*& ptr_container_figur
 
 		window.clear(sf::Color(67, 136, 169));
 
-		/*РЕНДЕРИНГ ОКНА*/
-		//Фон меню и кнопки меню
+		/*Р Р•РќР”Р•Р РРќР“ РћРљРќРђ*/
+		//Р¤РѕРЅ РјРµРЅСЋ Рё РєРЅРѕРїРєРё РјРµРЅСЋ
 		BG_general.Show(window);
 		BG_menu.Show(window);
 		image_text.Show(window);
 		menu_text.Show(window);
 		BG_exit.Show(window);
 		exit_text.Show(window);
-		//Кнопки обработки фигур
+		//РљРЅРѕРїРєРё РѕР±СЂР°Р±РѕС‚РєРё С„РёРіСѓСЂ
 		if (extramenu == 1)
 		{
 			BG_ContainerFiguresDynamicArray.Show(window);

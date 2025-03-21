@@ -6,7 +6,7 @@ namespace CinemaServiceApplication
 	{
 		InitializeComponent();
 		//
-		//TODO: добавьте код конструктора
+		//TODO: РґРѕР±Р°РІСЊС‚Рµ РєРѕРґ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°
 		//
 	}
 	SIGN_UP::SIGN_UP(LOG_IN^ parent_log_in_form)
@@ -88,7 +88,7 @@ namespace CinemaServiceApplication
 		this->sign_up_enter_btn->Name = L"sign_up_enter_btn";
 		this->sign_up_enter_btn->Size = System::Drawing::Size(352, 58);
 		this->sign_up_enter_btn->TabIndex = 3;
-		this->sign_up_enter_btn->Text = L"ЗАРЕГИСТРИРОВАТЬ";
+		this->sign_up_enter_btn->Text = L"Р—РђР Р•Р“РРЎРўР РР РћР’РђРўР¬";
 		this->sign_up_enter_btn->UseVisualStyleBackColor = false;
 		this->sign_up_enter_btn->Click += gcnew System::EventHandler(this, &SIGN_UP::sign_up_enter_btn_Click);
 		// 
@@ -108,7 +108,7 @@ namespace CinemaServiceApplication
 		this->sign_up_main_label->Name = L"sign_up_main_label";
 		this->sign_up_main_label->Size = System::Drawing::Size(600, 80);
 		this->sign_up_main_label->TabIndex = 4;
-		this->sign_up_main_label->Text = L"РЕГИСТРАЦИЯ";
+		this->sign_up_main_label->Text = L"Р Р•Р“РРЎРўР РђР¦РРЇ";
 		this->sign_up_main_label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 		// 
 		// sign_up_label_C2
@@ -390,7 +390,7 @@ namespace CinemaServiceApplication
 		this->sign_up_label_pswd->Name = L"sign_up_label_pswd";
 		this->sign_up_label_pswd->Size = System::Drawing::Size(145, 40);
 		this->sign_up_label_pswd->TabIndex = 31;
-		this->sign_up_label_pswd->Text = L"Пароль:";
+		this->sign_up_label_pswd->Text = L"РџР°СЂРѕР»СЊ:";
 		this->sign_up_label_pswd->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 		// 
 		// sign_up_login_label
@@ -405,7 +405,7 @@ namespace CinemaServiceApplication
 		this->sign_up_login_label->Name = L"sign_up_login_label";
 		this->sign_up_login_label->Size = System::Drawing::Size(145, 40);
 		this->sign_up_login_label->TabIndex = 30;
-		this->sign_up_login_label->Text = L"Логин:";
+		this->sign_up_login_label->Text = L"Р›РѕРіРёРЅ:";
 		this->sign_up_login_label->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 		// 
 		// eye_hide_btn
@@ -495,7 +495,7 @@ namespace CinemaServiceApplication
 		Boolean true_loginUser{ true };
 		for (int i{}; i < loginUser->Length; i++)
 		{
-			if (loginUser[i] >= '0' && loginUser[i] <= '9' || loginUser[i] >= 'а' && loginUser[i] <= 'я' || loginUser[i] >= 'А' && loginUser[i] <= 'Я' || 
+			if (loginUser[i] >= '0' && loginUser[i] <= '9' || loginUser[i] >= 'Р°' && loginUser[i] <= 'СЏ' || loginUser[i] >= 'Рђ' && loginUser[i] <= 'РЇ' || 
 				loginUser[i] >= 'a' && loginUser[i] <= 'z' || loginUser[i] >= 'A' && loginUser[i] <= 'Z' || loginUser[i] == '-' || loginUser[i] == '_')
 			{
 				continue;
@@ -509,7 +509,7 @@ namespace CinemaServiceApplication
 		if (true_loginUser)
 		{
 			if (loginUser->Length < 5 || loginUser->Length > 20 || pswdUser->Length < 5 || pswdUser->Length > 20)
-				MessageBox::Show("Длина логина должна быть от 5 до 20 знаков, как и длина пароля.", "Ошибка! Неверная длина логина и/или пароля.", MessageBoxButtons::OK, MessageBoxIcon::Information);
+				MessageBox::Show("Р”Р»РёРЅР° Р»РѕРіРёРЅР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РѕС‚ 5 РґРѕ 20 Р·РЅР°РєРѕРІ, РєР°Рє Рё РґР»РёРЅР° РїР°СЂРѕР»СЏ.", "РћС€РёР±РєР°! РќРµРІРµСЂРЅР°СЏ РґР»РёРЅР° Р»РѕРіРёРЅР° Рё/РёР»Рё РїР°СЂРѕР»СЏ.", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			else
 			{
 				DataBaseQueries^ queryDB = gcnew DataBaseQueries();
@@ -521,7 +521,7 @@ namespace CinemaServiceApplication
 			}
 		}
 		else
-			MessageBox::Show("Логин должен состоять из букв русского или латинского алфаваита, цифр и/или символов '_' и '-'!", "Ошибка логина!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Р›РѕРіРёРЅ РґРѕР»Р¶РµРЅ СЃРѕСЃС‚РѕСЏС‚СЊ РёР· Р±СѓРєРІ СЂСѓСЃСЃРєРѕРіРѕ РёР»Рё Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІР°РёС‚Р°, С†РёС„СЂ Рё/РёР»Рё СЃРёРјРІРѕР»РѕРІ '_' Рё '-'!", "РћС€РёР±РєР° Р»РѕРіРёРЅР°!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 	System::Void SIGN_UP::eye_hide_btn_Click(System::Object^ sender, System::EventArgs^ e)
 	{

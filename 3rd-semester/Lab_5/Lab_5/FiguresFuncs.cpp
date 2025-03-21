@@ -1,6 +1,6 @@
 #include "FiguresFuncs.h"
 
-//Получение типа фигурыы
+//РџРѕР»СѓС‡РµРЅРёРµ С‚РёРїР° С„РёРіСѓСЂС‹С‹
 int getChoiceFigure(TFigure** figures_array, int index_of_element)
 {
 	int figures_choice{};
@@ -36,7 +36,7 @@ int getChoiceFigure(TFigure** figures_array, int index_of_element)
 	}
 	return figures_choice;
 }
-//Перемещение
+//РџРµСЂРµРјРµС‰РµРЅРёРµ
 void figuresMoveW(TFigure** figures_array, int index_of_element)
 {
 	int figures_choice{ getChoiceFigure(figures_array, index_of_element) };
@@ -98,7 +98,7 @@ void figuresMoveW(TFigure** figures_array, int index_of_element)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -164,7 +164,7 @@ void figuresMoveA(TFigure** figures_array, int index_of_element)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -230,7 +230,7 @@ void figuresMoveS(TFigure** figures_array, int index_of_element)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -296,12 +296,12 @@ void figuresMoveD(TFigure** figures_array, int index_of_element)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
 }
-//Удаление
+//РЈРґР°Р»РµРЅРёРµ
 void deleteFigure(TFigure**& figures_array, int& size_figures_array)
 {
 	TFigure** new_array_shapes = new TFigure * [size_figures_array - 1];
@@ -358,7 +358,7 @@ void deleteFigure(TFigure**& figures_array, int& size_figures_array)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -367,7 +367,7 @@ void deleteFigure(TFigure**& figures_array, int& size_figures_array)
 	size_figures_array -= 1;
 	figures_array = new_array_shapes;
 }
-//Изменение геометрических свойств
+//РР·РјРµРЅРµРЅРёРµ РіРµРѕРјРµС‚СЂРёС‡РµСЃРєРёС… СЃРІРѕР№СЃС‚РІ
 void increaseRadius(TFigure** figures_array, int index_of_element)
 {
 	int figures_choice{ getChoiceFigure(figures_array, index_of_element) };

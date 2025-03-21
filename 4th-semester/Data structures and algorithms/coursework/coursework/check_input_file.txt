@@ -1,8 +1,8 @@
 Random City
 First Street:
 19|noname
-Вторая Улица
-Третья Улица
+Р’С‚РѕСЂР°СЏ РЈР»РёС†Р°
+РўСЂРµС‚СЊСЏ РЈР»РёС†Р°
 Final Street:
 1|a;
 0|9-th Ok-l;

@@ -3,8 +3,8 @@
 #include "myfuncs.h"
 #include "constants.h"
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ КРУГА*/
-//Сдвинуть круг случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РљР РЈР“Рђ*/
+//РЎРґРІРёРЅСѓС‚СЊ РєСЂСѓРі СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetCircle(Circle* f_ptr_obj_circle)
 {
 	float x_circle{ f_ptr_obj_circle->get_x_coordinate_base_point() };
@@ -23,9 +23,9 @@ void doOffsetCircle(Circle* f_ptr_obj_circle)
 	}
 }
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ МАССИВА КРУГОВ*/
-//Добавить элемент в конец и удалить последний элемент - шаблонные функции
-//Сдвинуть элементы случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РњРђРЎРЎРР’Рђ РљР РЈР“РћР’*/
+//Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС† Рё СѓРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ - С€Р°Р±Р»РѕРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
+//РЎРґРІРёРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚С‹ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetArrayCircles(Circle** array_circles, int array_circles_size)
 {
 	for (int i{}; i < array_circles_size; i++)
@@ -46,7 +46,7 @@ void doOffsetArrayCircles(Circle** array_circles, int array_circles_size)
 		}
 	}
 }
-//Движение по клавишам WASD элементов
+//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ
 void doUserMoveArrayCirclesW(Circle** array_circles, int array_circles_size)
 {
 	for (int i{}; i < array_circles_size; i++)
@@ -79,7 +79,7 @@ void doUserMoveArrayCirclesD(Circle** array_circles, int array_circles_size)
 			array_circles[i]->MoveTo(10, 0);
 	}
 }
-//Увеличить радиус элементов
+//РЈРІРµР»РёС‡РёС‚СЊ СЂР°РґРёСѓСЃ СЌР»РµРјРµРЅС‚РѕРІ
 void array_circles_RadiusIncrease(Circle** array_circles, int array_circles_size)
 {
 	for (int i{}; i < array_circles_size; i++)
@@ -91,7 +91,7 @@ void array_circles_RadiusIncrease(Circle** array_circles, int array_circles_size
 			array_circles[i]->changeRadius(2);
 		}
 }
-//Уменьшить радиус элементов
+//РЈРјРµРЅСЊС€РёС‚СЊ СЂР°РґРёСѓСЃ СЌР»РµРјРµРЅС‚РѕРІ
 void array_circles_RadiusDecrease(Circle** array_circles, int array_circles_size)
 {
 	for (int i{}; i < array_circles_size; i++)

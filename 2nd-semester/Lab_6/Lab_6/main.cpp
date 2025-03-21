@@ -8,7 +8,7 @@ int main()
 	Trade* head_ptr{ nullptr };
 	if (LoadingList(DEFAULT_NAME_FILE_IN_OUT, head_ptr))
 	{
-		std::cout << "Ñïèñîê çàãðóæåí . . ." << std::endl << std::endl;
+		std::cout << "Ð¡Ð¿Ð¸ÑÐ¾Ðº Ð·Ð°Ð³Ñ€ÑƒÐ¶ÐµÐ½ . . ." << std::endl << std::endl;
 		bool cycle{ true };
 		while (cycle) {
 			switch (getCase())
@@ -50,7 +50,7 @@ int main()
 		}
 		if (UnloadingList(DEFAULT_NAME_FILE_IN_OUT, head_ptr))
 		{
-			std::cout << std::endl << "Ñïèïîñê âûãðóæåí è óäàë¸í èç îïåðàòèâíîé ïàìÿòè . . ." << std::endl;
+			std::cout << std::endl << "Ð¡Ð¿Ð¸Ð¿Ð¾ÑÐº Ð²Ñ‹Ð³Ñ€ÑƒÐ¶ÐµÐ½ Ð¸ ÑƒÐ´Ð°Ð»Ñ‘Ð½ Ð¸Ð· Ð¾Ð¿ÐµÑ€Ð°Ñ‚Ð¸Ð²Ð½Ð¾Ð¹ Ð¿Ð°Ð¼ÑÑ‚Ð¸ . . ." << std::endl;
 			std::system("chcp 866 > nul");
 		}
 	}

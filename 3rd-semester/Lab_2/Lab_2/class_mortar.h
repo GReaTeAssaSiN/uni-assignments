@@ -20,8 +20,8 @@ public:
 		line_obj.changeLength(-100);
 		circle_obj.MoveTo(rect_obj.getLength() / 2, rect_obj.getWidth());
 		line_obj.MoveTo(rect_obj.getLength() / 2, 0);
-		std::cout << "Ñîçäàí êîíñòðóêòîðîì ïî óìîë÷àíèþ îáúåêò-ìîðòèðà (èñõîäíûå âûøåîïèñàííûå ïàðàìåòðû èçìåíåíû,\n"
-			<< "òàê êàê ïî óìîë÷àíèþ ñîçäàííûå îáúåêòû íå ðàñïîëîæåíû êîððåêòíî):\n" << "circle: (" << circle_obj.get_x_coordinate_base_point()
+		std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð¾Ð±ÑŠÐµÐºÑ‚-Ð¼Ð¾Ñ€Ñ‚Ð¸Ñ€Ð° (Ð¸ÑÑ…Ð¾Ð´Ð½Ñ‹Ðµ Ð²Ñ‹ÑˆÐµÐ¾Ð¿Ð¸ÑÐ°Ð½Ð½Ñ‹Ðµ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ Ð¸Ð·Ð¼ÐµÐ½ÐµÐ½Ñ‹,\n"
+			<< "Ñ‚Ð°Ðº ÐºÐ°Ðº Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¾Ð±ÑŠÐµÐºÑ‚Ñ‹ Ð½Ðµ Ñ€Ð°ÑÐ¿Ð¾Ð»Ð¾Ð¶ÐµÐ½Ñ‹ ÐºÐ¾Ñ€Ñ€ÐµÐºÑ‚Ð½Ð¾):\n" << "circle: (" << circle_obj.get_x_coordinate_base_point()
 			<< ", " << circle_obj.get_y_coordinate_base_point() << ")\t\tradius = " << circle_obj.getRadius() 
 			<< "\nrectangle: (" << rect_obj.get_x_coordinate_base_point() << ", " << rect_obj.get_y_coordinate_base_point() << ")\t\t" 
 			<< "length = " << rect_obj.getLength() << ", width = " << rect_obj.getWidth() 
@@ -32,7 +32,7 @@ public:
 	Mortar(const Rectangle& user_rect, const Circle& user_circle, const Linesegment& user_line)
 		: rect_obj{user_rect}, circle_obj{ user_circle }, line_obj{user_line}
 	{
-		std::cout << "Ñîçäàí êîíñòðóêòîðîì ñî ñëó÷àéíûìè ïàðàìåòðàìè îáúåêò-ìîðòèðà." << std::endl;
+		std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ ÑÐ¾ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚-Ð¼Ð¾Ñ€Ñ‚Ð¸Ñ€Ð°." << std::endl;
 	}
 
 	void Show(sf::RenderWindow& window)
@@ -66,7 +66,7 @@ public:
 
 	/*~Mortar()
 	{
-		std::cout << "Óäàëåí îáúåêò-ìîðòèðà." << std::endl;
+		std::cout << "Ð£Ð´Ð°Ð»ÐµÐ½ Ð¾Ð±ÑŠÐµÐºÑ‚-Ð¼Ð¾Ñ€Ñ‚Ð¸Ñ€Ð°." << std::endl;
 	}*/
 };
 

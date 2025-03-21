@@ -30,8 +30,8 @@ MovieButtonForMovieCatalog::MovieButtonForMovieCatalog(SqlDataReader^ reader, Pa
 	this->add_new_review_btn->MinimumSize = System::Drawing::Size(860, 50);
 	this->add_new_review_btn->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 	this->add_new_review_btn->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageBeforeText;
-	this->add_new_review_btn->Image = Image->FromFile("D:\\ÊÀÈ\\Áàçû Äàííûõ\\Êóðñîâàÿ\\Images\\add_new_data.bmp");
-	this->add_new_review_btn->Text = L"Äîáàâèòü îòçûâ î ôèëüìå â êèíîòåàòðå";
+	this->add_new_review_btn->Image = Image->FromFile("D:\\ÐšÐÐ˜\\Ð‘Ð°Ð·Ñ‹ Ð”Ð°Ð½Ð½Ñ‹Ñ…\\ÐšÑƒÑ€ÑÐ¾Ð²Ð°Ñ\\Images\\add_new_data.bmp");
+	this->add_new_review_btn->Text = L"Ð”Ð¾Ð±Ð°Ð²Ð¸Ñ‚ÑŒ Ð¾Ñ‚Ð·Ñ‹Ð² Ð¾ Ñ„Ð¸Ð»ÑŒÐ¼Ðµ Ð² ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€Ðµ";
 	this->add_new_review_btn->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MovieButtonForMovieCatalog::add_new_review_btn_MouseClick);
 	//
 	// movie_btn
@@ -44,13 +44,13 @@ MovieButtonForMovieCatalog::MovieButtonForMovieCatalog(SqlDataReader^ reader, Pa
 	this->movie_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(124, 250, 202);
 	this->movie_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 	this->movie_btn->ForeColor = System::Drawing::Color::Black;
-	this->movie_btn->Image = Image->FromFile(L"D:\\ÊÀÈ\\Áàçû äàííûõ\\Êóðñîâàÿ\\Images\\Movie_Icon.bmp");
+	this->movie_btn->Image = Image->FromFile(L"D:\\ÐšÐÐ˜\\Ð‘Ð°Ð·Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ñ…\\ÐšÑƒÑ€ÑÐ¾Ð²Ð°Ñ\\Images\\Movie_Icon.bmp");
 	this->movie_btn->ImageAlign = System::Drawing::ContentAlignment::MiddleLeft;
 	this->movie_btn->Size = System::Drawing::Size(421, 123);
 	this->movie_btn->MaximumSize = System::Drawing::Size(421, 123);
 	this->movie_btn->MinimumSize = System::Drawing::Size(421, 123);;
-	String^ descr_str = "Íàçâàíèå ôèëüìà: " + this->movie->getMovieName() + "\r\nÂîçðàñòíîå îãðàíè÷åíèå: " + this->movie->getAgeLimit() + "\r\nÆàíð: " +
-		this->movie->getGenre() + "\r\nÄëèòåëüíîñòü: " + this->movie->getDuration();
+	String^ descr_str = "ÐÐ°Ð·Ð²Ð°Ð½Ð¸Ðµ Ñ„Ð¸Ð»ÑŒÐ¼Ð°: " + this->movie->getMovieName() + "\r\nÐ’Ð¾Ð·Ñ€Ð°ÑÑ‚Ð½Ð¾Ðµ Ð¾Ð³Ñ€Ð°Ð½Ð¸Ñ‡ÐµÐ½Ð¸Ðµ: " + this->movie->getAgeLimit() + "\r\nÐ–Ð°Ð½Ñ€: " +
+		this->movie->getGenre() + "\r\nÐ”Ð»Ð¸Ñ‚ÐµÐ»ÑŒÐ½Ð¾ÑÑ‚ÑŒ: " + this->movie->getDuration();
 	this->movie_btn->Text = descr_str;
 	this->movie_btn->TextAlign = System::Drawing::ContentAlignment::MiddleLeft;
 	this->movie_btn->TextImageRelation = System::Windows::Forms::TextImageRelation::ImageBeforeText;
@@ -72,12 +72,12 @@ Button^ MovieButtonForMovieCatalog::getMovieBtn()
 }
 System::Void MovieButtonForMovieCatalog::movie_btn_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	this->update_inf_label->Text = L"Âûáåðèòå êèíîòåàòð èëè äîáàâüòå ñâîé êîììåíòàðèé ê ôèëüìó";
+	this->update_inf_label->Text = L"Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€ Ð¸Ð»Ð¸ Ð´Ð¾Ð±Ð°Ð²ÑŒÑ‚Ðµ ÑÐ²Ð¾Ð¹ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ð¹ Ðº Ñ„Ð¸Ð»ÑŒÐ¼Ñƒ";
 	this->main_movie_btn_panel->Controls->Clear();
 	this->main_movie_btn_panel->SuspendLayout();
 	this->submain_movie_btn_panel->SuspendLayout();
 	this->main_movie_btn_panel->Controls->Add(add_new_review_btn);
-	//Çàïðîñ êàòàëîãà êîììåíòàðèåâ ñîîòâåòñòâóþùåãî ôèëüìà ñîîòâåòñòâóþùåãî êèíîòåàòðà.
+	//Ð—Ð°Ð¿Ñ€Ð¾Ñ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ² ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ³Ð¾ Ñ„Ð¸Ð»ÑŒÐ¼Ð° ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ³Ð¾ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€Ð°.
 	DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 	queryDB->ConnectToDB();
 	queryDB->openConnection();
@@ -103,7 +103,7 @@ System::Void MovieButtonForMovieCatalog::movie_btn_Click(System::Object^ sender,
 }
 System::Void MovieButtonForMovieCatalog::add_new_review_btn_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e)
 {
-	this->update_inf_label->Text = L"Çàïîëíèòå ôîðìó äëÿ ñîçäàíèÿ êîììåíòàðèÿ";
+	this->update_inf_label->Text = L"Ð—Ð°Ð¿Ð¾Ð»Ð½Ð¸Ñ‚Ðµ Ñ„Ð¾Ñ€Ð¼Ñƒ Ð´Ð»Ñ ÑÐ¾Ð·Ð´Ð°Ð½Ð¸Ñ ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸Ñ";
 	this->main_movie_btn_panel->Controls->Clear();
 	this->main_movie_btn_panel->SuspendLayout();
 	AddNewReviewToDB^ new_review = gcnew AddNewReviewToDB(this->userName);

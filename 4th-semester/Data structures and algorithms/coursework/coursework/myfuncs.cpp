@@ -3,8 +3,8 @@
 #include <string>
 #include "myfuncs.h"
 
-/*ПОЛЬЗОВАТЕЛЬСКИЕ ФУНКЦИИ*/
-//Проверка введённой пользователем строки на возможность преобразования в целое неотрицательное число.
+/*РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРР• Р¤РЈРќРљР¦РР*/
+//РџСЂРѕРІРµСЂРєР° РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РЅР° РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РІ С†РµР»РѕРµ РЅРµРѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ С‡РёСЃР»Рѕ.
 bool checkStrIsNumeric(std::string const& tempStr)
 {
 	for (int i{}; i < tempStr.length(); i++)
@@ -14,7 +14,7 @@ bool checkStrIsNumeric(std::string const& tempStr)
 	}
 	return !tempStr.empty();
 }
-//Преобразование введённой пользователем строки в число после проверки.
+//РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РІ С‡РёСЃР»Рѕ РїРѕСЃР»Рµ РїСЂРѕРІРµСЂРєРё.
 int convertStrToInt(std::string convertStr)
 {
 	double number{};
@@ -22,45 +22,45 @@ int convertStrToInt(std::string convertStr)
 		number += (convertStr[i] - '0') * pow(10, convertStr.length() - i - 1);
 	return number;
 }
-//Проверка на соответствие символу латинского алфавита.
+//РџСЂРѕРІРµСЂРєР° РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ СЃРёРјРІРѕР»Сѓ Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°.
 bool checkLatinSymbol(const char& specific_symbol)
 {
 	return (specific_symbol >= 'A' && specific_symbol <= 'Z' || specific_symbol >= 'a' && specific_symbol <= 'z') ? true : false;
 }
-//Проверка на соответствие символу русского алвафита.
+//РџСЂРѕРІРµСЂРєР° РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ СЃРёРјРІРѕР»Сѓ СЂСѓСЃСЃРєРѕРіРѕ Р°Р»РІР°С„РёС‚Р°.
 bool checkRussianSymbol(const char& specific_symbol)
 {
-	return (specific_symbol >= 'А' && specific_symbol <= 'Я' || specific_symbol >= 'а' && specific_symbol <= 'я') ? true : false;
+	return (specific_symbol >= 'Рђ' && specific_symbol <= 'РЇ' || specific_symbol >= 'Р°' && specific_symbol <= 'СЏ') ? true : false;
 }
-//Вывод пользовательского меню на экран.
+//Р’С‹РІРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РјРµРЅСЋ РЅР° СЌРєСЂР°РЅ.
 void userMenu(const std::string& city_name)
 {
-	std::cout << "Вы находитесь в меню города " << city_name << "." << std::endl;
-	std::cout << "Выберите действие, которое Вы хотите выполнить:\n" <<
-		"1 - Вывести информацию о городсих улицах и домах, расположенных на них.\n" <<
-		"2 - Добавить новую улицу в конец очереди (улица будет удаляться при удалении позже остальных).\n" <<
-		"3 - Удалить улицу из начала очереди (улицу, добавленную ранее остальных).\n" <<
-		"4 - Перейти к конкретной улице.\n" <<
-		"5 - Сохранить построенную базу данных в указанный файл.\n" <<
-		"6 - Загрузить базу данных из указанного файла.\n" <<
-		"0 - Завершить программу." << std::endl;
+	std::cout << "Р’С‹ РЅР°С…РѕРґРёС‚РµСЃСЊ РІ РјРµРЅСЋ РіРѕСЂРѕРґР° " << city_name << "." << std::endl;
+	std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ, РєРѕС‚РѕСЂРѕРµ Р’С‹ С…РѕС‚РёС‚Рµ РІС‹РїРѕР»РЅРёС‚СЊ:\n" <<
+		"1 - Р’С‹РІРµСЃС‚Рё РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РіРѕСЂРѕРґСЃРёС… СѓР»РёС†Р°С… Рё РґРѕРјР°С…, СЂР°СЃРїРѕР»РѕР¶РµРЅРЅС‹С… РЅР° РЅРёС….\n" <<
+		"2 - Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІСѓСЋ СѓР»РёС†Сѓ РІ РєРѕРЅРµС† РѕС‡РµСЂРµРґРё (СѓР»РёС†Р° Р±СѓРґРµС‚ СѓРґР°Р»СЏС‚СЊСЃСЏ РїСЂРё СѓРґР°Р»РµРЅРёРё РїРѕР·Р¶Рµ РѕСЃС‚Р°Р»СЊРЅС‹С…).\n" <<
+		"3 - РЈРґР°Р»РёС‚СЊ СѓР»РёС†Сѓ РёР· РЅР°С‡Р°Р»Р° РѕС‡РµСЂРµРґРё (СѓР»РёС†Сѓ, РґРѕР±Р°РІР»РµРЅРЅСѓСЋ СЂР°РЅРµРµ РѕСЃС‚Р°Р»СЊРЅС‹С…).\n" <<
+		"4 - РџРµСЂРµР№С‚Рё Рє РєРѕРЅРєСЂРµС‚РЅРѕР№ СѓР»РёС†Рµ.\n" <<
+		"5 - РЎРѕС…СЂР°РЅРёС‚СЊ РїРѕСЃС‚СЂРѕРµРЅРЅСѓСЋ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… РІ СѓРєР°Р·Р°РЅРЅС‹Р№ С„Р°Р№Р».\n" <<
+		"6 - Р—Р°РіСЂСѓР·РёС‚СЊ Р±Р°Р·Сѓ РґР°РЅРЅС‹С… РёР· СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.\n" <<
+		"0 - Р—Р°РІРµСЂС€РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ." << std::endl;
 }
-//Вывод пользовательского подменю на экран.
+//Р’С‹РІРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РїРѕРґРјРµРЅСЋ РЅР° СЌРєСЂР°РЅ.
 void userSubmenu(const std::string& specific_city_street_name)
 {
-	std::cout << "Вы находитесь в меню улицы " << specific_city_street_name << "." << std::endl;
-	std::cout << "Выберите действие, которое Вы хотите выполнить:\n" <<
-		"1 - Проверить улицу на наличие хотя бы одного дома.\n" <<
-		"2 - Добавить новый дом.\n" <<
-		"3 - Удалить указанный дом.\n" <<
-		"4 - Найти указанный дом.\n" <<
-		"5 - Показать дома этой улицы.\n" <<
-		"0 - Вернуться в главное меню города." << std::endl;
+	std::cout << "Р’С‹ РЅР°С…РѕРґРёС‚РµСЃСЊ РІ РјРµРЅСЋ СѓР»РёС†С‹ " << specific_city_street_name << "." << std::endl;
+	std::cout << "Р’С‹Р±РµСЂРёС‚Рµ РґРµР№СЃС‚РІРёРµ, РєРѕС‚РѕСЂРѕРµ Р’С‹ С…РѕС‚РёС‚Рµ РІС‹РїРѕР»РЅРёС‚СЊ:\n" <<
+		"1 - РџСЂРѕРІРµСЂРёС‚СЊ СѓР»РёС†Сѓ РЅР° РЅР°Р»РёС‡РёРµ С…РѕС‚СЏ Р±С‹ РѕРґРЅРѕРіРѕ РґРѕРјР°.\n" <<
+		"2 - Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ РґРѕРј.\n" <<
+		"3 - РЈРґР°Р»РёС‚СЊ СѓРєР°Р·Р°РЅРЅС‹Р№ РґРѕРј.\n" <<
+		"4 - РќР°Р№С‚Рё СѓРєР°Р·Р°РЅРЅС‹Р№ РґРѕРј.\n" <<
+		"5 - РџРѕРєР°Р·Р°С‚СЊ РґРѕРјР° СЌС‚РѕР№ СѓР»РёС†С‹.\n" <<
+		"0 - Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РіР»Р°РІРЅРѕРµ РјРµРЅСЋ РіРѕСЂРѕРґР°." << std::endl;
 }
-//Пользовательский выбор пункта меню/подменю.
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІС‹Р±РѕСЂ РїСѓРЅРєС‚Р° РјРµРЅСЋ/РїРѕРґРјРµРЅСЋ.
 char getUserChoice(const int& flag)
 {
-	std::cout << "Ваш выбор: ";
+	std::cout << "Р’Р°С€ РІС‹Р±РѕСЂ: ";
 	while (true)
 	{
 		std::string user_choice{};
@@ -69,26 +69,26 @@ char getUserChoice(const int& flag)
 			flag == 1 && convertStrToInt(user_choice) >= 0 && convertStrToInt(user_choice) <= 5))
 			return user_choice[0];
 		else
-			std::cout << "Ошибка ввода. Вы должны ввести цифру, соответствующую пункту меню. Повторите ввод: ";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’С‹ РґРѕР»Р¶РЅС‹ РІРІРµСЃС‚Рё С†РёС„СЂСѓ, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰СѓСЋ РїСѓРЅРєС‚Сѓ РјРµРЅСЋ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 	}
 }
-//Вывод визуального разделения между действиями пользователя на консоль.
+//Р’С‹РІРѕРґ РІРёР·СѓР°Р»СЊРЅРѕРіРѕ СЂР°Р·РґРµР»РµРЅРёСЏ РјРµР¶РґСѓ РґРµР№СЃС‚РІРёСЏРјРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РЅР° РєРѕРЅСЃРѕР»СЊ.
 void printDashes()
 {
 	std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
 }
-//Проверка ввода названия улицы или города от пользователя.
+//РџСЂРѕРІРµСЂРєР° РІРІРѕРґР° РЅР°Р·РІР°РЅРёСЏ СѓР»РёС†С‹ РёР»Рё РіРѕСЂРѕРґР° РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 bool checkCityOrStreetName(const std::string& check_str)
 {
 	bool latin_alphabet{}, russian_alphabet{};
-	//Первая буква - прописная.
+	//РџРµСЂРІР°СЏ Р±СѓРєРІР° - РїСЂРѕРїРёСЃРЅР°СЏ.
 	if (check_str[0] >= 'A' && check_str[0] <= 'Z')
 		latin_alphabet = true;
-	else if (check_str[0] >= 'А' && check_str[0] <= 'Я')
+	else if (check_str[0] >= 'Рђ' && check_str[0] <= 'РЇ')
 		russian_alphabet = true;
 	else
 		return false;
-	//Остальные буквы строчные или прописные, но принадлежат конкретному алфавиту. Может встречаться символ '-' или пробел.
+	//РћСЃС‚Р°Р»СЊРЅС‹Рµ Р±СѓРєРІС‹ СЃС‚СЂРѕС‡РЅС‹Рµ РёР»Рё РїСЂРѕРїРёСЃРЅС‹Рµ, РЅРѕ РїСЂРёРЅР°РґР»РµР¶Р°С‚ РєРѕРЅРєСЂРµС‚РЅРѕРјСѓ Р°Р»С„Р°РІРёС‚Сѓ. РњРѕР¶РµС‚ РІСЃС‚СЂРµС‡Р°С‚СЊСЃСЏ СЃРёРјРІРѕР» '-' РёР»Рё РїСЂРѕР±РµР».
 	for (int i{ 1 }; i < check_str.size(); i++)
 	{
 		if (latin_alphabet && checkLatinSymbol(check_str[i]) || russian_alphabet && checkRussianSymbol(check_str[i]) || check_str[i] == '-' || check_str[i] == ' ')
@@ -98,9 +98,9 @@ bool checkCityOrStreetName(const std::string& check_str)
 				if (i != check_str.size() - 1)
 				{
 					if (!(check_str[static_cast<char>(i - 1)] >= 'a' && check_str[static_cast<char>(i - 1)] <= 'z' ||
-						check_str[static_cast<char>(i - 1)] >= 'а' && check_str[static_cast<char>(i - 1)] <= 'я') ||
+						check_str[static_cast<char>(i - 1)] >= 'Р°' && check_str[static_cast<char>(i - 1)] <= 'СЏ') ||
 						!(check_str[static_cast<char>(i + 1)] >= 'A' && check_str[static_cast<char>(i + 1)] <= 'Z' ||
-							check_str[static_cast<char>(i + 1)] >= 'А' && check_str[static_cast<char>(i + 1)] <= 'Я'))
+							check_str[static_cast<char>(i + 1)] >= 'Рђ' && check_str[static_cast<char>(i + 1)] <= 'РЇ'))
 					{
 						return false;
 					}
@@ -114,7 +114,7 @@ bool checkCityOrStreetName(const std::string& check_str)
 	}
 	return true;
 }
-//Проверка ввода типа строения дома от пользователя.
+//РџСЂРѕРІРµСЂРєР° РІРІРѕРґР° С‚РёРїР° СЃС‚СЂРѕРµРЅРёСЏ РґРѕРјР° РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 bool checkTypeBuildingFromUser(const std::string& check_str)
 {
 	bool latin_alphabet{}, russian_alphabet{};
@@ -145,7 +145,7 @@ bool checkTypeBuildingFromUser(const std::string& check_str)
 				if (i != check_str.size() - 1)
 				{
 					if (!(check_str[static_cast<char>(i - 1)] >= 'a' && check_str[static_cast<char>(i - 1)] <= 'z' ||
-						check_str[static_cast<char>(i - 1)] >= 'а' && check_str[static_cast<char>(i - 1)] <= 'я' || 
+						check_str[static_cast<char>(i - 1)] >= 'Р°' && check_str[static_cast<char>(i - 1)] <= 'СЏ' || 
 						check_str[static_cast<char>(i - 1)] >= '0' && check_str[static_cast<char>(i - 1)] <= '9') ||
 						!(checkLatinSymbol(check_str[static_cast<char>(i + 1)]) || checkRussianSymbol(check_str[static_cast<char>(i + 1)])))
 					{
@@ -161,10 +161,10 @@ bool checkTypeBuildingFromUser(const std::string& check_str)
 	}
 	return true;
 }
-//Получение названия города от пользователя.
+//РџРѕР»СѓС‡РµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ РіРѕСЂРѕРґР° РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 std::string getCityNameFromUser()
 {
-	std::cout << "Введите название города, который Вы хотите добавить в базу данных: " << std::endl;
+	std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР°, РєРѕС‚РѕСЂС‹Р№ Р’С‹ С…РѕС‚РёС‚Рµ РґРѕР±Р°РІРёС‚СЊ РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…: " << std::endl;
 	while (true)
 	{
 		std::string city_name{};
@@ -172,17 +172,17 @@ std::string getCityNameFromUser()
 		if (!checkCityOrStreetName(city_name) || city_name.empty())
 		{
 			system("cls");
-			std::cout << "Ошибка ввода. Название города должно состоять из букв русского ИЛИ латинского алфавита, может содержать символы\n '-' и ' ', начинается с прописной буквы." << std::endl <<
-				"Шаблонные примеры ввода: 'Название-Города', 'Название Города', 'City-Name', 'City Name'.\nПовторите ввод: ";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. РќР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР° РґРѕР»Р¶РЅРѕ СЃРѕСЃС‚РѕСЏС‚СЊ РёР· Р±СѓРєРІ СЂСѓСЃСЃРєРѕРіРѕ РР›Р Р»Р°С‚РёРЅСЃРєРѕРіРѕ Р°Р»С„Р°РІРёС‚Р°, РјРѕР¶РµС‚ СЃРѕРґРµСЂР¶Р°С‚СЊ СЃРёРјРІРѕР»С‹\n '-' Рё ' ', РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РїСЂРѕРїРёСЃРЅРѕР№ Р±СѓРєРІС‹." << std::endl <<
+				"РЁР°Р±Р»РѕРЅРЅС‹Рµ РїСЂРёРјРµСЂС‹ РІРІРѕРґР°: 'РќР°Р·РІР°РЅРёРµ-Р“РѕСЂРѕРґР°', 'РќР°Р·РІР°РЅРёРµ Р“РѕСЂРѕРґР°', 'City-Name', 'City Name'.\nРџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 		}
 		else	
 			return city_name;
 	}
 }
-//Получение названия улицы от пользователя.
+//РџРѕР»СѓС‡РµРЅРёРµ РЅР°Р·РІР°РЅРёСЏ СѓР»РёС†С‹ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 std::string getStreetNameFromUser(City* current_city_ptr)
 {
-	std::cout << "Введите название улицы, которую необходимо добавить в город: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ СѓР»РёС†С‹, РєРѕС‚РѕСЂСѓСЋ РЅРµРѕР±С…РѕРґРёРјРѕ РґРѕР±Р°РІРёС‚СЊ РІ РіРѕСЂРѕРґ: ";
 	while (true)
 	{
 		std::string name_of_new_street{};
@@ -192,17 +192,17 @@ std::string getStreetNameFromUser(City* current_city_ptr)
 		else
 		{
 			system("cls");
-			std::cout << "Ошибка ввода. Город не должен иметь улицы с одинаковыми названиями, без них или некорректными названиями.\n" <<
-				"Шаблонные примеры ввода: 'Название-Улицы', 'Название Улицы', 'Street-Name', 'Street Name'." << std::endl << std::endl;
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р“РѕСЂРѕРґ РЅРµ РґРѕР»Р¶РµРЅ РёРјРµС‚СЊ СѓР»РёС†С‹ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё РЅР°Р·РІР°РЅРёСЏРјРё, Р±РµР· РЅРёС… РёР»Рё РЅРµРєРѕСЂСЂРµРєС‚РЅС‹РјРё РЅР°Р·РІР°РЅРёСЏРјРё.\n" <<
+				"РЁР°Р±Р»РѕРЅРЅС‹Рµ РїСЂРёРјРµСЂС‹ РІРІРѕРґР°: 'РќР°Р·РІР°РЅРёРµ-РЈР»РёС†С‹', 'РќР°Р·РІР°РЅРёРµ РЈР»РёС†С‹', 'Street-Name', 'Street Name'." << std::endl << std::endl;
 			showTheCity(current_city_ptr);
-			std::cout << std::endl << "Повторите ввод названия улицы, которую необходимо добавить: ";
+			std::cout << std::endl << "РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ РЅР°Р·РІР°РЅРёСЏ СѓР»РёС†С‹, РєРѕС‚РѕСЂСѓСЋ РЅРµРѕР±С…РѕРґРёРјРѕ РґРѕР±Р°РІРёС‚СЊ: ";
 		}
 	}
 }
-//Получение номера дома для добавления его на улицу от пользователя.
+//РџРѕР»СѓС‡РµРЅРёРµ РЅРѕРјРµСЂР° РґРѕРјР° РґР»СЏ РґРѕР±Р°РІР»РµРЅРёСЏ РµРіРѕ РЅР° СѓР»РёС†Сѓ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 int getHouseNumberForAddingFromUser(Street* current_street_ptr)
 {
-	std::cout << "Введите номер дома, который хотите добавить на улицу " << current_street_ptr->getStreetName() << ": ";
+	std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РґРѕРјР°, РєРѕС‚РѕСЂС‹Р№ С…РѕС‚РёС‚Рµ РґРѕР±Р°РІРёС‚СЊ РЅР° СѓР»РёС†Сѓ " << current_street_ptr->getStreetName() << ": ";
 	while (true)
 	{
 		std::string new_house_number{};
@@ -212,17 +212,17 @@ int getHouseNumberForAddingFromUser(Street* current_street_ptr)
 		else
 		{
 			system("cls");
-			std::cout << "Ошибка ввода. Номерами домов на улице являются целые неотрицательные числа, которые не должны повторяться." << std::endl;
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. РќРѕРјРµСЂР°РјРё РґРѕРјРѕРІ РЅР° СѓР»РёС†Рµ СЏРІР»СЏСЋС‚СЃСЏ С†РµР»С‹Рµ РЅРµРѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ С‡РёСЃР»Р°, РєРѕС‚РѕСЂС‹Рµ РЅРµ РґРѕР»Р¶РЅС‹ РїРѕРІС‚РѕСЂСЏС‚СЊСЃСЏ." << std::endl;
 			if (!current_street_ptr->theStreetIsEmpty())
 				showTheStreet(current_street_ptr);
-			std::cout << "Повторите ввод номера добавляемого дома: ";
+			std::cout << "РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ РЅРѕРјРµСЂР° РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ РґРѕРјР°: ";
 		}
 	}
 }
-//Получение типа строения дома от пользователя.
+//РџРѕР»СѓС‡РµРЅРёРµ С‚РёРїР° СЃС‚СЂРѕРµРЅРёСЏ РґРѕРјР° РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 std::string getHouseTypeBuildingFromUser()
 {
-	std::cout << "Введите тип строения указанного дома: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ С‚РёРї СЃС‚СЂРѕРµРЅРёСЏ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РґРѕРјР°: ";
 	while (true)
 	{
 		std::string new_house_type_building{};
@@ -230,10 +230,10 @@ std::string getHouseTypeBuildingFromUser()
 		if (!new_house_type_building.empty() && checkTypeBuildingFromUser(new_house_type_building))
 			return new_house_type_building;
 		else
-			std::cout << "Тип строения дома указан некорректно. Шаблонные примеры ввода:\n'9-ТипСтроения'. '9 Типстроения', 'Тип Строения', 'Building Type'.\nПовторите ввод: ";
+			std::cout << "РўРёРї СЃС‚СЂРѕРµРЅРёСЏ РґРѕРјР° СѓРєР°Р·Р°РЅ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ. РЁР°Р±Р»РѕРЅРЅС‹Рµ РїСЂРёРјРµСЂС‹ РІРІРѕРґР°:\n'9-РўРёРїРЎС‚СЂРѕРµРЅРёСЏ'. '9 РўРёРїСЃС‚СЂРѕРµРЅРёСЏ', 'РўРёРї РЎС‚СЂРѕРµРЅРёСЏ', 'Building Type'.\nРџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 	}
 }
-//Получение номера дома для удаления его с улицы или поиска его на улице от пользователя.
+//РџРѕР»СѓС‡РµРЅРёРµ РЅРѕРјРµСЂР° РґРѕРјР° РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РµРіРѕ СЃ СѓР»РёС†С‹ РёР»Рё РїРѕРёСЃРєР° РµРіРѕ РЅР° СѓР»РёС†Рµ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 int getHouseNumberForRemovingOrSearchingFromUser()
 {
 	while (true)
@@ -243,10 +243,10 @@ int getHouseNumberForRemovingOrSearchingFromUser()
 		if (checkStrIsNumeric(specific_house_number))
 			return convertStrToInt(specific_house_number);
 		else
-			std::cout << "Ошибка ввода. Вы должны ввести целое неотрицательное число. Повторите ввод номера дома: ";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’С‹ РґРѕР»Р¶РЅС‹ РІРІРµСЃС‚Рё С†РµР»РѕРµ РЅРµРѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРµ С‡РёСЃР»Рѕ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ РЅРѕРјРµСЂР° РґРѕРјР°: ";
 	}
 }
-//Проверка указанного пользователем файла на возможность корректной загрузки данных.
+//РџСЂРѕРІРµСЂРєР° СѓРєР°Р·Р°РЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј С„Р°Р№Р»Р° РЅР° РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РєРѕСЂСЂРµРєС‚РЅРѕР№ Р·Р°РіСЂСѓР·РєРё РґР°РЅРЅС‹С….
 bool protectInputFile(std::ifstream& f, const std::string& input_file_name)
 {
 	f.open(input_file_name);
@@ -256,7 +256,7 @@ bool protectInputFile(std::ifstream& f, const std::string& input_file_name)
 		std::getline(f, check_string);
 		if (check_string.empty() || !checkCityOrStreetName(check_string))
 		{
-			std::cout << "Название города из файла " << input_file_name << " некорректное: пустое или задано не в верном формате.\nСчитать данный файл невозможно!" << std::endl;
+			std::cout << "РќР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР° РёР· С„Р°Р№Р»Р° " << input_file_name << " РЅРµРєРѕСЂСЂРµРєС‚РЅРѕРµ: РїСѓСЃС‚РѕРµ РёР»Рё Р·Р°РґР°РЅРѕ РЅРµ РІ РІРµСЂРЅРѕРј С„РѕСЂРјР°С‚Рµ.\nРЎС‡РёС‚Р°С‚СЊ РґР°РЅРЅС‹Р№ С„Р°Р№Р» РЅРµРІРѕР·РјРѕР¶РЅРѕ!" << std::endl;
 			f.close();
 			return false;
 		}
@@ -274,7 +274,7 @@ bool protectInputFile(std::ifstream& f, const std::string& input_file_name)
 					}
 					if (check_string.empty() || !checkCityOrStreetName(check_string))
 					{
-						std::cout << "При считывании данных из файла " << input_file_name << " произошла ошибка! Проверьте корректность названия улиц в файле." << std::endl;
+						std::cout << "РџСЂРё СЃС‡РёС‚С‹РІР°РЅРёРё РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° " << input_file_name << " РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°! РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РЅР°Р·РІР°РЅРёСЏ СѓР»РёС† РІ С„Р°Р№Р»Рµ." << std::endl;
 						f.close();
 						return false;
 					}
@@ -285,13 +285,13 @@ bool protectInputFile(std::ifstream& f, const std::string& input_file_name)
 						reading_street = true;
 					else
 						check_string.erase(check_string.size() - 1);
-					//Индекс разделителя.
+					//РРЅРґРµРєСЃ СЂР°Р·РґРµР»РёС‚РµР»СЏ.
 					int separator_index{ static_cast<int>(check_string.find('|')) };
-					//Данные дома.
+					//Р”Р°РЅРЅС‹Рµ РґРѕРјР°.
 					std::string new_house_number{ check_string.substr(0, separator_index) }, new_house_building_type{ check_string.substr(separator_index + 1) };
 					if (!checkStrIsNumeric(new_house_number) || new_house_building_type.empty() || !checkTypeBuildingFromUser(new_house_building_type))
 					{
-						std::cout << "При считывании данных из файла " << input_file_name << " произошла ошибка! Проверьте корректность данных о домах в файле." << std::endl;
+						std::cout << "РџСЂРё СЃС‡РёС‚С‹РІР°РЅРёРё РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° " << input_file_name << " РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°! РџСЂРѕРІРµСЂСЊС‚Рµ РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РґР°РЅРЅС‹С… Рѕ РґРѕРјР°С… РІ С„Р°Р№Р»Рµ." << std::endl;
 						f.close();
 						return false;
 					}
@@ -299,7 +299,7 @@ bool protectInputFile(std::ifstream& f, const std::string& input_file_name)
 			}
 			else
 			{
-				std::cout << "При считывании данных из файла " << input_file_name << " произошла ошибка! Проверьте отсутствие пустых строк в файле." << std::endl;
+				std::cout << "РџСЂРё СЃС‡РёС‚С‹РІР°РЅРёРё РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° " << input_file_name << " РїСЂРѕРёР·РѕС€Р»Р° РѕС€РёР±РєР°! РџСЂРѕРІРµСЂСЊС‚Рµ РѕС‚СЃСѓС‚СЃС‚РІРёРµ РїСѓСЃС‚С‹С… СЃС‚СЂРѕРє РІ С„Р°Р№Р»Рµ." << std::endl;
 				f.close();
 				return false;
 			}
@@ -309,16 +309,16 @@ bool protectInputFile(std::ifstream& f, const std::string& input_file_name)
 	}
 	else
 	{
-		std::cout << "Не удалось открыть файл: " << input_file_name << "!" << std::endl;
+		std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»: " << input_file_name << "!" << std::endl;
 		f.close();
 		return false;
 	}
 }
-//Получение от пользователя решения о замене названия города.
+//РџРѕР»СѓС‡РµРЅРёРµ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЂРµС€РµРЅРёСЏ Рѕ Р·Р°РјРµРЅРµ РЅР°Р·РІР°РЅРёСЏ РіРѕСЂРѕРґР°.
 bool getUserWishesAboutCityName(City* current_city_ptr, const std::string& new_city_name)
 {
-	std::cout << "Вы хотите заменить название города " << current_city_ptr->getCityName() << " на название " << new_city_name << ", полученное из файла?" << std::endl;
-	std::cout << "Да (yes)/ Нет (no): ";
+	std::cout << "Р’С‹ С…РѕС‚РёС‚Рµ Р·Р°РјРµРЅРёС‚СЊ РЅР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР° " << current_city_ptr->getCityName() << " РЅР° РЅР°Р·РІР°РЅРёРµ " << new_city_name << ", РїРѕР»СѓС‡РµРЅРЅРѕРµ РёР· С„Р°Р№Р»Р°?" << std::endl;
+	std::cout << "Р”Р° (yes)/ РќРµС‚ (no): ";
 	while (true)
 	{
 		std::string user_wishes{};
@@ -328,38 +328,38 @@ bool getUserWishesAboutCityName(City* current_city_ptr, const std::string& new_c
 		else if (user_wishes == "no")
 			return false;
 		else
-			std::cout << "Ошибка ввода. Введите 'yes' или 'no': ";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’РІРµРґРёС‚Рµ 'yes' РёР»Рё 'no': ";
 	}
 }
 
-/*ФУНКЦИИ ОБРАБОТКИ ВЫБРАННОГО ПОЛЬЗОВАТЕЛЕМ ДЕЙСТВИЯ*/
-/*Основное меню*/
-//Дейтсвие '1'.
+/*Р¤РЈРќРљР¦РР РћР‘Р РђР‘РћРўРљР Р’Р«Р‘Р РђРќРќРћР“Рћ РџРћР›Р¬Р—РћР’РђРўР•Р›Р•Рњ Р”Р•Р™РЎРўР’РРЇ*/
+/*РћСЃРЅРѕРІРЅРѕРµ РјРµРЅСЋ*/
+//Р”РµР№С‚СЃРІРёРµ '1'.
 void showTheCity(City* current_city_ptr)
 {
-	std::cout << "Вот текущая информация о городе " << current_city_ptr->getCityName() << "." << std::endl;
+	std::cout << "Р’РѕС‚ С‚РµРєСѓС‰Р°СЏ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РіРѕСЂРѕРґРµ " << current_city_ptr->getCityName() << "." << std::endl;
 	current_city_ptr->showTheCity();
 }
-//Дейтсвие '2'.
+//Р”РµР№С‚СЃРІРёРµ '2'.
 void addNewStreetInTheCity(City* current_city_ptr)
 {
 	current_city_ptr->addNewStreetToTheCity(getStreetNameFromUser(current_city_ptr));
-	std::cout << "Улица была успешно добавлена в город." << std::endl;
+	std::cout << "РЈР»РёС†Р° Р±С‹Р»Р° СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅР° РІ РіРѕСЂРѕРґ." << std::endl;
 }
-//Дейтсвие '3'.
+//Р”РµР№С‚СЃРІРёРµ '3'.
 void removeThFirsteStreetFromTheCity(City* current_city_ptr)
 {
 	if (current_city_ptr->removeTheFirstStreetOfTheCity().empty())
-		std::cout << "Город пуст. Выполнение данной операции невозможно." << std::endl;
+		std::cout << "Р“РѕСЂРѕРґ РїСѓСЃС‚. Р’С‹РїРѕР»РЅРµРЅРёРµ РґР°РЅРЅРѕР№ РѕРїРµСЂР°С†РёРё РЅРµРІРѕР·РјРѕР¶РЅРѕ." << std::endl;
 }
-//Дейтсвие '4'.
+//Р”РµР№С‚СЃРІРёРµ '4'.
 void selectionOfASpecificCityStreet(City* current_city_ptr)
 {
 	if (current_city_ptr->theCityIsEmpty())
-		std::cout << "Город пуст. Выполнение данной операции невозможно." << std::endl;
+		std::cout << "Р“РѕСЂРѕРґ РїСѓСЃС‚. Р’С‹РїРѕР»РЅРµРЅРёРµ РґР°РЅРЅРѕР№ РѕРїРµСЂР°С†РёРё РЅРµРІРѕР·РјРѕР¶РЅРѕ." << std::endl;
 	else
 	{
-		std::cout << "Введите название улицы города " << current_city_ptr->getCityName() << ", к которой хотите перейти: ";
+		std::cout << "Р’РІРµРґРёС‚Рµ РЅР°Р·РІР°РЅРёРµ СѓР»РёС†С‹ РіРѕСЂРѕРґР° " << current_city_ptr->getCityName() << ", Рє РєРѕС‚РѕСЂРѕР№ С…РѕС‚РёС‚Рµ РїРµСЂРµР№С‚Рё: ";
 		std::string specific_city_street_name{};
 		std::getline(std::cin, specific_city_street_name);
 		Street* specific_city_street_ptr{ current_city_ptr->transitionToTheStreetInTheCity(specific_city_street_name) };
@@ -396,21 +396,21 @@ void selectionOfASpecificCityStreet(City* current_city_ptr)
 				}
 				printDashes();
 			}
-			std::cout << "Вы вышли из меню улицы " << specific_city_street_ptr->getStreetName() << "." << std::endl;
+			std::cout << "Р’С‹ РІС‹С€Р»Рё РёР· РјРµРЅСЋ СѓР»РёС†С‹ " << specific_city_street_ptr->getStreetName() << "." << std::endl;
 		}
 		else
-			std::cout << "Данная улица отсутствует в городе. Выполнение данной операции невозможно." << std::endl;
+			std::cout << "Р”Р°РЅРЅР°СЏ СѓР»РёС†Р° РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ РіРѕСЂРѕРґРµ. Р’С‹РїРѕР»РЅРµРЅРёРµ РґР°РЅРЅРѕР№ РѕРїРµСЂР°С†РёРё РЅРµРІРѕР·РјРѕР¶РЅРѕ." << std::endl;
 	}
 }
-//Действие '5'.
+//Р”РµР№СЃС‚РІРёРµ '5'.
 void exportTheCityToFile(City* current_city_ptr)
 {
 	if (!current_city_ptr->theCityIsEmpty())
 	{
-		std::cout << "Вам необходимо ввести путь до файла вывода или нажать Enter, чтобы принять файл, указанный в в скобках." << std::endl;
+		std::cout << "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РїСѓС‚СЊ РґРѕ С„Р°Р№Р»Р° РІС‹РІРѕРґР° РёР»Рё РЅР°Р¶Р°С‚СЊ Enter, С‡С‚РѕР±С‹ РїСЂРёРЅСЏС‚СЊ С„Р°Р№Р», СѓРєР°Р·Р°РЅРЅС‹Р№ РІ РІ СЃРєРѕР±РєР°С…." << std::endl;
 		const std::string default_output_path{ "default_output_file.txt" };
 		std::string output_file_name{};
-		std::cout << "Задайте путь до файла вывода [" << default_output_path << "]: ";
+		std::cout << "Р—Р°РґР°Р№С‚Рµ РїСѓС‚СЊ РґРѕ С„Р°Р№Р»Р° РІС‹РІРѕРґР° [" << default_output_path << "]: ";
 		std::getline(std::cin, output_file_name);
 		if (output_file_name.empty())
 			output_file_name = default_output_path;
@@ -418,9 +418,9 @@ void exportTheCityToFile(City* current_city_ptr)
 		fout.open(output_file_name);
 		if (!fout.fail())
 		{
-			//Заносим имя города в файл.
+			//Р—Р°РЅРѕСЃРёРј РёРјСЏ РіРѕСЂРѕРґР° РІ С„Р°Р№Р».
 			fout << current_city_ptr->getCityName() << std::endl;
-			//Заносим улицы и дома в файл.
+			//Р—Р°РЅРѕСЃРёРј СѓР»РёС†С‹ Рё РґРѕРјР° РІ С„Р°Р№Р».
 			Street* temp_street_ptr{ current_city_ptr->getPFirst()->getPNext() };
 			while (temp_street_ptr != current_city_ptr->getPFirst())
 			{
@@ -442,24 +442,24 @@ void exportTheCityToFile(City* current_city_ptr)
 					fout << std::endl;
 				temp_street_ptr = temp_street_ptr->getPNext();
 			}
-			std::cout << "Данные успешно загружены в файл: " << output_file_name << std::endl;
+			std::cout << "Р”Р°РЅРЅС‹Рµ СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅС‹ РІ С„Р°Р№Р»: " << output_file_name << std::endl;
 		}
 		else
-			std::cout << "Не удалось открыть файл: " << output_file_name << "!" << std::endl;
+			std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РєСЂС‹С‚СЊ С„Р°Р№Р»: " << output_file_name << "!" << std::endl;
 		fout.close();
 	}
 	else
-		std::cout << "Город пуст. Сохарнять данные в файл не имеет значения." << std::endl;
+		std::cout << "Р“РѕСЂРѕРґ РїСѓСЃС‚. РЎРѕС…Р°СЂРЅСЏС‚СЊ РґР°РЅРЅС‹Рµ РІ С„Р°Р№Р» РЅРµ РёРјРµРµС‚ Р·РЅР°С‡РµРЅРёСЏ." << std::endl;
 }
-//Действие '6'.
+//Р”РµР№СЃС‚РІРёРµ '6'.
 void importTheCityFromFile(City* current_city_ptr)
 {
 	if (current_city_ptr->theCityIsEmpty())
 	{
-		std::cout << "Вам необходимо ввести путь до файла ввода или нажать Enter, чтобы принять файл, указанный в в скобках." << std::endl;
+		std::cout << "Р’Р°Рј РЅРµРѕР±С…РѕРґРёРјРѕ РІРІРµСЃС‚Рё РїСѓС‚СЊ РґРѕ С„Р°Р№Р»Р° РІРІРѕРґР° РёР»Рё РЅР°Р¶Р°С‚СЊ Enter, С‡С‚РѕР±С‹ РїСЂРёРЅСЏС‚СЊ С„Р°Р№Р», СѓРєР°Р·Р°РЅРЅС‹Р№ РІ РІ СЃРєРѕР±РєР°С…." << std::endl;
 		const std::string default_input_path{ "default_input_file.txt" };
 		std::string input_file_name{};
-		std::cout << "Задайте путь до файла ввода [" << default_input_path << "]: ";
+		std::cout << "Р—Р°РґР°Р№С‚Рµ РїСѓС‚СЊ РґРѕ С„Р°Р№Р»Р° РІРІРѕРґР° [" << default_input_path << "]: ";
 		std::getline(std::cin, input_file_name);
 		if (input_file_name.empty())
 			input_file_name = default_input_path;
@@ -472,7 +472,7 @@ void importTheCityFromFile(City* current_city_ptr)
 			if (getUserWishesAboutCityName(current_city_ptr, buffer_string))
 			{
 				current_city_ptr->setCityName(buffer_string);
-				std::cout << "Название города было успешно изменено." << std::endl;
+				std::cout << "РќР°Р·РІР°РЅРёРµ РіРѕСЂРѕРґР° Р±С‹Р»Рѕ СѓСЃРїРµС€РЅРѕ РёР·РјРµРЅРµРЅРѕ." << std::endl;
 			}
 			bool reading_street{ true };
 			while (std::getline(fin, buffer_string))
@@ -486,7 +486,7 @@ void importTheCityFromFile(City* current_city_ptr)
 					}
 					else
 						current_city_ptr->addNewStreetToTheCity(buffer_string);
-					std::cout << "Новая улица была успешно добавлена в город." << std::endl;
+					std::cout << "РќРѕРІР°СЏ СѓР»РёС†Р° Р±С‹Р»Р° СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅР° РІ РіРѕСЂРѕРґ." << std::endl;
 				}
 				else
 				{
@@ -494,70 +494,70 @@ void importTheCityFromFile(City* current_city_ptr)
 						reading_street = true;
 					else
 						buffer_string.erase(buffer_string.size() - 1);
-					//Индекс разделителя.
+					//РРЅРґРµРєСЃ СЂР°Р·РґРµР»РёС‚РµР»СЏ.
 					int separator_index{ static_cast<int>(buffer_string.find('|')) };
-					//Данные дома.
+					//Р”Р°РЅРЅС‹Рµ РґРѕРјР°.
 					int new_house_number{ convertStrToInt(buffer_string.substr(0, separator_index)) };
 					std::string new_house_building_type{ buffer_string.substr(separator_index + 1) };
 					current_city_ptr->getPLast()->addNewHouseToTheStreet(new_house_number, new_house_building_type);
-					std::cout << "Новый дом был успешно добавлен в город на соответствующую улицу." << std::endl;
+					std::cout << "РќРѕРІС‹Р№ РґРѕРј Р±С‹Р» СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ РІ РіРѕСЂРѕРґ РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰СѓСЋ СѓР»РёС†Сѓ." << std::endl;
 				}
 			}
-			std::cout << "Все данные города из указанного файла были успешно загружены." << std::endl;
+			std::cout << "Р’СЃРµ РґР°РЅРЅС‹Рµ РіРѕСЂРѕРґР° РёР· СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р° Р±С‹Р»Рё СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅС‹." << std::endl;
 			fin.close();
 		}
 	}
 	else
-		std::cout << "Город не пуст. Загрузка данных из файла не может быть выполнена." << std::endl;
+		std::cout << "Р“РѕСЂРѕРґ РЅРµ РїСѓСЃС‚. Р—Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РІС‹РїРѕР»РЅРµРЅР°." << std::endl;
 }
 
-/*Подменю*/
-//Дейтсвие '4'->'1'.
+/*РџРѕРґРјРµРЅСЋ*/
+//Р”РµР№С‚СЃРІРёРµ '4'->'1'.
 void checkTheStreet(Street* current_street_ptr)
 {
 	if (current_street_ptr->theStreetIsEmpty())
-		std::cout << "Улица " << current_street_ptr->getStreetName() << ": дома отсутствуют." << std::endl;
+		std::cout << "РЈР»РёС†Р° " << current_street_ptr->getStreetName() << ": РґРѕРјР° РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚." << std::endl;
 	else
-		std::cout << "Улица " << current_street_ptr->getStreetName() << ": дом(-а) присутствуют." << std::endl;
+		std::cout << "РЈР»РёС†Р° " << current_street_ptr->getStreetName() << ": РґРѕРј(-Р°) РїСЂРёСЃСѓС‚СЃС‚РІСѓСЋС‚." << std::endl;
 }
-//Дейтсвие '4'->'2'.
+//Р”РµР№С‚СЃРІРёРµ '4'->'2'.
 void addTheHouse(Street* current_street_ptr)
 {
 	current_street_ptr->addNewHouseToTheStreet(getHouseNumberForAddingFromUser(current_street_ptr), getHouseTypeBuildingFromUser());
 	system("cls");
-	std::cout << "На улицу " << current_street_ptr->getStreetName() << " был успешно добавлен новый дом." << std::endl;
+	std::cout << "РќР° СѓР»РёС†Сѓ " << current_street_ptr->getStreetName() << " Р±С‹Р» СѓСЃРїРµС€РЅРѕ РґРѕР±Р°РІР»РµРЅ РЅРѕРІС‹Р№ РґРѕРј." << std::endl;
 }
-//Дейтсвие '4'->'3'.
+//Р”РµР№С‚СЃРІРёРµ '4'->'3'.
 void removeTheHouse(Street* current_street_ptr)
 {
 	if (!current_street_ptr->theStreetIsEmpty())
 	{
-		std::cout << "Введите номер дома, который хотите удалить с улицы " << current_street_ptr->getStreetName() << ": ";
+		std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РґРѕРјР°, РєРѕС‚РѕСЂС‹Р№ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЃ СѓР»РёС†С‹ " << current_street_ptr->getStreetName() << ": ";
 		if (current_street_ptr->removeTheHouseFromTheStreet(getHouseNumberForRemovingOrSearchingFromUser()) == -1)
-			std::cout << "На улице " << current_street_ptr->getStreetName() << " нет дома с указанным номером." << std::endl;
+			std::cout << "РќР° СѓР»РёС†Рµ " << current_street_ptr->getStreetName() << " РЅРµС‚ РґРѕРјР° СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РЅРѕРјРµСЂРѕРј." << std::endl;
 	}
 	else
-		std::cout << "Улица " << current_street_ptr->getStreetName() << " пуста. Операция удаления дома невозможна." << std::endl;
+		std::cout << "РЈР»РёС†Р° " << current_street_ptr->getStreetName() << " РїСѓСЃС‚Р°. РћРїРµСЂР°С†РёСЏ СѓРґР°Р»РµРЅРёСЏ РґРѕРјР° РЅРµРІРѕР·РјРѕР¶РЅР°." << std::endl;
 }
-//Дейтсвие '4'->'4'.
+//Р”РµР№С‚СЃРІРёРµ '4'->'4'.
 void searchTheHouse(Street* current_street_ptr)
 {
 	if (!current_street_ptr->theStreetIsEmpty())
 	{
-		std::cout << "Введите номер дома, который хотите найти на улице " << current_street_ptr->getStreetName() << ": ";
+		std::cout << "Р’РІРµРґРёС‚Рµ РЅРѕРјРµСЂ РґРѕРјР°, РєРѕС‚РѕСЂС‹Р№ С…РѕС‚РёС‚Рµ РЅР°Р№С‚Рё РЅР° СѓР»РёС†Рµ " << current_street_ptr->getStreetName() << ": ";
 		House* searched_house_ptr{ current_street_ptr->houseSearchOnTheStreet(getHouseNumberForRemovingOrSearchingFromUser()) };
 		if (searched_house_ptr == nullptr)
-			std::cout << "На улице " << current_street_ptr->getStreetName() << " нет дома с указанным номером." << std::endl;
+			std::cout << "РќР° СѓР»РёС†Рµ " << current_street_ptr->getStreetName() << " РЅРµС‚ РґРѕРјР° СЃ СѓРєР°Р·Р°РЅРЅС‹Рј РЅРѕРјРµСЂРѕРј." << std::endl;
 		else
-			std::cout << "На улице " << current_street_ptr->getStreetName() << " есть дом с номером " << searched_house_ptr->getPNext()->getHouseNumber() <<
-			", тип строения дома: " << searched_house_ptr->getPNext()->getBuildingType() << "." << std::endl;
+			std::cout << "РќР° СѓР»РёС†Рµ " << current_street_ptr->getStreetName() << " РµСЃС‚СЊ РґРѕРј СЃ РЅРѕРјРµСЂРѕРј " << searched_house_ptr->getPNext()->getHouseNumber() <<
+			", С‚РёРї СЃС‚СЂРѕРµРЅРёСЏ РґРѕРјР°: " << searched_house_ptr->getPNext()->getBuildingType() << "." << std::endl;
 	}
 	else
-		std::cout << "Улица " << current_street_ptr->getStreetName() << " пуста. Операция поиска дома невозможна." << std::endl;
+		std::cout << "РЈР»РёС†Р° " << current_street_ptr->getStreetName() << " РїСѓСЃС‚Р°. РћРїРµСЂР°С†РёСЏ РїРѕРёСЃРєР° РґРѕРјР° РЅРµРІРѕР·РјРѕР¶РЅР°." << std::endl;
 }
-//Действие '4'->'5'.
+//Р”РµР№СЃС‚РІРёРµ '4'->'5'.
 void showTheStreet(Street* current_street_ptr)
 {
-	std::cout << "Вот информация о домах на улице " << current_street_ptr->getStreetName() << "." << std::endl;
+	std::cout << "Р’РѕС‚ РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РґРѕРјР°С… РЅР° СѓР»РёС†Рµ " << current_street_ptr->getStreetName() << "." << std::endl;
 	current_street_ptr->showHousesOnTheStreet();
 }

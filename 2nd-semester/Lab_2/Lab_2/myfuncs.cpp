@@ -18,14 +18,14 @@ unsigned char get_0_1()
         }
         else
         {
-            std::cout << "Îøèáêà ââîäà. Ââåäèòå 0 èëè 1: \n";
+            std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°. Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ 0 Ğ¸Ğ»Ğ¸ 1: \n";
         }
     }
 }
 
 bool getNext()
 {
-    std::cout << "Õîòèòå ïîâòîğèòü ââîä èñõîäíûõ äàííûõ? Äà - 1, Íåò - 0:" << "\t";
+    std::cout << "Ğ¥Ğ¾Ñ‚Ğ¸Ñ‚Ğµ Ğ¿Ğ¾Ğ²Ñ‚Ğ¾Ñ€Ğ¸Ñ‚ÑŒ Ğ²Ğ²Ğ¾Ğ´ Ğ¸ÑÑ…Ğ¾Ğ´Ğ½Ñ‹Ñ… Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ…? Ğ”Ğ° - 1, ĞĞµÑ‚ - 0:" << "\t";
     while (true)
     {
         char sm;
@@ -37,7 +37,7 @@ bool getNext()
         }
         else
         {
-            std::cout << "Îøèáêà ââîäà. Ââåäèòå 0 èëè 1: \n";
+            std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°. Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ 0 Ğ¸Ğ»Ğ¸ 1: \n";
         }
     }
 }
@@ -68,11 +68,11 @@ bool finit(std::ifstream& f, double mass[NM])
         {
             if (i == 0)
             {
-                std::cout << "Îøèáêà ââîäà èç ôàéëà \"in.txt\" ıëåìåíòà [x]." << std::endl;
+                std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ° Ğ¸Ğ· Ñ„Ğ°Ğ¹Ğ»Ğ° \"in.txt\" ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ğ° [x]." << std::endl;
             }
             else
             {
-                std::cout << "Îøèáêà ââîäà èç ôàéëà \"in.txt\" ıëåìåíòà [y" << i << "]." << std::endl;
+                std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ° Ğ¸Ğ· Ñ„Ğ°Ğ¹Ğ»Ğ° \"in.txt\" ÑĞ»ĞµĞ¼ĞµĞ½Ñ‚Ğ° [y" << i << "]." << std::endl;
             }
             return false;
         }
@@ -90,7 +90,7 @@ double getValue()
         {
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << "Îøèáêà ââîäà. Âû ââåëè íå ÷èñëî. Ïîâòîğèòå ââîä: \n";
+            std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ°. Ğ’Ñ‹ Ğ²Ğ²ĞµĞ»Ğ¸ Ğ½Ğµ Ñ‡Ğ¸ÑĞ»Ğ¾. ĞŸĞ¾Ğ²Ñ‚Ğ¾Ñ€Ğ¸Ñ‚Ğµ Ğ²Ğ²Ğ¾Ğ´: \n";
         }
         else
         {
@@ -121,18 +121,18 @@ bool check_SecondCondition(double mass[NM], double &t1, double &t2)
 
 void conditions_answer(std::ostream& f, double mass[NM], double t1, double t2)
 {
-    f << "Èñõîäíûé ìàññèâ:" << std::endl;
+    f << "Ğ˜ÑÑ…Ğ¾Ğ´Ğ½Ñ‹Ğ¹ Ğ¼Ğ°ÑÑĞ¸Ğ²:" << std::endl;
     for (unsigned i = 0; i < NM; i++)
         f << mass[i] << '\t';
     f << std::endl;
-    f << "*** Âåğíî ëè, ÷òî y1 <= x <= y12?" << std::endl;
+    f << "*** Ğ’ĞµÑ€Ğ½Ğ¾ Ğ»Ğ¸, Ñ‡Ñ‚Ğ¾ y1 <= x <= y12?" << std::endl;
     if (check_FirstCondition(mass))
-        f << "Äà, âåğíî!" << " (" << mass[1] << " <= " << mass[0] << " <= " << mass[12] << ") " << std::endl << std::endl;
+        f << "Ğ”Ğ°, Ğ²ĞµÑ€Ğ½Ğ¾!" << " (" << mass[1] << " <= " << mass[0] << " <= " << mass[12] << ") " << std::endl << std::endl;
     else
-        f << "Íåò, íåâåğíî!" << " (" << mass[1] << " <= " << mass[0] << " <= " << mass[12] << ") " << std::endl << std::endl;
-    f << "*** Âåğíî ëè, ÷òî t1 <= x <= t2, ãäå t1 - íàèìåíüøåå, à t2 - íàèáîëüøåå ñğåäè y1,...,y12?" << std::endl;
+        f << "ĞĞµÑ‚, Ğ½ĞµĞ²ĞµÑ€Ğ½Ğ¾!" << " (" << mass[1] << " <= " << mass[0] << " <= " << mass[12] << ") " << std::endl << std::endl;
+    f << "*** Ğ’ĞµÑ€Ğ½Ğ¾ Ğ»Ğ¸, Ñ‡Ñ‚Ğ¾ t1 <= x <= t2, Ğ³Ğ´Ğµ t1 - Ğ½Ğ°Ğ¸Ğ¼ĞµĞ½ÑŒÑˆĞµĞµ, Ğ° t2 - Ğ½Ğ°Ğ¸Ğ±Ğ¾Ğ»ÑŒÑˆĞµĞµ ÑÑ€ĞµĞ´Ğ¸ y1,...,y12?" << std::endl;
     if (check_SecondCondition(mass, t1, t2))
-        f << "Äà, âåğíî!" << " (" << t1 << " <= " << mass[0] << " <= " << t2 << ") " << std::endl;
+        f << "Ğ”Ğ°, Ğ²ĞµÑ€Ğ½Ğ¾!" << " (" << t1 << " <= " << mass[0] << " <= " << t2 << ") " << std::endl;
     else
-        f << "Íåò, íåâåğíî!" << " (" << t1 << " <= " << mass[0] << " <= " << t2 << ") " << std::endl;
+        f << "ĞĞµÑ‚, Ğ½ĞµĞ²ĞµÑ€Ğ½Ğ¾!" << " (" << t1 << " <= " << mass[0] << " <= " << t2 << ") " << std::endl;
 }

@@ -71,17 +71,17 @@ Street* City::streetSearchInTheCity(const std::string& searched_street_name)
 void City::showTheCity()
 {
 	if (this->theCityIsEmpty())
-		std::cout << "Город не содержит улиц." << std::endl;
+		std::cout << "Р“РѕСЂРѕРґ РЅРµ СЃРѕРґРµСЂР¶РёС‚ СѓР»РёС†." << std::endl;
 	else
 	{
-		std::cout << "Город содержит следующие улицы:" << std::endl;
+		std::cout << "Р“РѕСЂРѕРґ СЃРѕРґРµСЂР¶РёС‚ СЃР»РµРґСѓСЋС‰РёРµ СѓР»РёС†С‹:" << std::endl;
 		Street* temp_ptr{ this->pFirst->getPNext() };
 		while (temp_ptr != this->pFirst)
 		{
 			temp_ptr->showHousesOnTheStreet();
 			temp_ptr = temp_ptr->getPNext();
 		}
-		std::cout << "* Больше улиц в данном городе пока нет." << std::endl;
+		std::cout << "* Р‘РѕР»СЊС€Рµ СѓР»РёС† РІ РґР°РЅРЅРѕРј РіРѕСЂРѕРґРµ РїРѕРєР° РЅРµС‚." << std::endl;
 	}
 }
 
@@ -111,5 +111,5 @@ City::~City()
 	delete pFirst;
 	this->pFirst = nullptr;
 	this->pLast = nullptr;
-	std::cout << "Город " << this->getCityName() << " был полностью успешно удален." << std::endl;
+	std::cout << "Р“РѕСЂРѕРґ " << this->getCityName() << " Р±С‹Р» РїРѕР»РЅРѕСЃС‚СЊСЋ СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅ." << std::endl;
 }

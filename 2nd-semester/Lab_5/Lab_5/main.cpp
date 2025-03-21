@@ -19,14 +19,14 @@ int main(int argc, char** argv)
 		}
 		catch (const::std::invalid_argument& ia)
 		{
-			std::cerr << "Íåâîçìîæíî ïğåîáğàçîâàòü àğãóìåíò(-û) â ÷èñëî òèïà: " << ia.what() << std::endl;
+			std::cerr << "ĞĞµĞ²Ğ¾Ğ·Ğ¼Ğ¾Ğ¶Ğ½Ğ¾ Ğ¿Ñ€ĞµĞ¾Ğ±Ñ€Ğ°Ğ·Ğ¾Ğ²Ğ°Ñ‚ÑŒ Ğ°Ñ€Ğ³ÑƒĞ¼ĞµĞ½Ñ‚(-Ñ‹) Ğ² Ñ‡Ğ¸ÑĞ»Ğ¾ Ñ‚Ğ¸Ğ¿Ğ°: " << ia.what() << std::endl;
 			return 0;
 		}
 		unsigned long long copynnum{ nnum };
 		unsigned int flag{ 1 };
 		if (static_cast<unsigned long long>(nnum) < 0 || static_cast<long long>(nnum) > 18446744073709551615)
 		{
-			std::cout << "Îøèáêà ââîäà ÷èñëà nnum! Ââåäèòå â ñëåäóşùèé ğàç ÷èñëî â äèàïàçîíå 8 áàéò (îò 0 äî 2^64-1)." << std::endl;
+			std::cout << "ĞÑˆĞ¸Ğ±ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ° Ñ‡Ğ¸ÑĞ»Ğ° nnum! Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ² ÑĞ»ĞµĞ´ÑƒÑÑ‰Ğ¸Ğ¹ Ñ€Ğ°Ğ· Ñ‡Ğ¸ÑĞ»Ğ¾ Ğ² Ğ´Ğ¸Ğ°Ğ¿Ğ°Ğ·Ğ¾Ğ½Ğµ 8 Ğ±Ğ°Ğ¹Ñ‚ (Ğ¾Ñ‚ 0 Ğ´Ğ¾ 2^64-1)." << std::endl;
 			return 0;
 		}
 		if (nbit >= 0 && nbit <= 64)
@@ -34,8 +34,8 @@ int main(int argc, char** argv)
 			nnum = shiftr(nnum, bit, nbit, flag);
 			if (flag != 0)
 			{
-				std::cout << "Èñõîäíîå çíà÷åíèå nnum : " << copynnum << std::endl;
-				std::cout << "Çíà÷åíèå nnum ïîñëå çàìåíû áèòà â óêàçàííîé ïîçèöèè: " << nnum << std::endl;
+				std::cout << "Ğ˜ÑÑ…Ğ¾Ğ´Ğ½Ğ¾Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ nnum : " << copynnum << std::endl;
+				std::cout << "Ğ—Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ nnum Ğ¿Ğ¾ÑĞ»Ğµ Ğ·Ğ°Ğ¼ĞµĞ½Ñ‹ Ğ±Ğ¸Ñ‚Ğ° Ğ² ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ½Ğ¾Ğ¹ Ğ¿Ğ¾Ğ·Ğ¸Ñ†Ğ¸Ğ¸: " << nnum << std::endl;
 			}
 			else
 			{
@@ -44,14 +44,14 @@ int main(int argc, char** argv)
 		}
 		else
 		{
-			std::cerr << "Íåâåğíî óêàçàíà ïîçèöèÿ çàïèñûâàåìîãî áèòà nbit!" << std::endl;
+			std::cerr << "ĞĞµĞ²ĞµÑ€Ğ½Ğ¾ ÑƒĞºĞ°Ğ·Ğ°Ğ½Ğ° Ğ¿Ğ¾Ğ·Ğ¸Ñ†Ğ¸Ñ Ğ·Ğ°Ğ¿Ğ¸ÑÑ‹Ğ²Ğ°ĞµĞ¼Ğ¾Ğ³Ğ¾ Ğ±Ğ¸Ñ‚Ğ° nbit!" << std::endl;
 			return 0;
 		}
 	}
 	else
 	{
-		std::cout << "Íåîáõîäèìî óêàçàòü ÷åòûğå àğãóìåíòà êîìàíäíîé ñòğîêè: "
-			<< "**ïóòü äî ïğîãğàììû**, **÷èñëî nnum**, **áèò bit**, **ïîçèöèş áèòà nbit**." << std::endl;
+		std::cout << "ĞĞµĞ¾Ğ±Ñ…Ğ¾Ğ´Ğ¸Ğ¼Ğ¾ ÑƒĞºĞ°Ğ·Ğ°Ñ‚ÑŒ Ñ‡ĞµÑ‚Ñ‹Ñ€Ğµ Ğ°Ñ€Ğ³ÑƒĞ¼ĞµĞ½Ñ‚Ğ° ĞºĞ¾Ğ¼Ğ°Ğ½Ğ´Ğ½Ğ¾Ğ¹ ÑÑ‚Ñ€Ğ¾ĞºĞ¸: "
+			<< "**Ğ¿ÑƒÑ‚ÑŒ Ğ´Ğ¾ Ğ¿Ñ€Ğ¾Ğ³Ñ€Ğ°Ğ¼Ğ¼Ñ‹**, **Ñ‡Ğ¸ÑĞ»Ğ¾ nnum**, **Ğ±Ğ¸Ñ‚ bit**, **Ğ¿Ğ¾Ğ·Ğ¸Ñ†Ğ¸Ñ Ğ±Ğ¸Ñ‚Ğ° nbit**." << std::endl;
 	}
 	return 0;
 }

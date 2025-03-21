@@ -24,7 +24,7 @@ int main()
 		array_rectangles_size, array_rectangles,
 		array_linesegments_size, array_linesegments);
 
-	//Очистка занятой динамической памяти перед выходом из программы
+	//РћС‡РёСЃС‚РєР° Р·Р°РЅСЏС‚РѕР№ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё РїРµСЂРµРґ РІС‹С…РѕРґРѕРј РёР· РїСЂРѕРіСЂР°РјРјС‹
 	//Circle
 	delete ptr_obj_circle;
 	ptr_obj_circle = nullptr;
@@ -34,7 +34,7 @@ int main()
 	//Linesegment
 	delete ptr_obj_linesegment;
 	ptr_obj_rect = nullptr;
-	//Массивы кружков, прямоугольников и отрезков
+	//РњР°СЃСЃРёРІС‹ РєСЂСѓР¶РєРѕРІ, РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРѕРІ Рё РѕС‚СЂРµР·РєРѕРІ
 	for (int i{}; i < array_circles_size; i++)
 		array_circles[i]->Free(array_circles[i]);
 	delete[] array_circles;

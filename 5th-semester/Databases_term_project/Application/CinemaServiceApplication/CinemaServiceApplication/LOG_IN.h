@@ -14,7 +14,7 @@ namespace CinemaServiceApplication {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Сводка для LOG_IN
+	/// РЎРІРѕРґРєР° РґР»СЏ LOG_IN
 	/// </summary>
 	public ref class LOG_IN : public System::Windows::Forms::Form
 	{
@@ -23,7 +23,7 @@ namespace CinemaServiceApplication {
 
 	protected:
 		/// <summary>
-		/// Освободить все используемые ресурсы.
+		/// РћСЃРІРѕР±РѕРґРёС‚СЊ РІСЃРµ РёСЃРїРѕР»СЊР·СѓРµРјС‹Рµ СЂРµСЃСѓСЂСЃС‹.
 		/// </summary>
 		~LOG_IN();
 	private: System::Windows::Forms::Button^ log_in_enter_btn;
@@ -53,14 +53,14 @@ namespace CinemaServiceApplication {
 	private: System::ComponentModel::IContainer^ components;
 	private:
 		/// <summary>
-		/// Обязательная переменная конструктора.
+		/// РћР±СЏР·Р°С‚РµР»СЊРЅР°СЏ РїРµСЂРµРјРµРЅРЅР°СЏ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР°.
 		/// </summary>
 
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Требуемый метод для поддержки конструктора — не изменяйте 
-		/// содержимое этого метода с помощью редактора кода.
+		/// РўСЂРµР±СѓРµРјС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїРѕРґРґРµСЂР¶РєРё РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂР° вЂ” РЅРµ РёР·РјРµРЅСЏР№С‚Рµ 
+		/// СЃРѕРґРµСЂР¶РёРјРѕРµ СЌС‚РѕРіРѕ РјРµС‚РѕРґР° СЃ РїРѕРјРѕС‰СЊСЋ СЂРµРґР°РєС‚РѕСЂР° РєРѕРґР°.
 		/// </summary>
 		void InitializeComponent(void);
 #pragma endregion

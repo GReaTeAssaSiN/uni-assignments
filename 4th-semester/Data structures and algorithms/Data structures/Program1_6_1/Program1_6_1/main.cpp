@@ -1,18 +1,18 @@
 #include <iostream>
-#include <cstdlib> //для функций rand() и srand()
-#include <ctime> //для функции time()
+#include <cstdlib> //РґР»СЏ С„СѓРЅРєС†РёР№ rand() Рё srand()
+#include <ctime> //РґР»СЏ С„СѓРЅРєС†РёРё time()
 #include "myfuncs.h"
 
 int main()
 {
 	std::setlocale(LC_ALL, "Rus");
-	//Привзяка ГПСЧ к календарному времени (случайные последовательности случайных чисел из диапазона).
+	//РџСЂРёРІР·СЏРєР° Р“РџРЎР§ Рє РєР°Р»РµРЅРґР°СЂРЅРѕРјСѓ РІСЂРµРјРµРЅРё (СЃР»СѓС‡Р°Р№РЅС‹Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РёР· РґРёР°РїР°Р·РѕРЅР°).
 	srand(static_cast<unsigned int>(time(0)));
-	//Задание корня поискового дерева.
+	//Р—Р°РґР°РЅРёРµ РєРѕСЂРЅСЏ РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР°.
 	Tree* binary_tree = new Tree{};
 	binary_tree->root = nullptr;
 	binary_tree->number_vertices = 0;
-	//Цикл обработки пользовательского ввода.
+	//Р¦РёРєР» РѕР±СЂР°Р±РѕС‚РєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР°.
 	bool cycle{ true };
 	while (cycle)
 	{
@@ -22,42 +22,42 @@ int main()
 			if (isBinaryTreeEmpty(binary_tree->root))
 				userCase1(binary_tree);
 			else
-				std::cout << "Поисковое дерево уже было построено. Удалите старое прежде, чем создать новое данной командой." << std::endl;
+				std::cout << "РџРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ СѓР¶Рµ Р±С‹Р»Рѕ РїРѕСЃС‚СЂРѕРµРЅРѕ. РЈРґР°Р»РёС‚Рµ СЃС‚Р°СЂРѕРµ РїСЂРµР¶РґРµ, С‡РµРј СЃРѕР·РґР°С‚СЊ РЅРѕРІРѕРµ РґР°РЅРЅРѕР№ РєРѕРјР°РЅРґРѕР№." << std::endl;
 			break;
 		case '2':
 			userCase2(binary_tree);
 			break;
 		case '3':
-			std::cout << "Количество элементов поискового дерева: " << binary_tree->number_vertices << std::endl;
+			std::cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР°: " << binary_tree->number_vertices << std::endl;
 			if (!isBinaryTreeEmpty(binary_tree->root))
 				userCase3(binary_tree->root);
 			else
-				std::cout << "Сначала необходимо создать двоичное поисковое дерево." << std::endl;
+				std::cout << "РЎРЅР°С‡Р°Р»Р° РЅРµРѕР±С…РѕРґРёРјРѕ СЃРѕР·РґР°С‚СЊ РґРІРѕРёС‡РЅРѕРµ РїРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ." << std::endl;
 			break;
 		case '4':
-			std::cout << "Количество элементов поискового дерева: " << binary_tree->number_vertices << std::endl;
+			std::cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР°: " << binary_tree->number_vertices << std::endl;
 			if (!isBinaryTreeEmpty(binary_tree->root))
 				userCase4(binary_tree->root);
 			else
-				std::cout << "Сначала необходимо создать двоичное поисковое дерево." << std::endl;
+				std::cout << "РЎРЅР°С‡Р°Р»Р° РЅРµРѕР±С…РѕРґРёРјРѕ СЃРѕР·РґР°С‚СЊ РґРІРѕРёС‡РЅРѕРµ РїРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ." << std::endl;
 			break;
 		case '5':
 			if (!isBinaryTreeEmpty(binary_tree->root))
 				userCase5(binary_tree->root);
 			else
-				std::cout << "Сначала необходимо создать двоичное поисковое дерево." << std::endl;
+				std::cout << "РЎРЅР°С‡Р°Р»Р° РЅРµРѕР±С…РѕРґРёРјРѕ СЃРѕР·РґР°С‚СЊ РґРІРѕРёС‡РЅРѕРµ РїРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ." << std::endl;
 			break;
 		case '6':
 			if (!isBinaryTreeEmpty(binary_tree->root))
 				userCase6(binary_tree);
 			else
-				std::cout << "Сначала необходимо создать двоичное поисковое дерево." << std::endl;
+				std::cout << "РЎРЅР°С‡Р°Р»Р° РЅРµРѕР±С…РѕРґРёРјРѕ СЃРѕР·РґР°С‚СЊ РґРІРѕРёС‡РЅРѕРµ РїРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ." << std::endl;
 			break;
 		case '7':
 			if (!isBinaryTreeEmpty(binary_tree->root))
 				userCase7(binary_tree);
 			else
-				std::cout << "Сначала необходимо создать двоичное поисковое дерево." << std::endl;
+				std::cout << "РЎРЅР°С‡Р°Р»Р° РЅРµРѕР±С…РѕРґРёРјРѕ СЃРѕР·РґР°С‚СЊ РґРІРѕРёС‡РЅРѕРµ РїРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ." << std::endl;
 			break;
 		case '8':
 			userCase8(binary_tree);

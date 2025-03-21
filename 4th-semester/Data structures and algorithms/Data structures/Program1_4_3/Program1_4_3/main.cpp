@@ -4,18 +4,18 @@
 int main()
 {
 	setlocale(LC_ALL, "Rus");
-	//Инициализация указателя на список списков.
+	//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СѓРєР°Р·Р°С‚РµР»СЏ РЅР° СЃРїРёСЃРѕРє СЃРїРёСЃРєРѕРІ.
 	ListOfLists* myListOfLists = new ListOfLists{};
 	myListOfLists->headListPointer = nullptr;
 	myListOfLists->count = 0;
-	//Задание заголовочного элемента списка списков.
+	//Р—Р°РґР°РЅРёРµ Р·Р°РіРѕР»РѕРІРѕС‡РЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° СЃРїРёСЃРєР° СЃРїРёСЃРєРѕРІ.
 	List* headerList = new List{};
 	headerList->count = 0;
 	headerList->headPointer = nullptr;
 	headerList->nextList = nullptr;
 	headerList->symbolischer_name = 0;
 	myListOfLists->headListPointer = headerList;
-	//Цикл обработки пользовательского ввода.
+	//Р¦РёРєР» РѕР±СЂР°Р±РѕС‚РєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР°.
 	bool cycle{ true };
 	while (cycle)
 	{

@@ -17,7 +17,7 @@ private:
 		Node(TFigure* ptr_current_data, Node* ptr_currentNode = nullptr)
 			: ptr_data{ ptr_current_data }, m_next{ ptr_currentNode }
 		{
-			std::cout << "Óçåë ñ èíôîðìàöèåé î òîëüêî ÷òî ñîçäàííîì îáúåêòå óñïåøíî ñîçäàí." << std::endl;
+			std::cout << "Ð£Ð·ÐµÐ» Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸ÐµÐ¹ Ð¾ Ñ‚Ð¾Ð»ÑŒÐºÐ¾ Ñ‡Ñ‚Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½Ð½Ð¾Ð¼ Ð¾Ð±ÑŠÐµÐºÑ‚Ðµ ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑÐ¾Ð·Ð´Ð°Ð½." << std::endl;
 		}
 
 		~Node() = default;

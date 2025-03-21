@@ -1,8 +1,8 @@
 #include "Ellipse.h"
 #include "myfuncs.h"
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ ЭЛЛИПСА*/
-//Сдвинуть эллипс случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР Р­Р›Р›РРџРЎРђ*/
+//РЎРґРІРёРЅСѓС‚СЊ СЌР»Р»РёРїСЃ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetEllipse(TEllipse* f_ptr_obj_ellipse)
 {
 	float x_ellipse{ f_ptr_obj_ellipse->getXPoint() };
@@ -22,9 +22,9 @@ void doOffsetEllipse(TEllipse* f_ptr_obj_ellipse)
 	}
 }
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ МАССИВА ЭЛЛИПСОВ*/
-//Добавить элемент в конец и удалить последний элемент - шаблонные функции
-//Сдвинуть элементы случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РњРђРЎРЎРР’Рђ Р­Р›Р›РРџРЎРћР’*/
+//Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС† Рё СѓРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ - С€Р°Р±Р»РѕРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
+//РЎРґРІРёРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚С‹ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetArrayEllipses(TEllipse** array_ellipses, int array_ellipses_size)
 {
 	for (int i{}; i < array_ellipses_size; i++)
@@ -46,7 +46,7 @@ void doOffsetArrayEllipses(TEllipse** array_ellipses, int array_ellipses_size)
 		}
 	}
 }
-//Движение по клавишам WASD элементов
+//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ
 void doUserMoveArrayEllipsesW(TEllipse** array_ellipses, int array_ellipses_size)
 {
 	for (int i{}; i < array_ellipses_size; i++)
@@ -79,7 +79,7 @@ void doUserMoveArrayEllipsesD(TEllipse** array_ellipses, int array_ellipses_size
 			array_ellipses[i]->MoveTo(10, 0);
 	}
 }
-//Увеличить большую полуось
+//РЈРІРµР»РёС‡РёС‚СЊ Р±РѕР»СЊС€СѓСЋ РїРѕР»СѓРѕСЃСЊ
 void array_ellipses_SemiMajorAxisIncrease(TEllipse** array_ellipses, int array_ellipses_size)
 {
 	for (int i{}; i < array_ellipses_size; i++)
@@ -89,7 +89,7 @@ void array_ellipses_SemiMajorAxisIncrease(TEllipse** array_ellipses, int array_e
 			array_ellipses[i]->changeRadius(2);
 		}
 }
-//Уменьшите большую полуось
+//РЈРјРµРЅСЊС€РёС‚Рµ Р±РѕР»СЊС€СѓСЋ РїРѕР»СѓРѕСЃСЊ
 void array_ellipses_SemiMajorAxisDecrease(TEllipse** array_ellipses, int array_ellipses_size)
 {
 	for (int i{}; i < array_ellipses_size; i++)
@@ -98,7 +98,7 @@ void array_ellipses_SemiMajorAxisDecrease(TEllipse** array_ellipses, int array_e
 			array_ellipses[i]->changeRadius(-2);
 		}
 }
-//Увеличить малую полуось
+//РЈРІРµР»РёС‡РёС‚СЊ РјР°Р»СѓСЋ РїРѕР»СѓРѕСЃСЊ
 void array_ellipses_SemiMinorAxisIncrease(TEllipse** array_ellipses, int array_ellipses_size)
 {
 	for (int i{}; i < array_ellipses_size; i++)
@@ -108,7 +108,7 @@ void array_ellipses_SemiMinorAxisIncrease(TEllipse** array_ellipses, int array_e
 			array_ellipses[i]->changeSemiMinorAxis(2);
 		}
 }
-//Уменьшите малую полуось
+//РЈРјРµРЅСЊС€РёС‚Рµ РјР°Р»СѓСЋ РїРѕР»СѓРѕСЃСЊ
 void array_ellipses_SemiMinorAxisDecrease(TEllipse** array_ellipses, int array_ellipses_size)
 {
 	for (int i{}; i < array_ellipses_size; i++)
@@ -117,7 +117,7 @@ void array_ellipses_SemiMinorAxisDecrease(TEllipse** array_ellipses, int array_e
 			array_ellipses[i]->changeSemiMinorAxis(-2);
 		}
 }
-//Повернуть на 90 градусов
+//РџРѕРІРµСЂРЅСѓС‚СЊ РЅР° 90 РіСЂР°РґСѓСЃРѕРІ
 void array_ellipses_Rotate(TEllipse** array_ellipses, int array_ellipses_size)
 {
 	for (int i{}; i < array_ellipses_size; i++)

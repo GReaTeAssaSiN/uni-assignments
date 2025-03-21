@@ -2,36 +2,36 @@
 #include <string>
 #include "myfuncs.h"
 
-/*ВТОРОСТЕПЕННЫЕ ФУНКЦИИ*/
-//ГПСЧ
+/*Р’РўРћР РћРЎРўР•РџР•РќРќР«Р• Р¤РЈРќРљР¦РР*/
+//Р“РџРЎР§
 float getRandomNumber(float min, float max)
 {
 	static const float fraction = 1.0 / (static_cast<float>(RAND_MAX) + 1.0);
 	return (rand() * fraction * (max - min + 1) + min);
 }
-//Проверка введенной пользователем строки на соответствие символу 'q'
+//РџСЂРѕРІРµСЂРєР° РІРІРµРґРµРЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ СЃРёРјРІРѕР»Сѓ 'q'
 bool isSymbolQ()
 {
-	std::cout << "Введите символ 'q', если желаете выйти из программы, иначе можете просто нажать Enter: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ СЃРёРјРІРѕР» 'q', РµСЃР»Рё Р¶РµР»Р°РµС‚Рµ РІС‹Р№С‚Рё РёР· РїСЂРѕРіСЂР°РјРјС‹, РёРЅР°С‡Рµ РјРѕР¶РµС‚Рµ РїСЂРѕСЃС‚Рѕ РЅР°Р¶Р°С‚СЊ Enter: ";
 	std::string symbol{};
 	std::getline(std::cin, symbol);
 	if (symbol == "q")
 		return true;
 	return false;
 }
-//Вывод визуального разделения между действиями пользователя в консоль.
+//Р’С‹РІРѕРґ РІРёР·СѓР°Р»СЊРЅРѕРіРѕ СЂР°Р·РґРµР»РµРЅРёСЏ РјРµР¶РґСѓ РґРµР№СЃС‚РІРёСЏРјРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ РєРѕРЅСЃРѕР»СЊ.
 void printDashes()
 {
 	std::cout << "---------------------------------------------------------------------------------------------------------------" << "\t" << std::endl;
 }
 
-/*ФУНКЦИИ ДЛЯ РАБОТЫ С ОЧЕРЕДЬЮ*/
-//Проверка очереди на пустоту
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ Р РђР‘РћРўР« РЎ РћР§Р•Р Р•Р”Р¬Р®*/
+//РџСЂРѕРІРµСЂРєР° РѕС‡РµСЂРµРґРё РЅР° РїСѓСЃС‚РѕС‚Сѓ
 bool isEmptyQueue(Queue* f_queue)
 {
 	return (f_queue->frnt == nullptr) ? true : false;
 }
-//Добавление элемента в очередь
+//Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ РѕС‡РµСЂРµРґСЊ
 void enQueue(Queue*& f_queue, char f_symbol)
 {
 	try
@@ -47,7 +47,7 @@ void enQueue(Queue*& f_queue, char f_symbol)
 			f_queue->rear->next = new_elem;
 			f_queue->rear = new_elem;
 		}
-		std::cout << "В очередь был добавлен элемент '" << f_symbol << "'." << std::endl;
+		std::cout << "Р’ РѕС‡РµСЂРµРґСЊ Р±С‹Р» РґРѕР±Р°РІР»РµРЅ СЌР»РµРјРµРЅС‚ '" << f_symbol << "'." << std::endl;
 		f_queue->rear->data = f_symbol;
 		f_queue->rear->next = f_queue->frnt;
 		f_queue->count++;
@@ -55,16 +55,16 @@ void enQueue(Queue*& f_queue, char f_symbol)
 	catch (const std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
-		std::cout << "Не удалось выделить память из кучи. Куча переполнена!" << std::endl;
+		std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ РІС‹РґРµР»РёС‚СЊ РїР°РјСЏС‚СЊ РёР· РєСѓС‡Рё. РљСѓС‡Р° РїРµСЂРµРїРѕР»РЅРµРЅР°!" << std::endl;
 		clearQueue(f_queue);
 		exit(-1);
 	}
 }
-//Удаление элемента из очереди
+//РЈРґР°Р»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РёР· РѕС‡РµСЂРµРґРё
 void deQueue(Queue*& f_queue)
 {
 	if (isEmptyQueue(f_queue))
-		std::cout << "Очередь пуста, операция удаления элемента из очереди невозможна." << std::endl;
+		std::cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°, РѕРїРµСЂР°С†РёСЏ СѓРґР°Р»РµРЅРёСЏ СЌР»РµРјРµРЅС‚Р° РёР· РѕС‡РµСЂРµРґРё РЅРµРІРѕР·РјРѕР¶РЅР°." << std::endl;
 	else
 	{
 		Node* temp = f_queue->frnt;
@@ -79,20 +79,20 @@ void deQueue(Queue*& f_queue)
 			f_queue->rear->next = f_queue->frnt;
 		}
 		temp->next = nullptr;
-		std::cout << "Элемент '" << temp->data << "' из очереди успешно удален." << std::endl;
+		std::cout << "Р­Р»РµРјРµРЅС‚ '" << temp->data << "' РёР· РѕС‡РµСЂРµРґРё СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅ." << std::endl;
 		delete temp;
 		f_queue->count--;
 	}
 }
-//Вывод текущего состояния очереди на экран
+//Р’С‹РІРѕРґ С‚РµРєСѓС‰РµРіРѕ СЃРѕСЃС‚РѕСЏРЅРёСЏ РѕС‡РµСЂРµРґРё РЅР° СЌРєСЂР°РЅ
 void printQueue(Queue* f_queue)
 {
 	if (isEmptyQueue(f_queue))
-		std::cout << "Очередь пуста.";
+		std::cout << "РћС‡РµСЂРµРґСЊ РїСѓСЃС‚Р°.";
 	else
 	{
 		Node* temp = f_queue->frnt;
-		std::cout << "Текущее состояние очереди: ";
+		std::cout << "РўРµРєСѓС‰РµРµ СЃРѕСЃС‚РѕСЏРЅРёРµ РѕС‡РµСЂРµРґРё: ";
 		for (int i{ f_queue->count }; i > 0; i--)
 		{
 			std::cout << temp->data;
@@ -102,7 +102,7 @@ void printQueue(Queue* f_queue)
 	}
 	std::cout << std::endl << std::endl;
 }
-//Очистка выделенной памяти для очереди
+//РћС‡РёСЃС‚РєР° РІС‹РґРµР»РµРЅРЅРѕР№ РїР°РјСЏС‚Рё РґР»СЏ РѕС‡РµСЂРµРґРё
 void clearQueue(Queue*& f_queue)
 {
 	for (int i{ f_queue->count }; i > 0; i--)
@@ -116,5 +116,5 @@ void clearQueue(Queue*& f_queue)
 		temp = nullptr;
 	}
 	delete f_queue;
-	std::cout << "Вся выделенная память была возвращена в кучу. Завершение программы . . ." << std::endl;
+	std::cout << "Р’СЃСЏ РІС‹РґРµР»РµРЅРЅР°СЏ РїР°РјСЏС‚СЊ Р±С‹Р»Р° РІРѕР·РІСЂР°С‰РµРЅР° РІ РєСѓС‡Сѓ. Р—Р°РІРµСЂС€РµРЅРёРµ РїСЂРѕРіСЂР°РјРјС‹ . . ." << std::endl;
 }

@@ -68,7 +68,7 @@ void DynamicArray::MoveElemsW(int index_of_elem)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -134,7 +134,7 @@ void DynamicArray::MoveElemsA(int index_of_elem)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -200,7 +200,7 @@ void DynamicArray::MoveElemsS(int index_of_elem)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -266,7 +266,7 @@ void DynamicArray::MoveElemsD(int index_of_elem)
 	}
 	default:
 	{
-		std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+		std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 		break;
 	}
 	}
@@ -278,7 +278,7 @@ DynamicArray::DynamicArray(int size)
 	if (size > 0)
 	{
 		m_data = new TFigure * [size] {};
-		std::cout << "Создан контейнер на базе динамического массива из " << m_size << " случайных примитивов." << std::endl;
+		std::cout << "РЎРѕР·РґР°РЅ РєРѕРЅС‚РµР№РЅРµСЂ РЅР° Р±Р°Р·Рµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР° РёР· " << m_size << " СЃР»СѓС‡Р°Р№РЅС‹С… РїСЂРёРјРёС‚РёРІРѕРІ." << std::endl;
 	}
 }
 
@@ -287,7 +287,7 @@ void DynamicArray::addNewElem(int index_of_elem, TFigure*& new_graphic_primitive
 	if (index_of_elem + 1 <= m_size)
 	{
 		m_data[index_of_elem] = new_graphic_primitive;
-		std::cout << "В контейнер на базе динамического списка был добавлен новый элемент с индексом: " << index_of_elem << "." << std::endl;
+		std::cout << "Р’ РєРѕРЅС‚РµР№РЅРµСЂ РЅР° Р±Р°Р·Рµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР° Р±С‹Р» РґРѕР±Р°РІР»РµРЅ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ СЃ РёРЅРґРµРєСЃРѕРј: " << index_of_elem << "." << std::endl;
 	}
 }
 
@@ -392,11 +392,11 @@ void DynamicArray::Iterator(int attribute, int& size_container_figures_dinamic_a
 			}
 			default:
 			{
-				std::cout << "Error! figures_choice не совпадает ни с одним типом." << std::endl;
+				std::cout << "Error! figures_choice РЅРµ СЃРѕРІРїР°РґР°РµС‚ РЅРё СЃ РѕРґРЅРёРј С‚РёРїРѕРј." << std::endl;
 				break;
 			}
 			}
-			std::cout << "Удален " << i << "-ый элемент." << std::endl;
+			std::cout << "РЈРґР°Р»РµРЅ " << i << "-С‹Р№ СЌР»РµРјРµРЅС‚." << std::endl;
 			
 			break;
 		}
@@ -503,7 +503,7 @@ void DynamicArray::Iterator(int attribute, int& size_container_figures_dinamic_a
 		}
 		default:
 		{
-			std::cout << "Error! attribute не имеет признака с таким номером." << std::endl;
+			std::cout << "Error! attribute РЅРµ РёРјРµРµС‚ РїСЂРёР·РЅР°РєР° СЃ С‚Р°РєРёРј РЅРѕРјРµСЂРѕРј." << std::endl;
 			break;
 		}
 		}
@@ -528,6 +528,6 @@ DynamicArray::~DynamicArray()
 		delete[] m_data;
 		m_data = nullptr;
 	}
-	std::cout << "Контейнер на базе динамического массива из " << m_size << " случайных примитивов был зачищен и уничтожен." << std::endl;
+	std::cout << "РљРѕРЅС‚РµР№РЅРµСЂ РЅР° Р±Р°Р·Рµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР° РёР· " << m_size << " СЃР»СѓС‡Р°Р№РЅС‹С… РїСЂРёРјРёС‚РёРІРѕРІ Р±С‹Р» Р·Р°С‡РёС‰РµРЅ Рё СѓРЅРёС‡С‚РѕР¶РµРЅ." << std::endl;
 	m_size = 0;
 }

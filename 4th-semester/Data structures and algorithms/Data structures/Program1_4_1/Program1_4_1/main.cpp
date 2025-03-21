@@ -4,16 +4,16 @@
 int main()
 {
 	setlocale(LC_ALL, "Rus");
-	//Инициализация указателя на двунаправленный список.
+	//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СѓРєР°Р·Р°С‚РµР»СЏ РЅР° РґРІСѓРЅР°РїСЂР°РІР»РµРЅРЅС‹Р№ СЃРїРёСЃРѕРє.
 	List* myList = new List{};
 	myList->listPointer = nullptr;
-	//Задание заголовочного элемента двунаправленного писка.
+	//Р—Р°РґР°РЅРёРµ Р·Р°РіРѕР»РѕРІРѕС‡РЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РґРІСѓРЅР°РїСЂР°РІР»РµРЅРЅРѕРіРѕ РїРёСЃРєР°.
 	Node* head_node = new Node{};
 	myList->listPointer = head_node;
 	myList->listPointer->data = 0;
 	myList->listPointer->next = head_node;
 	myList->listPointer->prev = head_node;
-	//Цикл обработки пользовательского ввода.
+	//Р¦РёРєР» РѕР±СЂР°Р±РѕС‚РєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР°.
 	bool cycle{ true };
 	while (cycle)
 	{

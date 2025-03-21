@@ -17,8 +17,8 @@ public:
 		
 		circle_inner.setFillColor(67, 136, 169);
 
-		std::cout << "Ñîçäàí êîíñòðóêòîðîì ïî óìîë÷àíèþ îáúåêò-êîëüöî ñ êîîðäèíàòàìè öåíòðà:\n(" << circle_inner.get_x_coordinate_base_point() << ", " <<
-			circle_inner.get_y_coordinate_base_point() << ")\nè ðàäèóñàìè âíóòðí. è âíåøíåãî êðóãîâ: RadiusInner = " << circle_inner.getRadius() << 
+		std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð¾Ð±ÑŠÐµÐºÑ‚-ÐºÐ¾Ð»ÑŒÑ†Ð¾ Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ñ†ÐµÐ½Ñ‚Ñ€Ð°:\n(" << circle_inner.get_x_coordinate_base_point() << ", " <<
+			circle_inner.get_y_coordinate_base_point() << ")\nÐ¸ Ñ€Ð°Ð´Ð¸ÑƒÑÐ°Ð¼Ð¸ Ð²Ð½ÑƒÑ‚Ñ€Ð½. Ð¸ Ð²Ð½ÐµÑˆÐ½ÐµÐ³Ð¾ ÐºÑ€ÑƒÐ³Ð¾Ð²: RadiusInner = " << circle_inner.getRadius() << 
 			"\t" << "RadiusOuter = " << circle_outer.getRadius() << std::endl;
 	}
 
@@ -28,8 +28,8 @@ public:
 		if (circle_outer.getRadius() - circle_inner.getRadius() <= 1)
 			circle_inner.changeRadius(-20);
 
-		std::cout << "Ñîçäàí êîíñòðóêòîðîì ñî ñëó÷àéíûìè ïàðàìåòðàìè îáúåêò-êîëüöî ñ êîîðäèíàòàìè öåíòðà:\n(" << circle_inner.get_x_coordinate_base_point() << ", " <<
-			circle_inner.get_y_coordinate_base_point() << ")\nè ðàäèóñàìè âíóòðí. è âíåøíåãî êðóãîâ: RadiusInner = " << circle_inner.getRadius() <<
+		std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ ÑÐ¾ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚-ÐºÐ¾Ð»ÑŒÑ†Ð¾ Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ñ†ÐµÐ½Ñ‚Ñ€Ð°:\n(" << circle_inner.get_x_coordinate_base_point() << ", " <<
+			circle_inner.get_y_coordinate_base_point() << ")\nÐ¸ Ñ€Ð°Ð´Ð¸ÑƒÑÐ°Ð¼Ð¸ Ð²Ð½ÑƒÑ‚Ñ€Ð½. Ð¸ Ð²Ð½ÐµÑˆÐ½ÐµÐ³Ð¾ ÐºÑ€ÑƒÐ³Ð¾Ð²: RadiusInner = " << circle_inner.getRadius() <<
 			"\t" << "RadiusOuter = " << circle_outer.getRadius() << std::endl;
 	}
 
@@ -57,8 +57,8 @@ public:
 
 	/*~Ring()
 	{
-		std::cout << "Óäàëåí îáúåêò-êîëüöî ñ êîîðäèíàòàìè öåíòðà:\n(" << circle_inner.get_x_coordinate_base_point() << ", " <<
-			circle_inner.get_y_coordinate_base_point() << ")\nè ðàäèóñàìè âíóòðí. è âíåøíåãî êðóãîâ: RadiusInner = " << circle_inner.getRadius() << 
+		std::cout << "Ð£Ð´Ð°Ð»ÐµÐ½ Ð¾Ð±ÑŠÐµÐºÑ‚-ÐºÐ¾Ð»ÑŒÑ†Ð¾ Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ñ†ÐµÐ½Ñ‚Ñ€Ð°:\n(" << circle_inner.get_x_coordinate_base_point() << ", " <<
+			circle_inner.get_y_coordinate_base_point() << ")\nÐ¸ Ñ€Ð°Ð´Ð¸ÑƒÑÐ°Ð¼Ð¸ Ð²Ð½ÑƒÑ‚Ñ€Ð½. Ð¸ Ð²Ð½ÐµÑˆÐ½ÐµÐ³Ð¾ ÐºÑ€ÑƒÐ³Ð¾Ð²: RadiusInner = " << circle_inner.getRadius() << 
 			"\t" << "RadiusOuter = " << circle_outer.getRadius() << std::endl;
 	};*/
 };

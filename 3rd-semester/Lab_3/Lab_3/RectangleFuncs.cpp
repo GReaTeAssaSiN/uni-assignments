@@ -1,8 +1,8 @@
 #include "Rectangle.h"
 #include "myfuncs.h"
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ ПРЯМОУГОЛЬНИКА*/
-//Сдвинуть прямоугольник случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РџР РЇРњРћРЈР“РћР›Р¬РќРРљРђ*/
+//РЎРґРІРёРЅСѓС‚СЊ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetRect(TRectangle* f_ptr_obj_rect)
 {
 	float x_rect{ f_ptr_obj_rect->getXPoint() };
@@ -21,9 +21,9 @@ void doOffsetRect(TRectangle* f_ptr_obj_rect)
 	}
 }
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ МАССИВА ПРЯМОУГОЛЬНИКОВ*/
-//Добавить элемент в конец и удалить последний элемент - шаблонные функции
-//Сдвинуть элементы случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РњРђРЎРЎРР’Рђ РџР РЇРњРћРЈР“РћР›Р¬РќРРљРћР’*/
+//Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС† Рё СѓРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ - С€Р°Р±Р»РѕРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
+//РЎРґРІРёРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚С‹ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetArrayRectangles(TRectangle** array_rectangles, int array_rectangles_size)
 {
 	for (int i{}; i < array_rectangles_size; i++)
@@ -44,7 +44,7 @@ void doOffsetArrayRectangles(TRectangle** array_rectangles, int array_rectangles
 		}
 	}
 }
-//Движение по клавишам WASD элементов
+//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ
 void doUserMoveArrayRectanglesW(TRectangle** array_rectangles, int array_rectangles_size)
 {
 	for (int i{}; i < array_rectangles_size; i++)
@@ -77,7 +77,7 @@ void doUserMoveArrayRectanglesD(TRectangle** array_rectangles, int array_rectang
 			array_rectangles[i]->MoveTo(10, 0);
 	}
 }
-//Изменение размеров элементов
+//РР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂРѕРІ СЌР»РµРјРµРЅС‚РѕРІ
 void array_rectangles_ChangeDimensions(TRectangle** array_rectangles, int array_rectangles_size, int dLength, int dWidth)
 {
 	for (int i{}; i < array_rectangles_size; i++)
@@ -103,7 +103,7 @@ void array_rectangles_ChangeDimensions(TRectangle** array_rectangles, int array_
 		}
 	}
 }
-//Поворт элементов 
+//РџРѕРІРѕСЂС‚ СЌР»РµРјРµРЅС‚РѕРІ 
 void doRotateArrayRects(TRectangle** array_rectangles, int array_rectangles_size)
 {
 	for (int i{}; i < array_rectangles_size; i++)

@@ -29,7 +29,7 @@ unsigned long long shiftr(unsigned long long nnum, unsigned int bit, unsigned lo
 		nbyte = count / 8 + 1;
 	}
 	std::bitset<64> BinaryNumber = nnum;
-	std::cout << "Ваше исходное число nnum в двоичном представлении (по 4 бита): ";
+	std::cout << "Р’Р°С€Рµ РёСЃС…РѕРґРЅРѕРµ С‡РёСЃР»Рѕ nnum РІ РґРІРѕРёС‡РЅРѕРј РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРё (РїРѕ 4 Р±РёС‚Р°): ";
 	for (int i = nbyte*2 - 1; i > -1; i--)
 	{
 		for (int j = 3; j > -1; j--)
@@ -68,7 +68,7 @@ unsigned long long shiftr(unsigned long long nnum, unsigned int bit, unsigned lo
 				nnum = mask & (~((mask & 0x1) << nbit) & nnum);
 			}
 			std::bitset<64> BinaryNumber = nnum;
-			std::cout << "Ваше число nnum в двоичном представлении (по 4 бита) после преобразований: ";
+			std::cout << "Р’Р°С€Рµ С‡РёСЃР»Рѕ nnum РІ РґРІРѕРёС‡РЅРѕРј РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРё (РїРѕ 4 Р±РёС‚Р°) РїРѕСЃР»Рµ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёР№: ";
 			for (int i = nbyte * 2 - 1; i > -1; i--)
 			{
 				for (int j = 3; j > -1; j--)
@@ -82,14 +82,14 @@ unsigned long long shiftr(unsigned long long nnum, unsigned int bit, unsigned lo
 		}
 		else
 		{
-			std::cout << "Ошибочно указано значение бита bit! Оно должно быть равно \"0\" или \"1\"." << std::endl;
+			std::cout << "РћС€РёР±РѕС‡РЅРѕ СѓРєР°Р·Р°РЅРѕ Р·РЅР°С‡РµРЅРёРµ Р±РёС‚Р° bit! РћРЅРѕ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ СЂР°РІРЅРѕ \"0\" РёР»Рё \"1\"." << std::endl;
 			flag = 0;
 			return 0;
 		}
 	}
 	else
 	{
-		std::cout << "Ошибочно указана позиция записываемого бита nbit!" << std::endl;
+		std::cout << "РћС€РёР±РѕС‡РЅРѕ СѓРєР°Р·Р°РЅР° РїРѕР·РёС†РёСЏ Р·Р°РїРёСЃС‹РІР°РµРјРѕРіРѕ Р±РёС‚Р° nbit!" << std::endl;
 		flag = 0;
 		return 0;
 	}

@@ -23,7 +23,7 @@ CinemaButtonForCinemaCatalog::CinemaButtonForCinemaCatalog(SqlDataReader^ reader
 	this->cinema_btn->FlatAppearance->MouseOverBackColor = System::Drawing::Color::LightGray;
 	this->cinema_btn->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 	this->cinema_btn->ForeColor = System::Drawing::Color::Black;
-	this->cinema_btn->Image = Image->FromFile(L"D:\\ÊÀÈ\\Áàçû äàííûõ\\Êóðñîâàÿ\\Images\\cinema_icon.bmp");
+	this->cinema_btn->Image = Image->FromFile(L"D:\\ÐšÐÐ˜\\Ð‘Ð°Ð·Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ñ…\\ÐšÑƒÑ€ÑÐ¾Ð²Ð°Ñ\\Images\\cinema_icon.bmp");
 	this->cinema_btn->ImageAlign = System::Drawing::ContentAlignment::MiddleCenter;
 	this->cinema_btn->MaximumSize = System::Drawing::Size(210, 90);
 	this->cinema_btn->MinimumSize = System::Drawing::Size(210, 90);;
@@ -58,14 +58,14 @@ CinemaButtonForCinemaCatalog::CinemaButtonForCinemaCatalog(SqlDataReader^ reader
 	this->cinema_description->MaximumSize = System::Drawing::Size(439,250);
 	this->cinema_description->MinimumSize = System::Drawing::Size(439, 250);
 	this->cinema_description->Multiline = true;
-	this->cinema_description->Text = L"ÊÈÍÎÒÅÀÒÐ \"" + this->cinema->getCinemaName() + "\"\r\n";
-	this->cinema_description->AppendText("Ãîðîä: " + this->cinema->getCity() + "\r\n");
-	this->cinema_description->AppendText("Äîì:   " + this->cinema->getHouseNumber());
+	this->cinema_description->Text = L"ÐšÐ˜ÐÐžÐ¢Ð•ÐÐ¢Ð  \"" + this->cinema->getCinemaName() + "\"\r\n";
+	this->cinema_description->AppendText("Ð“Ð¾Ñ€Ð¾Ð´: " + this->cinema->getCity() + "\r\n");
+	this->cinema_description->AppendText("Ð”Ð¾Ð¼:   " + this->cinema->getHouseNumber());
 	this->cinema_description->AppendText((this->cinema->getHouseLetter()->ToString() == " " ? "" : this->cinema->getHouseLetter()->ToString()) + "\r\n");
-	this->cinema_description->AppendText("Óòî÷íåíèå äîìà: " + this->cinema->getHouseDesc() + "\r\n");
-	this->cinema_description->AppendText("Âðåìÿ îòêðûòèÿ: " + this->cinema->getOpeningTime()->ToString() + "\r\n");
-	this->cinema_description->AppendText("Âðåìÿ çàêðûòèÿ: " + this->cinema->getClosingTime()->ToString() + "\r\n");
-	this->cinema_description->AppendText("Êîíòàêòíàÿ èíôîðìàöèÿ:\r\n" + this->cinema->getContactInformation());
+	this->cinema_description->AppendText("Ð£Ñ‚Ð¾Ñ‡Ð½ÐµÐ½Ð¸Ðµ Ð´Ð¾Ð¼Ð°: " + this->cinema->getHouseDesc() + "\r\n");
+	this->cinema_description->AppendText("Ð’Ñ€ÐµÐ¼Ñ Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ: " + this->cinema->getOpeningTime()->ToString() + "\r\n");
+	this->cinema_description->AppendText("Ð’Ñ€ÐµÐ¼Ñ Ð·Ð°ÐºÑ€Ñ‹Ñ‚Ð¸Ñ: " + this->cinema->getClosingTime()->ToString() + "\r\n");
+	this->cinema_description->AppendText("ÐšÐ¾Ð½Ñ‚Ð°ÐºÑ‚Ð½Ð°Ñ Ð¸Ð½Ñ„Ð¾Ñ€Ð¼Ð°Ñ†Ð¸Ñ:\r\n" + this->cinema->getContactInformation());
 	//
 	// search_textBox
 	//
@@ -79,14 +79,14 @@ CinemaButtonForCinemaCatalog::CinemaButtonForCinemaCatalog(SqlDataReader^ reader
 	this->search_textBox->MaxLength = 30;
 	this->search_textBox->MinimumSize = System::Drawing::Size(389, 25);
 	this->search_textBox->Size = System::Drawing::Size(389, 25);
-	this->search_textBox->Text = L"Ïîèñê ôèëüìà â êèíîòåàòðå " + this->cinema->getCinemaName();
+	this->search_textBox->Text = L"ÐŸÐ¾Ð¸ÑÐº Ñ„Ð¸Ð»ÑŒÐ¼Ð° Ð² ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€Ðµ " + this->cinema->getCinemaName();
 	this->search_textBox->Enter += gcnew System::EventHandler(this, &CinemaButtonForCinemaCatalog::search_textBox_Enter);
 	this->search_textBox->Leave += gcnew System::EventHandler(this, &CinemaButtonForCinemaCatalog::search_textBox_Leave);
 	//
 	// search_btn
 	// 
 	this->search_btn->BackColor = System::Drawing::Color::SteelBlue;
-	this->search_btn->BackgroundImage = Image->FromFile(L"D:\\ÊÀÈ\\Áàçû äàííûõ\\Êóðñîâàÿ\\Images\\search_icon.bmp");
+	this->search_btn->BackgroundImage = Image->FromFile(L"D:\\ÐšÐÐ˜\\Ð‘Ð°Ð·Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ñ…\\ÐšÑƒÑ€ÑÐ¾Ð²Ð°Ñ\\Images\\search_icon.bmp");
 	this->search_btn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 	this->search_btn->Cursor = System::Windows::Forms::Cursors::Hand;
 	this->search_btn->FlatAppearance->BorderColor = System::Drawing::Color::Indigo;
@@ -117,7 +117,7 @@ Button^ CinemaButtonForCinemaCatalog::getCinemaBtn()
 }
 System::Void CinemaButtonForCinemaCatalog::cinema_btn_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	this->update_inf_label->Text = L"Âûáåðèòå êèíîòåàòð èëè ôèëüì èç ïðåäëîæåííîãî ñïèñêà";
+	this->update_inf_label->Text = L"Ð’Ñ‹Ð±ÐµÑ€Ð¸Ñ‚Ðµ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€ Ð¸Ð»Ð¸ Ñ„Ð¸Ð»ÑŒÐ¼ Ð¸Ð· Ð¿Ñ€ÐµÐ´Ð»Ð¾Ð¶ÐµÐ½Ð½Ð¾Ð³Ð¾ ÑÐ¿Ð¸ÑÐºÐ°";
 	this->movie_catalog_panel->Controls->Clear();
 	this->main_cinema_btn_panel->Controls->Clear();
 	this->main_cinema_btn_panel->BackColor = System::Drawing::Color::FromArgb(185, 217, 235);
@@ -127,7 +127,7 @@ System::Void CinemaButtonForCinemaCatalog::cinema_btn_Click(System::Object^ send
 	this->main_cinema_btn_panel->Controls->Add(this->search_textBox);
 	this->main_cinema_btn_panel->Controls->Add(this->search_btn);
 	this->main_cinema_btn_panel->Controls->Add(this->cinema_description);
-	//Çàïðîñ êàòàëîãà êîììåíòàðèåâ ñîîòâåòñòâóþùåãî ôèëüìà ñîîòâåòñòâóþùåãî êèíîòåàòðà.
+	//Ð—Ð°Ð¿Ñ€Ð¾Ñ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ² ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ³Ð¾ Ñ„Ð¸Ð»ÑŒÐ¼Ð° ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ³Ð¾ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€Ð°.
 	DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 	queryDB->ConnectToDB();
 	queryDB->openConnection();
@@ -155,18 +155,18 @@ System::Void CinemaButtonForCinemaCatalog::search_btn_Click(System::Object^ send
 {
 	this->movie_catalog_panel->Controls->Clear();
 	this->movie_catalog_panel->SuspendLayout();
-	//Çàïðîñ êàòàëîãà êîììåíòàðèåâ ñîîòâåòñòâóþùåãî ôèëüìà ñîîòâåòñòâóþùåãî êèíîòåàòðà.
+	//Ð—Ð°Ð¿Ñ€Ð¾Ñ ÐºÐ°Ñ‚Ð°Ð»Ð¾Ð³Ð° ÐºÐ¾Ð¼Ð¼ÐµÐ½Ñ‚Ð°Ñ€Ð¸ÐµÐ² ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ³Ð¾ Ñ„Ð¸Ð»ÑŒÐ¼Ð° ÑÐ¾Ð¾Ñ‚Ð²ÐµÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‰ÐµÐ³Ð¾ ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€Ð°.
 	DataBaseQueries^ queryDB = gcnew DataBaseQueries();
 	queryDB->ConnectToDB();
 	queryDB->openConnection();
 	SqlDataReader^ reader{};
-	if (this->search_textBox->Text != "" && this->search_textBox->Text != ("Ïîèñê ôèëüìà â êèíîòåàòðå " + this->cinema->getCinemaName()))
+	if (this->search_textBox->Text != "" && this->search_textBox->Text != ("ÐŸÐ¾Ð¸ÑÐº Ñ„Ð¸Ð»ÑŒÐ¼Ð° Ð² ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€Ðµ " + this->cinema->getCinemaName()))
 		reader = queryDB->getReaderSearchedMovieCatalog(this->search_textBox->Text, this->cinema->getCinemaID());
 	else
 	{
 		reader = queryDB->getReaderMovieCatalog(this->cinema->getCinemaID());
 		this->search_textBox->ForeColor = System::Drawing::Color::FromArgb(192, 192, 192);
-		this->search_textBox->Text = L"Ïîèñê ôèëüìà â êèíîòåàòðå " + this->cinema->getCinemaName();
+		this->search_textBox->Text = L"ÐŸÐ¾Ð¸ÑÐº Ñ„Ð¸Ð»ÑŒÐ¼Ð° Ð² ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€Ðµ " + this->cinema->getCinemaName();
 	}
 	Int32 ddx{ -421 }, ddy{};
 	while (reader->Read())
@@ -187,7 +187,7 @@ System::Void CinemaButtonForCinemaCatalog::search_btn_Click(System::Object^ send
 }
 System::Void CinemaButtonForCinemaCatalog::search_textBox_Enter(System::Object^ sender, System::EventArgs^ e)
 {
-	if (this->search_textBox->Text == ("Ïîèñê ôèëüìà â êèíîòåàòðå " + this->cinema->getCinemaName()))
+	if (this->search_textBox->Text == ("ÐŸÐ¾Ð¸ÑÐº Ñ„Ð¸Ð»ÑŒÐ¼Ð° Ð² ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€Ðµ " + this->cinema->getCinemaName()))
 	{
 		this->search_textBox->Text = L"";
 		this->search_textBox->ForeColor = System::Drawing::Color::Navy;
@@ -198,6 +198,6 @@ System::Void CinemaButtonForCinemaCatalog::search_textBox_Leave(System::Object^ 
 	if (this->search_textBox->Text == "")
 	{
 		this->search_textBox->ForeColor = System::Drawing::Color::FromArgb(192, 192, 192);
-		this->search_textBox->Text = L"Ïîèñê ôèëüìà â êèíîòåàòðå " + this->cinema->getCinemaName();
+		this->search_textBox->Text = L"ÐŸÐ¾Ð¸ÑÐº Ñ„Ð¸Ð»ÑŒÐ¼Ð° Ð² ÐºÐ¸Ð½Ð¾Ñ‚ÐµÐ°Ñ‚Ñ€Ðµ " + this->cinema->getCinemaName();
 	}
 }

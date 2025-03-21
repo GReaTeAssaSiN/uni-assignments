@@ -3,51 +3,51 @@
 #include <string>
 #include "myfuncs.h"
 
-/*ПОЛЬЗОВАТЕЛЬСКОЕ МЕНЮ*/
-//Информация о номере группы и номере в списке группы, выборе варианта, ФИО исполнителя.
+/*РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРћР• РњР•РќР®*/
+//РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РЅРѕРјРµСЂРµ РіСЂСѓРїРїС‹ Рё РЅРѕРјРµСЂРµ РІ СЃРїРёСЃРєРµ РіСЂСѓРїРїС‹, РІС‹Р±РѕСЂРµ РІР°СЂРёР°РЅС‚Р°, Р¤РРћ РёСЃРїРѕР»РЅРёС‚РµР»СЏ.
 void getAboutInformation()
 {
 	printDashes();
-	//Выбор варианта.
-	std::cout << "\t\t\t\t\t\t\t\t\t\t\t    Горшков Алексей Олегович" << std::endl <<
-		"\t\t\t\t\t\t\t\t\t\t\t\t\t Группа " << g << std::endl;
-	std::cout << "Номер группы g = " << g << std::endl;
-	std::cout << "Номер в списке группы n = " << n << std::endl << std::endl;
-	std::cout << "Унарная операция из табл. 1 выбирается под номером (g + n - 1)(mod 6) + 1, где s = [n / 7], [.] - целая часть числа." << std::endl <<
-		"Таким образом, номер унарной операции из табл. 1: '" << (g + n - 1) % 6 + 1 << "'. _x - отрицание Поста " << 
-		"(вычисление s не требуется)." << std::endl << std::endl;
-	std::cout << "Бинарная операция из табл. 2 выбирается под номером (g + n - 1)(mod 7) + 1." << std::endl <<
-		"Таким образом, номер бинарной операции из табл. 2: " << "'" << (g + n - 1) % 7 + 1 << "'. x-.y - усеченная разность." << std::endl << std::endl;
-	std::cout << "Стандартная форма представления функции под номером (g + n - 1)(mod 3) + 1." << std::endl <<
-		"Таким образом, номер стандартной формы представления функции: '" << (g + n - 1) % 3 + 1 << "'. Вторая форма." << std::endl;
+	//Р’С‹Р±РѕСЂ РІР°СЂРёР°РЅС‚Р°.
+	std::cout << "\t\t\t\t\t\t\t\t\t\t\t    Р“РѕСЂС€РєРѕРІ РђР»РµРєСЃРµР№ РћР»РµРіРѕРІРёС‡" << std::endl <<
+		"\t\t\t\t\t\t\t\t\t\t\t\t\t Р“СЂСѓРїРїР° " << g << std::endl;
+	std::cout << "РќРѕРјРµСЂ РіСЂСѓРїРїС‹ g = " << g << std::endl;
+	std::cout << "РќРѕРјРµСЂ РІ СЃРїРёСЃРєРµ РіСЂСѓРїРїС‹ n = " << n << std::endl << std::endl;
+	std::cout << "РЈРЅР°СЂРЅР°СЏ РѕРїРµСЂР°С†РёСЏ РёР· С‚Р°Р±Р». 1 РІС‹Р±РёСЂР°РµС‚СЃСЏ РїРѕРґ РЅРѕРјРµСЂРѕРј (g + n - 1)(mod 6) + 1, РіРґРµ s = [n / 7], [.] - С†РµР»Р°СЏ С‡Р°СЃС‚СЊ С‡РёСЃР»Р°." << std::endl <<
+		"РўР°РєРёРј РѕР±СЂР°Р·РѕРј, РЅРѕРјРµСЂ СѓРЅР°СЂРЅРѕР№ РѕРїРµСЂР°С†РёРё РёР· С‚Р°Р±Р». 1: '" << (g + n - 1) % 6 + 1 << "'. _x - РѕС‚СЂРёС†Р°РЅРёРµ РџРѕСЃС‚Р° " << 
+		"(РІС‹С‡РёСЃР»РµРЅРёРµ s РЅРµ С‚СЂРµР±СѓРµС‚СЃСЏ)." << std::endl << std::endl;
+	std::cout << "Р‘РёРЅР°СЂРЅР°СЏ РѕРїРµСЂР°С†РёСЏ РёР· С‚Р°Р±Р». 2 РІС‹Р±РёСЂР°РµС‚СЃСЏ РїРѕРґ РЅРѕРјРµСЂРѕРј (g + n - 1)(mod 7) + 1." << std::endl <<
+		"РўР°РєРёРј РѕР±СЂР°Р·РѕРј, РЅРѕРјРµСЂ Р±РёРЅР°СЂРЅРѕР№ РѕРїРµСЂР°С†РёРё РёР· С‚Р°Р±Р». 2: " << "'" << (g + n - 1) % 7 + 1 << "'. x-.y - СѓСЃРµС‡РµРЅРЅР°СЏ СЂР°Р·РЅРѕСЃС‚СЊ." << std::endl << std::endl;
+	std::cout << "РЎС‚Р°РЅРґР°СЂС‚РЅР°СЏ С„РѕСЂРјР° РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ С„СѓРЅРєС†РёРё РїРѕРґ РЅРѕРјРµСЂРѕРј (g + n - 1)(mod 3) + 1." << std::endl <<
+		"РўР°РєРёРј РѕР±СЂР°Р·РѕРј, РЅРѕРјРµСЂ СЃС‚Р°РЅРґР°СЂС‚РЅРѕР№ С„РѕСЂРјС‹ РїСЂРµРґСЃС‚Р°РІР»РµРЅРёСЏ С„СѓРЅРєС†РёРё: '" << (g + n - 1) % 3 + 1 << "'. Р’С‚РѕСЂР°СЏ С„РѕСЂРјР°." << std::endl;
 	printDashes();
 }
-//Вывод визуального разделения между действиями пользователя в консоль.
+//Р’С‹РІРѕРґ РІРёР·СѓР°Р»СЊРЅРѕРіРѕ СЂР°Р·РґРµР»РµРЅРёСЏ РјРµР¶РґСѓ РґРµР№СЃС‚РІРёСЏРјРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ РєРѕРЅСЃРѕР»СЊ.
 void printDashes()
 {
 	std::cout << "-----------------------------------------------------------------------------------------------------------------------" << std::endl;
 }
-//Вывод пользователю информации об унарных и бинарных операциях.
+//Р’С‹РІРѕРґ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ РёРЅС„РѕСЂРјР°С†РёРё РѕР± СѓРЅР°СЂРЅС‹С… Рё Р±РёРЅР°СЂРЅС‹С… РѕРїРµСЂР°С†РёСЏС….
 void getLogicOperationInformation(const int& value_logic, const int& n)
 {
 	printDashes();
-	std::cout << "Здесь приведена информация об операциях в данной k-значной логике (кавычки использованы для наглядности):" << std::endl <<
-		"I. Константы задаются цифрами: 0, 1, 2, ..., k - 1." << std::endl;
-	std::cout << "II. Унарные операции:\n" << "\t* Отрицание Поста - '_x' и т.п." << std::endl;
+	std::cout << "Р—РґРµСЃСЊ РїСЂРёРІРµРґРµРЅР° РёРЅС„РѕСЂРјР°С†РёСЏ РѕР± РѕРїРµСЂР°С†РёСЏС… РІ РґР°РЅРЅРѕР№ k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРµ (РєР°РІС‹С‡РєРё РёСЃРїРѕР»СЊР·РѕРІР°РЅС‹ РґР»СЏ РЅР°РіР»СЏРґРЅРѕСЃС‚Рё):" << std::endl <<
+		"I. РљРѕРЅСЃС‚Р°РЅС‚С‹ Р·Р°РґР°СЋС‚СЃСЏ С†РёС„СЂР°РјРё: 0, 1, 2, ..., k - 1." << std::endl;
+	std::cout << "II. РЈРЅР°СЂРЅС‹Рµ РѕРїРµСЂР°С†РёРё:\n" << "\t* РћС‚СЂРёС†Р°РЅРёРµ РџРѕСЃС‚Р° - '_x' Рё С‚.Рї." << std::endl;
 	if (n == 1)
-		std::cout << "III. Бинарные операции:\n" << "\t* Усеченная разность - 'x-.2' и т.п." << std::endl;
+		std::cout << "III. Р‘РёРЅР°СЂРЅС‹Рµ РѕРїРµСЂР°С†РёРё:\n" << "\t* РЈСЃРµС‡РµРЅРЅР°СЏ СЂР°Р·РЅРѕСЃС‚СЊ - 'x-.2' Рё С‚.Рї." << std::endl;
 	if (n == 2)
-		std::cout << "III. Бинарные операции:\n" << "\t* Усеченная разность - 'x-.y' и т.п." << std::endl;
+		std::cout << "III. Р‘РёРЅР°СЂРЅС‹Рµ РѕРїРµСЂР°С†РёРё:\n" << "\t* РЈСЃРµС‡РµРЅРЅР°СЏ СЂР°Р·РЅРѕСЃС‚СЊ - 'x-.y' Рё С‚.Рї." << std::endl;
 	printDashes();
-	std::cout << "Вы должны ввести функцию без пробелов, используя только операции отрицания Поста и усеченной разности (в случае одной\nсущественной переменной с константой), " <<
-		"переменные 'x' и/или 'y' (и - если используются 2 существенные переменные\nв задаваемой функции k - значной логики), целочисленные константы (0, ..., " << 
+	std::cout << "Р’С‹ РґРѕР»Р¶РЅС‹ РІРІРµСЃС‚Рё С„СѓРЅРєС†РёСЋ Р±РµР· РїСЂРѕР±РµР»РѕРІ, РёСЃРїРѕР»СЊР·СѓСЏ С‚РѕР»СЊРєРѕ РѕРїРµСЂР°С†РёРё РѕС‚СЂРёС†Р°РЅРёСЏ РџРѕСЃС‚Р° Рё СѓСЃРµС‡РµРЅРЅРѕР№ СЂР°Р·РЅРѕСЃС‚Рё (РІ СЃР»СѓС‡Р°Рµ РѕРґРЅРѕР№\nСЃСѓС‰РµСЃС‚РІРµРЅРЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№ СЃ РєРѕРЅСЃС‚Р°РЅС‚РѕР№), " <<
+		"РїРµСЂРµРјРµРЅРЅС‹Рµ 'x' Рё/РёР»Рё 'y' (Рё - РµСЃР»Рё РёСЃРїРѕР»СЊР·СѓСЋС‚СЃСЏ 2 СЃСѓС‰РµСЃС‚РІРµРЅРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ\nРІ Р·Р°РґР°РІР°РµРјРѕР№ С„СѓРЅРєС†РёРё k - Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё), С†РµР»РѕС‡РёСЃР»РµРЅРЅС‹Рµ РєРѕРЅСЃС‚Р°РЅС‚С‹ (0, ..., " << 
 		value_logic - 1 << ")." << std::endl;	
 }
-//Желание продолжить ввод множества E.
+//Р–РµР»Р°РЅРёРµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ РІРІРѕРґ РјРЅРѕР¶РµСЃС‚РІР° E.
 bool doItAgain()
 {
-	std::cout << "Вы желаете продолжить ввод множества E и проверку принадлежности данной функции классу T(E)?" << std::endl <<
-		"Да (yes)/ Нет (no): ";
+	std::cout << "Р’С‹ Р¶РµР»Р°РµС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ РІРІРѕРґ РјРЅРѕР¶РµСЃС‚РІР° E Рё РїСЂРѕРІРµСЂРєСѓ РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё РґР°РЅРЅРѕР№ С„СѓРЅРєС†РёРё РєР»Р°СЃСЃСѓ T(E)?" << std::endl <<
+		"Р”Р° (yes)/ РќРµС‚ (no): ";
 	while (true)
 	{
 		std::string user_wishes{};
@@ -57,14 +57,14 @@ bool doItAgain()
 		else if (user_wishes == "no")
 			return false;
 		else
-			std::cout << "Ошибка ввода. Вы должны ввести 'yes' или 'no'. Повторите ввод: ";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’С‹ РґРѕР»Р¶РЅС‹ РІРІРµСЃС‚Рё 'yes' РёР»Рё 'no'. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 	}
 }
-//Выход из программы или продолжение работы.
+//Р’С‹С…РѕРґ РёР· РїСЂРѕРіСЂР°РјРјС‹ РёР»Рё РїСЂРѕРґРѕР»Р¶РµРЅРёРµ СЂР°Р±РѕС‚С‹.
 bool exitOrContinue()
 {
-	std::cout << "Вы желаете продолжить выполнение программы или хотите выйти?" << std::endl <<
-		"Продолжить (continue)/ Выйти (exit): ";
+	std::cout << "Р’С‹ Р¶РµР»Р°РµС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ РІС‹РїРѕР»РЅРµРЅРёРµ РїСЂРѕРіСЂР°РјРјС‹ РёР»Рё С…РѕС‚РёС‚Рµ РІС‹Р№С‚Рё?" << std::endl <<
+		"РџСЂРѕРґРѕР»Р¶РёС‚СЊ (continue)/ Р’С‹Р№С‚Рё (exit): ";
 	while (true)
 	{
 		std::string user_wishes{};
@@ -74,53 +74,53 @@ bool exitOrContinue()
 		else if (user_wishes == "exit")
 			return false;
 		else
-			std::cout << "Ошибка ввода. Вы должны ввести 'continue' или 'exit'. Повторите ввод: ";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’С‹ РґРѕР»Р¶РЅС‹ РІРІРµСЃС‚Рё 'continue' РёР»Рё 'exit'. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 	}
 }
 
-/*ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ*/
-//Проверка введённой пользователем строки на возможность преобразования в целое число.
+/*Р’РЎРџРћРњРћР“РђРўР•Р›Р¬РќР«Р• Р¤РЈРќРљР¦РР*/
+//РџСЂРѕРІРµСЂРєР° РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РЅР° РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РІ С†РµР»РѕРµ С‡РёСЃР»Рѕ.
 bool checkStrIsNumeric(std::string const& tempStr)
 {
-	for (int i{}; i < tempStr.length(); i++)//Итерация по строке - динам. массив.
+	for (int i{}; i < tempStr.length(); i++)//РС‚РµСЂР°С†РёСЏ РїРѕ СЃС‚СЂРѕРєРµ - РґРёРЅР°Рј. РјР°СЃСЃРёРІ.
 	{
-		if ((i == 0) && (tempStr[i] == '-'))//Если первым символом стоит '-', то он допускается.
+		if ((i == 0) && (tempStr[i] == '-'))//Р•СЃР»Рё РїРµСЂРІС‹Рј СЃРёРјРІРѕР»РѕРј СЃС‚РѕРёС‚ '-', С‚Рѕ РѕРЅ РґРѕРїСѓСЃРєР°РµС‚СЃСЏ.
 			continue;
-		if ((tempStr[i] < '0') || (tempStr[i] > '9'))//Если символ не является цифрой, то строка не является числом.
+		if ((tempStr[i] < '0') || (tempStr[i] > '9'))//Р•СЃР»Рё СЃРёРјРІРѕР» РЅРµ СЏРІР»СЏРµС‚СЃСЏ С†РёС„СЂРѕР№, С‚Рѕ СЃС‚СЂРѕРєР° РЅРµ СЏРІР»СЏРµС‚СЃСЏ С‡РёСЃР»РѕРј.
 			return false;
 	}
-	return !tempStr.empty();//Если строка после проверка не пустая, то она является числом.
+	return !tempStr.empty();//Р•СЃР»Рё СЃС‚СЂРѕРєР° РїРѕСЃР»Рµ РїСЂРѕРІРµСЂРєР° РЅРµ РїСѓСЃС‚Р°СЏ, С‚Рѕ РѕРЅР° СЏРІР»СЏРµС‚СЃСЏ С‡РёСЃР»РѕРј.
 }
-//Преобразование введённой пользователем строки в число.
+//РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РІ С‡РёСЃР»Рѕ.
 int convertStrToInt(std::string convertStr)
 {
 	double number{};
 	bool negative_number{ false };
-	for (int i{}; i < convertStr.length(); i++)//Итерация по строке - динам. массив.
+	for (int i{}; i < convertStr.length(); i++)//РС‚РµСЂР°С†РёСЏ РїРѕ СЃС‚СЂРѕРєРµ - РґРёРЅР°Рј. РјР°СЃСЃРёРІ.
 	{
-		if ((i == 0) && (convertStr[i] == '-'))//Если первым символом стоит минус, то будущее число помечается флагом отрицательного числа.
+		if ((i == 0) && (convertStr[i] == '-'))//Р•СЃР»Рё РїРµСЂРІС‹Рј СЃРёРјРІРѕР»РѕРј СЃС‚РѕРёС‚ РјРёРЅСѓСЃ, С‚Рѕ Р±СѓРґСѓС‰РµРµ С‡РёСЃР»Рѕ РїРѕРјРµС‡Р°РµС‚СЃСЏ С„Р»Р°РіРѕРј РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРіРѕ С‡РёСЃР»Р°.
 		{
 			negative_number = true;
 			continue;
 		}
-		number += (convertStr[i] - '0') * pow(10, convertStr.length() - i - 1);//Конвертация строки в число.
+		number += (convertStr[i] - '0') * pow(10, convertStr.length() - i - 1);//РљРѕРЅРІРµСЂС‚Р°С†РёСЏ СЃС‚СЂРѕРєРё РІ С‡РёСЃР»Рѕ.
 	}
-	return negative_number ? static_cast<int>(-number) : static_cast<int>(number);//Возвращение числа (отрицательного или положительного).
+	return negative_number ? static_cast<int>(-number) : static_cast<int>(number);//Р’РѕР·РІСЂР°С‰РµРЅРёРµ С‡РёСЃР»Р° (РѕС‚СЂРёС†Р°С‚РµР»СЊРЅРѕРіРѕ РёР»Рё РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРіРѕ).
 }
-//Получение k-значной логики от пользователя.
+//РџРѕР»СѓС‡РµРЅРёРµ k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 int getValueOfLogic()
 {
 	while (true)
 	{
 		std::string value_of_logic{};
 		std::getline(std::cin, value_of_logic);
-		if (checkStrIsNumeric(value_of_logic) && convertStrToInt(value_of_logic) > 0)//Если введенная строка число, которое больше 0, то принимается.
+		if (checkStrIsNumeric(value_of_logic) && convertStrToInt(value_of_logic) > 0)//Р•СЃР»Рё РІРІРµРґРµРЅРЅР°СЏ СЃС‚СЂРѕРєР° С‡РёСЃР»Рѕ, РєРѕС‚РѕСЂРѕРµ Р±РѕР»СЊС€Рµ 0, С‚Рѕ РїСЂРёРЅРёРјР°РµС‚СЃСЏ.
 			return convertStrToInt(value_of_logic);
-		else//Иначе повторный ввод.
-			std::cout << "Ошибка ввода. Вы должны ввести целое положительное число. Повторите ввод: ";
+		else//РРЅР°С‡Рµ РїРѕРІС‚РѕСЂРЅС‹Р№ РІРІРѕРґ.
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’С‹ РґРѕР»Р¶РЅС‹ РІРІРµСЃС‚Рё С†РµР»РѕРµ РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРµ С‡РёСЃР»Рѕ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 	}
 }
-//Получение количества существенных переменных k-значной логики от пользователя.
+//РџРѕР»СѓС‡РµРЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° СЃСѓС‰РµСЃС‚РІРµРЅРЅС‹С… РїРµСЂРµРјРµРЅРЅС‹С… k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 int getCountOfSignificantVariables()
 {
 	while (true)
@@ -128,21 +128,21 @@ int getCountOfSignificantVariables()
 		std::string count_of_significant_variables{};
 		std::getline(std::cin, count_of_significant_variables);
 		if (checkStrIsNumeric(count_of_significant_variables) &&
-			(convertStrToInt(count_of_significant_variables) == 1 || convertStrToInt(count_of_significant_variables) == 2))//Если число существенных переменных = 1 или =2, то принимается.
+			(convertStrToInt(count_of_significant_variables) == 1 || convertStrToInt(count_of_significant_variables) == 2))//Р•СЃР»Рё С‡РёСЃР»Рѕ СЃСѓС‰РµСЃС‚РІРµРЅРЅС‹С… РїРµСЂРµРјРµРЅРЅС‹С… = 1 РёР»Рё =2, С‚Рѕ РїСЂРёРЅРёРјР°РµС‚СЃСЏ.
 			return convertStrToInt(count_of_significant_variables);
-		else//Иначе повторный ввод.
-			std::cout << "Ошибка ввода. Вы должны ввести '1' или '2'. Повторите ввод: ";
+		else//РРЅР°С‡Рµ РїРѕРІС‚РѕСЂРЅС‹Р№ РІРІРѕРґ.
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’С‹ РґРѕР»Р¶РЅС‹ РІРІРµСЃС‚Рё '1' РёР»Рё '2'. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 	}
 }
-//Проверка введенной пользователем функции на допустимые символы.
+//РџСЂРѕРІРµСЂРєР° РІРІРµРґРµРЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј С„СѓРЅРєС†РёРё РЅР° РґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹.
 bool checkStringFunction(const std::string& user_logic_function, const int& value_logic)
 {
-	for (int i{}; i < user_logic_function.size(); i++)//Итерация по строке.
+	for (int i{}; i < user_logic_function.size(); i++)//РС‚РµСЂР°С†РёСЏ РїРѕ СЃС‚СЂРѕРєРµ.
 	{
-		if (!strElemIsDigit(user_logic_function[i]))//Если символ строки - не число.
+		if (!strElemIsDigit(user_logic_function[i]))//Р•СЃР»Рё СЃРёРјРІРѕР» СЃС‚СЂРѕРєРё - РЅРµ С‡РёСЃР»Рѕ.
 		{
 			bool correct_symbol{};
-			for (int j{}; j < mass_of_symbols.size(); j++)//Итерация по массиву допустимых символов.
+			for (int j{}; j < mass_of_symbols.size(); j++)//РС‚РµСЂР°С†РёСЏ РїРѕ РјР°СЃСЃРёРІСѓ РґРѕРїСѓСЃС‚РёРјС‹С… СЃРёРјРІРѕР»РѕРІ.
 			{
 				if (user_logic_function[i] == mass_of_symbols[j])
 				{
@@ -150,31 +150,31 @@ bool checkStringFunction(const std::string& user_logic_function, const int& valu
 					break;
 				}
 			}
-			if (!correct_symbol)//Если символ строки - допустимый символ, то принимается.
+			if (!correct_symbol)//Р•СЃР»Рё СЃРёРјРІРѕР» СЃС‚СЂРѕРєРё - РґРѕРїСѓСЃС‚РёРјС‹Р№ СЃРёРјРІРѕР», С‚Рѕ РїСЂРёРЅРёРјР°РµС‚СЃСЏ.
 				return false;
 		}
-		else//Иначе - если число.
+		else//РРЅР°С‡Рµ - РµСЃР»Рё С‡РёСЃР»Рѕ.
 		{
-			std::string substr_numeric{};//Подстрока, хранящее в себе число.
-			int checking_index{ i + 1 };//Дополнительный итератор по строке.
-			substr_numeric.push_back(user_logic_function[i]);//Добавление текущего символа в подстроку.
-			while ((checking_index != user_logic_function.size()) && strElemIsDigit(user_logic_function[checking_index]))//Все символы строки, являющиеся цифрами текущего числа, добавляются в подстроку.
+			std::string substr_numeric{};//РџРѕРґСЃС‚СЂРѕРєР°, С…СЂР°РЅСЏС‰РµРµ РІ СЃРµР±Рµ С‡РёСЃР»Рѕ.
+			int checking_index{ i + 1 };//Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ РёС‚РµСЂР°С‚РѕСЂ РїРѕ СЃС‚СЂРѕРєРµ.
+			substr_numeric.push_back(user_logic_function[i]);//Р”РѕР±Р°РІР»РµРЅРёРµ С‚РµРєСѓС‰РµРіРѕ СЃРёРјРІРѕР»Р° РІ РїРѕРґСЃС‚СЂРѕРєСѓ.
+			while ((checking_index != user_logic_function.size()) && strElemIsDigit(user_logic_function[checking_index]))//Р’СЃРµ СЃРёРјРІРѕР»С‹ СЃС‚СЂРѕРєРё, СЏРІР»СЏСЋС‰РёРµСЃСЏ С†РёС„СЂР°РјРё С‚РµРєСѓС‰РµРіРѕ С‡РёСЃР»Р°, РґРѕР±Р°РІР»СЏСЋС‚СЃСЏ РІ РїРѕРґСЃС‚СЂРѕРєСѓ.
 			{
 				substr_numeric.push_back(user_logic_function[checking_index]);
 				checking_index++;
 			}
-			if (!(convertStrToInt(substr_numeric) >= 0 && convertStrToInt(substr_numeric) < value_logic))//Если число не принадлежит множестве E_k, то НЕ принимается.
+			if (!(convertStrToInt(substr_numeric) >= 0 && convertStrToInt(substr_numeric) < value_logic))//Р•СЃР»Рё С‡РёСЃР»Рѕ РЅРµ РїСЂРёРЅР°РґР»РµР¶РёС‚ РјРЅРѕР¶РµСЃС‚РІРµ E_k, С‚Рѕ РќР• РїСЂРёРЅРёРјР°РµС‚СЃСЏ.
 				return false;
 		}
 	}
-	return true;//Иначе строка принимается.
+	return true;//РРЅР°С‡Рµ СЃС‚СЂРѕРєР° РїСЂРёРЅРёРјР°РµС‚СЃСЏ.
 }
-//Проверка введенной пользователем функции на корректную последовательность символов.
+//РџСЂРѕРІРµСЂРєР° РІРІРµРґРµРЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј С„СѓРЅРєС†РёРё РЅР° РєРѕСЂСЂРµРєС‚РЅСѓСЋ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ СЃРёРјРІРѕР»РѕРІ.
 bool checkCharacterSequenceOfStrFunction(const std::string& user_logic_function)
 {
-	for (int i{}; i < user_logic_function.size() - 1; i++)//Итерация по строке.
+	for (int i{}; i < user_logic_function.size() - 1; i++)//РС‚РµСЂР°С†РёСЏ РїРѕ СЃС‚СЂРѕРєРµ.
 	{
-		//Различные проверки.
+		//Р Р°Р·Р»РёС‡РЅС‹Рµ РїСЂРѕРІРµСЂРєРё.
 		if (user_logic_function[i] == '_' || user_logic_function[i] == '.' || user_logic_function[i] == '(')
 		{
 			if (user_logic_function[static_cast<char>(i + 1)] == '-' || user_logic_function[static_cast<char>(i + 1)] == '.' || user_logic_function[static_cast<char>(i + 1)] == ')')
@@ -190,17 +190,17 @@ bool checkCharacterSequenceOfStrFunction(const std::string& user_logic_function)
 			if (user_logic_function[static_cast<char>(i + 1)] != '.')
 				return false;
 		}
-		else//Если число.
+		else//Р•СЃР»Рё С‡РёСЃР»Рѕ.
 		{
 			if (user_logic_function[static_cast<char>(i + 1)] == 'x' || user_logic_function[static_cast<char>(i + 1)] == 'y' || user_logic_function[static_cast<char>(i + 1)] == '(' ||
 				user_logic_function[static_cast<char>(i + 1)] == '_' || user_logic_function[static_cast<char>(i + 1)] == '.')
 				return false;
 		}
 	}
-	//Проверка первого символа строки.
+	//РџСЂРѕРІРµСЂРєР° РїРµСЂРІРѕРіРѕ СЃРёРјРІРѕР»Р° СЃС‚СЂРѕРєРё.
 	if (user_logic_function[0] == ')' || user_logic_function[0] == '-' || user_logic_function[0] == '.')
 		return false;
-	//Проверка последнего символа строки.
+	//РџСЂРѕРІРµСЂРєР° РїРѕСЃР»РµРґРЅРµРіРѕ СЃРёРјРІРѕР»Р° СЃС‚СЂРѕРєРё.
 	if (user_logic_function[user_logic_function.size() - 1] == '(' || user_logic_function[user_logic_function.size() - 1] == '-' ||
 		user_logic_function[user_logic_function.size() - 1] == '.' || user_logic_function[user_logic_function.size() - 1] == '_')
 	{
@@ -208,7 +208,7 @@ bool checkCharacterSequenceOfStrFunction(const std::string& user_logic_function)
 	}
 	return true;
 }
-//Получение приоритета операции в k-значной логике.
+//РџРѕР»СѓС‡РµРЅРёРµ РїСЂРёРѕСЂРёС‚РµС‚Р° РѕРїРµСЂР°С†РёРё РІ k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРµ.
 int getOperationPriority(const char& operation)
 {
 	int priority_of_operation{};
@@ -233,31 +233,31 @@ int getOperationPriority(const char& operation)
 	}
 	return priority_of_operation;
 }
-//Проверка элемента строки на соответствие цифре.
+//РџСЂРѕРІРµСЂРєР° СЌР»РµРјРµРЅС‚Р° СЃС‚СЂРѕРєРё РЅР° СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРµ С†РёС„СЂРµ.
 bool strElemIsDigit(const char& str_elem)
 {
 	return (str_elem >= '0' && str_elem <= '9') ? true : false;
 }
-//Преобразование введенной функции k-значной логики по методу обратной польской нотации (придумал Лукасевич).
+//РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІРІРµРґРµРЅРЅРѕР№ С„СѓРЅРєС†РёРё k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё РїРѕ РјРµС‚РѕРґСѓ РѕР±СЂР°С‚РЅРѕР№ РїРѕР»СЊСЃРєРѕР№ РЅРѕС‚Р°С†РёРё (РїСЂРёРґСѓРјР°Р» Р›СѓРєР°СЃРµРІРёС‡).
 bool reversePolishNotationForFunction(const std::string& logic_function, std::string& logic_function_by_RPN, const int& significant_variables_count)
 {
-	//Флаги для обработки исключительных ситуаций.
+	//Р¤Р»Р°РіРё РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РёСЃРєР»СЋС‡РёС‚РµР»СЊРЅС‹С… СЃРёС‚СѓР°С†РёР№.
 	bool x_is_used{}, y_is_used{};
-	int balance_of_brackets{};//Баланс скобок '(' и ')'.
+	int balance_of_brackets{};//Р‘Р°Р»Р°РЅСЃ СЃРєРѕР±РѕРє '(' Рё ')'.
 
-	//Флаг для ввода разделительных символов между константами и переменными (т.к. после ОПН не ясно, какими были исходные константы или значения переменных).
+	//Р¤Р»Р°Рі РґР»СЏ РІРІРѕРґР° СЂР°Р·РґРµР»РёС‚РµР»СЊРЅС‹С… СЃРёРјРІРѕР»РѕРІ РјРµР¶РґСѓ РєРѕРЅСЃС‚Р°РЅС‚Р°РјРё Рё РїРµСЂРµРјРµРЅРЅС‹РјРё (С‚.Рє. РїРѕСЃР»Рµ РћРџРќ РЅРµ СЏСЃРЅРѕ, РєР°РєРёРјРё Р±С‹Р»Рё РёСЃС…РѕРґРЅС‹Рµ РєРѕРЅСЃС‚Р°РЅС‚С‹ РёР»Рё Р·РЅР°С‡РµРЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С…).
 	bool operator_was_added{};
-	std::stack<char> operators{};//Стек операторов.
-	for (int i{}; i < logic_function.size(); i++)//Итерация по копии исходной строки и построение строки по методу ОПН.
+	std::stack<char> operators{};//РЎС‚РµРє РѕРїРµСЂР°С‚РѕСЂРѕРІ.
+	for (int i{}; i < logic_function.size(); i++)//РС‚РµСЂР°С†РёСЏ РїРѕ РєРѕРїРёРё РёСЃС…РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё Рё РїРѕСЃС‚СЂРѕРµРЅРёРµ СЃС‚СЂРѕРєРё РїРѕ РјРµС‚РѕРґСѓ РћРџРќ.
 	{
-		bool binary_operation_is_using{};//Флаг использования бинарной операции.
-		if (logic_function[i] == '(')//Если '(', то кладется в стек операторов.
+		bool binary_operation_is_using{};//Р¤Р»Р°Рі РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ Р±РёРЅР°СЂРЅРѕР№ РѕРїРµСЂР°С†РёРё.
+		if (logic_function[i] == '(')//Р•СЃР»Рё '(', С‚Рѕ РєР»Р°РґРµС‚СЃСЏ РІ СЃС‚РµРє РѕРїРµСЂР°С‚РѕСЂРѕРІ.
 		{
 			operators.push(logic_function[i]);
 			operator_was_added = true;
 			balance_of_brackets++;
 		}
-		else if (logic_function[i] == ')')//Если ')', до вынимаются все операторы до '('. Затем скобки уничтожаются.
+		else if (logic_function[i] == ')')//Р•СЃР»Рё ')', РґРѕ РІС‹РЅРёРјР°СЋС‚СЃСЏ РІСЃРµ РѕРїРµСЂР°С‚РѕСЂС‹ РґРѕ '('. Р—Р°С‚РµРј СЃРєРѕР±РєРё СѓРЅРёС‡С‚РѕР¶Р°СЋС‚СЃСЏ.
 		{
 			if (balance_of_brackets > 0)
 			{
@@ -272,23 +272,23 @@ bool reversePolishNotationForFunction(const std::string& logic_function, std::st
 			else
 				return false;
 		}
-		else if (logic_function[i] == '_' || logic_function[i] == '-')//Если иной оператор.
+		else if (logic_function[i] == '_' || logic_function[i] == '-')//Р•СЃР»Рё РёРЅРѕР№ РѕРїРµСЂР°С‚РѕСЂ.
 		{
 			operator_was_added = true;
-			if (logic_function[i] == '-')//Бинарный оператор.
+			if (logic_function[i] == '-')//Р‘РёРЅР°СЂРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ.
 				binary_operation_is_using = true;
-			int current_operation_priority{ getOperationPriority(logic_function[i]) }, sp_operation_priority{};//Опеределение приоритета текущего и в вершине стека операторов.
+			int current_operation_priority{ getOperationPriority(logic_function[i]) }, sp_operation_priority{};//РћРїРµСЂРµРґРµР»РµРЅРёРµ РїСЂРёРѕСЂРёС‚РµС‚Р° С‚РµРєСѓС‰РµРіРѕ Рё РІ РІРµСЂС€РёРЅРµ СЃС‚РµРєР° РѕРїРµСЂР°С‚РѕСЂРѕРІ.
 			if (!operators.empty())
 				sp_operation_priority = getOperationPriority(operators.top());
-			//Если унарный оператор, то в случае приоритета текущего оператора >= приоритету оператора в вершине стека текущий оператор кладется в стек.
-			//Если же бинарный оператор, то просто >.
+			//Р•СЃР»Рё СѓРЅР°СЂРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ, С‚Рѕ РІ СЃР»СѓС‡Р°Рµ РїСЂРёРѕСЂРёС‚РµС‚Р° С‚РµРєСѓС‰РµРіРѕ РѕРїРµСЂР°С‚РѕСЂР° >= РїСЂРёРѕСЂРёС‚РµС‚Сѓ РѕРїРµСЂР°С‚РѕСЂР° РІ РІРµСЂС€РёРЅРµ СЃС‚РµРєР° С‚РµРєСѓС‰РёР№ РѕРїРµСЂР°С‚РѕСЂ РєР»Р°РґРµС‚СЃСЏ РІ СЃС‚РµРє.
+			//Р•СЃР»Рё Р¶Рµ Р±РёРЅР°СЂРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ, С‚Рѕ РїСЂРѕСЃС‚Рѕ >.
 			if (!binary_operation_is_using && current_operation_priority >= sp_operation_priority || binary_operation_is_using && current_operation_priority > sp_operation_priority)
 			{
 				if (binary_operation_is_using)
-					operators.push('.');//Оператор '.' не является ключевым, он визуальное дополнение оператора усеченной разности '-.'.
+					operators.push('.');//РћРїРµСЂР°С‚РѕСЂ '.' РЅРµ СЏРІР»СЏРµС‚СЃСЏ РєР»СЋС‡РµРІС‹Рј, РѕРЅ РІРёР·СѓР°Р»СЊРЅРѕРµ РґРѕРїРѕР»РЅРµРЅРёРµ РѕРїРµСЂР°С‚РѕСЂР° СѓСЃРµС‡РµРЅРЅРѕР№ СЂР°Р·РЅРѕСЃС‚Рё '-.'.
 				operators.push(logic_function[i]);
 			}
-			else//Иначе выгружаются все операторы из стека до тех пор, пока условие выше не выполнится.
+			else//РРЅР°С‡Рµ РІС‹РіСЂСѓР¶Р°СЋС‚СЃСЏ РІСЃРµ РѕРїРµСЂР°С‚РѕСЂС‹ РёР· СЃС‚РµРєР° РґРѕ С‚РµС… РїРѕСЂ, РїРѕРєР° СѓСЃР»РѕРІРёРµ РІС‹С€Рµ РЅРµ РІС‹РїРѕР»РЅРёС‚СЃСЏ.
 			{
 				while (current_operation_priority < sp_operation_priority && !binary_operation_is_using || 
 					binary_operation_is_using && current_operation_priority <= sp_operation_priority)
@@ -300,14 +300,14 @@ bool reversePolishNotationForFunction(const std::string& logic_function, std::st
 					else
 						break;
 				}
-				if (binary_operation_is_using)//Бинарный оператор.
+				if (binary_operation_is_using)//Р‘РёРЅР°СЂРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ.
 					operators.push('.');
 				operators.push(logic_function[i]);
 			}
 		}
-		else if (logic_function[i] == '.')//Если '.', то пропускается (из соображений выше и учета пользовательского ввода).
+		else if (logic_function[i] == '.')//Р•СЃР»Рё '.', С‚Рѕ РїСЂРѕРїСѓСЃРєР°РµС‚СЃСЏ (РёР· СЃРѕРѕР±СЂР°Р¶РµРЅРёР№ РІС‹С€Рµ Рё СѓС‡РµС‚Р° РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР°).
 			continue;
-		else//Если переменная или константа, вводится из соображений выше разделитель '|'.
+		else//Р•СЃР»Рё РїРµСЂРµРјРµРЅРЅР°СЏ РёР»Рё РєРѕРЅСЃС‚Р°РЅС‚Р°, РІРІРѕРґРёС‚СЃСЏ РёР· СЃРѕРѕР±СЂР°Р¶РµРЅРёР№ РІС‹С€Рµ СЂР°Р·РґРµР»РёС‚РµР»СЊ '|'.
 		{
 			if (logic_function[i] == 'x' && !x_is_used)
 				x_is_used = true;
@@ -321,14 +321,14 @@ bool reversePolishNotationForFunction(const std::string& logic_function, std::st
 			logic_function_by_RPN.push_back(logic_function[i]);
 		}
 	}
-	while (!operators.empty())//Выгружаются все оставшиеся операторы из стека.
+	while (!operators.empty())//Р’С‹РіСЂСѓР¶Р°СЋС‚СЃСЏ РІСЃРµ РѕСЃС‚Р°РІС€РёРµСЃСЏ РѕРїРµСЂР°С‚РѕСЂС‹ РёР· СЃС‚РµРєР°.
 	{
 		logic_function_by_RPN.push_back(operators.top());
 		operators.pop();
 	}
-	//Вывод преобразованной исходной строки (для удобства).
+	//Р’С‹РІРѕРґ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРЅРѕР№ РёСЃС…РѕРґРЅРѕР№ СЃС‚СЂРѕРєРё (РґР»СЏ СѓРґРѕР±СЃС‚РІР°).
 	/*std::cout << logic_function_by_RPN << std::endl;*/
-	//Обработка исключительных ситуаций и соответствующий вывод.
+	//РћР±СЂР°Р±РѕС‚РєР° РёСЃРєР»СЋС‡РёС‚РµР»СЊРЅС‹С… СЃРёС‚СѓР°С†РёР№ Рё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёР№ РІС‹РІРѕРґ.
 	if (balance_of_brackets != 0)
 		return false;
 	if (significant_variables_count == 1)
@@ -336,41 +336,41 @@ bool reversePolishNotationForFunction(const std::string& logic_function, std::st
 	else
 		return (x_is_used && y_is_used) ? true : false;
 }
-//Выполнение операции отрицания Поста k-значной логики.
+//Р’С‹РїРѕР»РЅРµРЅРёРµ РѕРїРµСЂР°С†РёРё РѕС‚СЂРёС†Р°РЅРёСЏ РџРѕСЃС‚Р° k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё.
 int PostSubstraction(const int& number, const int& value_logic)
 {
 	return (number + 1) % value_logic;
 }
-//Выполнение операции усеченной разности k-значной логики.
+//Р’С‹РїРѕР»РЅРµРЅРёРµ РѕРїРµСЂР°С†РёРё СѓСЃРµС‡РµРЅРЅРѕР№ СЂР°Р·РЅРѕСЃС‚Рё k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё.
 int truncatedDifference(const int& first_operand, const int& second_operand)
 {
 	return (first_operand > second_operand) ? (first_operand - second_operand) : 0;
 }
-//Выполнения операции произведения по модулю k (для постоянной функции).
+//Р’С‹РїРѕР»РЅРµРЅРёСЏ РѕРїРµСЂР°С†РёРё РїСЂРѕРёР·РІРµРґРµРЅРёСЏ РїРѕ РјРѕРґСѓР»СЋ k (РґР»СЏ РїРѕСЃС‚РѕСЏРЅРЅРѕР№ С„СѓРЅРєС†РёРё).
 int compositionModuloK(const int& first_operand, const int& second_operand, const int& value_logic)
 {
 	return first_operand * second_operand % value_logic;
 }
-//Проверка введенного пользователем множества E.
+//РџСЂРѕРІРµСЂРєР° РІРІРµРґРµРЅРЅРѕРіРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј РјРЅРѕР¶РµСЃС‚РІР° E.
 bool checkStringSetOfValues(const std::string& set_of_values, const int& value_logic, int& number_of_values)
 {
 	std::string substr_number{};
-	//Проверка первого и последнего символа строки.
+	//РџСЂРѕРІРµСЂРєР° РїРµСЂРІРѕРіРѕ Рё РїРѕСЃР»РµРґРЅРµРіРѕ СЃРёРјРІРѕР»Р° СЃС‚СЂРѕРєРё.
 	if (set_of_values[0] != '{' || set_of_values[set_of_values.size() - 1] != '}')
 		return false;
-	//Проверка второго и предпоследнего символа строки.
+	//РџСЂРѕРІРµСЂРєР° РІС‚РѕСЂРѕРіРѕ Рё РїСЂРµРґРїРѕСЃР»РµРґРЅРµРіРѕ СЃРёРјРІРѕР»Р° СЃС‚СЂРѕРєРё.
 	if (set_of_values[1] == ',' || set_of_values[set_of_values.size() - 2] == ',')
 		return false;
-	//Проверка оставшихся символов.
+	//РџСЂРѕРІРµСЂРєР° РѕСЃС‚Р°РІС€РёС…СЃСЏ СЃРёРјРІРѕР»РѕРІ.
 	for (int i{ 1 }; i < set_of_values.size() - 1; i++)
 	{
-		if (!(strElemIsDigit(set_of_values[i]) || set_of_values[i] == ','))//На допустимые символы.
+		if (!(strElemIsDigit(set_of_values[i]) || set_of_values[i] == ','))//РќР° РґРѕРїСѓСЃС‚РёРјС‹Рµ СЃРёРјРІРѕР»С‹.
 			return false;
-		else//Если допустимый символ.
+		else//Р•СЃР»Рё РґРѕРїСѓСЃС‚РёРјС‹Р№ СЃРёРјРІРѕР».
 		{
-			if (strElemIsDigit(set_of_values[i]))//Построение элемента множества из элементов строки.
+			if (strElemIsDigit(set_of_values[i]))//РџРѕСЃС‚СЂРѕРµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РјРЅРѕР¶РµСЃС‚РІР° РёР· СЌР»РµРјРµРЅС‚РѕРІ СЃС‚СЂРѕРєРё.
 				substr_number.push_back(set_of_values[i]);
-			if (!strElemIsDigit(set_of_values[i]) || i == set_of_values.size() - 2)//Проверка элемента и запоминание количества введенных элементов множества.
+			if (!strElemIsDigit(set_of_values[i]) || i == set_of_values.size() - 2)//РџСЂРѕРІРµСЂРєР° СЌР»РµРјРµРЅС‚Р° Рё Р·Р°РїРѕРјРёРЅР°РЅРёРµ РєРѕР»РёС‡РµСЃС‚РІР° РІРІРµРґРµРЅРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ РјРЅРѕР¶РµСЃС‚РІР°.
 			{
 				if (substr_number.empty())
 				{
@@ -378,7 +378,7 @@ bool checkStringSetOfValues(const std::string& set_of_values, const int& value_l
 					return false;
 				}
 				number_of_values++;
-				if (convertStrToInt(substr_number) >= value_logic)//Если элемент множества не принадлежит E_k, то не допускается.
+				if (convertStrToInt(substr_number) >= value_logic)//Р•СЃР»Рё СЌР»РµРјРµРЅС‚ РјРЅРѕР¶РµСЃС‚РІР° РЅРµ РїСЂРёРЅР°РґР»РµР¶РёС‚ E_k, С‚Рѕ РЅРµ РґРѕРїСѓСЃРєР°РµС‚СЃСЏ.
 				{
 					number_of_values = 0;
 					return false;
@@ -390,8 +390,8 @@ bool checkStringSetOfValues(const std::string& set_of_values, const int& value_l
 	return (number_of_values > 0) ? true : false;
 }
 
-/*ОСНОВНЫЕ ФУНКЦИИ*/
-//Получение функции k-значной логики от пользователя с проверкой на корректность.
+/*РћРЎРќРћР’РќР«Р• Р¤РЈРќРљР¦РР*/
+//РџРѕР»СѓС‡РµРЅРёРµ С„СѓРЅРєС†РёРё k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ РїСЂРѕРІРµСЂРєРѕР№ РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ.
 std::string getFunctionFromUser(std::string& logic_function_by_RPN, const int& value_logic, const int& significant_variables_count)
 {
 	while (true)
@@ -410,11 +410,11 @@ std::string getFunctionFromUser(std::string& logic_function_by_RPN, const int& v
 		else
 		{
 			logic_function_by_RPN.clear();
-			std::cout << "Ошибка ввода. Вы ввели функцию некорректно. Повторите ввод: " << std::endl;
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’С‹ РІРІРµР»Рё С„СѓРЅРєС†РёСЋ РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: " << std::endl;
 		}
 	}
 }
-//Вывод значений заданной функции k-значной логики в виде таблицы.
+//Р’С‹РІРѕРґ Р·РЅР°С‡РµРЅРёР№ Р·Р°РґР°РЅРЅРѕР№ С„СѓРЅРєС†РёРё k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё РІ РІРёРґРµ С‚Р°Р±Р»РёС†С‹.
 void functionValuesInTableForm(const std::string& logic_function_by_RPN, const int& value_logic, const int& significant_variables_count, int**& function_values)
 {
 	if (significant_variables_count == 1)
@@ -440,7 +440,7 @@ void functionValuesInTableForm(const std::string& logic_function_by_RPN, const i
 	}
 	std::cout << std::endl;
 }
-//Вычисление значений функции k-значной логики по каждому набору переменных и запоминание значений в квадратной матрице (двумерный динам. массив).
+//Р’С‹С‡РёСЃР»РµРЅРёРµ Р·РЅР°С‡РµРЅРёР№ С„СѓРЅРєС†РёРё k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё РїРѕ РєР°Р¶РґРѕРјСѓ РЅР°Р±РѕСЂСѓ РїРµСЂРµРјРµРЅРЅС‹С… Рё Р·Р°РїРѕРјРёРЅР°РЅРёРµ Р·РЅР°С‡РµРЅРёР№ РІ РєРІР°РґСЂР°С‚РЅРѕР№ РјР°С‚СЂРёС†Рµ (РґРІСѓРјРµСЂРЅС‹Р№ РґРёРЅР°Рј. РјР°СЃСЃРёРІ).
 int evaluateFunction(const std::string& logic_function_by_RPN, const int& value_logic, const int& x_value, const int& y_value, int**& function_values)
 {
 	std::stack<int> operands{};
@@ -482,7 +482,7 @@ int evaluateFunction(const std::string& logic_function_by_RPN, const int& value_
 		}
 		else if (logic_function_by_RPN[i] == '.')
 			continue;
-		else//Унарный оператор.
+		else//РЈРЅР°СЂРЅС‹Р№ РѕРїРµСЂР°С‚РѕСЂ.
 		{
 			int discharge{ 1 }, current_operand{ discharge * operands.top() };
 			operands.pop();
@@ -498,11 +498,11 @@ int evaluateFunction(const std::string& logic_function_by_RPN, const int& value_
 	function_values[x_value][y_value] = operands.top();
 	return operands.top();
 }
-//Вывод второй формы заданной функции k-значной логики.
+//Р’С‹РІРѕРґ РІС‚РѕСЂРѕР№ С„РѕСЂРјС‹ Р·Р°РґР°РЅРЅРѕР№ С„СѓРЅРєС†РёРё k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё.
 void getTheSecondFormOfTheFunction(const int& significant_variables_count, const int& value_logic, int**& function_values)
 {
 	bool put_a_plus{};
-	std::cout << "Вторая форма: ";
+	std::cout << "Р’С‚РѕСЂР°СЏ С„РѕСЂРјР°: ";
 	if (significant_variables_count == 1)
 	{
 		std::cout << "f(x/y) = ";
@@ -559,10 +559,10 @@ void getTheSecondFormOfTheFunction(const int& significant_variables_count, const
 		std::cout << "0";
 	std::cout << "." << std::endl << std::endl;
 }
-//Получение множества E от пользователя с проверкой на корректность.
+//РџРѕР»СѓС‡РµРЅРёРµ РјРЅРѕР¶РµСЃС‚РІР° E РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ СЃ РїСЂРѕРІРµСЂРєРѕР№ РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ.
 std::string getSetValues(const int& value_logic, int& number_of_values)
 {
-	std::cout << "Введите множество E для определения принадлежности заданной функции к классу T(Е)\n(значения из E_k через ',' без пробелов в фигурных скобках):" << std::endl;
+	std::cout << "Р’РІРµРґРёС‚Рµ РјРЅРѕР¶РµСЃС‚РІРѕ E РґР»СЏ РѕРїСЂРµРґРµР»РµРЅРёСЏ РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё Р·Р°РґР°РЅРЅРѕР№ С„СѓРЅРєС†РёРё Рє РєР»Р°СЃСЃСѓ T(Р•)\n(Р·РЅР°С‡РµРЅРёСЏ РёР· E_k С‡РµСЂРµР· ',' Р±РµР· РїСЂРѕР±РµР»РѕРІ РІ С„РёРіСѓСЂРЅС‹С… СЃРєРѕР±РєР°С…):" << std::endl;
 	while (true)
 	{
 		std::cout << "E = ";
@@ -571,15 +571,15 @@ std::string getSetValues(const int& value_logic, int& number_of_values)
 		if (checkStringSetOfValues(set_of_values, value_logic, number_of_values))
 			return set_of_values;
 		else
-			std::cout << "Вы ввели множество Е некорректно. Повторите ввод:" << std::endl;
+			std::cout << "Р’С‹ РІРІРµР»Рё РјРЅРѕР¶РµСЃС‚РІРѕ Р• РЅРµРєРѕСЂСЂРµРєС‚РЅРѕ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:" << std::endl;
 	}
 }
-//Проверка принадлежности функции k-значной логики классу T(E).
+//РџСЂРѕРІРµСЂРєР° РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё С„СѓРЅРєС†РёРё k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё РєР»Р°СЃСЃСѓ T(E).
 bool getMembershipFunctionToClass(const std::string& set_of_values, int**& function_values, const int& value_logic, const int& significant_variables_count, const int& number_of_values)
 {
 	int mass_iter{}, * mass_of_values = new int[number_of_values] {};
 	std::string substr_number{};
-	for (int i{ 1 }; i < set_of_values.size() - 1; i++)//Получение элементов множества E из введенной пользователем строки.
+	for (int i{ 1 }; i < set_of_values.size() - 1; i++)//РџРѕР»СѓС‡РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ РјРЅРѕР¶РµСЃС‚РІР° E РёР· РІРІРµРґРµРЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё.
 	{
 		if (strElemIsDigit(set_of_values[i]))
 			substr_number.push_back(set_of_values[i]);
@@ -590,7 +590,7 @@ bool getMembershipFunctionToClass(const std::string& set_of_values, int**& funct
 			substr_number.clear();
 		}
 	}
-	//Проверка функции k-значной логики на принадлежность классу T(E) для случая одной или двух переменных.
+	//РџСЂРѕРІРµСЂРєР° С„СѓРЅРєС†РёРё k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё РЅР° РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚СЊ РєР»Р°СЃСЃСѓ T(E) РґР»СЏ СЃР»СѓС‡Р°СЏ РѕРґРЅРѕР№ РёР»Рё РґРІСѓС… РїРµСЂРµРјРµРЅРЅС‹С….
 	if (significant_variables_count == 1)
 	{
 		for (int i{}; i < value_logic; i++)
@@ -634,49 +634,49 @@ bool getMembershipFunctionToClass(const std::string& set_of_values, int**& funct
 			}
 		}
 	}
-	//Освобождение выделенной динамической памяти от массива.
+	//РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РІС‹РґРµР»РµРЅРЅРѕР№ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё РѕС‚ РјР°СЃСЃРёРІР°.
 	delete[] mass_of_values;
 	return true;
 }
-//Основная функция выполнения программы.
+//РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ РІС‹РїРѕР»РЅРµРЅРёСЏ РїСЂРѕРіСЂР°РјРјС‹.
 void programExecution()
 {
-	std::cout << std::endl << "Введите значение k (далее будет использоваться k-значная логика): ";
+	std::cout << std::endl << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ k (РґР°Р»РµРµ Р±СѓРґРµС‚ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊСЃСЏ k-Р·РЅР°С‡РЅР°СЏ Р»РѕРіРёРєР°): ";
 	int value_logic{ getValueOfLogic() };
-	std::cout << std::endl << "Введите значение n (1 или 2 существенные переменные задаваемой функции k-значной логики): ";
+	std::cout << std::endl << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ n (1 РёР»Рё 2 СЃСѓС‰РµСЃС‚РІРµРЅРЅС‹Рµ РїРµСЂРµРјРµРЅРЅС‹Рµ Р·Р°РґР°РІР°РµРјРѕР№ С„СѓРЅРєС†РёРё k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё): ";
 	int significant_variables_count{ getCountOfSignificantVariables() };
-	std::cout << std::endl << "Введите функцию k-значной логики в аналитической форме." << std::endl;
-	getLogicOperationInformation(value_logic, significant_variables_count);//Информация о вводимых операциях и прочих символах.
-	//Введенная пользователем функция в обратной польской нотации и в исходном виде соответственно.
+	std::cout << std::endl << "Р’РІРµРґРёС‚Рµ С„СѓРЅРєС†РёСЋ k-Р·РЅР°С‡РЅРѕР№ Р»РѕРіРёРєРё РІ Р°РЅР°Р»РёС‚РёС‡РµСЃРєРѕР№ С„РѕСЂРјРµ." << std::endl;
+	getLogicOperationInformation(value_logic, significant_variables_count);//РРЅС„РѕСЂРјР°С†РёСЏ Рѕ РІРІРѕРґРёРјС‹С… РѕРїРµСЂР°С†РёСЏС… Рё РїСЂРѕС‡РёС… СЃРёРјРІРѕР»Р°С….
+	//Р’РІРµРґРµРЅРЅР°СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј С„СѓРЅРєС†РёСЏ РІ РѕР±СЂР°С‚РЅРѕР№ РїРѕР»СЊСЃРєРѕР№ РЅРѕС‚Р°С†РёРё Рё РІ РёСЃС…РѕРґРЅРѕРј РІРёРґРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ.
 	std::string logic_function_by_RPN{}, logic_function{ getFunctionFromUser(logic_function_by_RPN, value_logic, significant_variables_count) };
-	//Динамический двумерный массив для хранения значений функции.
+	//Р”РёРЅР°РјРёС‡РµСЃРєРёР№ РґРІСѓРјРµСЂРЅС‹Р№ РјР°СЃСЃРёРІ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№ С„СѓРЅРєС†РёРё.
 	int** function_values = new int* [value_logic] {};
 	for (int i{}; i < value_logic; i++)
 		function_values[i] = new int[value_logic] {};
 	for (int i{}; i < value_logic; i++)
 		for (int j{}; j < value_logic; j++)
 			function_values[i][j] = -1;
-	//Получение значений заданной функции в виде таблицы.
+	//РџРѕР»СѓС‡РµРЅРёРµ Р·РЅР°С‡РµРЅРёР№ Р·Р°РґР°РЅРЅРѕР№ С„СѓРЅРєС†РёРё РІ РІРёРґРµ С‚Р°Р±Р»РёС†С‹.
 	functionValuesInTableForm(logic_function_by_RPN, value_logic, significant_variables_count, function_values);
-	//Вывод второй формы заданной функции.
+	//Р’С‹РІРѕРґ РІС‚РѕСЂРѕР№ С„РѕСЂРјС‹ Р·Р°РґР°РЅРЅРѕР№ С„СѓРЅРєС†РёРё.
 	getTheSecondFormOfTheFunction(significant_variables_count, value_logic, function_values);
 	while (true)
 	{
-		//Количество элементов множества E.
+		//РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РјРЅРѕР¶РµСЃС‚РІР° E.
 		int number_of_values{};
-		//Получение множества элементов множества E.
+		//РџРѕР»СѓС‡РµРЅРёРµ РјРЅРѕР¶РµСЃС‚РІР° СЌР»РµРјРµРЅС‚РѕРІ РјРЅРѕР¶РµСЃС‚РІР° E.
 		std::string set_of_values{ getSetValues(value_logic, number_of_values) };
-		//Проверка принадлежности функции классу T(E).
+		//РџСЂРѕРІРµСЂРєР° РїСЂРёРЅР°РґР»РµР¶РЅРѕСЃС‚Рё С„СѓРЅРєС†РёРё РєР»Р°СЃСЃСѓ T(E).
 		if (getMembershipFunctionToClass(set_of_values, function_values, value_logic, significant_variables_count, number_of_values))
-			std::cout << "Да, данная функция принадлежит указанному классу T(E)." << std::endl << std::endl;
+			std::cout << "Р”Р°, РґР°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РїСЂРёРЅР°РґР»РµР¶РёС‚ СѓРєР°Р·Р°РЅРЅРѕРјСѓ РєР»Р°СЃСЃСѓ T(E)." << std::endl << std::endl;
 		else
-			std::cout << "Нет, данная функция не принадлежит указанному классу T(E)!" << std::endl << std::endl;
+			std::cout << "РќРµС‚, РґР°РЅРЅР°СЏ С„СѓРЅРєС†РёСЏ РЅРµ РїСЂРёРЅР°РґР»РµР¶РёС‚ СѓРєР°Р·Р°РЅРЅРѕРјСѓ РєР»Р°СЃСЃСѓ T(E)!" << std::endl << std::endl;
 		if (!doItAgain())
 			break;
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
-	//Освобождение выделенной динамической памяти от массива массивов.
+	//РћСЃРІРѕР±РѕР¶РґРµРЅРёРµ РІС‹РґРµР»РµРЅРЅРѕР№ РґРёРЅР°РјРёС‡РµСЃРєРѕР№ РїР°РјСЏС‚Рё РѕС‚ РјР°СЃСЃРёРІР° РјР°СЃСЃРёРІРѕРІ.
 	for (int i{}; i < value_logic; i++)
 		delete[] function_values[i];
 	delete[] function_values;

@@ -1,6 +1,6 @@
-#include <cstdlib> //для функций rand() и srand()
-#include <ctime> //для функции time()
-#include <iostream> //для вывода информации о действии на консоль
+#include <cstdlib> //РґР»СЏ С„СѓРЅРєС†РёР№ rand() Рё srand()
+#include <ctime> //РґР»СЏ С„СѓРЅРєС†РёРё time()
+#include <iostream> //РґР»СЏ РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёРё Рѕ РґРµР№СЃС‚РІРёРё РЅР° РєРѕРЅСЃРѕР»СЊ
 #include "myfuncs.h"
 #include "constants.h"
 #include "user_buttons.h"
@@ -8,48 +8,48 @@
 #include "Rectangle.h"
 #include "Linesegment.h"
 
-//ГПСЧ
+//Р“РџРЎР§
 float getRandomNumber(float min, float max)
 {
 	static const float fraction = 1.0 / (static_cast<float>(RAND_MAX) + 1.0);
 	return (rand() * fraction * (max - min + 1) + min);
 }
 
-//Оновная работа программы
+//РћРЅРѕРІРЅР°СЏ СЂР°Р±РѕС‚Р° РїСЂРѕРіСЂР°РјРјС‹
 int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectangle*& f_ptr_obj_rect, Linesegment*& f_ptr_obj_linesegment,
 	int& array_circles_size, Circle**& array_circles,
 	int& array_rectangles_size, Rectangle**& array_rectangles,
 	int& array_linesegments_size, Linesegment**& array_linesegments)
 {
-	/*СОЗДАНИЕ ФОНА ОКНА*/
-	//Меню
+	/*РЎРћР—Р”РђРќРР• Р¤РћРќРђ РћРљРќРђ*/
+	//РњРµРЅСЋ
 	Rect_BG_buttons BG_general(0, 0, 700, 895, 5);
 	BG_general.m_setFillColor(5, 90, 1);
 	//IMAGE
 	User_texts image_text("Comic_Sans_MS.TTF", " I  M  A  G  E ", 870, 0, 70);
-	//Панель меню
+	//РџР°РЅРµР»СЊ РјРµРЅСЋ
 	Rect_BG_buttons BG_menu(5, 5, 695, 85, 5);
 	User_texts menu_text("Comic_Sans_MS.TTF", " M   E   N   U ", 20, 0, 70);
-	//Панель подменю
+	//РџР°РЅРµР»СЊ РїРѕРґРјРµРЅСЋ
 	Rect_BG_buttons BG_submenu_obj(5, 360, 695, 80, 5);
 	User_texts submenu_obj_text("Comic_Sans_MS.TTF", "S U B M E N U", 20, 360, 65);
-	//Кнопка создания объектов массивами из 15 фигур
+	//РљРЅРѕРїРєР° СЃРѕР·РґР°РЅРёСЏ РѕР±СЉРµРєС‚РѕРІ РјР°СЃСЃРёРІР°РјРё РёР· 15 С„РёРіСѓСЂ
 	Rect_BG_buttons BG_create_15_objs(500, 360, 200, 80, 5);
 	User_texts create_15_objs_text("Comic_Sans_MS.TTF", "create_15_objs", 505, 380, 23);
 	
 
-	/*КНОПКИ МЕНЮ*/
-	//Кнопка CREATE
+	/*РљРќРћРџРљР РњР•РќР®*/
+	//РљРЅРѕРїРєР° CREATE
 	Rect_BG_buttons BG_create(5, 96, 200, 120, 5);
 	User_texts create_text("Comic_Sans_MS.TTF", "C R E A T E", 15, 135, 30);
-	//Кнопка MOVE AND CHANGE
+	//РљРЅРѕРїРєР° MOVE AND CHANGE
 	Rect_BG_buttons BG_move_and_change(5, 229, 200, 120, 5);
 	User_texts move_and_change_text("Comic_Sans_MS.TTF", " M  O  V  E\n\t  and   \nC H A N G E", 15, 230, 30);
-	//Кнопка EXIT
+	//РљРЅРѕРїРєР° EXIT
 	Rect_BG_buttons BG_exit(5, 840, 160, 50, 5);
 	User_texts exit_text("Comic_Sans_MS.TTF", "E X I T", 25, 850, 30);
 
-	/*КНОПКИ ПОДМЕНЮ CREATE*/
+	/*РљРќРћРџРљР РџРћР”РњР•РќР® CREATE*/
 	//CREATE->circle
 	Rect_BG_buttons BG_circle(220, 97, 140, 40, 5);
 	User_texts circle_text("Comic_Sans_MS.TTF", "circle", 250, 100, 25);
@@ -63,7 +63,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 	Rect_BG_buttons BG_create_arrays(220, 160, 473, 40, 5);
 	User_texts create_arrays_text("Comic_Sans_MS.TTF", "create arrays of graphics primitives", 231, 165, 25);
 
-	/*КНОПКИ ПОДМЕНЮ CREATE->create array of graphics primitives*/
+	/*РљРќРћРџРљР РџРћР”РњР•РќР® CREATE->create array of graphics primitives*/
 	//Create->create arrays of graphics primitives->array of circles
 	Rect_BG_buttons BG_create_array_circles(5, 460, 175, 40, 5);
 	User_texts create_array_circles_text("Comic_Sans_MS.TTF", "array of circles", 10, 467, 20);
@@ -74,170 +74,170 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 	Rect_BG_buttons BG_create_array_linesegments(420, 460, 240, 40, 5);
 	User_texts create_array_linesegments_text("Comic_Sans_MS.TTF", "array of linesegments", 420, 467, 20);
 
-	/*СВОЙСТВА ОКРУЖНОСТИ*/
-	//Открыть меню обработки свойств: MOVE AND CHANGE->obj_circle
+	/*РЎР’РћР™РЎРўР’Рђ РћРљР РЈР–РќРћРЎРўР*/
+	//РћС‚РєСЂС‹С‚СЊ РјРµРЅСЋ РѕР±СЂР°Р±РѕС‚РєРё СЃРІРѕР№СЃС‚РІ: MOVE AND CHANGE->obj_circle
 	Rect_BG_buttons BG_obj_circle(220, 229, 140, 40, 5);
 	User_texts obj_circle_text("Comic_Sans_MS.TTF", "  obj_circle", 225, 238, 21);
-	//Сдвинуть случайным образом по x и по y из диапазона [-50;50]:obj_circle-> circle_random_move
+	//РЎРґРІРёРЅСѓС‚СЊ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]:obj_circle-> circle_random_move
 	Rect_BG_buttons BG_RandomMove_obj_circle(5, 455, 230, 40, 5);
 	User_texts RandomMove_obj_circle_text("Comic_Sans_MS.TTF", "circle_random_move", 10, 460, 20);
-	//Движение по клавишам WASD элементов: obj_circle -> circle_user_move
+	//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ: obj_circle -> circle_user_move
 	Rect_BG_buttons BG_UserMove_obj_circle(250, 455, 230, 40, 5);
 	User_texts UserMove_obj_circle_text("Comic_Sans_MS.TTF", "circle_user_move", 270, 460, 20);
-	//Увеличить или уменьшить радиус: obj_circle -> circle_change_radius:\n(q) - increase\n(e) - decrease
+	//РЈРІРµР»РёС‡РёС‚СЊ РёР»Рё СѓРјРµРЅСЊС€РёС‚СЊ СЂР°РґРёСѓСЃ: obj_circle -> circle_change_radius:\n(q) - increase\n(e) - decrease
 	Rect_BG_buttons BG_ChangeRadius_obj_circle(5, 510, 300, 80, 5);
 	User_texts ChangeRadius_obj_circle_text("Comic_Sans_MS.TTF", "circle_change_radius:\n(q) - increase\n(e) - decrease", 10, 510, 18);
-	//Удалить объект: obj_circle -> delete
+	//РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚: obj_circle -> delete
 	Rect_BG_buttons BG_delete_obj_circle(495, 455, 160, 40, 5);
 	User_texts delete_obj_circle_text("Comic_Sans_MS.TTF", "delete", 530, 460, 25);
 
-	/*СВОЙСТВА ПРЯМОУГОЛЬНИКА*/
-	//Открыть меню обработки свойств: MOVE AND CHANGE->obj_rectangle
+	/*РЎР’РћР™РЎРўР’Рђ РџР РЇРњРћРЈР“РћР›Р¬РќРРљРђ*/
+	//РћС‚РєСЂС‹С‚СЊ РјРµРЅСЋ РѕР±СЂР°Р±РѕС‚РєРё СЃРІРѕР№СЃС‚РІ: MOVE AND CHANGE->obj_rectangle
 	Rect_BG_buttons BG_obj_rect(375, 229, 160, 40, 5);
 	User_texts obj_rect_text("Comic_Sans_MS.TTF", "obj_rectangle", 380, 238, 21);
 	Rect_BG_buttons BG_RandomMove_obj_rect(5, 455, 230, 40, 5);
-	//Сдвинуть случайным образом по x и по y из диапазона [-50;50]:obj_rectangle-> rect_random_move
+	//РЎРґРІРёРЅСѓС‚СЊ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]:obj_rectangle-> rect_random_move
 	User_texts RandomMove_obj_rect_text("Comic_Sans_MS.TTF", "rect_random_move", 10, 460, 20);
-	//Движение по клавишам WASD элементов: obj_rectangle -> rect_user_move
+	//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ: obj_rectangle -> rect_user_move
 	Rect_BG_buttons BG_UserMove_obj_rect(250, 455, 230, 40, 5);
 	User_texts UserMove_obj_rect_text("Comic_Sans_MS.TTF", "rect_user_move", 270, 460, 20);
-	//Увеличить или уменьшить ширину: obj_circle -> circle_change_radius:\n(q) - increase\n(e) - decrease
+	//РЈРІРµР»РёС‡РёС‚СЊ РёР»Рё СѓРјРµРЅСЊС€РёС‚СЊ С€РёСЂРёРЅСѓ: obj_circle -> circle_change_radius:\n(q) - increase\n(e) - decrease
 	Rect_BG_buttons BG_ChangeWidthLength_obj_rectangle(5, 510, 300, 160, 5);
 	User_texts ChangeWidthLength_obj_rectangle_text("Comic_Sans_MS.TTF",
 		"rectangle_change_dimensions:\n(z) - increase length\n(x) - decrease length\n(c) - increase width\n(v) - decrease width", 10, 510, 18);
-	//Удалить объект: obj_rectangle -> delete
+	//РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚: obj_rectangle -> delete
 	Rect_BG_buttons BG_delete_obj_rectangle(495, 455, 160, 40, 5);
 	User_texts delete_obj_rectangle_text("Comic_Sans_MS.TTF", "delete", 530, 460, 25);
 
 
-	/*СВОЙСТВА ОТРЕЗКА*/
-	//Открыть меню обработки свойств: MOVE AND CHANGE->obj_linesegment
+	/*РЎР’РћР™РЎРўР’Рђ РћРўР Р•Р—РљРђ*/
+	//РћС‚РєСЂС‹С‚СЊ РјРµРЅСЋ РѕР±СЂР°Р±РѕС‚РєРё СЃРІРѕР№СЃС‚РІ: MOVE AND CHANGE->obj_linesegment
 	Rect_BG_buttons BG_obj_linesegment(220, 280, 185, 40, 5);
 	User_texts obj_linesegment_text("Comic_Sans_MS.TTF", "obj_linesegment", 225, 290, 21);
-	//Сдвинуть случайным образом по x и по y из диапазона [-50;50]:obj_linesegment-> line_random_move
+	//РЎРґРІРёРЅСѓС‚СЊ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]:obj_linesegment-> line_random_move
 	Rect_BG_buttons BG_RandomMove_obj_linesegment(5, 455, 230, 40, 5);
 	User_texts RandomMove_obj_linesegment_text("Comic_Sans_MS.TTF", "line_random_move", 10, 460, 20);
-	//Движение по клавишам WASD элементов: obj_linesegment -> line_user_move
+	//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ: obj_linesegment -> line_user_move
 	Rect_BG_buttons BG_UserMove_obj_linesegment(250, 455, 230, 40, 5);
 	User_texts UserMove_obj_linesegment_text("Comic_Sans_MS.TTF", "line_user_move", 270, 460, 20);
-	//Увеличить или уменьшить длину отрезка, повернуть отрезок: obj_linesegment -> linesegment_change_length:\n(f) - increase\n(g) - decrease\n(h) - rotate
+	//РЈРІРµР»РёС‡РёС‚СЊ РёР»Рё СѓРјРµРЅСЊС€РёС‚СЊ РґР»РёРЅСѓ РѕС‚СЂРµР·РєР°, РїРѕРІРµСЂРЅСѓС‚СЊ РѕС‚СЂРµР·РѕРє: obj_linesegment -> linesegment_change_length:\n(f) - increase\n(g) - decrease\n(h) - rotate
 	Rect_BG_buttons BG_ChangeDimensions_obj_linesegment(5, 510, 300, 160, 5);
 	User_texts ChangeDimensions_obj_linesegment_text("Comic_Sans_MS.TTF",
 		"linesegment_change_length:\n(b) - increase\n(n) - decrease\nlinesegment_change_rotate:\n(f) - rotate clockwise\n(g) - rotate counterclockwise", 10, 510, 18);
-	//Удалить объект: obj_linesegment -> delete
+	//РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚: obj_linesegment -> delete
 	Rect_BG_buttons BG_delete_obj_linesegment(495, 455, 160, 40, 5);
 	User_texts delete_obj_linesegment_text("Comic_Sans_MS.TTF", "delete", 530, 460, 25);
 
-	/*СВОЙСТВА МАССИВА ОКРУЖНОСТЕЙ*/
-	//Сдвинуть элементы случайным образом по x и по y из диапазона [-50;50]:array_of_circles -> random move(circles)
+	/*РЎР’РћР™РЎРўР’Рђ РњРђРЎРЎРР’Рђ РћРљР РЈР–РќРћРЎРўР•Р™*/
+	//РЎРґРІРёРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚С‹ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]:array_of_circles -> random move(circles)
 	Rect_BG_buttons BG_RandomMove_array_circles(5, 520, 175, 40, 5);
 	User_texts RandomMove_array_circles_text("Comic_Sans_MS.TTF", "random move(circles)", 10, 530, 15);
-	//Движение по клавишам WASD элементов: array of circles -> user move(circles) 
+	//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ: array of circles -> user move(circles) 
 	Rect_BG_buttons BG_UserMove_array_circles(5, 580, 175, 40, 5);
 	User_texts UserMove_array_circles_text("Comic_Sans_MS.TTF", "user move(circles)", 10, 590, 17);
-	//Удалить последний элемент: array of circles -> delete_last circle
+	//РЈРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚: array of circles -> delete_last circle
 	Rect_BG_buttons BG_delete_last_elem_array_circles(5, 640, 175, 40, 5);
 	User_texts delete_last_elem_array_circles_text("Comic_Sans_MS.TTF", "delete_last circle", 10, 650, 17);
-	//Удалить все элементы: array of circles -> delete all circles
+	//РЈРґР°Р»РёС‚СЊ РІСЃРµ СЌР»РµРјРµРЅС‚С‹: array of circles -> delete all circles
 	Rect_BG_buttons BG_delete_all_circles(5, 700, 175, 40, 5);
 	User_texts delete_all_circles_text("Comic_Sans_MS.TTF", "delete all circles", 10, 710, 17);
-	//Увеличение или уменьшение радиуса: array of circles -> (q) - increase radius\n(e) - decrease radius
+	//РЈРІРµР»РёС‡РµРЅРёРµ РёР»Рё СѓРјРµРЅСЊС€РµРЅРёРµ СЂР°РґРёСѓСЃР°: array of circles -> (q) - increase radius\n(e) - decrease radius
 	User_texts ChangeRadius_array_circles_text("Comic_Sans_MS.TTF", "(q) - increase radius\n(e) - decrease radius", 5, 760, 15);
 
-	/*СВОЙСТВА МАССИВА ПРЯМОУГОЛЬНИКОВ*/
-	//Сдвинуть элементы случайным образом по x и по y из диапазона [-50;50]:array_of_rectangles -> random move(rectangles)
+	/*РЎР’РћР™РЎРўР’Рђ РњРђРЎРЎРР’Рђ РџР РЇРњРћРЈР“РћР›Р¬РќРРљРћР’*/
+	//РЎРґРІРёРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚С‹ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]:array_of_rectangles -> random move(rectangles)
 	Rect_BG_buttons BG_RandomMove_array_rectangles(195, 520, 210, 40, 5);
 	User_texts RandomMove_array_rectangles_text("Comic_Sans_MS.TTF", "random move(rectangles)", 200, 530, 15);
-	//Движение по клавишам WASD элементов: array of rectangles -> user move(rectangles) 
+	//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ: array of rectangles -> user move(rectangles) 
 	Rect_BG_buttons BG_UserMove_array_rectangles(195, 580, 210, 40, 5);
 	User_texts UserMove_array_rectangles_text("Comic_Sans_MS.TTF", "user move(reactangles)", 200, 590, 17);
-	//Удалить последний элемент: array of rectangles -> delete_last rectangle
+	//РЈРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚: array of rectangles -> delete_last rectangle
 	Rect_BG_buttons BG_delete_last_elem_array_rectangles(195, 640, 210, 40, 5);
 	User_texts delete_last_elem_array_rectangles_text("Comic_Sans_MS.TTF", "delete_last rectangle", 200, 650, 17);
-	//Удалить все элементы: array of rectangles -> delete all rectangles
+	//РЈРґР°Р»РёС‚СЊ РІСЃРµ СЌР»РµРјРµРЅС‚С‹: array of rectangles -> delete all rectangles
 	Rect_BG_buttons BG_delete_all_rectangles(195, 700, 210, 40, 5);
 	User_texts delete_all_rectangles_text("Comic_Sans_MS.TTF", "delete all rectangles", 200, 710, 17);
-	//Изменение размера элементов массива прямоугольников: array of rectangles -> (z) - increase length\n(x) - decrease length\n(c) - increase width\n(v) - decrease width
+	//РР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРѕРІ: array of rectangles -> (z) - increase length\n(x) - decrease length\n(c) - increase width\n(v) - decrease width
 	User_texts ChangeDimensions_array_rectangles_text("Comic_Sans_MS.TTF",
 		"(z) - increase length\n(x) - decrease length\n(c) - increase width\n(v) - decrease width", 200, 760, 15);
 
-	/*СВОЙСТВА МАССИВА ОТРЕЗКОВ*/
-	//Сдвинуть элементы случайным образом по x и по y из диапазона [-50;50]: array_of_linesegments -> random move(linesegments)
+	/*РЎР’РћР™РЎРўР’Рђ РњРђРЎРЎРР’Рђ РћРўР Р•Р—РљРћР’*/
+	//РЎРґРІРёРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚С‹ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]: array_of_linesegments -> random move(linesegments)
 	Rect_BG_buttons BG_RandomMove_array_linesegments(420, 520, 240, 40, 5);
 	User_texts RandomMove_array_linesegments_text("Comic_Sans_MS.TTF", "random move(linesegments)", 425, 530, 15);
-	//Движение по клавишам WASD элементов: array of linesegments -> user move(linesegments)
+	//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ: array of linesegments -> user move(linesegments)
 	Rect_BG_buttons BG_UserMove_array_linesegments(420, 580, 240, 40, 5);
 	User_texts UserMove_array_linesegments_text("Comic_Sans_MS.TTF", "user move(linesegments)", 425, 590, 17);
-	//Удалить последний элемент: array of linesegments -> delete_last linesegment
+	//РЈРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚: array of linesegments -> delete_last linesegment
 	Rect_BG_buttons BG_delete_last_elem_array_linesegments(420, 640, 240, 40, 5);
 	User_texts delete_last_elem_array_linesegments_text("Comic_Sans_MS.TTF", "delete_last linesegment", 425, 650, 17);
-	//Удалить все элементы: array of linesegments -> delete all linesegments
+	//РЈРґР°Р»РёС‚СЊ РІСЃРµ СЌР»РµРјРµРЅС‚С‹: array of linesegments -> delete all linesegments
 	Rect_BG_buttons BG_delete_all_linesegments(420, 700, 240, 40, 5);
 	User_texts delete_all_linesegments_text("Comic_Sans_MS.TTF", "delete all linesegments", 425, 710, 17);
-	//Изменение размера элементов массива прямоугольников: array of rectangles -> (z) - increase length\n(x) - decrease length\n(c) - increase width\n(v) - decrease width
+	//РР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРѕРІ: array of rectangles -> (z) - increase length\n(x) - decrease length\n(c) - increase width\n(v) - decrease width
 	User_texts ChangeDimensions_array_linesegments_text("Comic_Sans_MS.TTF",
 		"linesegment_change_length:\n(b) - increase\n(n) - decrease\nlinesegment_change_rotate:\n(f) - rotate clockwise\n(g) - rotate counterclockwise", 425, 760, 15);
 
-	//Переход на следующую или предыдущую страницу графических примитивов с последующей обработкой
+	//РџРµСЂРµС…РѕРґ РЅР° СЃР»РµРґСѓСЋС‰СѓСЋ РёР»Рё РїСЂРµРґС‹РґСѓС‰СѓСЋ СЃС‚СЂР°РЅРёС†Сѓ РіСЂР°С„РёС‡РµСЃРєРёС… РїСЂРёРјРёС‚РёРІРѕРІ СЃ РїРѕСЃР»РµРґСѓСЋС‰РµР№ РѕР±СЂР°Р±РѕС‚РєРѕР№
 	Rect_BG_buttons BG_next(600, 5, 100, 85, 5);
 	User_texts next_text("Comic_Sans_MS.TTF", "NEXT", 605, 30, 30);
 	Rect_BG_buttons BG_back(495, 5, 100, 85, 5);
 	User_texts back_text("Comic_Sans_MS.TTF", "BACK", 500, 30, 30);
 
-	//Привзяка ГПСЧ к календарному времени (случайные последовательности случайных чисел из диапазона)
+	//РџСЂРёРІР·СЏРєР° Р“РџРЎР§ Рє РєР°Р»РµРЅРґР°СЂРЅРѕРјСѓ РІСЂРµРјРµРЅРё (СЃР»СѓС‡Р°Р№РЅС‹Рµ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚Рё СЃР»СѓС‡Р°Р№РЅС‹С… С‡РёСЃРµР» РёР· РґРёР°РїР°Р·РѕРЅР°)
 	srand(static_cast<unsigned int>(time(0)));
 
-	//Организация перехода окна между дополнительными меню
+	//РћСЂРіР°РЅРёР·Р°С†РёСЏ РїРµСЂРµС…РѕРґР° РѕРєРЅР° РјРµР¶РґСѓ РґРѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹РјРё РјРµРЅСЋ
 	int extra_menu{ 0 };
-	//Учет явного нажатия кнопок: CREATE, MOVE_AND_CHANGE (для разных extra_menu)
+	//РЈС‡РµС‚ СЏРІРЅРѕРіРѕ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРѕРє: CREATE, MOVE_AND_CHANGE (РґР»СЏ СЂР°Р·РЅС‹С… extra_menu)
 	bool menu_create_0{ false }, menu_move_and_change_0{ false };
-	//ЕДИНИЧНЫЕ ОБЪЕКТЫ
-	//Учет явного нажатия кнопок CREATE ->: circle, rectangle, linesegment
+	//Р•Р”РРќРР§РќР«Р• РћР‘РЄР•РљРўР«
+	//РЈС‡РµС‚ СЏРІРЅРѕРіРѕ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРѕРє CREATE ->: circle, rectangle, linesegment
 	bool circle_show{ false }, rect_show{ false }, linesegment_show{ false };
-	//Учет явного нажатия кнопок MOVE AND CHANGE ->: obj_circle, obj_rectangle, obj_;inesegment
+	//РЈС‡РµС‚ СЏРІРЅРѕРіРѕ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРѕРє MOVE AND CHANGE ->: obj_circle, obj_rectangle, obj_;inesegment
 	bool submenu_obj_circle{ false }, submenu_obj_rect{ false }, submenu_obj_linesegment{ false };
-	//Учет явного нажатия кнопок obj_circle -> circle_random_move, obj_rectangle -> rect_user_move, obj_linesegment -> line_user_move 
+	//РЈС‡РµС‚ СЏРІРЅРѕРіРѕ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРѕРє obj_circle -> circle_random_move, obj_rectangle -> rect_user_move, obj_linesegment -> line_user_move 
 	bool circle_user_move{ false }, rect_user_move{ false }, linesegment_user_move{ false };
-	//Учет явного нажатия кнопок у obj_circle, obj_rectangle, obj_linesegment изменения размеров
+	//РЈС‡РµС‚ СЏРІРЅРѕРіРѕ РЅР°Р¶Р°С‚РёСЏ РєРЅРѕРїРѕРє Сѓ obj_circle, obj_rectangle, obj_linesegment РёР·РјРµРЅРµРЅРёСЏ СЂР°Р·РјРµСЂРѕРІ
 	bool circle_change_radius{ false }, rectangle_change_dimensions{ false }, linesegment_change_dimensions{ false };
-	//МАССИВЫ
-	//Явное нажатие кнопки CREATE -> create arrays of graphics primitives, create_15_objs
+	//РњРђРЎРЎРР’Р«
+	//РЇРІРЅРѕРµ РЅР°Р¶Р°С‚РёРµ РєРЅРѕРїРєРё CREATE -> create arrays of graphics primitives, create_15_objs
 	bool submenu_create_arrays_0{ false }, create_15_objs{ false };
-	//Создание одного/нескольких элементов массива с помощью одной переменной
+	//РЎРѕР·РґР°РЅРёРµ РѕРґРЅРѕРіРѕ/РЅРµСЃРєРѕР»СЊРєРёС… СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР° СЃ РїРѕРјРѕС‰СЊСЋ РѕРґРЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№
 	int mass_or_single{ONE_OBJ};
-	//Явное нажатие кнопок create arrays of graphics primitives ->: array of circles, array of rectangles, array of linesegments
+	//РЇРІРЅРѕРµ РЅР°Р¶Р°С‚РёРµ РєРЅРѕРїРѕРє create arrays of graphics primitives ->: array of circles, array of rectangles, array of linesegments
 	bool array_circles_show{ false }, array_rectangles_show{ false }, array_linesegments_show{ false };
-	//Явное нажатие кнопок array of circles -> user move(circles), array of rectangles -> user move(rectangles)
+	//РЇРІРЅРѕРµ РЅР°Р¶Р°С‚РёРµ РєРЅРѕРїРѕРє array of circles -> user move(circles), array of rectangles -> user move(rectangles)
 	bool array_circles_user_move{ false }, array_rectangles_user_move{ false }, array_linesegments_user_move{ false };
 
 	while (window.isOpen())
 	{
-		/*ПОКАДРОВАЯ ОБРАБОТКА ЦВЕТОВ СОЗДАННЫХ ОБЪЕКТОВ НА ОКНЕ*/
-		//Меню
-		//Текст IMAGE
+		/*РџРћРљРђР”Р РћР’РђРЇ РћР‘Р РђР‘РћРўРљРђ Р¦Р’Р•РўРћР’ РЎРћР—Р”РђРќРќР«РҐ РћР‘РЄР•РљРўРћР’ РќРђ РћРљРќР•*/
+		//РњРµРЅСЋ
+		//РўРµРєСЃС‚ IMAGE
 		image_text.m_setFillColor(111, 206, 253);
-		//Кнопка CREATE
+		//РљРЅРѕРїРєР° CREATE
 		BG_create.m_setDefaultColor();
 		create_text.m_setDefaultColor();
-		//Кнопка MOVE AND CHANGE
+		//РљРЅРѕРїРєР° MOVE AND CHANGE
 		BG_move_and_change.m_setDefaultColor();
 		move_and_change_text.m_setDefaultColor();
-		//Кнопка EXIT
+		//РљРЅРѕРїРєР° EXIT
 		BG_exit.m_setDefaultColor();
 		exit_text.m_setDefaultColor();
-		//Кнопка NEXT
+		//РљРЅРѕРїРєР° NEXT
 		BG_next.m_setDefaultColor();
 		next_text.m_setDefaultColor();
-		//Кнопка BACK
+		//РљРЅРѕРїРєР° BACK
 		BG_back.m_setDefaultColor();
 		back_text.m_setDefaultColor();
 
-		//Подменю
+		//РџРѕРґРјРµРЅСЋ
 		BG_submenu_obj.m_setFillColor(34, 177, 76);
 
-		//ПОДМЕНЮ CREATE
+		//РџРћР”РњР•РќР® CREATE
 		//CREATE -> circle
-		BG_circle.m_setFillColor(195, 195, 195); //Т.к. в классе конструкторный цвет - как у MENU и IMAGE
+		BG_circle.m_setFillColor(195, 195, 195); //Рў.Рє. РІ РєР»Р°СЃСЃРµ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂРЅС‹Р№ С†РІРµС‚ - РєР°Рє Сѓ MENU Рё IMAGE
 		circle_text.m_setDefaultColor();
 		//CREATE -> rectangle
 		BG_rect.m_setFillColor(195, 195, 195);
@@ -258,7 +258,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 		BG_create_array_linesegments.m_setFillColor(195, 195, 195);
 		create_array_linesegments_text.m_setDefaultColor();
 
-		//ОБЪЕКТ ОКРУЖНОСТИ
+		//РћР‘РЄР•РљРў РћРљР РЈР–РќРћРЎРўР
 		//MOVE AND CHANGE -> obj_circle
 		BG_obj_circle.m_setFillColor(195, 195, 195);
 		obj_circle_text.m_setDefaultColor();
@@ -269,7 +269,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 		BG_delete_obj_circle.m_setDefaultColor();
 		delete_obj_circle_text.m_setDefaultColor();
 
-		//ОБЪЕКТ ПРЯМОУГОЛЬНИКА
+		//РћР‘РЄР•РљРў РџР РЇРњРћРЈР“РћР›Р¬РќРРљРђ
 		//MOVE AND CHANGE -> obj_rectangle
 		BG_obj_rect.m_setFillColor(195, 195, 195);
 		obj_rect_text.m_setDefaultColor();
@@ -279,7 +279,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 		BG_delete_obj_rectangle.m_setDefaultColor();
 		delete_obj_rectangle_text.m_setDefaultColor();
 
-		//ОБЪЕКТ ОТРЕЗКА
+		//РћР‘РЄР•РљРў РћРўР Р•Р—РљРђ
 		//MOVE_AND_CHANGE -> obj_linesegment
 		BG_obj_linesegment.m_setFillColor(195, 195, 195);
 		obj_linesegment_text.m_setDefaultColor();
@@ -290,7 +290,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 		BG_delete_obj_linesegment.m_setDefaultColor();
 		delete_obj_linesegment_text.m_setDefaultColor();
 
-		//МАССИВ ОКРУЖНОСТЕЙ
+		//РњРђРЎРЎРР’ РћРљР РЈР–РќРћРЎРўР•Р™
 		//array of circles -> random move(circles)
 		BG_RandomMove_array_circles.m_setFillColor(195, 195, 195);
 		RandomMove_array_circles_text.m_setDefaultColor();
@@ -301,7 +301,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 		BG_delete_all_circles.m_setFillColor(195, 195, 195);
 		delete_all_circles_text.m_setDefaultColor();
 
-		//МАССИВ ПРЯМОУГОЛЬНИКОВ
+		//РњРђРЎРЎРР’ РџР РЇРњРћРЈР“РћР›Р¬РќРРљРћР’
 		//array of rectangles -> random move(rectangles)
 		BG_RandomMove_array_rectangles.m_setFillColor(195, 195, 195);
 		RandomMove_array_rectangles_text.m_setDefaultColor();
@@ -312,7 +312,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 		BG_delete_all_rectangles.m_setFillColor(195, 195, 195);
 		delete_all_rectangles_text.m_setDefaultColor();
 
-		//МАССИВ ОТРЕЗКОВ
+		//РњРђРЎРЎРР’ РћРўР Р•Р—РљРћР’
 		//array of linesegments -> random move(linesegments)
 		BG_RandomMove_array_linesegments.m_setFillColor(195, 195, 195);
 		RandomMove_array_linesegments_text.m_setDefaultColor();
@@ -323,113 +323,113 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 		BG_delete_all_linesegments.m_setFillColor(195, 195, 195);
 		delete_all_linesegments_text.m_setDefaultColor();
 
-		/*ПОКАДРОВАЯ ОБРАБОТКА ЦВЕТОВ СОЗДАННЫХ ОБЪЕКТОВ НА ОКНЕ (при определенном условии)*/
-		//ОБЪЕКТ ОКРУЖНОСТИ
-		//Нажата кнопка obj_circle -> circle_user_move
+		/*РџРћРљРђР”Р РћР’РђРЇ РћР‘Р РђР‘РћРўРљРђ Р¦Р’Р•РўРћР’ РЎРћР—Р”РђРќРќР«РҐ РћР‘РЄР•РљРўРћР’ РќРђ РћРљРќР• (РїСЂРё РѕРїСЂРµРґРµР»РµРЅРЅРѕРј СѓСЃР»РѕРІРёРё)*/
+		//РћР‘РЄР•РљРў РћРљР РЈР–РќРћРЎРўР
+		//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_circle -> circle_user_move
 		if (!circle_user_move)
 		{
 			BG_UserMove_obj_circle.m_setDefaultColor();
 			UserMove_obj_circle_text.m_setDefaultColor();
 		}
-		//Нажата кнопка obj_circle -> circle_change_radius:\n(q) - increase\n(e) - decrease
+		//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_circle -> circle_change_radius:\n(q) - increase\n(e) - decrease
 		if (!circle_change_radius)
 		{
 			BG_ChangeRadius_obj_circle.m_setDefaultColor();
 			ChangeRadius_obj_circle_text.m_setDefaultColor();
 		}
 
-		//ОБЪЕКТ ПРЯМОУГОЛЬНИКА
-		//Нажата кнопка obj_rectangle -> rect_user_move
+		//РћР‘РЄР•РљРў РџР РЇРњРћРЈР“РћР›Р¬РќРРљРђ
+		//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_rectangle -> rect_user_move
 		if (!rect_user_move)
 		{
 			BG_UserMove_obj_rect.m_setDefaultColor();
 			UserMove_obj_rect_text.m_setDefaultColor();
 		}
-		//Нажата кнопка obj_rectangle -> rectangle_change_dimensions:\n(z) - increase length\n(x) - decrease length\n(c) - increase width\n(v) - decrease width
+		//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_rectangle -> rectangle_change_dimensions:\n(z) - increase length\n(x) - decrease length\n(c) - increase width\n(v) - decrease width
 		if (!rectangle_change_dimensions)
 		{
 			BG_ChangeWidthLength_obj_rectangle.m_setDefaultColor();
 			ChangeWidthLength_obj_rectangle_text.m_setDefaultColor();
 		}
 
-		//ОБЪЕКТ ОТРЕЗКА
+		//РћР‘РЄР•РљРў РћРўР Р•Р—РљРђ
 		if (!linesegment_user_move)
 		{
 			BG_UserMove_obj_linesegment.m_setDefaultColor();
 			UserMove_obj_linesegment_text.m_setDefaultColor();
 		}
-		//Нажата кнопка obj_linesegment -> linesegment_change_length:\n(f) - increase\n(g) - decrease\n(h) - rotate
+		//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_linesegment -> linesegment_change_length:\n(f) - increase\n(g) - decrease\n(h) - rotate
 		if (!linesegment_change_dimensions)
 		{
 			BG_ChangeDimensions_obj_linesegment.m_setDefaultColor();
 			ChangeDimensions_obj_linesegment_text.m_setDefaultColor();
 		}
 
-		/*МАССИВ ОБЪЕКТОВ КЛАССА*/
+		/*РњРђРЎРЎРР’ РћР‘РЄР•РљРўРћР’ РљР›РђРЎРЎРђ*/
 		if (!create_15_objs)
 		{
 			BG_create_15_objs.m_setDefaultColor();
 			create_15_objs_text.m_setDefaultColor();
 		}
-		//МАССИВ ОКРУЖНОСТЕЙ
-		//Нажата кнопка array of circle -> user move(circles)
+		//РњРђРЎРЎРР’ РћРљР РЈР–РќРћРЎРўР•Р™
+		//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° array of circle -> user move(circles)
 		if (!array_circles_user_move)
 		{
 			BG_UserMove_array_circles.m_setFillColor(195, 195, 195);
 			UserMove_array_circles_text.m_setDefaultColor();
 		}
-		//МАССИВ ПРЯМОУГОЛЬНИКОВ
+		//РњРђРЎРЎРР’ РџР РЇРњРћРЈР“РћР›Р¬РќРРљРћР’
 		if (!array_rectangles_user_move)
 		{
 			BG_UserMove_array_rectangles.m_setFillColor(195, 195, 195);
 			UserMove_array_rectangles_text.m_setDefaultColor();
 		}
 
-		//МАССИВ ОТРЕЗКОВ
+		//РњРђРЎРЎРР’ РћРўР Р•Р—РљРћР’
 		if (!array_linesegments_user_move)
 		{
 			BG_UserMove_array_linesegments.m_setFillColor(195, 195, 195);
 			UserMove_array_linesegments_text.m_setDefaultColor();
 		}
 
-		/*БУЛЕВЫЕ ПЕРЕМЕННЫЕ ДЛЯ ПОЛОЖЕНИЯ КУРСОРА НА КНОПКЕ*/
-		//Кнопки меню: NEXT, BACK, CREATE, MOVE AND CHANGE, EXIT
+		/*Р‘РЈР›Р•Р’Р«Р• РџР•Р Р•РњР•РќРќР«Р• Р”Р›РЇ РџРћР›РћР–Р•РќРРЇ РљРЈР РЎРћР Рђ РќРђ РљРќРћРџРљР•*/
+		//РљРЅРѕРїРєРё РјРµРЅСЋ: NEXT, BACK, CREATE, MOVE AND CHANGE, EXIT
 		bool stage_next{ false }, stage_back{ false }, stage_create{ false }, stage_move_and_change{ false }, stage_exit{ false };
-		//ОБЪЕКТ ОКРУЖНОСТИ
-		bool stage_circle_create{ false }; //Кнопка CREATE -> circle
-		bool stage_obj_circle{ false };//Кнопка MOVE AND CHANGE -> obj_circle
-		//Кнопки obj_circle ->: circle_random_move, circle_user_move, circle_change_radius, delete
+		//РћР‘РЄР•РљРў РћРљР РЈР–РќРћРЎРўР
+		bool stage_circle_create{ false }; //РљРЅРѕРїРєР° CREATE -> circle
+		bool stage_obj_circle{ false };//РљРЅРѕРїРєР° MOVE AND CHANGE -> obj_circle
+		//РљРЅРѕРїРєРё obj_circle ->: circle_random_move, circle_user_move, circle_change_radius, delete
 		bool stage_circle_random_move{ false }, stage_circle_user_move{ false }, stage_circle_change_radius{ false }, stage_delete_obj_circle{ false };
 
-		//ОБЪЕКТ ПРЯМОУГОЛЬНИКА
-		bool stage_rect_create{ false };//Кнопка CREATE -> rectangle
+		//РћР‘РЄР•РљРў РџР РЇРњРћРЈР“РћР›Р¬РќРРљРђ
+		bool stage_rect_create{ false };//РљРЅРѕРїРєР° CREATE -> rectangle
 		bool stage_obj_rect{ false };//MOVE AND CHANGE -> obj_rectangle
-		//Кнопки obj_rectangle ->: rect_random_move, rect_user_move, rectangle_change_dimensions, delete
+		//РљРЅРѕРїРєРё obj_rectangle ->: rect_random_move, rect_user_move, rectangle_change_dimensions, delete
 		bool stage_rect_random_move{ false }, stage_rect_user_move{ false }, stage_rect_change_dimensions{ false }, stage_delete_obj_rect{ false };
 
-		//ОБЪЕКТ ОТРЕЗКА
-		bool stage_linesegment_create{ false };//Кнопка CREATE -> linesegment
-		bool stage_obj_linesegment{ false };//Кнопка MOVE AND CHANGE -> obj_linesegment
-		//Кнопки obj_linesegment ->: line_random_move, line_user_move, linesegment_change_dimensions, delete
+		//РћР‘РЄР•РљРў РћРўР Р•Р—РљРђ
+		bool stage_linesegment_create{ false };//РљРЅРѕРїРєР° CREATE -> linesegment
+		bool stage_obj_linesegment{ false };//РљРЅРѕРїРєР° MOVE AND CHANGE -> obj_linesegment
+		//РљРЅРѕРїРєРё obj_linesegment ->: line_random_move, line_user_move, linesegment_change_dimensions, delete
 		bool stage_linesegment_random_move{ false }, stage_linesegment_user_move{ false }, stage_linesegment_change_dimensions{ false }, stage_delete_obj_linesegment{ false };
 
-		//МАССИВЫ
-		bool stage_create_arrays{ false }; //Кнопка CREATE -> create arrays of graphics primitives
-		bool stage_create_15_objs{ false };//Кнопка create arrays of graphics primitives -> create_15_objs
-		//Кнопки arrays of graphics primitives ->: array of circles, array of rectangles, array of linesegments
+		//РњРђРЎРЎРР’Р«
+		bool stage_create_arrays{ false }; //РљРЅРѕРїРєР° CREATE -> create arrays of graphics primitives
+		bool stage_create_15_objs{ false };//РљРЅРѕРїРєР° create arrays of graphics primitives -> create_15_objs
+		//РљРЅРѕРїРєРё arrays of graphics primitives ->: array of circles, array of rectangles, array of linesegments
 		bool stage_create_array_circles{ false }, stage_create_array_rectangles(false), stage_create_array_linesegments{ false };
-		//МАССИВ ОКРУЖНОСТЕЙ. Кнопки array of circles ->: random move(circles), user move (circles), delete_last circle, delete all circles
+		//РњРђРЎРЎРР’ РћРљР РЈР–РќРћРЎРўР•Р™. РљРЅРѕРїРєРё array of circles ->: random move(circles), user move (circles), delete_last circle, delete all circles
 		bool stage_RandomMove_array_circles{ false }, stage_user_move_array_circles{ false }, stage_delete_last_elem_array_circles{ false },
 			stage_delete_all_circles{ false };
-		//МАССИВ ПРЯМОУГОЛЬНИКОВ. Кнопки array of rectangles ->: random move(rectangles), user move(rectangles), delete_last rectangle, delete all rectangles
+		//РњРђРЎРЎРР’ РџР РЇРњРћРЈР“РћР›Р¬РќРРљРћР’. РљРЅРѕРїРєРё array of rectangles ->: random move(rectangles), user move(rectangles), delete_last rectangle, delete all rectangles
 		bool stage_RandomMove_array_rectangles{ false }, stage_user_move_array_rectangles{ false }, stage_delete_last_elem_array_rectangles{ false },
 			stage_delete_all_rectangles{ false };
-		//МАССИВ ОТРЕЗКОВ. Кнопки array of linesegments ->: random move(linesegments), user move(linesegments), delete_last linesegment, delete all linesegments
+		//РњРђРЎРЎРР’ РћРўР Р•Р—РљРћР’. РљРЅРѕРїРєРё array of linesegments ->: random move(linesegments), user move(linesegments), delete_last linesegment, delete all linesegments
 		bool stage_RandomMove_array_linesegments{ false }, stage_user_move_array_linesegments{ false }, stage_delete_last_elem_array_linesegments{ false },
 			stage_delete_all_linesegments{ false };
 
-		/*ОКРАШИВАНИЕ КНОПОК ПРИ НАВЕДЕНИИ КУРСОРА МЫШИ (с изменением значения соответствующих переменных*/
-		//МЕНЮ
+		/*РћРљР РђРЁРР’РђРќРР• РљРќРћРџРћРљ РџР Р РќРђР’Р•Р”Р•РќРР РљРЈР РЎРћР Рђ РњР«РЁР (СЃ РёР·РјРµРЅРµРЅРёРµРј Р·РЅР°С‡РµРЅРёСЏ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… РїРµСЂРµРјРµРЅРЅС‹С…*/
+		//РњР•РќР®
 		if (sf::IntRect(600, 5, 100, 85).contains(sf::Mouse::getPosition(window)))//NEXT
 		{
 			BG_next.m_setActiveColor();
@@ -466,7 +466,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 
 		if (extra_menu == 0)
 		{
-			//ОБЪЕКТ ОКРУЖНОСТИ
+			//РћР‘РЄР•РљРў РћРљР РЈР–РќРћРЎРўР
 			if (sf::IntRect(220, 97, 140, 40).contains(sf::Mouse::getPosition(window)) && menu_create_0)//CREATE -> circle
 			{
 				BG_circle.m_setActiveColor();
@@ -508,7 +508,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				stage_delete_obj_circle = true;
 			}
 
-			//ОБЪЕКТ ПРЯМОУГОЛЬНИКА
+			//РћР‘РЄР•РљРў РџР РЇРњРћРЈР“РћР›Р¬РќРРљРђ
 			if (sf::IntRect(375, 97, 140, 40).contains(sf::Mouse::getPosition(window)) && menu_create_0)//CREATE -> rectangle
 			{
 				BG_rect.m_setActiveColor();
@@ -549,7 +549,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				stage_delete_obj_rect = true;
 			}
 
-			//ОБЪЕКТ ОТРЕЗКА
+			//РћР‘РЄР•РљРў РћРўР Р•Р—РљРђ
 			if (sf::IntRect(529, 97, 165, 40).contains(sf::Mouse::getPosition(window)) && menu_create_0)//CREATE -> linesegment
 			{
 				BG_linesegment.m_setActiveColor();
@@ -591,7 +591,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				stage_linesegment_change_dimensions = true;
 			}
 
-			//МАССИВЫ
+			//РњРђРЎРЎРР’Р«
 			if (sf::IntRect(220, 160, 473, 40).contains(sf::Mouse::getPosition(window)) && menu_create_0)//CREATE -> create arrays of gparhics primitives
 			{
 				BG_create_arrays.m_setActiveColor();
@@ -599,14 +599,14 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				stage_create_arrays = true;
 			}
 
-			//Создание по 15 штук примитивов за нажатие кнопки
+			//РЎРѕР·РґР°РЅРёРµ РїРѕ 15 С€С‚СѓРє РїСЂРёРјРёС‚РёРІРѕРІ Р·Р° РЅР°Р¶Р°С‚РёРµ РєРЅРѕРїРєРё
 			if (sf::IntRect(500, 360, 200, 80).contains(sf::Mouse::getPosition(window)) && submenu_create_arrays_0 && menu_create_0)
 			{
 				BG_create_15_objs.m_setActiveColor();
 				create_15_objs_text.m_setActiveColor();
 				stage_create_15_objs = true;
 			}
-			//МАССИВ ОКРУЖНОСТЕЙ
+			//РњРђРЎРЎРР’ РћРљР РЈР–РќРћРЎРўР•Р™
 			if (sf::IntRect(5, 460, 175, 40).contains(sf::Mouse::getPosition(window)) && submenu_create_arrays_0 && menu_create_0)//create arrays of gparhics primitives -> array of circles
 			{
 				BG_create_array_circles.m_setActiveColor();
@@ -639,7 +639,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				stage_delete_all_circles = true;
 			}
 
-			//МАССИВ ПРЯМОУГОЛЬНИКОВ
+			//РњРђРЎРЎРР’ РџР РЇРњРћРЈР“РћР›Р¬РќРРљРћР’
 			if (sf::IntRect(195, 460, 210, 40).contains(sf::Mouse::getPosition(window)) && submenu_create_arrays_0 && menu_create_0)//create arrays of gparhics primitives -> array of rectangles
 			{
 				BG_create_array_rectangles.m_setActiveColor();
@@ -675,7 +675,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				stage_delete_all_rectangles = true;
 			}
 
-			//МАССИВ ОТРЕЗКОВ
+			//РњРђРЎРЎРР’ РћРўР Р•Р—РљРћР’
 			if (sf::IntRect(420, 460, 240, 40).contains(sf::Mouse::getPosition(window)) && submenu_create_arrays_0 && menu_create_0)//create arrays of gparhics primitives -> array of linesegments
 			{
 				BG_create_array_linesegments.m_setActiveColor();
@@ -716,32 +716,32 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 		sf::Event event_menu_click;
 		while (window.pollEvent(event_menu_click))
 		{
-			//Закрытие окна на "крестик"
+			//Р—Р°РєСЂС‹С‚РёРµ РѕРєРЅР° РЅР° "РєСЂРµСЃС‚РёРє"
 			if (event_menu_click.type == sf::Event::Closed)
 				window.close();
-			//Обработчик события формы OnCreate (обработка кликов по кнопкам, т.е. работа с объектами класса)
+			//РћР±СЂР°Р±РѕС‚С‡РёРє СЃРѕР±С‹С‚РёСЏ С„РѕСЂРјС‹ OnCreate (РѕР±СЂР°Р±РѕС‚РєР° РєР»РёРєРѕРІ РїРѕ РєРЅРѕРїРєР°Рј, С‚.Рµ. СЂР°Р±РѕС‚Р° СЃ РѕР±СЉРµРєС‚Р°РјРё РєР»Р°СЃСЃР°)
 			if (event_menu_click.type == event_menu_click.MouseButtonReleased && event_menu_click.mouseButton.button == sf::Mouse::Left)
 			{
-				//Нажата кнопка NEXT
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° NEXT
 				if (stage_next)
 					extra_menu = 1;
 				if (stage_back)
 					extra_menu = 0;
-				//Нажата кнопка CREATE
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° CREATE
 				if (stage_create)
 				{
 					if (extra_menu == 0)
 						menu_create_0 = !menu_create_0;
 				}
-				//Нажата кнопка MOVE AND CHANGE
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° MOVE AND CHANGE
 				if (stage_move_and_change)
 				{
 					if (extra_menu == 0)
 						menu_move_and_change_0 = !menu_move_and_change_0;
 				}
-				/*ЕДИНИЧНЫЕ ОБЪЕКТЫ*/
-				//ОБЪЕКТ ОКРУЖНОСТИ
-				//Нажата кнопка CREATE -> circle
+				/*Р•Р”РРќРР§РќР«Р• РћР‘РЄР•РљРўР«*/
+				//РћР‘РЄР•РљРў РћРљР РЈР–РќРћРЎРўР
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° CREATE -> circle
 				if (stage_circle_create)
 				{
 					circle_show = true;
@@ -765,7 +765,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				}
 				if (circle_show)
 				{
-					//Нажата кнопка MOVE AND CHANGE -> obj_circle
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° MOVE AND CHANGE -> obj_circle
 					if (stage_obj_circle)
 					{
 						submenu_obj_circle = !submenu_obj_circle;
@@ -773,10 +773,10 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 						submenu_obj_linesegment = false;
 						submenu_create_arrays_0 = false;
 					}
-					//Нажата кнопка circle -> circle_random_move
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° circle -> circle_random_move
 					if (stage_circle_random_move)
 						doOffsetCircle(f_ptr_obj_circle);
-					//Нажата кнопка obj_circle -> circle_user_move
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_circle -> circle_user_move
 					if (stage_circle_user_move)
 					{
 						circle_user_move = !circle_user_move;
@@ -785,10 +785,10 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 						array_rectangles_user_move = false;
 						array_linesegments_user_move = false;
 					}
-					//Нажата кнопка изменения радиуса obj_circle -> изменить радиус
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° РёР·РјРµРЅРµРЅРёСЏ СЂР°РґРёСѓСЃР° obj_circle -> РёР·РјРµРЅРёС‚СЊ СЂР°РґРёСѓСЃ
 					if (stage_circle_change_radius)
 						circle_change_radius = !circle_change_radius;
-					//Нажата кнопка удаления объекта окружность obj_circle -> delete
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° СѓРґР°Р»РµРЅРёСЏ РѕР±СЉРµРєС‚Р° РѕРєСЂСѓР¶РЅРѕСЃС‚СЊ obj_circle -> delete
 					if (stage_delete_obj_circle)
 					{
 						f_ptr_obj_circle->Free(f_ptr_obj_circle);
@@ -799,8 +799,8 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					}
 				}
 
-				//ОБЪЕКТ ПРЯМОУГОЛЬНИКА
-				//Нажата кнопка CREATE -> rectangle
+				//РћР‘РЄР•РљРў РџР РЇРњРћРЈР“РћР›Р¬РќРРљРђ
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° CREATE -> rectangle
 				if (stage_rect_create)
 				{
 					rect_show = true;
@@ -825,7 +825,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				}
 				if (rect_show)
 				{
-					//Нажата кнопка MOVE AND CHANGE -> obj_rectangle
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° MOVE AND CHANGE -> obj_rectangle
 					if (stage_obj_rect)
 					{
 						submenu_obj_rect = !submenu_obj_rect;
@@ -833,10 +833,10 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 						submenu_obj_linesegment = false;
 						submenu_create_arrays_0 = false;
 					}
-					//Нажата кнопка obj_rectangle -> rect_random_move
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_rectangle -> rect_random_move
 					if (stage_rect_random_move)
 						doOffsetRect(f_ptr_obj_rect);
-					//Нажата кнопка obj_rectangle -> rect_user_move
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_rectangle -> rect_user_move
 					if (stage_rect_user_move)
 					{
 						rect_user_move = !rect_user_move;
@@ -845,10 +845,10 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 						array_circles_user_move = false;
 						array_linesegments_user_move = false;
 					}
-					//Нажата кнопка изменения размеров obj_rectangle -> изменить размеры
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° РёР·РјРµРЅРµРЅРёСЏ СЂР°Р·РјРµСЂРѕРІ obj_rectangle -> РёР·РјРµРЅРёС‚СЊ СЂР°Р·РјРµСЂС‹
 					if (stage_rect_change_dimensions)
 						rectangle_change_dimensions = !rectangle_change_dimensions;
-					//Нажата кнопка удаления объекта прямоугольник obj_rectangle -> delete
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° СѓРґР°Р»РµРЅРёСЏ РѕР±СЉРµРєС‚Р° РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРє obj_rectangle -> delete
 					if (stage_delete_obj_rect)
 					{
 						f_ptr_obj_rect->Free(f_ptr_obj_rect);
@@ -859,8 +859,8 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					}
 				}
 
-				//ОБЪЕКТ ОТРЕЗКА
-				//Нажата кнопка CREATE -> linesegment
+				//РћР‘РЄР•РљРў РћРўР Р•Р—РљРђ
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° CREATE -> linesegment
 				if (stage_linesegment_create)
 				{
 					linesegment_show = true;
@@ -885,7 +885,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				}
 				if (linesegment_show)
 				{
-					//Нажата кнопка CREATE -> obj_linesegment
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° CREATE -> obj_linesegment
 					if (stage_obj_linesegment)
 					{
 						submenu_obj_linesegment = !submenu_obj_linesegment;
@@ -893,10 +893,10 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 						submenu_obj_rect = false;
 						submenu_create_arrays_0 = false;
 					}
-					//Нажата кнопка obj_linesegment -> line_random_move
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_linesegment -> line_random_move
 					if (stage_linesegment_random_move)
 						doOffsetlinesegment(f_ptr_obj_linesegment);
-					//Нажата кнопка obj_linesegment -> line_user_move
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_linesegment -> line_user_move
 					if (stage_linesegment_user_move)
 					{
 						linesegment_user_move = !linesegment_user_move;
@@ -905,10 +905,10 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 						array_circles_user_move = false;
 						array_rectangles_user_move = false;
 					}
-					//Нажата кнопка obj_linesegment -> linesegment_change_dimensions
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_linesegment -> linesegment_change_dimensions
 					if (stage_linesegment_change_dimensions)
 						linesegment_change_dimensions = !linesegment_change_dimensions;
-					//Нажата кнопка obj_linesegment -> delete
+					//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° obj_linesegment -> delete
 					if (stage_delete_obj_linesegment)
 					{
 						f_ptr_obj_linesegment->Free(f_ptr_obj_linesegment);
@@ -919,8 +919,8 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					}
 				}
 
-				/*МАССИВЫ ГРАФИЧЕСКИХ ПРИМИТИВОВ*/
-				//Нажата кнопка CREATE -> create arrays of graphics primitives
+				/*РњРђРЎРЎРР’Р« Р“Р РђР¤РР§Р•РЎРљРРҐ РџР РРњРРўРР’РћР’*/
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° CREATE -> create arrays of graphics primitives
 				if (stage_create_arrays)
 				{
 					if (extra_menu == 0)
@@ -940,8 +940,8 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					else
 						mass_or_single = ONE_OBJ;
 				}
-				//МАССИВ ОКРУЖНОСТЕЙ
-				//Нажата кнопка create arrays of graphics primitives -> array of circles
+				//РњРђРЎРЎРР’ РћРљР РЈР–РќРћРЎРўР•Р™
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° create arrays of graphics primitives -> array of circles
 				if (stage_create_array_circles)
 				{
 					array_circles_show = true;
@@ -991,8 +991,8 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					}
 				}
 
-				//МАССИВ ПРЯМОУГОЛЬНИКОВ
-				//Нажата кнопка create arrays of graphics primitives -> array of rectangles
+				//РњРђРЎРЎРР’ РџР РЇРњРћРЈР“РћР›Р¬РќРРљРћР’
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° create arrays of graphics primitives -> array of rectangles
 				if (stage_create_array_rectangles)
 				{
 					array_rectangles_show = true;
@@ -1043,8 +1043,8 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					}
 				}
 
-				//МАССИВ ОТРЕЗКОВ
-				//Нажата кнопка create arrays of graphics primitives -> array of linesegments
+				//РњРђРЎРЎРР’ РћРўР Р•Р—РљРћР’
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° create arrays of graphics primitives -> array of linesegments
 				if (stage_create_array_linesegments)
 				{
 					array_linesegments_show = true;
@@ -1103,13 +1103,13 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					create_15_objs = false;
 					mass_or_single = ONE_OBJ;
 				}
-				//Нажата кнопка EXIT
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° EXIT
 				if (stage_exit)
 					window.close();
 			}
 			else if (event_menu_click.type == sf::Event::KeyPressed)
 			{
-				/*ПОЛЬЗОВАТЕЛЬСКОЕ ДВИЖЕНИЕ ЕДИНИЧНЫМИ ОБЪЕКТАМИ*/
+				/*РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРћР• Р”Р’РР–Р•РќРР• Р•Р”РРќРР§РќР«РњР РћР‘РЄР•РљРўРђРњР*/
 				if (circle_user_move)
 				{
 					if (event_menu_click.key.code == sf::Keyboard::W && (f_ptr_obj_circle->get_y_coordinate_base_point() - f_ptr_obj_circle->getRadius() - 10 >= 95))
@@ -1190,7 +1190,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					}
 				}
 
-				/*ИЗМЕНЕНИЕ РАДИУСА ОБЪЕКТА КРУГА*/
+				/*РР—РњР•РќР•РќРР• Р РђР”РРЈРЎРђ РћР‘РЄР•РљРўРђ РљР РЈР“Рђ*/
 				if (circle_change_radius)
 				{
 					if (event_menu_click.key.code == sf::Keyboard::Q
@@ -1205,7 +1205,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 						f_ptr_obj_circle->changeRadius(-2);
 				}
 
-				/*ИЗМЕНЕНИЕ РАЗМЕРОВ ОБЪЕКТА ПРЯМОУГОЛЬНИКА*/
+				/*РР—РњР•РќР•РќРР• Р РђР—РњР•Р РћР’ РћР‘РЄР•РљРўРђ РџР РЇРњРћРЈР“РћР›Р¬РќРРљРђ*/
 				if (rectangle_change_dimensions)
 				{
 					if (event_menu_click.key.code == sf::Keyboard::Z && (f_ptr_obj_rect->get_x_coordinate_base_point() + f_ptr_obj_rect->getLength() + 5 <= 1500))
@@ -1218,7 +1218,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 						f_ptr_obj_rect->changeDimensions(0, -5);
 				}
 
-				/*ИЗМЕНЕНИЕ РАЗМЕРОВ И ПОВОРОТ ОБЪЕКТА ОТРЕЗКА*/
+				/*РР—РњР•РќР•РќРР• Р РђР—РњР•Р РћР’ Р РџРћР’РћР РћРў РћР‘РЄР•РљРўРђ РћРўР Р•Р—РљРђ*/
 				if (linesegment_change_dimensions)
 				{
 					int degree_linesegment{ static_cast<int>(f_ptr_obj_linesegment->getDegree()) };
@@ -1266,9 +1266,9 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				}
 
 
-				/*МАССИВ ОБЪЕКТОВ*/
-				//МАССИВ КРУГОВ
-				//Пользовательское движение элементов
+				/*РњРђРЎРЎРР’ РћР‘РЄР•РљРўРћР’*/
+				//РњРђРЎРЎРР’ РљР РЈР“РћР’
+				//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РґРІРёР¶РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ
 				if (array_circles_user_move)
 				{
 					if (event_menu_click.key.code == sf::Keyboard::W)
@@ -1280,7 +1280,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					if (event_menu_click.key.code == sf::Keyboard::D)
 						doUserMoveArrayCirclesD(array_circles, array_circles_size);
 				}
-				//Изменение радиуса элементов
+				//РР·РјРµРЅРµРЅРёРµ СЂР°РґРёСѓСЃР° СЌР»РµРјРµРЅС‚РѕРІ
 				if (array_circles_show)
 				{
 					if (event_menu_click.key.code == sf::Keyboard::Q)
@@ -1289,8 +1289,8 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 						array_circles_RadiusDecrease(array_circles, array_circles_size);
 				}
 
-				//МАССИВ ПРЯМОУГОЛЬНИКОВ
-				//Пользовательское движение элементов
+				//РњРђРЎРЎРР’ РџР РЇРњРћРЈР“РћР›Р¬РќРРљРћР’
+				//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РґРІРёР¶РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ
 				if (array_rectangles_user_move)
 				{
 					if (event_menu_click.key.code == sf::Keyboard::W)
@@ -1302,7 +1302,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					if (event_menu_click.key.code == sf::Keyboard::D)
 						doUserMoveArrayRectanglesD(array_rectangles, array_rectangles_size);
 				}
-				//Изменение размеров элементов
+				//РР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂРѕРІ СЌР»РµРјРµРЅС‚РѕРІ
 				if (array_rectangles_show)
 				{
 					if (event_menu_click.key.code == sf::Keyboard::Z)
@@ -1315,8 +1315,8 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 						array_rectangles_ChangeDimensions(array_rectangles, array_rectangles_size, 0, -5);
 				}
 
-				//МАССИВ ОТРЕЗКОВ
-				//Пользовательское движение элементов
+				//РњРђРЎРЎРР’ РћРўР Р•Р—РљРћР’
+				//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РґРІРёР¶РµРЅРёРµ СЌР»РµРјРµРЅС‚РѕРІ
 				if (array_linesegments_user_move)
 				{
 					if (event_menu_click.key.code == sf::Keyboard::W)
@@ -1328,7 +1328,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					if (event_menu_click.key.code == sf::Keyboard::D)
 						doUserMoveArrayLinesegmentsD(array_linesegments, array_linesegments_size);
 				}
-				//Изменение размеров элементов и поворот элементов
+				//РР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂРѕРІ СЌР»РµРјРµРЅС‚РѕРІ Рё РїРѕРІРѕСЂРѕС‚ СЌР»РµРјРµРЅС‚РѕРІ
 				if (array_linesegments_show)
 				{
 					if (event_menu_click.key.code == sf::Keyboard::B)
@@ -1345,7 +1345,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 
 		window.clear(sf::Color(67, 136, 169));
 
-		/*РЕНДЕРИНГ ОКНА*/
+		/*Р Р•РќР”Р•Р РРќР“ РћРљРќРђ*/
 		BG_general.Show(window);
 		BG_menu.Show(window);
 		image_text.Show(window);
@@ -1362,7 +1362,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 			back_text.Show(window);
 		}
 
-		//Вкладка CREATE
+		//Р’РєР»Р°РґРєР° CREATE
 		if (menu_create_0 && extra_menu == 0)
 		{
 
@@ -1375,7 +1375,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 			BG_create_arrays.Show(window);
 			create_arrays_text.Show(window);
 
-			//Нажата кнопка CREATE -> create arrays of graphics primitives
+			//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° CREATE -> create arrays of graphics primitives
 			if (submenu_create_arrays_0)
 			{
 				BG_submenu_obj.m_setFillColor(4, 32, 159);
@@ -1389,14 +1389,14 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				BG_create_array_linesegments.Show(window);
 				create_array_linesegments_text.Show(window);
 
-				/*МАССИВЫ ОБЪЕКТОВ*/
-				//Вывод на окно кнопки создания по 15 граф. примитивов
+				/*РњРђРЎРЎРР’Р« РћР‘РЄР•РљРўРћР’*/
+				//Р’С‹РІРѕРґ РЅР° РѕРєРЅРѕ РєРЅРѕРїРєРё СЃРѕР·РґР°РЅРёСЏ РїРѕ 15 РіСЂР°С„. РїСЂРёРјРёС‚РёРІРѕРІ
 				if (submenu_create_arrays_0)
 				{
 					BG_create_15_objs.Show(window);
 					create_15_objs_text.Show(window);
 				}
-				//Массив окружностей
+				//РњР°СЃСЃРёРІ РѕРєСЂСѓР¶РЅРѕСЃС‚РµР№
 				if (array_circles_show)
 				{
 					BG_RandomMove_array_circles.Show(window);
@@ -1411,7 +1411,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					BG_delete_all_circles.Show(window);
 					delete_all_circles_text.Show(window);
 				}
-				//Массив прямоугольников
+				//РњР°СЃСЃРёРІ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРѕРІ
 				if (array_rectangles_show)
 				{
 					BG_RandomMove_array_rectangles.Show(window);
@@ -1427,7 +1427,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					delete_all_rectangles_text.Show(window);
 				}
 
-				//Массив отрезков
+				//РњР°СЃСЃРёРІ РѕС‚СЂРµР·РєРѕРІ
 				if (array_linesegments_show)
 				{
 					BG_RandomMove_array_linesegments.Show(window);
@@ -1445,16 +1445,16 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 			}
 		}
 
-		//Вкладка MOVE AND CHANGE
+		//Р’РєР»Р°РґРєР° MOVE AND CHANGE
 		if (menu_move_and_change_0 && extra_menu == 0)
 		{
-			//Создан объект круга
+			//РЎРѕР·РґР°РЅ РѕР±СЉРµРєС‚ РєСЂСѓРіР°
 			if (circle_show)
 			{
 				BG_obj_circle.Show(window);
 				obj_circle_text.Show(window);
 
-				//Нажата кнопка MOVE AND CHANGE -> obj_circle
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° MOVE AND CHANGE -> obj_circle
 				if (submenu_obj_circle)
 				{
 					BG_submenu_obj.Show(window);
@@ -1473,13 +1473,13 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					delete_obj_circle_text.Show(window);
 				}
 			}
-			//Создан объект прямоугольника
+			//РЎРѕР·РґР°РЅ РѕР±СЉРµРєС‚ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР°
 			if (rect_show)
 			{
 				BG_obj_rect.Show(window);
 				obj_rect_text.Show(window);
 
-				//Нажата кнопка MOVE AND CHANGE -> obj_rectangle
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° MOVE AND CHANGE -> obj_rectangle
 				if (submenu_obj_rect)
 				{
 					BG_submenu_obj.Show(window);
@@ -1498,13 +1498,13 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 					delete_obj_rectangle_text.Show(window);
 				}
 			}
-			//Создан объект отрезка
+			//РЎРѕР·РґР°РЅ РѕР±СЉРµРєС‚ РѕС‚СЂРµР·РєР°
 			if (linesegment_show)
 			{
 				BG_obj_linesegment.Show(window);
 				obj_linesegment_text.Show(window);
 
-				//Нажата кнопка MOVE AND CHANGE -> obj_linesegment
+				//РќР°Р¶Р°С‚Р° РєРЅРѕРїРєР° MOVE AND CHANGE -> obj_linesegment
 				if (submenu_obj_linesegment)
 				{
 					BG_submenu_obj.Show(window);
@@ -1525,8 +1525,8 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 			}
 		}
 
-		/*ЕДИНИЧНЫЕ ОБЪЕКТЫ*/
-		//Вывод объектов окружности, прямоугольника и отрезка
+		/*Р•Р”РРќРР§РќР«Р• РћР‘РЄР•РљРўР«*/
+		//Р’С‹РІРѕРґ РѕР±СЉРµРєС‚РѕРІ РѕРєСЂСѓР¶РЅРѕСЃС‚Рё, РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєР° Рё РѕС‚СЂРµР·РєР°
 		if (circle_show)
 		{
 			f_ptr_obj_circle->Show(window);
@@ -1540,8 +1540,8 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 			f_ptr_obj_linesegment->Show(window);
 		}
 
-		/*МАССИВЫ ОБЪЕКТОВ*/
-		//Массив окружностей
+		/*РњРђРЎРЎРР’Р« РћР‘РЄР•РљРўРћР’*/
+		//РњР°СЃСЃРёРІ РѕРєСЂСѓР¶РЅРѕСЃС‚РµР№
 		if (array_circles_show)
 		{
 			if (extra_menu == 0)
@@ -1554,7 +1554,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				array_circles[i]->Show(window);
 			}
 		}
-		//Массив прямоугольников
+		//РњР°СЃСЃРёРІ РїСЂСЏРјРѕСѓРіРѕР»СЊРЅРёРєРѕРІ
 		if (array_rectangles_show)
 		{
 			if (extra_menu == 0)
@@ -1567,7 +1567,7 @@ int menu_processing(sf::RenderWindow& window, Circle*& f_ptr_obj_circle, Rectang
 				array_rectangles[i]->Show(window);
 			}
 		}
-		//Массив отрезков
+		//РњР°СЃСЃРёРІ РѕС‚СЂРµР·РєРѕРІ
 		if (array_linesegments_show)
 		{
 			if (extra_menu == 0)

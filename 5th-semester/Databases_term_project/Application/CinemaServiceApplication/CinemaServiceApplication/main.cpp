@@ -2,7 +2,7 @@
 
 using namespace CinemaServiceApplication;
 
-//Точка входа в программу.
+//РўРѕС‡РєР° РІС…РѕРґР° РІ РїСЂРѕРіСЂР°РјРјСѓ.
 [STAThreadAttribute]
 int main(array<String^>^ args)
 {

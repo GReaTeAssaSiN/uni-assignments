@@ -4,20 +4,20 @@
 int main()
 {
 	setlocale(LC_ALL, "Rus");
-	//Инициализация указателей на будущие списки.
+	//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СѓРєР°Р·Р°С‚РµР»РµР№ РЅР° Р±СѓРґСѓС‰РёРµ СЃРїРёСЃРєРё.
 	List* myList = new List{}, * auxiliary_myList = new List{};
 	myList->listPointer = nullptr, auxiliary_myList->listPointer = nullptr;
-	//Задание заголовочного элемента основного списка.
+	//Р—Р°РґР°РЅРёРµ Р·Р°РіРѕР»РѕРІРѕС‡РЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РѕСЃРЅРѕРІРЅРѕРіРѕ СЃРїРёСЃРєР°.
 	Node* head_node = new Node{};
 	myList->listPointer = head_node;
 	myList->listPointer->data = 0;
 	myList->listPointer->next = nullptr;
-	//Задание заголовочного элемента вспомогательного списка(стека).
+	//Р—Р°РґР°РЅРёРµ Р·Р°РіРѕР»РѕРІРѕС‡РЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РІСЃРїРѕРјРѕРіР°С‚РµР»СЊРЅРѕРіРѕ СЃРїРёСЃРєР°(СЃС‚РµРєР°).
 	Node* sp_node = new Node{};
 	auxiliary_myList->listPointer = sp_node;
 	auxiliary_myList->listPointer->data = 0;
 	auxiliary_myList->listPointer->next = nullptr;
-	//Цикл обработки пользовательского ввода.
+	//Р¦РёРєР» РѕР±СЂР°Р±РѕС‚РєРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР°.
 	bool cycle{ true };
 	while (cycle)
 	{

@@ -18,8 +18,8 @@ private:
 public:
 	Circle()
 	{
-		std::cout << "Ñîçäàí êîíñòðóêòîðîì ïî óìîë÷àíèþ îáúåêò-îêðóæíîñòü ñ êîîðäèíàòàìè öåíòðà:\n(" << m_auxiliary_base_point_of_circle.getXPoint() << ", " <<
-			m_auxiliary_base_point_of_circle.getYPoint() << ")\nè ðàäèóñîì: Radius = " << m_radius << std::endl;
+		std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð¾Ð±ÑŠÐµÐºÑ‚-Ð¾ÐºÑ€ÑƒÐ¶Ð½Ð¾ÑÑ‚ÑŒ Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ñ†ÐµÐ½Ñ‚Ñ€Ð°:\n(" << m_auxiliary_base_point_of_circle.getXPoint() << ", " <<
+			m_auxiliary_base_point_of_circle.getYPoint() << ")\nÐ¸ Ñ€Ð°Ð´Ð¸ÑƒÑÐ¾Ð¼: Radius = " << m_radius << std::endl;
 	}
 
 	Circle(Point2D auxiliary_base_point_of_circle, float radius)
@@ -31,8 +31,8 @@ public:
 			m_radius--;
 		}
 
-		std::cout << "Ñîçäàí êîíñòðóêòîðîì ñî ñëó÷àéíûìè ïàðàìåòðàìè îáúåêò-îêðóæíîñòü ñ êîîðäèíàòàìè öåíòðà:\n(" << 
-			m_auxiliary_base_point_of_circle.getXPoint() << ", " << m_auxiliary_base_point_of_circle.getYPoint() << ")\nè ðàäèóñîì: Radius = " << m_radius << std::endl;
+		std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ ÑÐ¾ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚-Ð¾ÐºÑ€ÑƒÐ¶Ð½Ð¾ÑÑ‚ÑŒ Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ñ†ÐµÐ½Ñ‚Ñ€Ð°:\n(" << 
+			m_auxiliary_base_point_of_circle.getXPoint() << ", " << m_auxiliary_base_point_of_circle.getYPoint() << ")\nÐ¸ Ñ€Ð°Ð´Ð¸ÑƒÑÐ¾Ð¼: Radius = " << m_radius << std::endl;
 	}
 
 	void Show(sf::RenderWindow& window)
@@ -99,8 +99,8 @@ public:
 
 	/*~Circle() 
 	{
-		std::cout << "Óäàëåí îáúåêò-îêðóæíîñòü ñ êîîðäèíàòàìè öåíòðà:\n(" << m_auxiliary_base_point_of_circle.getXPoint() << ", " <<
-			m_auxiliary_base_point_of_circle.getYPoint() << ")\nè ðàäèóñîì: Radius = " << m_radius << std::endl;
+		std::cout << "Ð£Ð´Ð°Ð»ÐµÐ½ Ð¾Ð±ÑŠÐµÐºÑ‚-Ð¾ÐºÑ€ÑƒÐ¶Ð½Ð¾ÑÑ‚ÑŒ Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ñ†ÐµÐ½Ñ‚Ñ€Ð°:\n(" << m_auxiliary_base_point_of_circle.getXPoint() << ", " <<
+			m_auxiliary_base_point_of_circle.getYPoint() << ")\nÐ¸ Ñ€Ð°Ð´Ð¸ÑƒÑÐ¾Ð¼: Radius = " << m_radius << std::endl;
 	};*/
 };
 

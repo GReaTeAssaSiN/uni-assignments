@@ -3,8 +3,8 @@
 TEllipse::TEllipse()
 	:TCircle{}
 {
-	std::cout << "Ñîçäàí êîíñòðóêòîðîì ïî óìîë÷àíèþ îáúåêò-ýëëèïñ (ñïëþùåííàÿ îêðóæíîñòü) ñ êîîðäèíàòàìè öåíòðà:\n(" << getXPoint() << ", " <<
-		getYPoint() << ")\náîëüøîé ïîëóîñüþ: semi_major_axis = " << getRadius() << ",\tè ìåíüøåé ïîëóîñüþ: semi_minor_axis = " << m_semi_minor_axis << std::endl;
+	std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ Ð¿Ð¾ ÑƒÐ¼Ð¾Ð»Ñ‡Ð°Ð½Ð¸ÑŽ Ð¾Ð±ÑŠÐµÐºÑ‚-ÑÐ»Ð»Ð¸Ð¿Ñ (ÑÐ¿Ð»ÑŽÑ‰ÐµÐ½Ð½Ð°Ñ Ð¾ÐºÑ€ÑƒÐ¶Ð½Ð¾ÑÑ‚ÑŒ) Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ñ†ÐµÐ½Ñ‚Ñ€Ð°:\n(" << getXPoint() << ", " <<
+		getYPoint() << ")\nÐ±Ð¾Ð»ÑŒÑˆÐ¾Ð¹ Ð¿Ð¾Ð»ÑƒÐ¾ÑÑŒÑŽ: semi_major_axis = " << getRadius() << ",\tÐ¸ Ð¼ÐµÐ½ÑŒÑˆÐµÐ¹ Ð¿Ð¾Ð»ÑƒÐ¾ÑÑŒÑŽ: semi_minor_axis = " << m_semi_minor_axis << std::endl;
 }
 
 TEllipse::TEllipse(float x_point, float y_point, float semi_major_axis, float semi_minor_axis)
@@ -15,8 +15,8 @@ TEllipse::TEllipse(float x_point, float y_point, float semi_major_axis, float se
 		{
 			m_semi_minor_axis--;
 		}
-	std::cout << "Ñîçäàí êîíñòðóêòîðîì ñî ñëó÷àéíûìè ïàðàìåòðàìè îáúåêò-ýëëèïñ (ñïëþùåííàÿ îêðóæíîñòü) ñ êîîðäèíàòàìè öåíòðà:\n(" << getXPoint() << ", " <<
-		getYPoint() << ")\náîëüøîé ïîëóîñüþ: semi_major_axis = " << getRadius() << ",\tè ìåíüøåé ïîëóîñüþ: semi_minor_axis = " << m_semi_minor_axis << std::endl;
+	std::cout << "Ð¡Ð¾Ð·Ð´Ð°Ð½ ÐºÐ¾Ð½ÑÑ‚Ñ€ÑƒÐºÑ‚Ð¾Ñ€Ð¾Ð¼ ÑÐ¾ ÑÐ»ÑƒÑ‡Ð°Ð¹Ð½Ñ‹Ð¼Ð¸ Ð¿Ð°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ð°Ð¼Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚-ÑÐ»Ð»Ð¸Ð¿Ñ (ÑÐ¿Ð»ÑŽÑ‰ÐµÐ½Ð½Ð°Ñ Ð¾ÐºÑ€ÑƒÐ¶Ð½Ð¾ÑÑ‚ÑŒ) Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ñ†ÐµÐ½Ñ‚Ñ€Ð°:\n(" << getXPoint() << ", " <<
+		getYPoint() << ")\nÐ±Ð¾Ð»ÑŒÑˆÐ¾Ð¹ Ð¿Ð¾Ð»ÑƒÐ¾ÑÑŒÑŽ: semi_major_axis = " << getRadius() << ",\tÐ¸ Ð¼ÐµÐ½ÑŒÑˆÐµÐ¹ Ð¿Ð¾Ð»ÑƒÐ¾ÑÑŒÑŽ: semi_minor_axis = " << m_semi_minor_axis << std::endl;
 }
 
 void TEllipse::Show(sf::RenderWindow& window)
@@ -54,6 +54,6 @@ float TEllipse::getSemiMinorAxis()
 
 /*TEllipse::~TEllipse()
 {
-	std::cout << "Óäàëåí îáúåêò-ýëëèïñ ñ êîîðäèíàòàìè öåíòðà:\n(" << getXPoint() << ", " <<
-		getYPoint() << ")\náîëüøîé ïîëóîñüþ: semi_major_axis = " << getRadius() << ",\tè ìåíüøåé ïîëóîñüþ: semi_minor_axis = " << m_semi_minor_axis << std::endl;
+	std::cout << "Ð£Ð´Ð°Ð»ÐµÐ½ Ð¾Ð±ÑŠÐµÐºÑ‚-ÑÐ»Ð»Ð¸Ð¿Ñ Ñ ÐºÐ¾Ð¾Ñ€Ð´Ð¸Ð½Ð°Ñ‚Ð°Ð¼Ð¸ Ñ†ÐµÐ½Ñ‚Ñ€Ð°:\n(" << getXPoint() << ", " <<
+		getYPoint() << ")\nÐ±Ð¾Ð»ÑŒÑˆÐ¾Ð¹ Ð¿Ð¾Ð»ÑƒÐ¾ÑÑŒÑŽ: semi_major_axis = " << getRadius() << ",\tÐ¸ Ð¼ÐµÐ½ÑŒÑˆÐµÐ¹ Ð¿Ð¾Ð»ÑƒÐ¾ÑÑŒÑŽ: semi_minor_axis = " << m_semi_minor_axis << std::endl;
 }*/

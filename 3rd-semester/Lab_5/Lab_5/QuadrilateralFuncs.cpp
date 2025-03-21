@@ -1,8 +1,8 @@
 #include "Quadrilateral.h"
 #include "myfuncs.h"
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ ЧЕТЫРЕХУГОЛЬНИКА*/
-//Сдвинуть четырехугольник случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР Р§Р•РўР«Р Р•РҐРЈР“РћР›Р¬РќРРљРђ*/
+//РЎРґРІРёРЅСѓС‚СЊ С‡РµС‚С‹СЂРµС…СѓРіРѕР»СЊРЅРёРє СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetQuadrilateral(TQuadrilateral* f_ptr_obj_quadrilateral)
 {
 	while (true)
@@ -24,9 +24,9 @@ void doOffsetQuadrilateral(TQuadrilateral* f_ptr_obj_quadrilateral)
 	}
 }
 
-/*ФУНКЦИИ ДЛЯ ОБРАБОТКИ МАССИВА КРУГОВ*/
-//Добавить элемент в конец и удалить последний элемент - шаблонные функции
-//Сдвинуть элементы случайным образом по x и по y из диапазона [-50;50]
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РћР‘Р РђР‘РћРўРљР РњРђРЎРЎРР’Рђ РљР РЈР“РћР’*/
+//Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РєРѕРЅРµС† Рё СѓРґР°Р»РёС‚СЊ РїРѕСЃР»РµРґРЅРёР№ СЌР»РµРјРµРЅС‚ - С€Р°Р±Р»РѕРЅРЅС‹Рµ С„СѓРЅРєС†РёРё
+//РЎРґРІРёРЅСѓС‚СЊ СЌР»РµРјРµРЅС‚С‹ СЃР»СѓС‡Р°Р№РЅС‹Рј РѕР±СЂР°Р·РѕРј РїРѕ x Рё РїРѕ y РёР· РґРёР°РїР°Р·РѕРЅР° [-50;50]
 void doOffsetArrayQuadrilaterals(TQuadrilateral** array_quadrilaterals, int array_quadrilaterals_size)
 {
 	for (int i{}; i < array_quadrilaterals_size; i++)
@@ -50,7 +50,7 @@ void doOffsetArrayQuadrilaterals(TQuadrilateral** array_quadrilaterals, int arra
 		}
 	}
 }
-//Движение по клавишам WASD элементов
+//Р”РІРёР¶РµРЅРёРµ РїРѕ РєР»Р°РІРёС€Р°Рј WASD СЌР»РµРјРµРЅС‚РѕРІ
 void doUserMoveArrayQuadrilateralsW(TQuadrilateral** array_quadrilaterals, int array_quadrilaterals_size)
 {
 	for (int i{}; i < array_quadrilaterals_size; i++)
@@ -95,7 +95,7 @@ void doUserMoveArrayQuadrilateralsD(TQuadrilateral** array_quadrilaterals, int a
 		}
 	}
 }
-//Увеличить размер элементов
+//РЈРІРµР»РёС‡РёС‚СЊ СЂР°Р·РјРµСЂ СЌР»РµРјРµРЅС‚РѕРІ
 void array_quadrilaterals_DimensionsIncrease(TQuadrilateral** array_quadrilaterals, int array_quadrilaterals_size)
 {
 	for (int i{}; i < array_quadrilaterals_size; i++)
@@ -111,7 +111,7 @@ void array_quadrilaterals_DimensionsIncrease(TQuadrilateral** array_quadrilatera
 			array_quadrilaterals[i]->changeSize(1);
 		}
 }
-//Уменьшить размер элементов
+//РЈРјРµРЅСЊС€РёС‚СЊ СЂР°Р·РјРµСЂ СЌР»РµРјРµРЅС‚РѕРІ
 void array_quadrilaterals_DimensionsDecrease(TQuadrilateral** array_quadrilaterals, int array_quadrilaterals_size)
 {
 	for (int i{}; i < array_quadrilaterals_size; i++)

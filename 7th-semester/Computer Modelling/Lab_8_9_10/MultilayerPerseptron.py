@@ -4,21 +4,21 @@ import numpy as np
 import pickle
 import os
 
-# Загрузка данных из текстового файла.
+# Р—Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С… РёР· С‚РµРєСЃС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р°.
 def load_data(file_path):
     with open(file_path, 'r', encoding='Windows-1251') as file:
         lines = file.readlines()
     
-    # Удаляем символы новой строки и разделяем строки на элементы.
+    # РЈРґР°Р»СЏРµРј СЃРёРјРІРѕР»С‹ РЅРѕРІРѕР№ СЃС‚СЂРѕРєРё Рё СЂР°Р·РґРµР»СЏРµРј СЃС‚СЂРѕРєРё РЅР° СЌР»РµРјРµРЅС‚С‹.
     data = [line.strip().split(',') for line in lines]
     
-    # Преобразуем строки в числа, где это необходимо.
+    # РџСЂРµРѕР±СЂР°Р·СѓРµРј СЃС‚СЂРѕРєРё РІ С‡РёСЃР»Р°, РіРґРµ СЌС‚Рѕ РЅРµРѕР±С…РѕРґРёРјРѕ.
     for i in range(1, len(data)):
         data[i] = [float(x) for x in data[i]]
     
     return data
 
-# Функция нормализации входных данных X.
+# Р¤СѓРЅРєС†РёСЏ РЅРѕСЂРјР°Р»РёР·Р°С†РёРё РІС…РѕРґРЅС‹С… РґР°РЅРЅС‹С… X.
 def normalize_data_X(data):
     X = np.array(data[:-1], dtype=float)
     min_vals = np.min(X, axis=1)
@@ -26,7 +26,7 @@ def normalize_data_X(data):
 
     return np.array([(X[i] - min_vals[i]) / (max_vals[i] - min_vals[i]) for i in range(len(X))])
 
-# Функция нормализации выходных данных Y.
+# Р¤СѓРЅРєС†РёСЏ РЅРѕСЂРјР°Р»РёР·Р°С†РёРё РІС‹С…РѕРґРЅС‹С… РґР°РЅРЅС‹С… Y.
 def normalize_data_Y(data):
     Y = np.array(data[-1], dtype=float)
     min_vals = np.min(Y)
@@ -34,95 +34,95 @@ def normalize_data_Y(data):
 
     return np.array([(Y[i] - min_vals) / (max_vals - min_vals) for i in range(len(Y))])
 
-# Функция денормализации данных.
+# Р¤СѓРЅРєС†РёСЏ РґРµРЅРѕСЂРјР°Р»РёР·Р°С†РёРё РґР°РЅРЅС‹С….
 def denormalize_data_Y(normalized_Y, min_val, max_val):
     return normalized_Y * (max_val - min_val) + min_val
 
-# Функция инициализации синаптических весов и порогового значения каждого нейрона каждого слоя.
+# Р¤СѓРЅРєС†РёСЏ РёРЅРёС†РёР°Р»РёР·Р°С†РёРё СЃРёРЅР°РїС‚РёС‡РµСЃРєРёС… РІРµСЃРѕРІ Рё РїРѕСЂРѕРіРѕРІРѕРіРѕ Р·РЅР°С‡РµРЅРёСЏ РєР°Р¶РґРѕРіРѕ РЅРµР№СЂРѕРЅР° РєР°Р¶РґРѕРіРѕ СЃР»РѕСЏ.
 def initialize_weights(input_size, hidden_size, output_size):
-    input_hidden_weights = np.random.uniform(-0.05, 0.05, (input_size, hidden_size))  # Между входным и скрытым слоем.
-    hidden_output_weights = np.random.uniform(-0.05, 0.05, (hidden_size, output_size))  # Между скрытым и выходным слоем.
-    hidden_bias = np.random.uniform(-0.05, 0.05, (hidden_size))  # Смещения скрытого слоя.
-    output_bias = np.random.uniform(-0.05, 0.05, (output_size))  # Смещения выходного слоя.
+    input_hidden_weights = np.random.uniform(-0.05, 0.05, (input_size, hidden_size))  # РњРµР¶РґСѓ РІС…РѕРґРЅС‹Рј Рё СЃРєСЂС‹С‚С‹Рј СЃР»РѕРµРј.
+    hidden_output_weights = np.random.uniform(-0.05, 0.05, (hidden_size, output_size))  # РњРµР¶РґСѓ СЃРєСЂС‹С‚С‹Рј Рё РІС‹С…РѕРґРЅС‹Рј СЃР»РѕРµРј.
+    hidden_bias = np.random.uniform(-0.05, 0.05, (hidden_size))  # РЎРјРµС‰РµРЅРёСЏ СЃРєСЂС‹С‚РѕРіРѕ СЃР»РѕСЏ.
+    output_bias = np.random.uniform(-0.05, 0.05, (output_size))  # РЎРјРµС‰РµРЅРёСЏ РІС‹С…РѕРґРЅРѕРіРѕ СЃР»РѕСЏ.
     return input_hidden_weights, hidden_output_weights, hidden_bias, output_bias
 
-# Функция активации - сигмоида (прямое распространение сигнала).
+# Р¤СѓРЅРєС†РёСЏ Р°РєС‚РёРІР°С†РёРё - СЃРёРіРјРѕРёРґР° (РїСЂСЏРјРѕРµ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёРµ СЃРёРіРЅР°Р»Р°).
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
-# Производная сигмоиды (обратное распространение ошибки).
+# РџСЂРѕРёР·РІРѕРґРЅР°СЏ СЃРёРіРјРѕРёРґС‹ (РѕР±СЂР°С‚РЅРѕРµ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёРµ РѕС€РёР±РєРё).
 def sigmoid_derivative(sigm_x):
     return sigm_x * (1 - sigm_x)
 
-# Прямое распространение сигнала.
+# РџСЂСЏРјРѕРµ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёРµ СЃРёРіРЅР°Р»Р°.
 def forward_propagation(input_data, input_hidden_weights, hidden_output_weights, hidden_bias, output_bias):
-    # Выход скрытого слоя.
-    hidden_layer_input = np.dot(input_data, input_hidden_weights) + hidden_bias # Матрица синаптических весов: 1-1, 2-1, 3-1, 4-1, 5-1 - это первые элементы каждой строки, и т.д.
-                                                                                # Получили матрицу значений функции агрегата (сумматор).
-    hidden_layer_output = sigmoid(hidden_layer_input)                           # Берем f(значение функции агрегата).
+    # Р’С‹С…РѕРґ СЃРєСЂС‹С‚РѕРіРѕ СЃР»РѕСЏ.
+    hidden_layer_input = np.dot(input_data, input_hidden_weights) + hidden_bias # РњР°С‚СЂРёС†Р° СЃРёРЅР°РїС‚РёС‡РµСЃРєРёС… РІРµСЃРѕРІ: 1-1, 2-1, 3-1, 4-1, 5-1 - СЌС‚Рѕ РїРµСЂРІС‹Рµ СЌР»РµРјРµРЅС‚С‹ РєР°Р¶РґРѕР№ СЃС‚СЂРѕРєРё, Рё С‚.Рґ.
+                                                                                # РџРѕР»СѓС‡РёР»Рё РјР°С‚СЂРёС†Сѓ Р·РЅР°С‡РµРЅРёР№ С„СѓРЅРєС†РёРё Р°РіСЂРµРіР°С‚Р° (СЃСѓРјРјР°С‚РѕСЂ).
+    hidden_layer_output = sigmoid(hidden_layer_input)                           # Р‘РµСЂРµРј f(Р·РЅР°С‡РµРЅРёРµ С„СѓРЅРєС†РёРё Р°РіСЂРµРіР°С‚Р°).
     
-    # Выход выходного слоя.
-    output_layer_input = np.dot(hidden_layer_output, hidden_output_weights) + output_bias # Аналогично выше.
-    predicted_output = sigmoid(output_layer_input)                                        # Аналогично выше.
+    # Р’С‹С…РѕРґ РІС‹С…РѕРґРЅРѕРіРѕ СЃР»РѕСЏ.
+    output_layer_input = np.dot(hidden_layer_output, hidden_output_weights) + output_bias # РђРЅР°Р»РѕРіРёС‡РЅРѕ РІС‹С€Рµ.
+    predicted_output = sigmoid(output_layer_input)                                        # РђРЅР°Р»РѕРіРёС‡РЅРѕ РІС‹С€Рµ.
 
-    # Таким образом, в predicted_output лежит то значение, которое нейросеть на данный момент определила корректным.
-    # Для того, чтобы применить алгоритм обратного распространения ошибки, возвращаем значения, полученные на скрытом и выходном слоях.
+    # РўР°РєРёРј РѕР±СЂР°Р·РѕРј, РІ predicted_output Р»РµР¶РёС‚ С‚Рѕ Р·РЅР°С‡РµРЅРёРµ, РєРѕС‚РѕСЂРѕРµ РЅРµР№СЂРѕСЃРµС‚СЊ РЅР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РѕРїСЂРµРґРµР»РёР»Р° РєРѕСЂСЂРµРєС‚РЅС‹Рј.
+    # Р”Р»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ РїСЂРёРјРµРЅРёС‚СЊ Р°Р»РіРѕСЂРёС‚Рј РѕР±СЂР°С‚РЅРѕРіРѕ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёСЏ РѕС€РёР±РєРё, РІРѕР·РІСЂР°С‰Р°РµРј Р·РЅР°С‡РµРЅРёСЏ, РїРѕР»СѓС‡РµРЅРЅС‹Рµ РЅР° СЃРєСЂС‹С‚РѕРј Рё РІС‹С…РѕРґРЅРѕРј СЃР»РѕСЏС….
     return hidden_layer_output, predicted_output
 
-# Обратное распространение ошибки.
+# РћР±СЂР°С‚РЅРѕРµ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёРµ РѕС€РёР±РєРё.
 def backward_propagation(input_data, hidden_layer_output, predicted_output, target, 
                          input_hidden_weights, hidden_output_weights, hidden_bias, output_bias, learning_rate):
-    # ШАГ 3. Для всех нейронов k последнего слоя подсчитать значения невязок.
-    # Ошибка на выходном слое.
+    # РЁРђР“ 3. Р”Р»СЏ РІСЃРµС… РЅРµР№СЂРѕРЅРѕРІ k РїРѕСЃР»РµРґРЅРµРіРѕ СЃР»РѕСЏ РїРѕРґСЃС‡РёС‚Р°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ РЅРµРІСЏР·РѕРє.
+    # РћС€РёР±РєР° РЅР° РІС‹С…РѕРґРЅРѕРј СЃР»РѕРµ.
     output_error = target - predicted_output                           # error_k = dk - yk.
-    output_delta = output_error * sigmoid_derivative(predicted_output) # Невязка: delta_k = yk(1-yk)(dk-yk), где dk - точное значение, yk - полученное НС по функции активации (сигмоида)
-                                                                       # Производная сигмоиды равна, очевидно, sigm' = sigm * (1 - sigm), где sigm = 1/(1+e^(-x)).
+    output_delta = output_error * sigmoid_derivative(predicted_output) # РќРµРІСЏР·РєР°: delta_k = yk(1-yk)(dk-yk), РіРґРµ dk - С‚РѕС‡РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ, yk - РїРѕР»СѓС‡РµРЅРЅРѕРµ РќРЎ РїРѕ С„СѓРЅРєС†РёРё Р°РєС‚РёРІР°С†РёРё (СЃРёРіРјРѕРёРґР°)
+                                                                       # РџСЂРѕРёР·РІРѕРґРЅР°СЏ СЃРёРіРјРѕРёРґС‹ СЂР°РІРЅР°, РѕС‡РµРІРёРґРЅРѕ, sigm' = sigm * (1 - sigm), РіРґРµ sigm = 1/(1+e^(-x)).
 
-    # ШАГ 4. Для каждого уровня n, начиная с предпоследнего - для каждого узла i уровня n вычислить невязку.
-    # Ошибка на скрытом слое (учитывается, что по теор. Колмогорова скрытый слой - один).
+    # РЁРђР“ 4. Р”Р»СЏ РєР°Р¶РґРѕРіРѕ СѓСЂРѕРІРЅСЏ n, РЅР°С‡РёРЅР°СЏ СЃ РїСЂРµРґРїРѕСЃР»РµРґРЅРµРіРѕ - РґР»СЏ РєР°Р¶РґРѕРіРѕ СѓР·Р»Р° i СѓСЂРѕРІРЅСЏ n РІС‹С‡РёСЃР»РёС‚СЊ РЅРµРІСЏР·РєСѓ.
+    # РћС€РёР±РєР° РЅР° СЃРєСЂС‹С‚РѕРј СЃР»РѕРµ (СѓС‡РёС‚С‹РІР°РµС‚СЃСЏ, С‡С‚Рѕ РїРѕ С‚РµРѕСЂ. РљРѕР»РјРѕРіРѕСЂРѕРІР° СЃРєСЂС‹С‚С‹Р№ СЃР»РѕР№ - РѕРґРёРЅ).
     hidden_error = np.dot(output_delta, hidden_output_weights.T)            # error_j = delta_k * wjk.
-    hidden_delta = hidden_error * sigmoid_derivative(hidden_layer_output)   # Невязка: delta_j = (delta_k * wjk) * yj(1-yj)
+    hidden_delta = hidden_error * sigmoid_derivative(hidden_layer_output)   # РќРµРІСЏР·РєР°: delta_j = (delta_k * wjk) * yj(1-yj)
     
-    # ШАГ 5. Для каждого ребра сети {i, j} обновить значения весов.
-    # От выходного слоя к скрытому.
-    input_hidden_weights += learning_rate * np.outer(input_data, hidden_delta)           # Синаптический вес: wij = wij + learning_rate * delta_k * yk.
-    hidden_bias += learning_rate * hidden_delta                                          # Сдвиг: bj = bj + learning_rate * delta_j.
+    # РЁРђР“ 5. Р”Р»СЏ РєР°Р¶РґРѕРіРѕ СЂРµР±СЂР° СЃРµС‚Рё {i, j} РѕР±РЅРѕРІРёС‚СЊ Р·РЅР°С‡РµРЅРёСЏ РІРµСЃРѕРІ.
+    # РћС‚ РІС‹С…РѕРґРЅРѕРіРѕ СЃР»РѕСЏ Рє СЃРєСЂС‹С‚РѕРјСѓ.
+    input_hidden_weights += learning_rate * np.outer(input_data, hidden_delta)           # РЎРёРЅР°РїС‚РёС‡РµСЃРєРёР№ РІРµСЃ: wij = wij + learning_rate * delta_k * yk.
+    hidden_bias += learning_rate * hidden_delta                                          # РЎРґРІРёРі: bj = bj + learning_rate * delta_j.
 
-    # От скрытого слоя к выходному.
-    hidden_output_weights += learning_rate * np.outer(hidden_layer_output, output_delta) # Синаптический вес: wjk = wjk + learning_rate * delta_k * yk.
-    output_bias += learning_rate * output_delta                                          # Сдвиг: bk = bk + learning_rate * delta_k.
+    # РћС‚ СЃРєСЂС‹С‚РѕРіРѕ СЃР»РѕСЏ Рє РІС‹С…РѕРґРЅРѕРјСѓ.
+    hidden_output_weights += learning_rate * np.outer(hidden_layer_output, output_delta) # РЎРёРЅР°РїС‚РёС‡РµСЃРєРёР№ РІРµСЃ: wjk = wjk + learning_rate * delta_k * yk.
+    output_bias += learning_rate * output_delta                                          # РЎРґРІРёРі: bk = bk + learning_rate * delta_k.
 
     return input_hidden_weights, hidden_output_weights, hidden_bias, output_bias
 
-# Функция обучения нейросети по алгоритму обратного распространения ошибки на входных данных.
+# Р¤СѓРЅРєС†РёСЏ РѕР±СѓС‡РµРЅРёСЏ РЅРµР№СЂРѕСЃРµС‚Рё РїРѕ Р°Р»РіРѕСЂРёС‚РјСѓ РѕР±СЂР°С‚РЅРѕРіРѕ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёСЏ РѕС€РёР±РєРё РЅР° РІС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….
 def train_neural_network(data, targets, input_hidden_weights, hidden_output_weights, hidden_bias, output_bias, learning_rate, epochs, delta_threshold, output_file):
-    # Для вычисления в среднем значений MSE и MAE, учитывая каждую эпоху обучения.
+    # Р”Р»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ РІ СЃСЂРµРґРЅРµРј Р·РЅР°С‡РµРЅРёР№ MSE Рё MAE, СѓС‡РёС‚С‹РІР°СЏ РєР°Р¶РґСѓСЋ СЌРїРѕС…Сѓ РѕР±СѓС‡РµРЅРёСЏ.
     MSE_mass = []
     MAE_mass = []
     for epoch in range(epochs):
-        # Перемешивание данных
+        # РџРµСЂРµРјРµС€РёРІР°РЅРёРµ РґР°РЅРЅС‹С…
         data = np.array(data)
-        indices = np.arange(len(targets)) # Создаем массив индексов.
-        np.random.shuffle(indices) # Перемешиваем индексы.
-        data = data[indices] # Соответственно перемешиваем примеры исходных данных.
-        targets = targets[indices] # Точно так же перемешиваем примеры точных значений.
+        indices = np.arange(len(targets)) # РЎРѕР·РґР°РµРј РјР°СЃСЃРёРІ РёРЅРґРµРєСЃРѕРІ.
+        np.random.shuffle(indices) # РџРµСЂРµРјРµС€РёРІР°РµРј РёРЅРґРµРєСЃС‹.
+        data = data[indices] # РЎРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ РїРµСЂРµРјРµС€РёРІР°РµРј РїСЂРёРјРµСЂС‹ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….
+        targets = targets[indices] # РўРѕС‡РЅРѕ С‚Р°Рє Р¶Рµ РїРµСЂРµРјРµС€РёРІР°РµРј РїСЂРёРјРµСЂС‹ С‚РѕС‡РЅС‹С… Р·РЅР°С‡РµРЅРёР№.
 
-        #Массивы для хранений значений и рассчета (объективно) MSE и MAE.
-        total_predictions = []  # Для хранения предсказаний на текущей эпохе.
-        total_targets = []      # Для хранения реальных значений на текущей эпохе.
+        #РњР°СЃСЃРёРІС‹ РґР»СЏ С…СЂР°РЅРµРЅРёР№ Р·РЅР°С‡РµРЅРёР№ Рё СЂР°СЃСЃС‡РµС‚Р° (РѕР±СЉРµРєС‚РёРІРЅРѕ) MSE Рё MAE.
+        total_predictions = []  # Р”Р»СЏ С…СЂР°РЅРµРЅРёСЏ РїСЂРµРґСЃРєР°Р·Р°РЅРёР№ РЅР° С‚РµРєСѓС‰РµР№ СЌРїРѕС…Рµ.
+        total_targets = []      # Р”Р»СЏ С…СЂР°РЅРµРЅРёСЏ СЂРµР°Р»СЊРЅС‹С… Р·РЅР°С‡РµРЅРёР№ РЅР° С‚РµРєСѓС‰РµР№ СЌРїРѕС…Рµ.
         
         for input_data, target in zip(data, targets):
-            # ШАГ 2. Подать на вход сети очередной обучающий пример и подсчитать выходы.
+            # РЁРђР“ 2. РџРѕРґР°С‚СЊ РЅР° РІС…РѕРґ СЃРµС‚Рё РѕС‡РµСЂРµРґРЅРѕР№ РѕР±СѓС‡Р°СЋС‰РёР№ РїСЂРёРјРµСЂ Рё РїРѕРґСЃС‡РёС‚Р°С‚СЊ РІС‹С…РѕРґС‹.
             hidden_layer_output, predicted_output = forward_propagation(input_data, input_hidden_weights, hidden_output_weights, hidden_bias, output_bias)
-            total_predictions.append(predicted_output)  # Сохраняем текущее предсказание.
-            total_targets.append(target)                # Сохраняем реальное значение.
+            total_predictions.append(predicted_output)  # РЎРѕС…СЂР°РЅСЏРµРј С‚РµРєСѓС‰РµРµ РїСЂРµРґСЃРєР°Р·Р°РЅРёРµ.
+            total_targets.append(target)                # РЎРѕС…СЂР°РЅСЏРµРј СЂРµР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ.
             
-            # ШАГ 3-5. Исправление весов и сдвигов на основе алгоритма обратного распространения ошибки.
+            # РЁРђР“ 3-5. РСЃРїСЂР°РІР»РµРЅРёРµ РІРµСЃРѕРІ Рё СЃРґРІРёРіРѕРІ РЅР° РѕСЃРЅРѕРІРµ Р°Р»РіРѕСЂРёС‚РјР° РѕР±СЂР°С‚РЅРѕРіРѕ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёСЏ РѕС€РёР±РєРё.
             input_hidden_weights, hidden_output_weights, hidden_bias, output_bias = backward_propagation(
                 input_data, hidden_layer_output, predicted_output, target, 
                 input_hidden_weights, hidden_output_weights, hidden_bias, output_bias, learning_rate
             )
         
-        # После каждой эпохи вычисляем метрики.
+        # РџРѕСЃР»Рµ РєР°Р¶РґРѕР№ СЌРїРѕС…Рё РІС‹С‡РёСЃР»СЏРµРј РјРµС‚СЂРёРєРё.
         total_predictions = np.array(total_predictions)
         total_targets = np.array(total_targets)
         
@@ -130,29 +130,29 @@ def train_neural_network(data, targets, input_hidden_weights, hidden_output_weig
         MSE = np.mean((total_targets - total_predictions) ** 2)
         # MAE (Mean Absolute Error)
         MAE = np.mean(np.abs(total_targets - total_predictions))
-        # Добавление значений MSE и MAE в массивы.
+        # Р”РѕР±Р°РІР»РµРЅРёРµ Р·РЅР°С‡РµРЅРёР№ MSE Рё MAE РІ РјР°СЃСЃРёРІС‹.
         MSE_mass.append(MSE)
         MAE_mass.append(MAE)
         
-        # Вывод метрик каждые 1000 эпох.
+        # Р’С‹РІРѕРґ РјРµС‚СЂРёРє РєР°Р¶РґС‹Рµ 1000 СЌРїРѕС….
         if (epoch + 1) % 1000 == 0:
-            write_to_file(output_file, f'Эпоха {epoch + 1},\tMSE: {MSE:.8f},\tMAE: {MAE:.8f}')
-            print(f"НС была обучена на эпохе {epoch + 1}. Осталось {epochs - epoch - 1} эпох :)")
+            write_to_file(output_file, f'Р­РїРѕС…Р° {epoch + 1},\tMSE: {MSE:.8f},\tMAE: {MAE:.8f}')
+            print(f"РќРЎ Р±С‹Р»Р° РѕР±СѓС‡РµРЅР° РЅР° СЌРїРѕС…Рµ {epoch + 1}. РћСЃС‚Р°Р»РѕСЃСЊ {epochs - epoch - 1} СЌРїРѕС… :)")
         
-        # Проверка критерия остановки.
-        if MSE < delta_threshold:  # Если ошибка меньше заданного порога.
-            write_to_file(output_file, f'Обучение остановлено на эпохе {epoch}, MSE: {MSE:.8f}, MAE: {MAE:.8f}.')
+        # РџСЂРѕРІРµСЂРєР° РєСЂРёС‚РµСЂРёСЏ РѕСЃС‚Р°РЅРѕРІРєРё.
+        if MSE < delta_threshold:  # Р•СЃР»Рё РѕС€РёР±РєР° РјРµРЅСЊС€Рµ Р·Р°РґР°РЅРЅРѕРіРѕ РїРѕСЂРѕРіР°.
+            write_to_file(output_file, f'РћР±СѓС‡РµРЅРёРµ РѕСЃС‚Р°РЅРѕРІР»РµРЅРѕ РЅР° СЌРїРѕС…Рµ {epoch}, MSE: {MSE:.8f}, MAE: {MAE:.8f}.')
             break
     
-    # Средняя ошибка на всех данных.
+    # РЎСЂРµРґРЅСЏСЏ РѕС€РёР±РєР° РЅР° РІСЃРµС… РґР°РЅРЅС‹С….
     mean_MSE = np.mean(MSE_mass)
     mean_MAE = np.mean(MAE_mass)
-    write_to_file(output_file, f'Средяя MSE между реальными и предсказанными значениями: {mean_MSE:.8f}.')
-    write_to_file(output_file, f'Средняя MAE между реальными и предсказанными значениями: {mean_MAE:.8f}.')
+    write_to_file(output_file, f'РЎСЂРµРґСЏСЏ MSE РјРµР¶РґСѓ СЂРµР°Р»СЊРЅС‹РјРё Рё РїСЂРµРґСЃРєР°Р·Р°РЅРЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё: {mean_MSE:.8f}.')
+    write_to_file(output_file, f'РЎСЂРµРґРЅСЏСЏ MAE РјРµР¶РґСѓ СЂРµР°Р»СЊРЅС‹РјРё Рё РїСЂРµРґСЃРєР°Р·Р°РЅРЅС‹РјРё Р·РЅР°С‡РµРЅРёСЏРјРё: {mean_MAE:.8f}.')
     
     return input_hidden_weights, hidden_output_weights, hidden_bias, output_bias
 
-# Функция сохранения нейросети на текущем наборе исходных данных.
+# Р¤СѓРЅРєС†РёСЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ РЅРµР№СЂРѕСЃРµС‚Рё РЅР° С‚РµРєСѓС‰РµРј РЅР°Р±РѕСЂРµ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С….
 def save_neural_network(file_path, input_hidden_weights, hidden_output_weights, hidden_bias, output_bias, output_file):
     model_data = {
         "input_hidden_weights": input_hidden_weights,
@@ -162,46 +162,46 @@ def save_neural_network(file_path, input_hidden_weights, hidden_output_weights, 
     }
     with open(file_path, 'wb') as file:
         pickle.dump(model_data, file)
-    write_to_file(output_file, f"Параметры обученной нейросети сохранены в файл: {file_path}.\n\n") 
+    write_to_file(output_file, f"РџР°СЂР°РјРµС‚СЂС‹ РѕР±СѓС‡РµРЅРЅРѕР№ РЅРµР№СЂРѕСЃРµС‚Рё СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р»: {file_path}.\n\n") 
 
-# Функция для записи в файл.
+# Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°РїРёСЃРё РІ С„Р°Р№Р».
 def write_to_file(file_path, text):
     with open(file_path, 'a') as f:
         f.write(text + '\n')   
 
-# Функция для тестирования нейросети.
+# Р¤СѓРЅРєС†РёСЏ РґР»СЏ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ РЅРµР№СЂРѕСЃРµС‚Рё.
 def test_neural_network_to_file(test_size, output_file, data, targets, input_hidden_weights, hidden_output_weights, hidden_bias, output_bias, min_val_Y, max_val_Y):
-    # Размер тестовой выборки.
-    write_to_file(output_file, f"Размер тестовой выборки: {test_size}")
+    # Р Р°Р·РјРµСЂ С‚РµСЃС‚РѕРІРѕР№ РІС‹Р±РѕСЂРєРё.
+    write_to_file(output_file, f"Р Р°Р·РјРµСЂ С‚РµСЃС‚РѕРІРѕР№ РІС‹Р±РѕСЂРєРё: {test_size}")
     
-    # Перемешивание данных.
+    # РџРµСЂРµРјРµС€РёРІР°РЅРёРµ РґР°РЅРЅС‹С….
     data = np.array(data)
     indices = np.arange(len(targets))
     np.random.shuffle(indices)
     shuffled_data = data[indices]
     shuffled_targets = targets[indices]
     
-    # Выбор двух случайных примеров
-    test_examples = shuffled_data[:test_size]   # Первые test_size примера после перемешивания.
-    test_targets = shuffled_targets[:test_size] # Их соответствующие реальные значения.
+    # Р’С‹Р±РѕСЂ РґРІСѓС… СЃР»СѓС‡Р°Р№РЅС‹С… РїСЂРёРјРµСЂРѕРІ
+    test_examples = shuffled_data[:test_size]   # РџРµСЂРІС‹Рµ test_size РїСЂРёРјРµСЂР° РїРѕСЃР»Рµ РїРµСЂРµРјРµС€РёРІР°РЅРёСЏ.
+    test_targets = shuffled_targets[:test_size] # РС… СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёРµ СЂРµР°Р»СЊРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ.
     
-    # Прогон через нейросеть.
+    # РџСЂРѕРіРѕРЅ С‡РµСЂРµР· РЅРµР№СЂРѕСЃРµС‚СЊ.
     for i, (input_data, real_value) in enumerate(zip(test_examples, test_targets)):
         _, predicted_output = forward_propagation(input_data, input_hidden_weights, hidden_output_weights, hidden_bias, output_bias)
 
-        # Денормализация.
-        # Реальное и предсказанное значения
+        # Р”РµРЅРѕСЂРјР°Р»РёР·Р°С†РёСЏ.
+        # Р РµР°Р»СЊРЅРѕРµ Рё РїСЂРµРґСЃРєР°Р·Р°РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёСЏ
         denorm_real = denormalize_data_Y(np.array([real_value]), min_val_Y, max_val_Y)[0]
         denorm_predicted = denormalize_data_Y(predicted_output, min_val_Y, max_val_Y)[0]
         
-        # Запись результатов в файл
-        write_to_file(output_file, f"Пример {i + 1}:")
-        write_to_file(output_file, f"  Реальное значение (денорм.): {denorm_real:.8f}")
-        write_to_file(output_file, f"  Предсказанное значение (денорм.): {denorm_predicted:.8f}")
-        write_to_file(output_file, f"  Абсолютная ошибка: {np.abs(denorm_real - denorm_predicted):.8f}")
-        print(f"Тестовый пример {i + 1} успешно был решен НС.")
+        # Р—Р°РїРёСЃСЊ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р»
+        write_to_file(output_file, f"РџСЂРёРјРµСЂ {i + 1}:")
+        write_to_file(output_file, f"  Р РµР°Р»СЊРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ (РґРµРЅРѕСЂРј.): {denorm_real:.8f}")
+        write_to_file(output_file, f"  РџСЂРµРґСЃРєР°Р·Р°РЅРЅРѕРµ Р·РЅР°С‡РµРЅРёРµ (РґРµРЅРѕСЂРј.): {denorm_predicted:.8f}")
+        write_to_file(output_file, f"  РђР±СЃРѕР»СЋС‚РЅР°СЏ РѕС€РёР±РєР°: {np.abs(denorm_real - denorm_predicted):.8f}")
+        print(f"РўРµСЃС‚РѕРІС‹Р№ РїСЂРёРјРµСЂ {i + 1} СѓСЃРїРµС€РЅРѕ Р±С‹Р» СЂРµС€РµРЅ РќРЎ.")
 
-# Функция для загрузки сохраненной модели.
+# Р¤СѓРЅРєС†РёСЏ РґР»СЏ Р·Р°РіСЂСѓР·РєРё СЃРѕС…СЂР°РЅРµРЅРЅРѕР№ РјРѕРґРµР»Рё.
 def load_trained_model(file_path):
     if os.path.exists(file_path):
         with open(file_path, 'rb') as file:
@@ -211,47 +211,47 @@ def load_trained_model(file_path):
                 model_data['hidden_bias'], 
                 model_data['output_bias'])
     else:
-        print(f"Модель не найдена по пути: {file_path}")
+        print(f"РњРѕРґРµР»СЊ РЅРµ РЅР°Р№РґРµРЅР° РїРѕ РїСѓС‚Рё: {file_path}")
         return None
 
-# Основная функция.
+# РћСЃРЅРѕРІРЅР°СЏ С„СѓРЅРєС†РёСЏ.
 def main():
-    file_path = "Домохозяйства_в_районах_РТ.txt"
+    file_path = "Р”РѕРјРѕС…РѕР·СЏР№СЃС‚РІР°_РІ_СЂР°Р№РѕРЅР°С…_Р Рў.txt"
     output_file = "output_log.txt"
     trained_model_path = "trained_neural_network.pkl"
     
-    # Очищаем файл перед записью.
+    # РћС‡РёС‰Р°РµРј С„Р°Р№Р» РїРµСЂРµРґ Р·Р°РїРёСЃСЊСЋ.
     with open(output_file, 'w') as f:
         f.write('Training Log...\n\n')
 
-    # ШАГ 0. Чтение исходных данных и их нормализация.
+    # РЁРђР“ 0. Р§С‚РµРЅРёРµ РёСЃС…РѕРґРЅС‹С… РґР°РЅРЅС‹С… Рё РёС… РЅРѕСЂРјР°Р»РёР·Р°С†РёСЏ.
     data = np.array(load_data(file_path), dtype=float)
 
-    # Нормализация входных и выходных данных.
+    # РќРѕСЂРјР°Р»РёР·Р°С†РёСЏ РІС…РѕРґРЅС‹С… Рё РІС‹С…РѕРґРЅС‹С… РґР°РЅРЅС‹С….
     normalized_X = normalize_data_X(data.T)
     normalized_Y = normalize_data_Y(data.T)
 
-    # ЗАПРОС ПОЛЬЗОВАТЕЛЯ, ЧТО ДЕЛАТЬ ДАЛЬШЕ.
-    user_choice = input("Хотите использовать уже обученную модель (y/n [any symbols])? ").strip().lower()
+    # Р—РђРџР РћРЎ РџРћР›Р¬Р—РћР’РђРўР•Р›РЇ, Р§РўРћ Р”Р•Р›РђРўР¬ Р”РђР›Р¬РЁР•.
+    user_choice = input("РҐРѕС‚РёС‚Рµ РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ СѓР¶Рµ РѕР±СѓС‡РµРЅРЅСѓСЋ РјРѕРґРµР»СЊ (y/n [any symbols])? ").strip().lower()
     if user_choice == 'y':
-        print("Загружаем обученную модель...")
+        print("Р—Р°РіСЂСѓР¶Р°РµРј РѕР±СѓС‡РµРЅРЅСѓСЋ РјРѕРґРµР»СЊ...")
         input_hidden_weights, hidden_output_weights, hidden_bias, output_bias = load_trained_model(trained_model_path)
     else:
-        # Запись в файл.
-        write_to_file(output_file, 'Исходные данные успешно загружены.')
-        write_to_file(output_file, f'Размер обучающей выборки: {len(data.T[0])} примеров.')
-        print("Обучаем нейросеть... :<")
-        # ШАГ 1. Инициализация синмаптических весов и сдвига.
-        input_size = 5   # (т.к. 5 признаков)
-        hidden_size = 11 # (по теор. Колмогорова)
-        output_size = 1  # (т.к. 1 целевой параметр)   
+        # Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р».
+        write_to_file(output_file, 'РСЃС…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅС‹.')
+        write_to_file(output_file, f'Р Р°Р·РјРµСЂ РѕР±СѓС‡Р°СЋС‰РµР№ РІС‹Р±РѕСЂРєРё: {len(data.T[0])} РїСЂРёРјРµСЂРѕРІ.')
+        print("РћР±СѓС‡Р°РµРј РЅРµР№СЂРѕСЃРµС‚СЊ... :<")
+        # РЁРђР“ 1. РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃРёРЅРјР°РїС‚РёС‡РµСЃРєРёС… РІРµСЃРѕРІ Рё СЃРґРІРёРіР°.
+        input_size = 5   # (С‚.Рє. 5 РїСЂРёР·РЅР°РєРѕРІ)
+        hidden_size = 11 # (РїРѕ С‚РµРѕСЂ. РљРѕР»РјРѕРіРѕСЂРѕРІР°)
+        output_size = 1  # (С‚.Рє. 1 С†РµР»РµРІРѕР№ РїР°СЂР°РјРµС‚СЂ)   
     
         input_hidden_weights, hidden_output_weights, hidden_bias, output_bias = initialize_weights(input_size, hidden_size, output_size)
 
-        # ШАГ 6. Повторить шаги 2-5 для следующего обучающего примера.
+        # РЁРђР“ 6. РџРѕРІС‚РѕСЂРёС‚СЊ С€Р°РіРё 2-5 РґР»СЏ СЃР»РµРґСѓСЋС‰РµРіРѕ РѕР±СѓС‡Р°СЋС‰РµРіРѕ РїСЂРёРјРµСЂР°.
         learning_rate = 0.1
         epochs = 10000
-        delta_threshold = 0.002 # Условие из индивидуального задания.
+        delta_threshold = 0.002 # РЈСЃР»РѕРІРёРµ РёР· РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕРіРѕ Р·Р°РґР°РЅРёСЏ.
     
         input_hidden_weights, hidden_output_weights, hidden_bias, output_bias = train_neural_network(
             normalized_X.T, normalized_Y.T, 
@@ -261,28 +261,28 @@ def main():
             delta_threshold, output_file
         )
 
-        # ШАГ 7. Выдать и сохранить параметры обученной нейросети.
+        # РЁРђР“ 7. Р’С‹РґР°С‚СЊ Рё СЃРѕС…СЂР°РЅРёС‚СЊ РїР°СЂР°РјРµС‚СЂС‹ РѕР±СѓС‡РµРЅРЅРѕР№ РЅРµР№СЂРѕСЃРµС‚Рё.
         save_neural_network(trained_model_path, 
                         input_hidden_weights, hidden_output_weights, 
                         hidden_bias, output_bias, output_file)
         
-    print(f"Лог многослойного персептрона обратного распространения ошибки сохранен в файл: {output_file}.")
+    print(f"Р›РѕРі РјРЅРѕРіРѕСЃР»РѕР№РЅРѕРіРѕ РїРµСЂСЃРµРїС‚СЂРѕРЅР° РѕР±СЂР°С‚РЅРѕРіРѕ СЂР°СЃРїСЂРѕСЃС‚СЂР°РЅРµРЅРёСЏ РѕС€РёР±РєРё СЃРѕС…СЂР°РЅРµРЅ РІ С„Р°Р№Р»: {output_file}.")
 
-    # ШАГ 8. Тестирование нейросети.
+    # РЁРђР“ 8. РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ РЅРµР№СЂРѕСЃРµС‚Рё.
     test_size = 10
     test_neural_network_to_file(
-        test_size,                # Размер тестовой выборки
+        test_size,                # Р Р°Р·РјРµСЂ С‚РµСЃС‚РѕРІРѕР№ РІС‹Р±РѕСЂРєРё
         output_file, 
-        normalized_X.T,           # Исходные данные
-        normalized_Y.T,           # Исходные цели каждого набора данных
-        input_hidden_weights,     # Обученные веса входной слой -> скрытый слой
-        hidden_output_weights,    # Обученные веса скрытый слой -> выходной слой
-        hidden_bias,              # Смещения скрытого слоя
-        output_bias,              # Смещения выходного слоя
+        normalized_X.T,           # РСЃС…РѕРґРЅС‹Рµ РґР°РЅРЅС‹Рµ
+        normalized_Y.T,           # РСЃС…РѕРґРЅС‹Рµ С†РµР»Рё РєР°Р¶РґРѕРіРѕ РЅР°Р±РѕСЂР° РґР°РЅРЅС‹С…
+        input_hidden_weights,     # РћР±СѓС‡РµРЅРЅС‹Рµ РІРµСЃР° РІС…РѕРґРЅРѕР№ СЃР»РѕР№ -> СЃРєСЂС‹С‚С‹Р№ СЃР»РѕР№
+        hidden_output_weights,    # РћР±СѓС‡РµРЅРЅС‹Рµ РІРµСЃР° СЃРєСЂС‹С‚С‹Р№ СЃР»РѕР№ -> РІС‹С…РѕРґРЅРѕР№ СЃР»РѕР№
+        hidden_bias,              # РЎРјРµС‰РµРЅРёСЏ СЃРєСЂС‹С‚РѕРіРѕ СЃР»РѕСЏ
+        output_bias,              # РЎРјРµС‰РµРЅРёСЏ РІС‹С…РѕРґРЅРѕРіРѕ СЃР»РѕСЏ
         np.min(np.array(data.T[-1], dtype=float)),
         np.max(np.array(data.T[-1], dtype=float))
     )
 
-# Запуск программы.
+# Р—Р°РїСѓСЃРє РїСЂРѕРіСЂР°РјРјС‹.
 if __name__ == '__main__':
     main()

@@ -81,17 +81,17 @@ public:
 	{
 		if (!this->theStreetIsEmpty())
 		{
-			std::cout << "- Óëèöà " << this->getStreetName() << ":" << std::endl;
+			std::cout << "- Ð£Ð»Ð¸Ñ†Ð° " << this->getStreetName() << ":" << std::endl;
 			House* temp_ptr{ this->head_house_ptr->getPNext()};
 			while (temp_ptr != this->head_house_ptr)
 			{
-				std::cout << "\t* Äîì c íîìåðîì " << temp_ptr->getHouseNumber() << ", òèï ñòðîåíèÿ: " << temp_ptr->getBuildingType() << "." << std::endl;
+				std::cout << "\t* Ð”Ð¾Ð¼ c Ð½Ð¾Ð¼ÐµÑ€Ð¾Ð¼ " << temp_ptr->getHouseNumber() << ", Ñ‚Ð¸Ð¿ ÑÑ‚Ñ€Ð¾ÐµÐ½Ð¸Ñ: " << temp_ptr->getBuildingType() << "." << std::endl;
 				temp_ptr = temp_ptr->getPNext();
 			}
-			std::cout << "\tÁîëüøå äîìîâ íà äàííîé óëèöå íåò." << std::endl;
+			std::cout << "\tÐ‘Ð¾Ð»ÑŒÑˆÐµ Ð´Ð¾Ð¼Ð¾Ð² Ð½Ð° Ð´Ð°Ð½Ð½Ð¾Ð¹ ÑƒÐ»Ð¸Ñ†Ðµ Ð½ÐµÑ‚." << std::endl;
 		}
 		else
-			std::cout << "- Óëèöà " << this->getStreetName() << ": äîìà îòñóòñòâóþò." << std::endl;
+			std::cout << "- Ð£Ð»Ð¸Ñ†Ð° " << this->getStreetName() << ": Ð´Ð¾Ð¼Ð° Ð¾Ñ‚ÑÑƒÑ‚ÑÑ‚Ð²ÑƒÑŽÑ‚." << std::endl;
 	}
 
 	std::string getStreetName()
@@ -122,9 +122,9 @@ public:
 		this->head_house_ptr = nullptr;
 		this->pNext = nullptr;
 		if (this->getStreetName().empty())
-			std::cout << "- Óëèöà (çàãîëîâî÷íûé ýëåìåíò) óñïåøíî óäàëåíà." << std::endl;
+			std::cout << "- Ð£Ð»Ð¸Ñ†Ð° (Ð·Ð°Ð³Ð¾Ð»Ð¾Ð²Ð¾Ñ‡Ð½Ñ‹Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚) ÑƒÑÐ¿ÐµÑˆÐ½Ð¾ ÑƒÐ´Ð°Ð»ÐµÐ½Ð°." << std::endl;
 		else
-			std::cout << "- Óëèöà " << this->getStreetName() << " áûëà óñïåøíà óäàëåíà ñî âñåìè ñóùåñòâóþùèìè íà íåé äîìàìè." << std::endl;
+			std::cout << "- Ð£Ð»Ð¸Ñ†Ð° " << this->getStreetName() << " Ð±Ñ‹Ð»Ð° ÑƒÑÐ¿ÐµÑˆÐ½Ð° ÑƒÐ´Ð°Ð»ÐµÐ½Ð° ÑÐ¾ Ð²ÑÐµÐ¼Ð¸ ÑÑƒÑ‰ÐµÑÑ‚Ð²ÑƒÑŽÑ‰Ð¸Ð¼Ð¸ Ð½Ð° Ð½ÐµÐ¹ Ð´Ð¾Ð¼Ð°Ð¼Ð¸." << std::endl;
 	}
 };
 

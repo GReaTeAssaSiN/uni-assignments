@@ -4,20 +4,20 @@
 #include <vector>
 #include <fstream>
 
-//Ñòğóêòóğà äëÿ õğàíåíèÿ êîîğäèíàò âåğøèíû.
+//Ğ¡Ñ‚Ñ€ÑƒĞºÑ‚ÑƒÑ€Ğ° Ğ´Ğ»Ñ Ñ…Ñ€Ğ°Ğ½ĞµĞ½Ğ¸Ñ ĞºĞ¾Ğ¾Ñ€Ğ´Ğ¸Ğ½Ğ°Ñ‚ Ğ²ĞµÑ€ÑˆĞ¸Ğ½Ñ‹.
 struct Point {
     double x1{}, x2{};
     Point(double _x1 = 0, double _x2 = 0) : x1(_x1), x2(_x2) {}
 };
 
-/*ÎÁÙÈÉ ÂÛÂÎÄ*/
+/*ĞĞ‘Ğ©Ğ˜Ğ™ Ğ’Ğ«Ğ’ĞĞ”*/
 void perform_search_first(std::ofstream& results_file, const double& epsilon, double t);
 void perform_search_second(std::ofstream& results_file, const double& epsilon, const double& alpha, const double& beta, const double& gamma);
 void printTableHeader(std::ofstream& output_file);
 static void printTableRow(std::ofstream& output_file, const std::string& pointName, const Point& p, const double& fValue);
 double F(const Point& p);
 
-/*ÏÎÈÑÊ ÏÎ ÌÅÒÎÄÓ ÏĞÀÂÈËÜÍÎÃÎ ÑÈÌÏËÅÊÑÀ*/
+/*ĞŸĞĞ˜Ğ¡Ğš ĞŸĞ ĞœĞ•Ğ¢ĞĞ”Ğ£ ĞŸĞ ĞĞ’Ğ˜Ğ›Ğ¬ĞĞĞ“Ğ Ğ¡Ğ˜ĞœĞŸĞ›Ğ•ĞšĞ¡Ğ*/
 static void printTableAdditionalRow(std::ofstream& output_file, const int& step, const double& t);
 static void printResults(std::ofstream& output_file, const std::vector<Point>& simplex, const std::vector<double>& fValues, const double& t);
 static Point caculate_point_by_X0(const Point& X0, const double& d1, const double& d2, const int& number);
@@ -28,7 +28,7 @@ static Point reflect(const Point& centroid, const Point& worst);
 
 void search_by_correct_simplex(std::ofstream& file, const double& epsilon, double& t);
 
-/*ÏÎÈÑÊ ÏÎ ÄÅÔÎĞÌÈĞÓÅÌÎÌÓ ÌÍÎÃÎÃĞÀÍÍÈÊÓ*/
+/*ĞŸĞĞ˜Ğ¡Ğš ĞŸĞ Ğ”Ğ•Ğ¤ĞĞ ĞœĞ˜Ğ Ğ£Ğ•ĞœĞĞœĞ£ ĞœĞĞĞ“ĞĞ“Ğ ĞĞĞĞ˜ĞšĞ£*/
 static void printTableAdditionalRow(std::ofstream& output_file, const int& step);
 static void printResults(std::ofstream& output_file, const std::vector<Point>& simplex, const std::vector<double>& fValues);
 static void printCurrentPoints(std::ofstream& output_file, const std::vector<Point>& points, const std::vector<double>& fValues);

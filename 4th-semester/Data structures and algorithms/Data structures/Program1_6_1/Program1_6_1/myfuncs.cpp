@@ -2,47 +2,47 @@
 #include <string>
 #include "myfuncs.h"
 
-/*ПОЛЬЗОВАТЕЛЬСКОЕ МЕНЮ*/
-//Пользовательское меню.
+/*РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРћР• РњР•РќР®*/
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РјРµРЅСЋ.
 void MenuForChoices()
 {
-	std::cout << "Что вы хотите сделать с двоичным поисковым деревом?" << std::endl <<
-		"1) Построить поисковое дерево с заданным числом вершин со случайными ключами." << std::endl <<
-		"2) Добавить новую вершину в поисковое дерево." << std::endl <<
-		"3) Построчный вывод поискового дерева на основе процедуры обхода в обратно-симметричном порядке." << std::endl <<
-		"4) Вывести все вершины поискового дерева в одну строку по порядку следования ключей с указанием для каждой вершины значения ее счетчика появлений." << std::endl <<
-		"5) Найти вершину с заданным значением ключа и выводом счетчика числа появлений данного ключа в поисковом дереве." << std::endl <<
-		"6) Удалить вершину с заданным значением ключа из поискового дерева." << std::endl <<
-		"7) Полностью уничтожить произвольное двоичное дерево." << std::endl <<
-		"8) Выход." << std::endl;
+	std::cout << "Р§С‚Рѕ РІС‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ СЃ РґРІРѕРёС‡РЅС‹Рј РїРѕРёСЃРєРѕРІС‹Рј РґРµСЂРµРІРѕРј?" << std::endl <<
+		"1) РџРѕСЃС‚СЂРѕРёС‚СЊ РїРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ СЃ Р·Р°РґР°РЅРЅС‹Рј С‡РёСЃР»РѕРј РІРµСЂС€РёРЅ СЃРѕ СЃР»СѓС‡Р°Р№РЅС‹РјРё РєР»СЋС‡Р°РјРё." << std::endl <<
+		"2) Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІСѓСЋ РІРµСЂС€РёРЅСѓ РІ РїРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ." << std::endl <<
+		"3) РџРѕСЃС‚СЂРѕС‡РЅС‹Р№ РІС‹РІРѕРґ РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР° РЅР° РѕСЃРЅРѕРІРµ РїСЂРѕС†РµРґСѓСЂС‹ РѕР±С…РѕРґР° РІ РѕР±СЂР°С‚РЅРѕ-СЃРёРјРјРµС‚СЂРёС‡РЅРѕРј РїРѕСЂСЏРґРєРµ." << std::endl <<
+		"4) Р’С‹РІРµСЃС‚Рё РІСЃРµ РІРµСЂС€РёРЅС‹ РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР° РІ РѕРґРЅСѓ СЃС‚СЂРѕРєСѓ РїРѕ РїРѕСЂСЏРґРєСѓ СЃР»РµРґРѕРІР°РЅРёСЏ РєР»СЋС‡РµР№ СЃ СѓРєР°Р·Р°РЅРёРµРј РґР»СЏ РєР°Р¶РґРѕР№ РІРµСЂС€РёРЅС‹ Р·РЅР°С‡РµРЅРёСЏ РµРµ СЃС‡РµС‚С‡РёРєР° РїРѕСЏРІР»РµРЅРёР№." << std::endl <<
+		"5) РќР°Р№С‚Рё РІРµСЂС€РёРЅСѓ СЃ Р·Р°РґР°РЅРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј РєР»СЋС‡Р° Рё РІС‹РІРѕРґРѕРј СЃС‡РµС‚С‡РёРєР° С‡РёСЃР»Р° РїРѕСЏРІР»РµРЅРёР№ РґР°РЅРЅРѕРіРѕ РєР»СЋС‡Р° РІ РїРѕРёСЃРєРѕРІРѕРј РґРµСЂРµРІРµ." << std::endl <<
+		"6) РЈРґР°Р»РёС‚СЊ РІРµСЂС€РёРЅСѓ СЃ Р·Р°РґР°РЅРЅС‹Рј Р·РЅР°С‡РµРЅРёРµРј РєР»СЋС‡Р° РёР· РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР°." << std::endl <<
+		"7) РџРѕР»РЅРѕСЃС‚СЊСЋ СѓРЅРёС‡С‚РѕР¶РёС‚СЊ РїСЂРѕРёР·РІРѕР»СЊРЅРѕРµ РґРІРѕРёС‡РЅРѕРµ РґРµСЂРµРІРѕ." << std::endl <<
+		"8) Р’С‹С…РѕРґ." << std::endl;
 }
-//Запрос действий с двоичным деревом у пользователя.
+//Р—Р°РїСЂРѕСЃ РґРµР№СЃС‚РІРёР№ СЃ РґРІРѕРёС‡РЅС‹Рј РґРµСЂРµРІРѕРј Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 char getCase()
 {
 	while (true)
 	{
 		MenuForChoices();
-		std::cout << "Ваш выбор: ";
+		std::cout << "Р’Р°С€ РІС‹Р±РѕСЂ: ";
 		std::string choice{};
 		std::getline(std::cin, choice);
 		if (choice == "1" || choice == "2" || choice == "3" || choice == "4" || choice == "5" || choice == "6" || choice == "7" || choice == "8")
 			return choice[0];
 		else
 		{
-			std::cout << std::endl << "Ошибка ввода, Вам нужно ввести номер Вашего выбора в соответствии с нижеперечисленными пунктами (от 1 до 8). Повторите ввод." << std::endl;
+			std::cout << std::endl << "РћС€РёР±РєР° РІРІРѕРґР°, Р’Р°Рј РЅСѓР¶РЅРѕ РІРІРµСЃС‚Рё РЅРѕРјРµСЂ Р’Р°С€РµРіРѕ РІС‹Р±РѕСЂР° РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РЅРёР¶РµРїРµСЂРµС‡РёСЃР»РµРЅРЅС‹РјРё РїСѓРЅРєС‚Р°РјРё (РѕС‚ 1 РґРѕ 8). РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ." << std::endl;
 			printDashes();
 		}
 	}
 }
 
-/*ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ*/
-//ГПСЧ
+/*Р’РЎРџРћРњРћР“РђРўР•Р›Р¬РќР«Р• Р¤РЈРќРљР¦РР*/
+//Р“РџРЎР§
 float getRandomNumber(float min, float max)
 {
 	static const float fraction = 1.0 / (static_cast<float>(RAND_MAX) + 1.0);
 	return (rand() * fraction * (max - min + 1) + min);
 }
-//Выбор рекурсивного/нерекурсивного добавления вершины.
+//Р’С‹Р±РѕСЂ СЂРµРєСѓСЂСЃРёРІРЅРѕРіРѕ/РЅРµСЂРµРєСѓСЂСЃРёРІРЅРѕРіРѕ РґРѕР±Р°РІР»РµРЅРёСЏ РІРµСЂС€РёРЅС‹.
 std::string get0_1()
 {
 	while (true)
@@ -52,10 +52,10 @@ std::string get0_1()
 		if (zero_or_one == "q" || zero_or_one == "0" || zero_or_one == "1")
 			return zero_or_one;
 		else
-			std::cout << "Ошибка ввода. Вы должны ввести '0', '1' или 'q'. Повторите ввод: ";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’С‹ РґРѕР»Р¶РЅС‹ РІРІРµСЃС‚Рё '0', '1' РёР»Рё 'q'. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 	}
 }
-//Проверка введённой пользователем строки на возможность преобразования в целое число.
+//РџСЂРѕРІРµСЂРєР° РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РЅР° РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РІ С†РµР»РѕРµ С‡РёСЃР»Рѕ.
 bool checkStrIsNumeric(std::string const& tempStr)
 {
 	for (int i{}; i < tempStr.length(); i++)
@@ -67,7 +67,7 @@ bool checkStrIsNumeric(std::string const& tempStr)
 	}
 	return !tempStr.empty();
 }
-//Преобразование введённой пользователем строки в число.
+//РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РІ С‡РёСЃР»Рѕ.
 int convertStrToInt(std::string convertStr)
 {
 	double number{};
@@ -83,15 +83,15 @@ int convertStrToInt(std::string convertStr)
 	}
 	return negative_number ? static_cast<int>(-number) : static_cast<int>(number);
 }
-//Вывод визуального разделения между действиями пользователя в консоль.
+//Р’С‹РІРѕРґ РІРёР·СѓР°Р»СЊРЅРѕРіРѕ СЂР°Р·РґРµР»РµРЅРёСЏ РјРµР¶РґСѓ РґРµР№СЃС‚РІРёСЏРјРё РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РІ РєРѕРЅСЃРѕР»СЊ.
 void printDashes()
 {
 	std::cout << "-----------------------------------------------------------------------------------------------------------------------" << "\t" << std::endl;
 }
-//Запрос иниформационной части элемента у пользователя.
+//Р—Р°РїСЂРѕСЃ РёРЅРёС„РѕСЂРјР°С†РёРѕРЅРЅРѕР№ С‡Р°СЃС‚Рё СЌР»РµРјРµРЅС‚Р° Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 std::string getElem()
 {
-	std::cout << "Введите информационную часть элемента - ключ (целое число), или 'q', чтобы выйти в меню: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅСѓСЋ С‡Р°СЃС‚СЊ СЌР»РµРјРµРЅС‚Р° - РєР»СЋС‡ (С†РµР»РѕРµ С‡РёСЃР»Рѕ), РёР»Рё 'q', С‡С‚РѕР±С‹ РІС‹Р№С‚Рё РІ РјРµРЅСЋ: ";
 	while (true)
 	{
 		std::string new_elem{};
@@ -99,29 +99,29 @@ std::string getElem()
 		if (checkStrIsNumeric(new_elem) || new_elem == "q")
 			return new_elem;
 		else
-			std::cout << "Ошибка ввода. Вы должны ввести целое число или 'q'. Повторите ввод: ";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. Р’С‹ РґРѕР»Р¶РЅС‹ РІРІРµСЃС‚Рё С†РµР»РѕРµ С‡РёСЃР»Рѕ РёР»Рё 'q'. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ: ";
 	}
 }
-//Переопределение указателей при удалении вершины из поискового дерева.
+//РџРµСЂРµРѕРїСЂРµРґРµР»РµРЅРёРµ СѓРєР°Р·Р°С‚РµР»РµР№ РїСЂРё СѓРґР°Р»РµРЅРёРё РІРµСЂС€РёРЅС‹ РёР· РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР°.
 void changePointersOnDeletion(Node*& tree_root, Node*& changing_parent, Node*& changing_child)
 {
-	if (changing_parent->parent == nullptr)//Если изменяется указатель корня дерева.
+	if (changing_parent->parent == nullptr)//Р•СЃР»Рё РёР·РјРµРЅСЏРµС‚СЃСЏ СѓРєР°Р·Р°С‚РµР»СЊ РєРѕСЂРЅСЏ РґРµСЂРµРІР°.
 		tree_root = changing_child;
-	else if (changing_parent == changing_parent->parent->left)//Если изменяется указатель родителя, являющегося левым потомком.
+	else if (changing_parent == changing_parent->parent->left)//Р•СЃР»Рё РёР·РјРµРЅСЏРµС‚СЃСЏ СѓРєР°Р·Р°С‚РµР»СЊ СЂРѕРґРёС‚РµР»СЏ, СЏРІР»СЏСЋС‰РµРіРѕСЃСЏ Р»РµРІС‹Рј РїРѕС‚РѕРјРєРѕРј.
 		changing_parent->parent->left = changing_child;
-	else//Если изменяется указатель родителя, являющегося правым потомком.
+	else//Р•СЃР»Рё РёР·РјРµРЅСЏРµС‚СЃСЏ СѓРєР°Р·Р°С‚РµР»СЊ СЂРѕРґРёС‚РµР»СЏ, СЏРІР»СЏСЋС‰РµРіРѕСЃСЏ РїСЂР°РІС‹Рј РїРѕС‚РѕРјРєРѕРј.
 		changing_parent->parent->right = changing_child;
-	if (changing_child != nullptr)//Если изменяется ненулевой указатель ребенка.
+	if (changing_child != nullptr)//Р•СЃР»Рё РёР·РјРµРЅСЏРµС‚СЃСЏ РЅРµРЅСѓР»РµРІРѕР№ СѓРєР°Р·Р°С‚РµР»СЊ СЂРµР±РµРЅРєР°.
 		changing_child->parent = changing_parent->parent;
 }
 
-/*ОСНОВНЫЕ ФУНКЦИИ*/
-//Проверка пустоты поискового дерева.
+/*РћРЎРќРћР’РќР«Р• Р¤РЈРќРљР¦РР*/
+//РџСЂРѕРІРµСЂРєР° РїСѓСЃС‚РѕС‚С‹ РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР°.
 bool isBinaryTreeEmpty(Node* tree_root)
 {
 	return (tree_root == nullptr) ? true : false;
 }
-//Поиск вершины в поисковом дереве.
+//РџРѕРёСЃРє РІРµСЂС€РёРЅС‹ РІ РїРѕРёСЃРєРѕРІРѕРј РґРµСЂРµРІРµ.
 Node* searchTreeNode(Node*& tree_root, const int& searched_key)
 {
 	if (tree_root == nullptr || tree_root->key == searched_key)
@@ -134,12 +134,12 @@ Node* searchTreeNode(Node*& tree_root, const int& searched_key)
 			return searchTreeNode(tree_root->right, searched_key);
 	}
 }
-//Добавление новой вершины в поисковое дерево не рекурсивно.
+//Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕР№ РІРµСЂС€РёРЅС‹ РІ РїРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ РЅРµ СЂРµРєСѓСЂСЃРёРІРЅРѕ.
 void addNewNodeToTreeNonRecursive(Node*& tree_root, const int& adding_key)
 {
 	Node* parent{};
 	Node* current{ tree_root };
-	//Поиск подходящего места.
+	//РџРѕРёСЃРє РїРѕРґС…РѕРґСЏС‰РµРіРѕ РјРµСЃС‚Р°.
 	while (current != nullptr)
 	{
 		parent = current;
@@ -150,11 +150,11 @@ void addNewNodeToTreeNonRecursive(Node*& tree_root, const int& adding_key)
 		else
 		{
 			++current->count;
-			std::cout << "Добавляемый ключ '" << adding_key << "' уже присутствует в поисковом дереве. Счетчик данного ключа увеличен до '" << current->count << "'." << std::endl;
+			std::cout << "Р”РѕР±Р°РІР»СЏРµРјС‹Р№ РєР»СЋС‡ '" << adding_key << "' СѓР¶Рµ РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ РІ РїРѕРёСЃРєРѕРІРѕРј РґРµСЂРµРІРµ. РЎС‡РµС‚С‡РёРє РґР°РЅРЅРѕРіРѕ РєР»СЋС‡Р° СѓРІРµР»РёС‡РµРЅ РґРѕ '" << current->count << "'." << std::endl;
 			return;
 		}
 	}
-	//Добавление новой вершины.
+	//Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕР№ РІРµСЂС€РёРЅС‹.
 	try
 	{
 		Node* newNode = new Node{};
@@ -173,12 +173,12 @@ void addNewNodeToTreeNonRecursive(Node*& tree_root, const int& adding_key)
 	catch (const std::exception& e)
 	{
 		std::cout << e.what() << std::endl;
-		std::cout << "Не удалось выделить память из кучи. Куча переполнена!" << std::endl;
+		std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ РІС‹РґРµР»РёС‚СЊ РїР°РјСЏС‚СЊ РёР· РєСѓС‡Рё. РљСѓС‡Р° РїРµСЂРµРїРѕР»РЅРµРЅР°!" << std::endl;
 		DestroyAllTree(tree_root);
 		exit(-1);
 	}
 }
-//Добавление новой вершины в поисковое дерево рекурсивно.
+//Р”РѕР±Р°РІР»РµРЅРёРµ РЅРѕРІРѕР№ РІРµСЂС€РёРЅС‹ РІ РїРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ СЂРµРєСѓСЂСЃРёРІРЅРѕ.
 Node* addNewNodeToTreeRecursive(Node*& tree_root, Node* parent, const int& adding_key)
 {
 	if (tree_root == nullptr)
@@ -195,7 +195,7 @@ Node* addNewNodeToTreeRecursive(Node*& tree_root, Node* parent, const int& addin
 		catch (const std::exception& e)
 		{
 			std::cout << e.what() << std::endl;
-			std::cout << "Не удалось выделить память из кучи. Куча переполнена!" << std::endl;
+			std::cout << "РќРµ СѓРґР°Р»РѕСЃСЊ РІС‹РґРµР»РёС‚СЊ РїР°РјСЏС‚СЊ РёР· РєСѓС‡Рё. РљСѓС‡Р° РїРµСЂРµРїРѕР»РЅРµРЅР°!" << std::endl;
 			DestroyAllTree(tree_root);
 			exit(-1);
 		}
@@ -210,12 +210,12 @@ Node* addNewNodeToTreeRecursive(Node*& tree_root, Node* parent, const int& addin
 		else
 		{
 			++tree_root->count;
-			std::cout << "Добавляемый ключ '" << adding_key << "' уже присутствует в поисковом дереве. Счетчик данного ключа увеличен до '" << tree_root->count << "'." << std::endl;
+			std::cout << "Р”РѕР±Р°РІР»СЏРµРјС‹Р№ РєР»СЋС‡ '" << adding_key << "' СѓР¶Рµ РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚ РІ РїРѕРёСЃРєРѕРІРѕРј РґРµСЂРµРІРµ. РЎС‡РµС‚С‡РёРє РґР°РЅРЅРѕРіРѕ РєР»СЋС‡Р° СѓРІРµР»РёС‡РµРЅ РґРѕ '" << tree_root->count << "'." << std::endl;
 		}
 	}
 	return tree_root;
 }
-//Рекурсивный вывод поискового дерева в обратно-симметричном порядке.
+//Р РµРєСѓСЂСЃРёРІРЅС‹Р№ РІС‹РІРѕРґ РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР° РІ РѕР±СЂР°С‚РЅРѕ-СЃРёРјРјРµС‚СЂРёС‡РЅРѕРј РїРѕСЂСЏРґРєРµ.
 void printTreeInBackwardSymmetricOrder(Node*& tree_root, int level)
 {
 	if (tree_root == nullptr)
@@ -227,7 +227,7 @@ void printTreeInBackwardSymmetricOrder(Node*& tree_root, int level)
 		printTreeInBackwardSymmetricOrder(tree_root->left, level + 1);
 	}
 }
-//Рекурсивный вывод всех вершин поискового дерева в порядке возрастания их ключей в одну строку.
+//Р РµРєСѓСЂСЃРёРІРЅС‹Р№ РІС‹РІРѕРґ РІСЃРµС… РІРµСЂС€РёРЅ РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР° РІ РїРѕСЂСЏРґРєРµ РІРѕР·СЂР°СЃС‚Р°РЅРёСЏ РёС… РєР»СЋС‡РµР№ РІ РѕРґРЅСѓ СЃС‚СЂРѕРєСѓ.
 void printTreeInSymmetricalOrderWithCount(Node*& tree_root)
 {
 	if (tree_root == nullptr)
@@ -239,25 +239,25 @@ void printTreeInSymmetricalOrderWithCount(Node*& tree_root)
 		printTreeInSymmetricalOrderWithCount(tree_root->right);
 	}
 }
-//Удаление вершины из поискового дерева.
+//РЈРґР°Р»РµРЅРёРµ РІРµСЂС€РёРЅС‹ РёР· РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР°.
 void removeNodeFromTree(Node*& tree_root, const int& removing_key)
 {
-	Node* removing_node = searchTreeNode(tree_root, removing_key);//Ищем удаляемый узел в поисковом дереве.
-	if (!removing_node)//Если удаляемый узел отсутствует.
-		std::cout << "Указанный ключ отсутствует в поисковом дереве. Операция удаления ключа невозможна." << std::endl;
-	else//Если удаляемый узел присутствует.
+	Node* removing_node = searchTreeNode(tree_root, removing_key);//РС‰РµРј СѓРґР°Р»СЏРµРјС‹Р№ СѓР·РµР» РІ РїРѕРёСЃРєРѕРІРѕРј РґРµСЂРµРІРµ.
+	if (!removing_node)//Р•СЃР»Рё СѓРґР°Р»СЏРµРјС‹Р№ СѓР·РµР» РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚.
+		std::cout << "РЈРєР°Р·Р°РЅРЅС‹Р№ РєР»СЋС‡ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ РїРѕРёСЃРєРѕРІРѕРј РґРµСЂРµРІРµ. РћРїРµСЂР°С†РёСЏ СѓРґР°Р»РµРЅРёСЏ РєР»СЋС‡Р° РЅРµРІРѕР·РјРѕР¶РЅР°." << std::endl;
+	else//Р•СЃР»Рё СѓРґР°Р»СЏРµРјС‹Р№ СѓР·РµР» РїСЂРёСЃСѓС‚СЃС‚РІСѓРµС‚.
 	{
-		if (removing_node->left == nullptr)//Если существует только правый потомок.
+		if (removing_node->left == nullptr)//Р•СЃР»Рё СЃСѓС‰РµСЃС‚РІСѓРµС‚ С‚РѕР»СЊРєРѕ РїСЂР°РІС‹Р№ РїРѕС‚РѕРјРѕРє.
 			changePointersOnDeletion(tree_root, removing_node, removing_node->right);
-		else if (removing_node->right == nullptr)//Если существует только левый потомок.
+		else if (removing_node->right == nullptr)//Р•СЃР»Рё СЃСѓС‰РµСЃС‚РІСѓРµС‚ С‚РѕР»СЊРєРѕ Р»РµРІС‹Р№ РїРѕС‚РѕРјРѕРє.
 			changePointersOnDeletion(tree_root, removing_node, removing_node->left);
-		else//Если существуют оба потомка.
+		else//Р•СЃР»Рё СЃСѓС‰РµСЃС‚РІСѓСЋС‚ РѕР±Р° РїРѕС‚РѕРјРєР°.
 		{
-			//Замещаем удаляемый узел на самый левый узел в правом поддереве.
-			Node* nodeToReplaceRemovingNode = removing_node->right;//Переходим в правое поддерево.
-			while (nodeToReplaceRemovingNode->left != nullptr)//Ищем самый левый узел.
+			//Р—Р°РјРµС‰Р°РµРј СѓРґР°Р»СЏРµРјС‹Р№ СѓР·РµР» РЅР° СЃР°РјС‹Р№ Р»РµРІС‹Р№ СѓР·РµР» РІ РїСЂР°РІРѕРј РїРѕРґРґРµСЂРµРІРµ.
+			Node* nodeToReplaceRemovingNode = removing_node->right;//РџРµСЂРµС…РѕРґРёРј РІ РїСЂР°РІРѕРµ РїРѕРґРґРµСЂРµРІРѕ.
+			while (nodeToReplaceRemovingNode->left != nullptr)//РС‰РµРј СЃР°РјС‹Р№ Р»РµРІС‹Р№ СѓР·РµР».
 				nodeToReplaceRemovingNode = nodeToReplaceRemovingNode->left;
-			if (nodeToReplaceRemovingNode->parent != removing_node)//Если правое поддерево состоит не из одного узла.
+			if (nodeToReplaceRemovingNode->parent != removing_node)//Р•СЃР»Рё РїСЂР°РІРѕРµ РїРѕРґРґРµСЂРµРІРѕ СЃРѕСЃС‚РѕРёС‚ РЅРµ РёР· РѕРґРЅРѕРіРѕ СѓР·Р»Р°.
 			{
 				changePointersOnDeletion(tree_root, nodeToReplaceRemovingNode, nodeToReplaceRemovingNode->right);
 				nodeToReplaceRemovingNode->right = removing_node->right;
@@ -267,8 +267,8 @@ void removeNodeFromTree(Node*& tree_root, const int& removing_key)
 			nodeToReplaceRemovingNode->left = removing_node->left;
 			nodeToReplaceRemovingNode->left->parent = nodeToReplaceRemovingNode;
 		}
-		//Удаляем указанный узел.
-		std::cout << "Вершина со значением ключа '" << removing_node->key << "' и счетчиком '" << removing_node->count << "' была успешно удалена из поискового дерева." << std::endl;
+		//РЈРґР°Р»СЏРµРј СѓРєР°Р·Р°РЅРЅС‹Р№ СѓР·РµР».
+		std::cout << "Р’РµСЂС€РёРЅР° СЃРѕ Р·РЅР°С‡РµРЅРёРµРј РєР»СЋС‡Р° '" << removing_node->key << "' Рё СЃС‡РµС‚С‡РёРєРѕРј '" << removing_node->count << "' Р±С‹Р»Р° СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅР° РёР· РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР°." << std::endl;
 		removing_node->parent = nullptr;
 		removing_node->left = nullptr;
 		removing_node->right = nullptr;
@@ -277,22 +277,22 @@ void removeNodeFromTree(Node*& tree_root, const int& removing_key)
 		delete removing_node;
 	}
 }
-//Полностью уничтожить все дерево.
+//РџРѕР»РЅРѕСЃС‚СЊСЋ СѓРЅРёС‡С‚РѕР¶РёС‚СЊ РІСЃРµ РґРµСЂРµРІРѕ.
 void DestroyAllTree(Node*& tree_root)
 {
 	if (tree_root != nullptr)
 	{
 		DestroyAllTree(tree_root->left);
 		DestroyAllTree(tree_root->right);
-		std::cout << "Вершина " << tree_root->key << " была успешно удалена." << std::endl;
+		std::cout << "Р’РµСЂС€РёРЅР° " << tree_root->key << " Р±С‹Р»Р° СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅР°." << std::endl;
 		delete tree_root;
 	}
 }
 
-/*ПОЛЬЗОВАТЕЛЬСКИЕ ЗАПРОСЫ*/
+/*РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРР• Р—РђРџР РћРЎР«*/
 void userCase1(Tree*& binary_tree)
 {
-	std::cout << "Введите количество вершин поискового дерева (целое положительное число) или 'q', чтобы выйти в меню: " << std::endl;
+	std::cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РІРµСЂС€РёРЅ РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР° (С†РµР»РѕРµ РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕРµ С‡РёСЃР»Рѕ) РёР»Рё 'q', С‡С‚РѕР±С‹ РІС‹Р№С‚Рё РІ РјРµРЅСЋ: " << std::endl;
 	while (true)
 	{
 		std::string count_nodes_or_exit{};
@@ -300,7 +300,7 @@ void userCase1(Tree*& binary_tree)
 		if (count_nodes_or_exit != "q" && checkStrIsNumeric(count_nodes_or_exit) && convertStrToInt(count_nodes_or_exit) > 0)
 		{
 			int count_nodes{ convertStrToInt(count_nodes_or_exit) };
-			std::cout << "Выберите режим добавления вершин или введите 'q', чтобы выйти в меню:\n0 - не рекурсивно;\n1 - рекурсивно." << std::endl;
+			std::cout << "Р’С‹Р±РµСЂРёС‚Рµ СЂРµР¶РёРј РґРѕР±Р°РІР»РµРЅРёСЏ РІРµСЂС€РёРЅ РёР»Рё РІРІРµРґРёС‚Рµ 'q', С‡С‚РѕР±С‹ РІС‹Р№С‚Рё РІ РјРµРЅСЋ:\n0 - РЅРµ СЂРµРєСѓСЂСЃРёРІРЅРѕ;\n1 - СЂРµРєСѓСЂСЃРёРІРЅРѕ." << std::endl;
 			while (true)
 			{
 				std::string zero_or_one_or_exit{ get0_1() };
@@ -323,19 +323,19 @@ void userCase1(Tree*& binary_tree)
 		else if (count_nodes_or_exit == "q")
 			break;
 		else
-			std::cout << "Ошибка ввода. Повторите ввод или выйдите в меню: ";
+			std::cout << "РћС€РёР±РєР° РІРІРѕРґР°. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ РёР»Рё РІС‹Р№РґРёС‚Рµ РІ РјРµРЅСЋ: ";
 	}
 }
 void userCase2(Tree*& binary_tree)
 {
-	std::cout << "Введите вершину (ключ), который необходимо добавить в поисковое дерево, или 'q', чтобы выйти в меню." << std::endl;
+	std::cout << "Р’РІРµРґРёС‚Рµ РІРµСЂС€РёРЅСѓ (РєР»СЋС‡), РєРѕС‚РѕСЂС‹Р№ РЅРµРѕР±С…РѕРґРёРјРѕ РґРѕР±Р°РІРёС‚СЊ РІ РїРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ, РёР»Рё 'q', С‡С‚РѕР±С‹ РІС‹Р№С‚Рё РІ РјРµРЅСЋ." << std::endl;
 	while (true)
 	{
 		std::string new_key_or_exit{ getElem() };
 		if (new_key_or_exit != "q")
 		{
 			int new_key{ convertStrToInt(new_key_or_exit) };
-			std::cout << "Выберите режим добавления вершины или введите 'q', чтобы выйти в меню:\n0 - не рекурсивно;\n1 - рекурсивно." << std::endl;
+			std::cout << "Р’С‹Р±РµСЂРёС‚Рµ СЂРµР¶РёРј РґРѕР±Р°РІР»РµРЅРёСЏ РІРµСЂС€РёРЅС‹ РёР»Рё РІРІРµРґРёС‚Рµ 'q', С‡С‚РѕР±С‹ РІС‹Р№С‚Рё РІ РјРµРЅСЋ:\n0 - РЅРµ СЂРµРєСѓСЂСЃРёРІРЅРѕ;\n1 - СЂРµРєСѓСЂСЃРёРІРЅРѕ." << std::endl;
 			std::string zero_or_one_or_exit{ get0_1() };
 			if (zero_or_one_or_exit != "q")
 			{
@@ -354,18 +354,18 @@ void userCase2(Tree*& binary_tree)
 }
 void userCase3(Node*& tree_root)
 {
-	std::cout << "Вывод поискового дерева в обратно-симметричном порядке:" << std::endl;
+	std::cout << "Р’С‹РІРѕРґ РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР° РІ РѕР±СЂР°С‚РЅРѕ-СЃРёРјРјРµС‚СЂРёС‡РЅРѕРј РїРѕСЂСЏРґРєРµ:" << std::endl;
 	printTreeInBackwardSymmetricOrder(tree_root, 0);
 }
 void userCase4(Node*& tree_root)
 {
-	std::cout << "Вывод поискового дерева в одну строку с указанием ключей и соответствующих счетчиков:" << std::endl;
+	std::cout << "Р’С‹РІРѕРґ РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР° РІ РѕРґРЅСѓ СЃС‚СЂРѕРєСѓ СЃ СѓРєР°Р·Р°РЅРёРµРј РєР»СЋС‡РµР№ Рё СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РёС… СЃС‡РµС‚С‡РёРєРѕРІ:" << std::endl;
 	printTreeInSymmetricalOrderWithCount(tree_root);
 	std::cout << std::endl;
 }
 void userCase5(Node*& tree_root)
 {
-	std::cout << "Введите ключ, который нужно найти в поисковом дереве, или 'q', чтобы выйти в меню." << std::endl;
+	std::cout << "Р’РІРµРґРёС‚Рµ РєР»СЋС‡, РєРѕС‚РѕСЂС‹Р№ РЅСѓР¶РЅРѕ РЅР°Р№С‚Рё РІ РїРѕРёСЃРєРѕРІРѕРј РґРµСЂРµРІРµ, РёР»Рё 'q', С‡С‚РѕР±С‹ РІС‹Р№С‚Рё РІ РјРµРЅСЋ." << std::endl;
 	while (true)
 	{
 		std::string searching_key_or_exit{ getElem() };
@@ -375,12 +375,12 @@ void userCase5(Node*& tree_root)
 			Node* searching_node = searchTreeNode(tree_root, searching_key);
 			if (searching_node)
 			{
-				std::cout << "Указанный ключ '" << searching_node->key << "' был успешно найден в поисковом дереве." << std::endl;
-				std::cout << "Счетчик ключа равен '" << searching_node->count << "'." << std::endl;
+				std::cout << "РЈРєР°Р·Р°РЅРЅС‹Р№ РєР»СЋС‡ '" << searching_node->key << "' Р±С‹Р» СѓСЃРїРµС€РЅРѕ РЅР°Р№РґРµРЅ РІ РїРѕРёСЃРєРѕРІРѕРј РґРµСЂРµРІРµ." << std::endl;
+				std::cout << "РЎС‡РµС‚С‡РёРє РєР»СЋС‡Р° СЂР°РІРµРЅ '" << searching_node->count << "'." << std::endl;
 				break;
 			}
 			else
-				std::cout << "Указанный ключ отсутствует в поисковом дереве. Повторите ввод или выйдите в меню." << std::endl;
+				std::cout << "РЈРєР°Р·Р°РЅРЅС‹Р№ РєР»СЋС‡ РѕС‚СЃСѓС‚СЃС‚РІСѓРµС‚ РІ РїРѕРёСЃРєРѕРІРѕРј РґРµСЂРµРІРµ. РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ РёР»Рё РІС‹Р№РґРёС‚Рµ РІ РјРµРЅСЋ." << std::endl;
 		}
 		else
 			break;
@@ -389,7 +389,7 @@ void userCase5(Node*& tree_root)
 void userCase6(Tree*& binary_tree)
 {
 	printTreeInBackwardSymmetricOrder(binary_tree->root, 0);
-	std::cout << "Введите вершину (ключ), который необходимо удалить из поискового дерева, или 'q', чтобы выйти в меню." << std::endl;
+	std::cout << "Р’РІРµРґРёС‚Рµ РІРµСЂС€РёРЅСѓ (РєР»СЋС‡), РєРѕС‚РѕСЂС‹Р№ РЅРµРѕР±С…РѕРґРёРјРѕ СѓРґР°Р»РёС‚СЊ РёР· РїРѕРёСЃРєРѕРІРѕРіРѕ РґРµСЂРµРІР°, РёР»Рё 'q', С‡С‚РѕР±С‹ РІС‹Р№С‚Рё РІ РјРµРЅСЋ." << std::endl;
 	while (true)
 	{
 		std::string removing_key_or_exit{ getElem() };
@@ -407,11 +407,11 @@ void userCase7(Tree*& binary_tree)
 	DestroyAllTree(binary_tree->root);
 	binary_tree->number_vertices = 0;
 	binary_tree->root = nullptr;
-	std::cout << "Поисковое дерево было успешно удалено. Корень остался пустым." << std::endl;
+	std::cout << "РџРѕРёСЃРєРѕРІРѕРµ РґРµСЂРµРІРѕ Р±С‹Р»Рѕ СѓСЃРїРµС€РЅРѕ СѓРґР°Р»РµРЅРѕ. РљРѕСЂРµРЅСЊ РѕСЃС‚Р°Р»СЃСЏ РїСѓСЃС‚С‹Рј." << std::endl;
 }
 void userCase8(Tree*& binary_tree)
 {
 	DestroyAllTree(binary_tree->root);
 	delete binary_tree;
-	std::cout << "Вся выделенная память была возвращена в кучу. Завершение программы . . ." << std::endl;
+	std::cout << "Р’СЃСЏ РІС‹РґРµР»РµРЅРЅР°СЏ РїР°РјСЏС‚СЊ Р±С‹Р»Р° РІРѕР·РІСЂР°С‰РµРЅР° РІ РєСѓС‡Сѓ. Р—Р°РІРµСЂС€РµРЅРёРµ РїСЂРѕРіСЂР°РјРјС‹ . . ." << std::endl;
 }

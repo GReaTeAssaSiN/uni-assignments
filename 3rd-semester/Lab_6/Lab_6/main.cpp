@@ -7,15 +7,15 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(WIDTH, HEIGHT), "Lab_6", sf::Style::Close);
 	window.setPosition(sf::Vector2i(X_BASE_POINT, Y_BASE_POINT));
 
-	//Размер динамического массива (контейнер)
+	//Р Р°Р·РјРµСЂ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР° (РєРѕРЅС‚РµР№РЅРµСЂ)
 	int size_container_figures_dynamic_array{};
-	//Размер линейного динамического списка (контейнер)
+	//Р Р°Р·РјРµСЂ Р»РёРЅРµР№РЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР° (РєРѕРЅС‚РµР№РЅРµСЂ)
 	int size_container_figures_lynear_dynamic_list{};
-	//Указатель на объект класса-контейнера на базе динамического массива
+	//РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР°-РєРѕРЅС‚РµР№РЅРµСЂР° РЅР° Р±Р°Р·Рµ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ РјР°СЃСЃРёРІР°
 	DynamicArray* ptr_container_figures_dynamic_array{};
-	//Указатель на объект класса-контейнера на базе линейного динамического списка
+	//РЈРєР°Р·Р°С‚РµР»СЊ РЅР° РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР°-РєРѕРЅС‚РµР№РЅРµСЂР° РЅР° Р±Р°Р·Рµ Р»РёРЅРµР№РЅРѕРіРѕ РґРёРЅР°РјРёС‡РµСЃРєРѕРіРѕ СЃРїРёСЃРєР°
 	LynearDynamicList* ptr_container_figures_lynear_dynamic_list{};
-	//Указатель на любой графический примитив (объект класса TFigure)
+	//РЈРєР°Р·Р°С‚РµР»СЊ РЅР° Р»СЋР±РѕР№ РіСЂР°С„РёС‡РµСЃРєРёР№ РїСЂРёРјРёС‚РёРІ (РѕР±СЉРµРєС‚ РєР»Р°СЃСЃР° TFigure)
 	TFigure* ptr_graphic_primitive{};
 
 	menu_processing(window, ptr_container_figures_dynamic_array, ptr_container_figures_lynear_dynamic_list, 

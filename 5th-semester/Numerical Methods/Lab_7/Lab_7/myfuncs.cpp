@@ -5,8 +5,8 @@
 #include "myfuncs.h"
 #include "constants.h"
 
-/*ФУНКЦИИ ДЛЯ ПРОВЕРКИ ПОЛЗОВАТЕЛЬСКОГО ВВОДА*/
-//Проверка введённой пользователем строки на возможность преобразования в число.
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ РџР РћР’Р•Р РљР РџРћР›Р—РћР’РђРўР•Р›Р¬РЎРљРћР“Рћ Р’Р’РћР”Рђ*/
+//РџСЂРѕРІРµСЂРєР° РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РЅР° РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РїСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёСЏ РІ С‡РёСЃР»Рѕ.
 bool checkStrIsNumeric(std::string const& tempStr)
 {
 	bool negative_number{ false }, separator{ false };
@@ -27,7 +27,7 @@ bool checkStrIsNumeric(std::string const& tempStr)
 	}
 	return !tempStr.empty();
 }
-//Преобразование введённой пользователем строки в число.
+//РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РІРІРµРґС‘РЅРЅРѕР№ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј СЃС‚СЂРѕРєРё РІ С‡РёСЃР»Рѕ.
 long double convertStrToNumber(std::string convertStr)
 {
 	long double number{}, number_for_fraction{};
@@ -71,70 +71,70 @@ long double convertStrToNumber(std::string convertStr)
 		return negative_number ? static_cast<long double>(-number / number_for_fraction) : static_cast<long double>(number / number_for_fraction);
 }
 
-/*ФУНКЦИИ ДЛЯ ВЫВОДА ИНФОРМАЦИИ НА КОНСОЛЬ*/
-//Вывод информации об авторе, варианте, задании.
+/*Р¤РЈРќРљР¦РР Р”Р›РЇ Р’Р«Р’РћР”Рђ РРќР¤РћР РњРђР¦РР РќРђ РљРћРќРЎРћР›Р¬*/
+//Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Р°РІС‚РѕСЂРµ, РІР°СЂРёР°РЅС‚Рµ, Р·Р°РґР°РЅРёРё.
 void printTask()
 {
-	std::cout << std::setw(210) << "Горшков Алексей Олегович," << std::endl << std::setw(209) << "группа 4312" << std::endl;
+	std::cout << std::setw(210) << "Р“РѕСЂС€РєРѕРІ РђР»РµРєСЃРµР№ РћР»РµРіРѕРІРёС‡," << std::endl << std::setw(209) << "РіСЂСѓРїРїР° 4312" << std::endl;
 	printDash();
-	std::cout << "Вариант индивидуального задания: 2." << std::endl;
-	std::cout << "Заданный двойной интеграл:" << std::endl;
-	std::cout << "\n\tДвойной интеграл по области D от функции f(x,y) = e^x,\n\tгде D = {(x,y): y=1; y=2; x=0; y=2x-1 }.\n" << std::endl;
-	std::cout << "Точное решение интеграла:\n\t2*(e^(3/2) - e) - (2 - 1) = 2*(e^(3/2) - e) - 1 ~ " << std::setprecision(10) <<
+	std::cout << "Р’Р°СЂРёР°РЅС‚ РёРЅРґРёРІРёРґСѓР°Р»СЊРЅРѕРіРѕ Р·Р°РґР°РЅРёСЏ: 2." << std::endl;
+	std::cout << "Р—Р°РґР°РЅРЅС‹Р№ РґРІРѕР№РЅРѕР№ РёРЅС‚РµРіСЂР°Р»:" << std::endl;
+	std::cout << "\n\tР”РІРѕР№РЅРѕР№ РёРЅС‚РµРіСЂР°Р» РїРѕ РѕР±Р»Р°СЃС‚Рё D РѕС‚ С„СѓРЅРєС†РёРё f(x,y) = e^x,\n\tРіРґРµ D = {(x,y): y=1; y=2; x=0; y=2x-1 }.\n" << std::endl;
+	std::cout << "РўРѕС‡РЅРѕРµ СЂРµС€РµРЅРёРµ РёРЅС‚РµРіСЂР°Р»Р°:\n\t2*(e^(3/2) - e) - (2 - 1) = 2*(e^(3/2) - e) - 1 ~ " << std::setprecision(10) <<
 		get_exact_value(B) - get_exact_value(b) << std::endl;
 }
-//Вывод разделительной черты.
+//Р’С‹РІРѕРґ СЂР°Р·РґРµР»РёС‚РµР»СЊРЅРѕР№ С‡РµСЂС‚С‹.
 void printDash()
 {
 	std::cout << std::string(208, '-') << std::endl;
 }
-//Вывод шапки таблицы.
+//Р’С‹РІРѕРґ С€Р°РїРєРё С‚Р°Р±Р»РёС†С‹.
 void printTable()
 {
 	std::cout << std::string(86, '_') << std::endl;
 	std::cout << "|" << std::setw(10) << "2n" <<
 		"|" << std::setw(10) << "2m" <<
-		"|" << std::setw(15) << "Iточн." <<
-		"|" << std::setw(15) << "Iкуб.ф.с." <<
-		"|" << std::setw(25) << "     |Iточн. - Iкуб.ф.с.|     " <<
+		"|" << std::setw(15) << "IС‚РѕС‡РЅ." <<
+		"|" << std::setw(15) << "IРєСѓР±.С„.СЃ." <<
+		"|" << std::setw(25) << "     |IС‚РѕС‡РЅ. - IРєСѓР±.С„.СЃ.|     " <<
 		"|" << std::endl;
 	std::cout << std::string(86, '_') << std::endl;
 }
 
-/*ПОЛЬЗОВАТЕЛЬСКИЕ ФУНКЦИИ*/
-//Пользовательское меню.
+/*РџРћР›Р¬Р—РћР’РђРўР•Р›Р¬РЎРљРР• Р¤РЈРќРљР¦РР*/
+//РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ РјРµРЅСЋ.
 void MenuForChoices()
 {
-	std::cout << "Что Вы хотите сделать?" << std::endl <<
-		"1) Запустить программу (выданное требование)." << std::endl <<
-		"2) Выйти из программы." << std::endl;
+	std::cout << "Р§С‚Рѕ Р’С‹ С…РѕС‚РёС‚Рµ СЃРґРµР»Р°С‚СЊ?" << std::endl <<
+		"1) Р—Р°РїСѓСЃС‚РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ (РІС‹РґР°РЅРЅРѕРµ С‚СЂРµР±РѕРІР°РЅРёРµ)." << std::endl <<
+		"2) Р’С‹Р№С‚Рё РёР· РїСЂРѕРіСЂР°РјРјС‹." << std::endl;
 }
-//Запрос дейтсвий у пользователя.
+//Р—Р°РїСЂРѕСЃ РґРµР№С‚СЃРІРёР№ Сѓ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 char getCase()
 {
 	while (true)
 	{
 		MenuForChoices();
-		std::cout << "Ваш выбор: ";
+		std::cout << "Р’Р°С€ РІС‹Р±РѕСЂ: ";
 		std::string choice{};
 		std::getline(std::cin, choice);
 		if (choice == "1" || choice == "2")
 			return choice[0];
 		else
-			std::cout << std::endl << "Ошибка ввода! Вам нужно ввести номер вашего выбора в соответствии с нижеперечисленными пунктами (от 1 до 2). Повторите ввод:" << std::endl;
+			std::cout << std::endl << "РћС€РёР±РєР° РІРІРѕРґР°! Р’Р°Рј РЅСѓР¶РЅРѕ РІРІРµСЃС‚Рё РЅРѕРјРµСЂ РІР°С€РµРіРѕ РІС‹Р±РѕСЂР° РІ СЃРѕРѕС‚РІРµС‚СЃС‚РІРёРё СЃ РЅРёР¶РµРїРµСЂРµС‡РёСЃР»РµРЅРЅС‹РјРё РїСѓРЅРєС‚Р°РјРё (РѕС‚ 1 РґРѕ 2). РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ:" << std::endl;
 	}
 }
 
-/*ВСПОМОГАТЕЛЬНЫЕ ФУНКЦИИ*/
-//Получение значения n и m соответственно от пользователя.
+/*Р’РЎРџРћРњРћР“РђРўР•Р›Р¬РќР«Р• Р¤РЈРќРљР¦РР*/
+//РџРѕР»СѓС‡РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ n Рё m СЃРѕРѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕ РѕС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ.
 int get_n_m_values(const char& n_or_m, const int& i)
 {
 	while (true)
 	{
 		if (n_or_m == 'n')
-			std::cout << "Введите значение 2n_" << i + 1 << ": ";
+			std::cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ 2n_" << i + 1 << ": ";
 		else
-			std::cout << "Введите значение 2m_" << i + 1 << ": ";
+			std::cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ 2m_" << i + 1 << ": ";
 		std::string str_n_or_m_value{};
 		std::getline(std::cin, str_n_or_m_value);
 		if (checkStrIsNumeric(str_n_or_m_value))
@@ -143,28 +143,28 @@ int get_n_m_values(const char& n_or_m, const int& i)
 			if (n_or_m_value <= 0 || static_cast<int>(n_or_m_value) != n_or_m_value || static_cast<int>(n_or_m_value) % 2 != 0)
 			{
 				if (n_or_m == 'n')
-					std::cout << "Значение 2n должно быть > 0 и являться целым четным числом! Повторите ввод." << std::endl;
+					std::cout << "Р—РЅР°С‡РµРЅРёРµ 2n РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ > 0 Рё СЏРІР»СЏС‚СЊСЃСЏ С†РµР»С‹Рј С‡РµС‚РЅС‹Рј С‡РёСЃР»РѕРј! РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ." << std::endl;
 				else
-					std::cout << "Значение 2m должно быть > 0 и являться целым четным числом! Повторите ввод." << std::endl;
+					std::cout << "Р—РЅР°С‡РµРЅРёРµ 2m РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ > 0 Рё СЏРІР»СЏС‚СЊСЃСЏ С†РµР»С‹Рј С‡РµС‚РЅС‹Рј С‡РёСЃР»РѕРј! РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ." << std::endl;
 			}
 			else
 				return static_cast<int>(n_or_m_value / 2);
 		}
 		else
-			std::cout << "Вы ввели не число! Повторите ввод." << std::endl;
+			std::cout << "Р’С‹ РІРІРµР»Рё РЅРµ С‡РёСЃР»Рѕ! РџРѕРІС‚РѕСЂРёС‚Рµ РІРІРѕРґ." << std::endl;
 	}
 }
-//Вычисление шага h.
+//Р’С‹С‡РёСЃР»РµРЅРёРµ С€Р°РіР° h.
 long double get_step_h(const int& n)
 {
 	return ((A - a) / (2 * n));
 }
-//Вычисление шага k.
+//Р’С‹С‡РёСЃР»РµРЅРёРµ С€Р°РіР° k.
 long double get_step_k(const int& m)
 {
 	return ((B - b) / (2 * m));
 }
-//Вычисление значения f(x,y).
+//Р’С‹С‡РёСЃР»РµРЅРёРµ Р·РЅР°С‡РµРЅРёСЏ f(x,y).
 long double get_f(const long double& x, const long double& y)
 {
 	if (x >= 0 && y >= (2 * x - 1) && y >= 1 && y <= 2)
@@ -172,28 +172,28 @@ long double get_f(const long double& x, const long double& y)
 	else
 		return 0;
 }
-//Вычисление xi.
+//Р’С‹С‡РёСЃР»РµРЅРёРµ xi.
 long double get_xi(const int& i, const int& n)
 {
 	return (x_0 + i * get_step_h(n));
 }
-//Вычисление yj.
+//Р’С‹С‡РёСЃР»РµРЅРёРµ yj.
 long double get_yj(const int& j, const int& m)
 {
 	return (y_0 + j * get_step_k(m));
 }
-//Построение матрицы lambda.
+//РџРѕСЃС‚СЂРѕРµРЅРёРµ РјР°С‚СЂРёС†С‹ lambda.
 std::vector<std::vector<int>> get_lambda_matrix(const std::size_t& n, const std::size_t& m)
 {
 	std::vector<std::vector<int>> matrix(2 * m + 1, std::vector<int>(2 * n + 1, 0));
 
-	//Угловые элементы матрицы.
+	//РЈРіР»РѕРІС‹Рµ СЌР»РµРјРµРЅС‚С‹ РјР°С‚СЂРёС†С‹.
 	matrix[0][0] = 1;
 	matrix[2 * m][2 * n] = 1;
 	matrix[2 * m][0] = 1;
 	matrix[0][2 * n] = 1;
 
-	//Элементы первого и последнего столбца матрицы.
+	//Р­Р»РµРјРµРЅС‚С‹ РїРµСЂРІРѕРіРѕ Рё РїРѕСЃР»РµРґРЅРµРіРѕ СЃС‚РѕР»Р±С†Р° РјР°С‚СЂРёС†С‹.
 	for (int j{ 1 }; j < 2 * m; j++)
 	{
 		if (((j - 1) % 2) == 1)
@@ -208,7 +208,7 @@ std::vector<std::vector<int>> get_lambda_matrix(const std::size_t& n, const std:
 		}
 	}
 
-	//Элементы первой и последней строки матрицы.
+	//Р­Р»РµРјРµРЅС‚С‹ РїРµСЂРІРѕР№ Рё РїРѕСЃР»РµРґРЅРµР№ СЃС‚СЂРѕРєРё РјР°С‚СЂРёС†С‹.
 	for (int i{ 1 }; i < 2 * n; ++i)
 	{
 		if (((i - 1) % 2) == 1)
@@ -223,7 +223,7 @@ std::vector<std::vector<int>> get_lambda_matrix(const std::size_t& n, const std:
 		}
 	}
 
-	//Все остальные элементы.
+	//Р’СЃРµ РѕСЃС‚Р°Р»СЊРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹.
 	for (int i{ 1 }; i < 2 * m; ++i)
 	{
 		for (int j{ 1 }; j < 2 * n; ++j)
@@ -235,13 +235,13 @@ std::vector<std::vector<int>> get_lambda_matrix(const std::size_t& n, const std:
 	return matrix;
 }
 
-/*ОСНОВНЫЕ ФУНКЦИИ*/
-//Точное решение двойного интеграла.
+/*РћРЎРќРћР’РќР«Р• Р¤РЈРќРљР¦РР*/
+//РўРѕС‡РЅРѕРµ СЂРµС€РµРЅРёРµ РґРІРѕР№РЅРѕРіРѕ РёРЅС‚РµРіСЂР°Р»Р°.
 long double get_exact_value(const long double& y)
 {
 	return 2 * exp((y + 1) / 2) - y;
 }
-//Вычисление решения двойного интеграла по куботурной формуле Симпсона.
+//Р’С‹С‡РёСЃР»РµРЅРёРµ СЂРµС€РµРЅРёСЏ РґРІРѕР№РЅРѕРіРѕ РёРЅС‚РµРіСЂР°Р»Р° РїРѕ РєСѓР±РѕС‚СѓСЂРЅРѕР№ С„РѕСЂРјСѓР»Рµ РЎРёРјРїСЃРѕРЅР°.
 void simpsonFormula(const int& n, const int& m)
 {
 	std::vector<std::vector<int>> lambdaMatrix{ get_lambda_matrix(n, m) };
@@ -260,7 +260,7 @@ void simpsonFormula(const int& n, const int& m)
 	result *= h * k / 9;
 
 	long double I{ get_exact_value(B) - get_exact_value(b) };
-	//Заполнение таблицы.
+	//Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹.
 	std::cout << "|" << std::setw(10) << std::setprecision(10) << 2*n <<
 		"|" << std::setw(10) << std::setprecision(10) << 2*m <<
 		"|" << std::setw(15) << std::setprecision(10) << I <<

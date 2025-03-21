@@ -1,6 +1,6 @@
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
 
-const int n{ 2 };//Размерность пространства E^n.
+const int n{ 2 };//Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ РїСЂРѕСЃС‚СЂР°РЅСЃС‚РІР° E^n.
 
 #endif /* CONSTANTS_H_ */
